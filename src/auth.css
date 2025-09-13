@@ -1,0 +1,77 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+/*Styling The Registration Form*/
+.auth {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  min-height: 100vh;
+}
+
+.auth .container {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 400px;
+  text-align: center;
+}
+
+.auth .container h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #2196f3;
+  letter-spacing: 1px;
+}
+
+.auth .container .icon {
+  font-size: 2.2rem;
+  margin-top: 20px;
+  color: #232323;
+}
+
+.auth .container .form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth .container .form .box {
+  margin-top: 20px;
+}
+
+.auth .container .form .box input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #bdbdbd;
+  outline: none;
+}
+
+.auth .container .form button {
+  width: 100%;
+  padding: 12px;
+  background: #2196f3;
+  margin-top: 20px;
+  border: 2px solid #bdbdbd;
+  outline: none;
+  cursor: pointer;
+  border-radius: 8px;
+  color: #fff;
+  transition: 0.5s;
+  font-size: 1rem;
+}
+.auth .container .form button:hover {
+  color: #2196f3;
+  background: none;
+}
+
+.auth .container .form p {
+  margin-top: 20px;
+  font-size: 1rem;
+}
