@@ -1,9 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import { db, app } from "./firebase";
+
 import "./auth.css";
 
 const Register = () => {
+  // Storing the input value using usestate hooks
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+
+  // Creating User Account On Firebase
+
+  const Authentication = async (e) => {
+    // Guard Clause to prevent empty values
+    if (
+      name.length === 0 ||
+      email.length === 0 ||
+      phone.length === 0 ||
+      password.length === 0
+    ) {
+      alert("All field are required");
+    } else {
+      try {
+        e.preventDefault();
+        const creatAccount = await app
+          .auth()
+          .createUserWithEmailAndPassword(email, password);
+        if (creatAccount) {
+          alert("User Registre Successfully");
+        } else {
+          alert("Error While Registring User");
+        }
+      } catch (err) {
+        console.log(err.message);
+      }
+    }
+  };
   return (
     <>
       <div className="auth">
@@ -14,18 +50,38 @@ const Register = () => {
           </div>
           <div className="form">
             <div className="box">
-              <input type="text" placeholder="Full Name"></input>
+              <input
+                type="text"
+                placeholder="Full Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              ></input>
             </div>
             <div className="box">
-              <input type="email" placeholder="Email"></input>
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              ></input>
             </div>
             <div className="box">
-              <input type="text" placeholder="Phone Number"></input>
+              <input
+                type="text"
+                placeholder="Phone Number"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              ></input>
             </div>
             <div className="box">
-              <input type="password" placeholder="Password *"></input>
+              <input
+                type="password"
+                placeholder="Password *"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              ></input>
             </div>
-            <button>Register</button>
+            <button onClick={(e) => Authentication(e)}>Register</button>
             <p>
               Already have an account ? <Link>Click Here</Link>
             </p>
