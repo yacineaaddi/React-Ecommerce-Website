@@ -1,18 +1,19 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { db, app } from "./firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 
 import "./auth.css";
 
-const Register = ({ setUserDetail }) => {
+const Register = ({ setUserDetail, setAuth, Auth }) => {
   // Storing the input value using usestate hooks
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const dbref = collection(db, "User");
 
@@ -52,6 +53,8 @@ const Register = ({ setUserDetail }) => {
             });
             setUserDetail(userdata);
             alert("User Registre Successfully");
+            setAuth(true);
+            navigate("/");
           }
         }
         /* } else {

@@ -1,21 +1,21 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { db, app } from "./firebase";
 import { collection, getDocs } from "firebase/firestore";
 
 import "./auth.css";
-const Login = ({ setUserDetail }) => {
+const Login = ({ setUserDetail, setAuth, Auth }) => {
   // Storing the input value using usestate hooks
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   const dbref = collection(db, "User");
 
   // Creating New User Account On Firebase
 
-  const Authentication = async (e) => {
+  const Authentication = async (e, Auth) => {
     // Guard Clause to prevent empty values
     if (email.length === 0 || password.length === 0) {
       alert("All field are required");
@@ -37,6 +37,8 @@ const Login = ({ setUserDetail }) => {
           });
           setUserDetail(userdata);
           alert("User Login Successfully");
+          setAuth(true);
+          navigate("/");
         } else {
           alert("Error While Login User");
         }
@@ -73,7 +75,7 @@ const Login = ({ setUserDetail }) => {
             </div>
             <button onClick={(e) => Authentication(e)}>Login</button>
             <p>
-              Don't have an account ? <Link to="/">Register</Link>
+              Don't have an account ? <Link to="/register">Register</Link>
             </p>
           </div>
         </div>
