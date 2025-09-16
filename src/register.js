@@ -50,7 +50,7 @@ const Register = ({ setUserDetail }) => {
             const userdata = data.findLast((info) => {
               return info.Email === email;
             });
-            console.log(userdata);
+            setUserDetail(userdata);
             alert("User Registre Successfully");
           }
         }
@@ -105,7 +105,7 @@ const Register = ({ setUserDetail }) => {
             </div>
             <button onClick={(e) => Authentication(e)}>Register</button>
             <p>
-              Already have an account ? <Link>Click Here</Link>
+              Already have an account ? <Link to="/login">Click Here</Link>
             </p>
           </div>
         </div>
