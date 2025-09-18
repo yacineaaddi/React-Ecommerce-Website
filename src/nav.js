@@ -56,6 +56,29 @@ const Nav = ({ Auth, setAuth, userDetail }) => {
               </div>
             </div>
           </div>
+          <div className="user-detail">
+            <div className="icon">
+              <FaRegUser />
+            </div>
+            <div className="detail">
+              {Auth ? (
+                <>
+                  <h2>{userDetail.Name}</h2>
+                  <p>{userDetail.Email}</p>
+                </>
+              ) : (
+                <h2>Please, Sign in</h2>
+              )}
+            </div>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+                <Link to="/shop">Shop</Link>
+                <Link to="/about">About</Link>
+                <Link to="/contact">Contact</Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </>
