@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import "./nav.css";
 import { CiHeart } from "react-icons/ci";
 import { FaShoppingCart } from "react-icons/fa";
+import { FaRegUser } from "react-icons/fa";
 
-const Nav = ({ Auth, setAuth }) => {
+const Nav = ({ Auth, setAuth, userDetail }) => {
   const Logout = () => {
     setAuth(false);
   };
@@ -13,7 +14,7 @@ const Nav = ({ Auth, setAuth }) => {
       <div className="nav">
         <div className="container">
           {/*Top navbar*/}
-          <div className="top-bar">
+          <div className="top_bar">
             <p>Get free shipping - Free 30 day money back guarantee</p>
             {Auth ? (
               <p>
@@ -34,7 +35,7 @@ const Nav = ({ Auth, setAuth }) => {
             )}
           </div>
           {/*Buttom navbar*/}
-          <div className="mid-bar">
+          <div className="mid_bar">
             <div className="content">
               <div className="logo">
                 <img src="../public/img/logo.svg" alt="Logo"></img>
@@ -45,7 +46,9 @@ const Nav = ({ Auth, setAuth }) => {
               </div>
               <div className="icons">
                 <div className="icon">
-                  <FaShoppingCart />
+                  <Link className="link" to="/cart">
+                    <FaShoppingCart />
+                  </Link>
                 </div>
                 <div className="icon">
                   <CiHeart />

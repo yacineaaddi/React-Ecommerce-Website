@@ -8,7 +8,7 @@ const App = () => {
   const [Auth, setAuth] = useState(false);
   return (
     <BrowserRouter>
-      <Nav Auth={Auth} setAuth={setAuth} />
+      <Nav Auth={Auth} setAuth={setAuth} userDetail={userDetail} />
       <Rout setUserDetail={setUserDetail} setAuth={setAuth} Auth={Auth} />
     </BrowserRouter>
   );
