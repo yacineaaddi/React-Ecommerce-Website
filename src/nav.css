@@ -129,8 +129,8 @@
 .nav .container .bottom_bar ul li {
   list-style: none;
   padding: 0px 10px;
-  color: #fff;
-  font-size: 24px;
+  color: #a9f406;
+  font-size: 22px;
   font-weight: 600;
   text-transform: uppercase;
   text-decoration: none;
@@ -150,6 +150,13 @@
 }
 /*Responsive for mobile devices*/
 @media (max-width: 830px) {
+  /*Responsive style top_bar*/
+  .nav .container .top_bar p {
+    color: #757575;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  /*Responsive style mid_bar*/
   .nav .container .mid_bar .content .navicon {
     display: block;
   }
@@ -165,7 +172,7 @@
     background: #fff;
     width: 100%;
     position: absolute;
-    margin-top: 60px;
+    margin-top: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -190,14 +197,13 @@
     display: flex;
     margin-left: -20px;
   }
+  /*Responsive style bottom_bar*/
   .nav .container .bottom_bar {
     margin-top: 50px;
     flex-direction: column;
     display: none;
   }
-  .nav .container .active {
-    display: block;
-  }
+
   .nav .container .bottom_bar .user-detail {
     display: flex;
     justify-content: center;
@@ -206,7 +212,7 @@
   }
   .nav .container .bottom_bar ul {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     margin-bottom: 20px;
   }
@@ -216,9 +222,7 @@
   .nav .container .bottom_bar .offer h2 {
     text-align: center;
   }
-  .nav .container .top_bar p {
-    color: #757575;
-    font-weight: 600;
-    font-size: 13px;
+  .nav .container .active {
+    display: block;
   }
 }
