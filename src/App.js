@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Rout from "./rout";
 import { BrowserRouter } from "react-router-dom";
-import Nav from "./nav";
+import Nav from "./components/nav";
 const App = () => {
   // Storing User Detail In Usestate Hooks
   const [userDetail, setUserDetail] = useState("");

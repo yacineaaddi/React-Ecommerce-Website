@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+.home {
+  width: 100%;
+}
+.home .top-banner {
+  max-width: 100%;
+  background: #f1f1f1;
+  padding: 20px 30px;
+  border: 1px solid red;
+}
+.home .top-banner .content {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid red;
+}
+.home .top-banner .content .info {
+  margin-top: 100px;
+  margin-left: 100px;
+  border: 1px solid red;
+}
+.home .top-banner .content .info h2 {
+  font-size: 42px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.home .top-banner .content .info p {
+  color: #757575;
+}
+.home .top-banner .content .info p span {
+  color: #2196f3;
+}
+.home .top-banner .content .info button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #2196f3;
+  color: #fff;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.home .top-banner .content .img-box img {
+  width: 350px;
+}
