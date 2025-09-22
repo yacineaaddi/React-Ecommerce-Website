@@ -9,7 +9,7 @@ const Home = () => {
         <div className="top-banner">
           <div className="content">
             <div className="info">
-              <h2>X Box series 5 : for best gaming</h2>
+              <h2>Newest Tablets – Power Up Your Play</h2>
               <p>
                 Get
                 <span>30% off</span>This week
@@ -19,7 +19,7 @@ const Home = () => {
               </Link>
             </div>
             <div className="img-box">
-              <img src="./img/tp7.jpg" alt="Best gaming console"></img>
+              <img src="./img/slider-img.png" alt="Best gaming console"></img>
             </div>
           </div>
         </div>
