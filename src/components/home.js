@@ -9,17 +9,17 @@ const Home = () => {
         <div className="top-banner">
           <div className="content">
             <div className="info">
-              <h2>Newest Tablets – Power Up Your Play</h2>
+              <h2>Take your portable gaming experience to the next level</h2>
               <p>
                 Get
-                <span>30% off</span>This week
+                <span> 30% off </span>This week
               </p>
               <Link to="/shop">
                 <button>Discover Now</button>
               </Link>
             </div>
             <div className="img-box">
-              <img src="./img/slider-img.png" alt="Best gaming console"></img>
+              <img src="./img/rsz_msi.png" alt="Best gaming console"></img>
             </div>
           </div>
         </div>

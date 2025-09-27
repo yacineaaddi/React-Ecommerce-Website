@@ -25,7 +25,7 @@ const Nav = ({ Auth, setAuth, userDetail }) => {
         <div className="container">
           {/*Top navbar*/}
           <div className="top_bar">
-            <p>Get free shipping - Free 30 day money back guarantee</p>
+            <p>Free Shipping - 30 Day Money Back</p>
             {Auth ? (
               <p>
                 <Link className="link" to="/login" onClick={Logout}>
@@ -37,7 +37,7 @@ const Nav = ({ Auth, setAuth, userDetail }) => {
                 <Link className="link" to="/login">
                   Login
                 </Link>
-                /
+                &nbsp;/&nbsp;
                 <Link className="link" to="/register">
                   Register
                 </Link>
@@ -63,7 +63,7 @@ const Nav = ({ Auth, setAuth, userDetail }) => {
                 )}
               </div>
               <div className="logo">
-                <img src="../public/img/logo.svg" alt="Logo"></img>
+                <img src="./img/Logo-Electro.png" alt="Logo"></img>
               </div>
               <div className="search_bar">
                 <input type="text" placeholder="Search Product"></input>

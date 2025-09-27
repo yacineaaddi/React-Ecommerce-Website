@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   box-sizing: border-box;
 }
 
@@ -9,6 +11,7 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  align-items: center;
 }
 /*Style top_bar*/
 .nav .container .top_bar {
@@ -37,14 +40,13 @@
   display: flex;
   justify-content: space-between;
   background: #fff;
-  padding: 20px 20px;
+  padding: 15px 15px;
 }
 .nav .container .mid_bar .content .navicon {
   display: none;
 }
 
 .nav .container .mid_bar .content .logo img {
-  margin-top: 10px;
   width: 150px;
   transition: 0.5s;
   cursor: pointer;
@@ -55,11 +57,10 @@
 }
 .nav .container .mid_bar .content .search_bar {
   display: flex;
-  margin-left: -30px;
 }
 .nav .container .mid_bar .content .search_bar input {
-  width: 250px;
-  padding: 14px;
+  width: 650px;
+  padding: 8px 14px;
   outline: none;
   border: 1px solid #bdbdbd;
 }
@@ -74,12 +75,13 @@
   color: #fff;
 }
 .nav .container .mid_bar .content .icons {
-  margin-top: 10px;
   display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
 }
 .nav .container .mid_bar .content .icons .icon {
   padding: 10px 10px;
-  margin-right: 10px;
   border: 1px solid #bdbdbd;
   border-radius: 12px;
   font-size: 18px;
@@ -118,24 +120,36 @@
   font-weight: 600;
   margin-top: 10px;
 }
-.nav .container .bottom_bar .user-detail p {
+.nav .container .bottom_bar p {
   color: #fff;
   font-size: 12px;
 }
+/*----------------------------------*/
+
 .nav .container .bottom_bar ul {
   display: flex;
-  padding: 10px 0px;
+  gap: 40px;
+  align-items: center;
+  margin: 0;
+  list-style: none;
 }
 .nav .container .bottom_bar ul li {
-  list-style: none;
-  padding: 0px 10px;
-  color: #a9f406;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+.nav .container .bottom_bar ul li a {
+  color: white;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
+/* Hover effect */
+.nav .container .bottom_bar ul li a:hover {
+  color: #a9f406;
+}
+/*----------------------------------*/
 .nav .container .bottom_bar .offer {
   padding: 10px 20px;
   background: #ffd54f;
@@ -146,39 +160,64 @@
   color: #232323;
   font-weight: 600;
   letter-spacing: 1px;
-  margin-top: 8px;
+  margin-top: 0px;
+  padding: 10px 0px;
 }
 /*Responsive for mobile devices*/
-@media (max-width: 830px) {
-  /*Responsive style top_bar*/
+@media (max-width: 1000px) {
+  .nav .container .top_bar {
+    padding: 15px 25px;
+  }
   .nav .container .top_bar p {
-    color: #757575;
     font-weight: 600;
     font-size: 13px;
   }
+
+  .nav .container .bottom_bar ul {
+    gap: 20px;
+  }
+  .nav .container .bottom_bar ul li {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .nav .container .mid_bar .content .search_bar input {
+    width: 450px;
+  }
+}
+/*Responsive for mobile devices*/
+@media (max-width: 850px) {
+  /*Responsive style top_bar*/
+  .nav .container .top_bar {
+    padding: 12px 10px;
+  }
+  .nav .container .top_bar p {
+    color: #757575;
+    font-weight: 600;
+    font-size: 11px;
+  }
+
   /*Responsive style mid_bar*/
   .nav .container .mid_bar .content .navicon {
     display: block;
   }
   .nav .container .mid_bar .content .navicon .navopen {
     font-size: 22px;
-    margin-top: 5px;
+    margin-top: 12px;
   }
   .nav .container .mid_bar .content .navicon .closenav {
     font-size: 22px;
-    margin-top: 5px;
+    margin-top: 12px;
   }
   .nav .container .mid_bar .content .search_bar {
-    background: #fff;
     width: 100%;
     position: absolute;
-    margin-top: 70px;
+    margin-top: 75px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   .nav .container .mid_bar .content .search_bar input {
-    width: 80%;
+    width: 450px;
     padding: 14px;
     outline: none;
     border: 1px solid #bdbdbd;
@@ -190,7 +229,7 @@
   }
 
   .nav .container .mid_bar .content .logo img {
-    margin-top: -0px;
+    margin-top: 0px;
     width: 150px;
   }
   .nav .container .mid_bar .content .search_bar {
@@ -199,7 +238,7 @@
   }
   /*Responsive style bottom_bar*/
   .nav .container .bottom_bar {
-    margin-top: 50px;
+    margin-top: 60px;
     flex-direction: column;
     display: none;
   }
@@ -210,17 +249,24 @@
     background: #1953b4;
     padding: 10px 20px;
   }
+  .nav .container .bottom_bar .user-detail .detail h2 {
+    font-size: 13px;
+  }
   .nav .container .bottom_bar ul {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
   }
   .nav .container .bottom_bar ul li {
     margin-top: 20px;
+    font-size: 14px;
   }
   .nav .container .bottom_bar .offer h2 {
+    font-size: 14px;
     text-align: center;
+    padding: 8px 0px;
   }
   .nav .container .active {
     display: block;
