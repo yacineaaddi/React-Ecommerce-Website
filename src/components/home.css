@@ -8,6 +8,7 @@
 .home {
   width: 100%;
 }
+/*Top Banner Style*/
 .home .top-banner {
   max-width: 100%;
   background: #f1f1f1;
@@ -62,6 +63,117 @@
   margin-top: 30px;
   margin-left: 160px;
 }
+
+/*About section style*/
+.home .about {
+  margin-top: 20px;
+  padding: 30px 80px;
+  width: 100%;
+  background: #fff;
+}
+.home .about .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+.home .about .container .box {
+  display: flex;
+  width: 280px;
+  border: 2px solid #eeeeee;
+  border-radius: 5px;
+  padding: 10px;
+  justify-content: space-around;
+}
+.home .about .container .box .icon {
+  font-size: 2.5rem;
+  color: #2196f3;
+}
+.home .about .container .box .detail h3 {
+  font-size: 1rem;
+  color: #232323;
+  text-transform: uppercase;
+}
+.home .about .container .box .detail p {
+  margin-top: 5px;
+  color: #757575;
+  font-size: 0.9rem;
+}
+/*Hot deal products section style*/
+.home .sale-product {
+  padding: 20px 80px;
+  width: 100%;
+  background: #fff;
+}
+.home .sale-product h2 {
+  color: #232323;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #2196f3;
+  width: 223px;
+}
+.home .sale-product .container {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+}
+.home .sale-product .container .box {
+  /* border: 1px solid #eeeeee;*/
+  padding: 10px 20px;
+  overflow: hidden;
+  width: 270px;
+}
+.home .sale-product .container .box {
+  border: 2px solid #eeeeee;
+  border-radius: 10px;
+  padding: 10px 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 270px;
+}
+.home .sale-product .container .box .img-box img {
+  width: 210px;
+}
+.home .sale-product .container .box .detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home .sale-product .container .box .detail h3 {
+  text-align: center;
+  margin-top: 10px;
+  color: #232323;
+  font-size: 16px;
+}
+.home .sale-product .container .box .detail h4 {
+  margin-top: 10px;
+  color: #2196f3;
+  font-size: 17px;
+  font-weight: 700;
+}
+.home .sale-product .container .box .detail button {
+  border: 1px solid #2196f3;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #2196f3;
+  color: #fff;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.2s;
+}
+.home .sale-product .container .box .detail button:hover {
+  color: #2196f3;
+  background: none;
+  border: 1.5px solid #2196f3;
+}
 /*Responsive for mobile devices (max-width: 1300px)*/
 @media (max-width: 1300px) {
   .home .top-banner .content {
@@ -69,6 +181,9 @@
   }
   .home .top-banner .content .info h2 {
     margin-right: 0%;
+  }
+  .home .about .container {
+    gap: 10px;
   }
 }
 
@@ -106,6 +221,22 @@
   .home .top-banner .content .info button {
     margin-top: 30px;
     padding: 13px 23px;
+  }
+}
+@media (max-width: 740px) {
+  .home .about {
+    padding: 30px 10px;
+  }
+  .home .about .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .home .about .container .box .detail h3 {
+    font-size: 0.9rem;
+  }
+  .home .about .container .box .detail p {
+    font-size: 0.8rem;
   }
 }
 /*Responsive for mobile devices (max-width: 750px)*/

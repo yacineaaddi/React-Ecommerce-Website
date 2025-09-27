@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./components/login";
 import Home from "./components/home";
 
-const Rout = ({ setUserDetail, setAuth, Auth }) => {
+const Rout = ({ setUserDetail, setAuth, Auth, product }) => {
   return (
     <>
       <Routes>
@@ -28,7 +28,10 @@ const Rout = ({ setUserDetail, setAuth, Auth }) => {
             />
           }
         />
-        <Route path="/" element={<Home setUserDetail={setUserDetail} />} />
+        <Route
+          path="/"
+          element={<Home setUserDetail={setUserDetail} product={product} />}
+        />
       </Routes>
     </>
   );
