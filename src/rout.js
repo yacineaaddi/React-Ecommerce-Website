@@ -4,7 +4,14 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./components/login";
 import Home from "./components/home";
 
-const Rout = ({ setUserDetail, setAuth, Auth, product }) => {
+const Rout = ({
+  setUserDetail,
+  setAuth,
+  Auth,
+  product,
+  OneProduct,
+  Button,
+}) => {
   return (
     <>
       <Routes>
@@ -30,7 +37,13 @@ const Rout = ({ setUserDetail, setAuth, Auth, product }) => {
         />
         <Route
           path="/"
-          element={<Home setUserDetail={setUserDetail} product={product} />}
+          element={
+            <Home
+              setUserDetail={setUserDetail}
+              product={product}
+              OneProduct={OneProduct}
+            />
+          }
         />
       </Routes>
     </>

@@ -1,7 +1,7 @@
 const Product = [
   {
     id: 1,
-    Title: "Galaxy Tab S6 Lite 10.4-inch Android Tablet 128GB",
+    Title: "Galaxy Tab S6 Lite 10.4 inch Android Tablet 128GB",
     Cat: "Tablet",
     Price: "723",
     Img: "./img/tp1.jpg",
@@ -9,7 +9,7 @@ const Product = [
   },
   {
     id: 2,
-    Title: "Tracker with IP67 Waterproof Pedometer Smart watch",
+    Title: "Waterproof Tracker Pedometer Smart watch",
     Cat: "Smart Watch",
     Price: "168",
     Img: "./img/tp2.jpg",

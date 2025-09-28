@@ -5,7 +5,7 @@ import { db, app } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 
 import "./auth.css";
-const Login = ({ setUserDetail, setAuth, Auth }) => {
+const Login = ({ setUserDetail, setAuth }) => {
   // Storing the input value using usestate hooks
 
   const [email, setEmail] = useState("");

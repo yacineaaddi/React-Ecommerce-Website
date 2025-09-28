@@ -6,7 +6,7 @@ import { CiPercent } from "react-icons/ci";
 import { BiHeadphone } from "react-icons/bi";
 import "./home.css";
 
-const Home = ({ product }) => {
+const Home = ({ product, OneProduct }) => {
   const [sale, setSales] = useState([]);
   const [newProduct, setNewProduct] = useState([]);
 
@@ -26,7 +26,7 @@ const Home = ({ product }) => {
         <div className="top-banner">
           <div className="content">
             <div className="info">
-              <h2>Take your portable gaming experience to the next level</h2>
+              <h2>Take your gaming experience to the next level</h2>
               <p>
                 Get
                 <span> 30% off </span>This week
@@ -83,22 +83,9 @@ const Home = ({ product }) => {
         <div className="sale-product">
           <h2>Hot Deal Product</h2>
           <div className="container">
-            {sale.map((currEl) => {
-              return (
-                <>
-                  <div className="box" key={currEl.id}>
-                    <div className="img-box">
-                      <img src={currEl.Img} alt="Product-image"></img>
-                    </div>
-                    <div className="detail">
-                      <h3>{currEl.Title}</h3>
-                      <h4>{currEl.Price} $</h4>
-                      <button>Add To Cart</button>
-                    </div>
-                  </div>
-                </>
-              );
-            })}
+            {sale?.map((currEl) => (
+              <OneProduct currEl={currEl} key={currEl.id} />
+            ))}
           </div>
         </div>
       </div>
