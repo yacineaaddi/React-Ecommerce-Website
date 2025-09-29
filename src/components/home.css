@@ -168,7 +168,7 @@
 }
 .home .sale-product .container .box:hover .detail .icons {
   opacity: 1;
-  transition: 0.5s;
+  transition: 0.4s;
 }
 .home .sale-product .container .box:hover .img-box {
   opacity: 5%;
@@ -220,6 +220,85 @@
   background: none;
   border: 1.5px solid #2196f3;
 }
+.home .mid-banner {
+  padding: 40px 80px;
+  background: #fff;
+}
+.home .mid-banner .container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+}
+.home .mid-banner .container .banner-box img {
+  width: 855px;
+}
+/*Top Category style*/
+.home .top-category {
+  padding: 20px 80px;
+  width: 100%;
+  background: #fff;
+}
+.home .top-category .container {
+  display: flex;
+  max-width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.home .top-category .container .cat-box {
+  width: 250px;
+  padding: 10px;
+  border: 2px solid red;
+}
+.home .top-category .container .cat-box h2 {
+  color: #232323;
+  font-size: 16px;
+}
+.home .top-category .container .cat-box p {
+  color: #757575;
+  font-size: 14px;
+}
+.home .top-category .container .cat-box button {
+  border: 1px solid #2196f3;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #2196f3;
+  color: #fff;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.2s;
+}
+.home .top-category .container .cat-box button:hover {
+  color: #fff;
+  background: #232323;
+}
+.home .top-category .container .box {
+  padding: 10px;
+  border: 1px solid #eeeeee;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.home .top-category .container .box:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.home .top-category .container .box .info {
+  text-align: center;
+  color: #232323;
+  font-size: 1rem;
+}
+/*Responsive for mobile devices (max-width: 1700px)*/
+@media (max-width: 1700px) {
+  .home .mid-banner .container .banner-box img {
+    width: 600px;
+  }
+}
 /*Responsive for mobile devices (max-width: 1300px)*/
 @media (max-width: 1300px) {
   .home .top-banner .content {
@@ -233,6 +312,14 @@
   }
   .home .sale-product {
     padding: 20px 40px;
+  }
+  /*Mid banner style*/
+  .home .mid-banner {
+    padding: 40px 40px;
+    background: #fff;
+  }
+  .home .mid-banner .container .banner-box img {
+    width: 480px;
   }
 }
 
@@ -270,6 +357,12 @@
   .home .top-banner .content .info button {
     margin-top: 30px;
     padding: 13px 23px;
+  }
+  .home .mid-banner {
+    padding: 20px 40px;
+  }
+  .home .mid-banner .container .banner-box img {
+    width: 350px;
   }
 }
 @media (max-width: 740px) {

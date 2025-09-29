@@ -88,6 +88,65 @@ const Home = ({ product, OneProduct }) => {
             ))}
           </div>
         </div>
+        <div className="mid-banner">
+          <div className="container">
+            <div className="banner-box">
+              <img src="./img/jk-banner-46.jpg" alt=""></img>
+            </div>
+            <div className="banner-box">
+              <img src="./img/jk-banner-66.jpg" alt=""></img>
+            </div>
+          </div>
+        </div>
+        <div className="top-category">
+          <div className="container">
+            <div className="cat-box">
+              <h2>Top Categories This Week</h2>
+              <p>Text text text</p>
+              <button>view all Categories</button>
+            </div>
+            <div className="box">
+              <div className="img-box">
+                <img src="./img/category-slider-1.jpg" alt=""></img>
+              </div>
+              <div className="info">
+                <h4>TV & Audio</h4>
+              </div>
+            </div>
+            <div className="box">
+              <div className="img-box">
+                <img src="./img/category-slider-2.jpg" alt=""></img>
+              </div>
+              <div className="info">
+                <h4>Game and Consoles</h4>
+              </div>
+            </div>
+            <div className="box">
+              <div className="img-box">
+                <img src="./img/category-slider-3.jpg" alt=""></img>
+              </div>
+              <div className="info">
+                <h4>Furnitures & Decor</h4>
+              </div>
+            </div>
+            <div className="box">
+              <div className="img-box">
+                <img src="./img/category-slider-1.jpg" alt=""></img>
+              </div>
+              <div className="info">
+                <h4>Fashion & and Clothing</h4>
+              </div>
+            </div>
+            <div className="box">
+              <div className="img-box">
+                <img src="./img/b1.png" alt=""></img>
+              </div>
+              <div className="info">
+                <h4>Computer & Laptop</h4>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
