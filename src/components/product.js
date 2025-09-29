@@ -41,10 +41,11 @@ const Product = [
   },
   {
     id: 6,
-    Title: "CPU Cooler 2 Heat Pipes 12mm 4 Pin PWM RGB for Intel",
+    Title: "CPU Cooler 2 Heat Pipes 12mm 4 Pin PWM RGB",
     Cat: "Electronics",
     Price: "156",
     Img: "./img/tp6.png",
+    type: "new",
   },
   {
     id: 7,
@@ -52,6 +53,7 @@ const Product = [
     Cat: "Gaming",
     Price: "2098",
     Img: "./img/tp7.jpg",
+    type: "new",
   },
   {
     id: 8,
@@ -59,6 +61,7 @@ const Product = [
     Cat: "Electronics",
     Price: "386",
     Img: "./img/tp8.jpg",
+    type: "new",
   },
   {
     id: 9,
@@ -66,6 +69,7 @@ const Product = [
     Cat: "Tablet",
     Price: "693",
     Img: "./img/p9.jpg",
+    type: "new",
   },
   {
     id: 10,
@@ -73,6 +77,7 @@ const Product = [
     Cat: "Gaming",
     Price: "5036",
     Img: "./img/p10.jpg",
+    type: "new",
   },
   {
     id: 11,

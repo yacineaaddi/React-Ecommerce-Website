@@ -147,6 +147,14 @@ const Home = ({ product, OneProduct }) => {
             </div>
           </div>
         </div>
+        <div className="featured-product">
+          <h2>Featured Product</h2>
+          <div className="container">
+            {newProduct?.map((currEl) => (
+              <OneProduct currEl={currEl} key={currEl.id} />
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );
