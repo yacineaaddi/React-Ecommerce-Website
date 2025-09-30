@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./nav.css";
 import { CiHeart } from "react-icons/ci";
-import { FaShoppingCart } from "react-icons/fa";
+import { BsCart4 } from "react-icons/bs";
 import { FaRegUser } from "react-icons/fa";
 import { FaBars } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
@@ -77,11 +77,13 @@ const Nav = ({ Auth, setAuth, userDetail, search, setSearch }) => {
               <div className="icons">
                 <div className="icon">
                   <Link className="link" to="/cart">
-                    <FaShoppingCart />
+                    <BsCart4 />
                   </Link>
                 </div>
                 <div className="icon">
-                  <CiHeart />
+                  <Link className="link" to="/cart">
+                    <CiHeart />
+                  </Link>
                 </div>
               </div>
             </div>
