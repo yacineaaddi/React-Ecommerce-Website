@@ -131,11 +131,11 @@ const Home = ({ product, OneProduct }) => {
               <button>view all Categories</button>
             </div>
             <div className="categories">
-              <CategoryBox id={1} Title={"Tv & Audio"} />
-              <CategoryBox id={2} Title={"Game and Consoles"} />
-              <CategoryBox id={3} Title={"Furniture & Decor"} />
-              <CategoryBox id={4} Title={"Fashion & and Clothing"} />
-              <CategoryBox id={4} Title={"Computer & Laptop"} />
+              <CategoryBox id={3} Title={"Tv & Audio"} />
+              <CategoryBox id={1} Title={"Game and Consoles"} />
+              <CategoryBox id={2} Title={"Furniture & Decor"} />
+              <CategoryBox id={5} Title={"Computer & Laptop"} />
+              <CategoryBox id={4} Title={"Phones & Tablettes"} />
             </div>
           </div>
         </div>
