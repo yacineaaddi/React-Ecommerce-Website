@@ -411,18 +411,18 @@
 }
 /* Brands Product section style*/
 .home .brands {
-  padding: 20px 25px;
+  padding: 20px 55px;
 }
 .home .brands .container {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   gap: 40px;
 }
 .home .brands .container .box {
-  width: 135px;
+  width: 90px;
   display: flex;
   justify-content: center;
   align-items: center;

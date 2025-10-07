@@ -6,6 +6,8 @@ import Product from "./components/product";
 import "./components/home.css";
 import { CiHeart, CiSearch } from "react-icons/ci";
 import { TfiReload } from "react-icons/tfi";
+import Footer from "./components/footer";
+
 const App = () => {
   // Storing User Detail In Usestate Hooks
   const [userDetail, setUserDetail] = useState("");
@@ -55,6 +57,7 @@ const App = () => {
         product={product}
         OneProduct={OneProduct}
       />
+      <Footer />
     </BrowserRouter>
   );
 };
