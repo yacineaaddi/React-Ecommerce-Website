@@ -3,14 +3,16 @@ import Register from "./components/register";
 import { Route, Routes } from "react-router-dom";
 import Login from "./components/login";
 import Home from "./components/home";
+import Shop from "./components/shop";
 
 const Rout = ({
   setUserDetail,
   setAuth,
   Auth,
-  product,
+  products,
   OneProduct,
   Button,
+  setProducts,
 }) => {
   return (
     <>
@@ -40,8 +42,18 @@ const Rout = ({
           element={
             <Home
               setUserDetail={setUserDetail}
-              product={product}
+              products={products}
               OneProduct={OneProduct}
+            />
+          }
+        />
+        <Route
+          path="/shop"
+          element={
+            <Shop
+              products={products}
+              OneProduct={OneProduct}
+              setProducts={setProducts}
             />
           }
         />

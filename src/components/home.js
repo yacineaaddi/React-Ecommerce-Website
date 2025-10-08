@@ -6,14 +6,14 @@ import { CiPercent } from "react-icons/ci";
 import { BiHeadphone } from "react-icons/bi";
 import "./home.css";
 
-const Home = ({ product, OneProduct }) => {
+const Home = ({ products, OneProduct }) => {
   const [sale, setSales] = useState([]);
   const [newProduct, setNewProduct] = useState([]);
 
   function Brand({ id }) {
     return (
       <div className="box">
-        <img src={`/img/brand${id}.jpg`} alt={`Brand number ${id}`}></img>
+        <img src={`/img/brand${id}.svg`} alt={`Brand number ${id}`}></img>
       </div>
     );
   }
@@ -36,8 +36,10 @@ const Home = ({ product, OneProduct }) => {
     );
   }
   function fetchData() {
-    const salefilter = product.filter((currElm) => currElm.type === "sale");
-    const newproduct = product.filter((currElm) => currElm.type === "new");
+    const salefilter = products.filter((currElm) => currElm.SubCat === "hot");
+    const newproduct = products.filter(
+      (currElm) => currElm.SubCat === "featured"
+    );
     setSales(salefilter);
     setNewProduct(newproduct);
   }
@@ -131,11 +133,11 @@ const Home = ({ product, OneProduct }) => {
               <button>view all Categories</button>
             </div>
             <div className="categories">
-              <CategoryBox id={3} Title={"Tv & Audio"} />
               <CategoryBox id={1} Title={"Game and Consoles"} />
-              <CategoryBox id={2} Title={"Furniture & Decor"} />
-              <CategoryBox id={5} Title={"Computer & Laptop"} />
               <CategoryBox id={4} Title={"Phones & Tablettes"} />
+              <CategoryBox id={2} Title={"Cameras"} />
+              <CategoryBox id={5} Title={"Computers & Laptops"} />
+              <CategoryBox id={3} Title={"Tv & Audio"} />
             </div>
           </div>
         </div>

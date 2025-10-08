@@ -15,7 +15,7 @@
 }
 /*Style top_bar*/
 .nav .container .top_bar {
-  padding: 20px 30px;
+  padding: 17px 25px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -25,7 +25,7 @@
 .nav .container .top_bar p {
   color: #757575;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .nav .container .top_bar .link {

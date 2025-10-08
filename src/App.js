@@ -12,7 +12,7 @@ const App = () => {
   // Storing User Detail In Usestate Hooks
   const [userDetail, setUserDetail] = useState("");
   const [Auth, setAuth] = useState(false);
-  const [product, setProduct] = useState(Product);
+  const [products, setProducts] = useState(Product);
   const [search, setSearch] = useState("");
 
   function OneProduct({ currEl }) {
@@ -54,8 +54,9 @@ const App = () => {
         setUserDetail={setUserDetail}
         setAuth={setAuth}
         Auth={Auth}
-        product={product}
+        products={products}
         OneProduct={OneProduct}
+        setProducts={setProducts}
       />
       <Footer />
     </BrowserRouter>
