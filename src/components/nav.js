@@ -6,6 +6,8 @@ import { BsCart4 } from "react-icons/bs";
 import { FaRegUser } from "react-icons/fa";
 import { FaBars } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
+import { FaShoppingCart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 const Nav = ({ Auth, setAuth, userDetail, search, setSearch }) => {
   const [OpenNav, SetOpenNav] = useState(false);
@@ -77,12 +79,12 @@ const Nav = ({ Auth, setAuth, userDetail, search, setSearch }) => {
               <div className="icons">
                 <div className="icon">
                   <Link className="link" to="/cart">
-                    <BsCart4 />
+                    <FaShoppingCart />
                   </Link>
                 </div>
                 <div className="icon">
-                  <Link className="link" to="/cart">
-                    <CiHeart />
+                  <Link className="link" to="/wishlist">
+                    <FaHeart />
                   </Link>
                 </div>
               </div>
@@ -119,7 +121,20 @@ const Nav = ({ Auth, setAuth, userDetail, search, setSearch }) => {
               </li>
             </ul>
             <div className="offer">
-              <h2>30% off in winter sale</h2>
+              <div className="box">
+                <Link className="link" to="/cart">
+                  <FaShoppingCart />
+                </Link>
+
+                <p>Cart</p>
+              </div>
+              <div className="box">
+                <Link className="link" to="/wishlist">
+                  <FaHeart />
+                </Link>
+
+                <p>Wishlist</p>
+              </div>
             </div>
           </div>
         </div>

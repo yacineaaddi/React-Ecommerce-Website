@@ -81,12 +81,13 @@
   gap: 10px;
   justify-content: center;
   align-items: center;
+  opacity: 0;
 }
-.nav .container .mid_bar .content .icons .icon {
+.nav .container .mid_bar .content .icons .icon .link {
   padding: 10px 12px;
-  color: #2196f3;
+  color: #0163d2;
   border: 1px solid #bdbdbd;
-  border-radius: 10px;
+  border-radius: 7px;
   font-size: 19px;
   cursor: pointer;
   font-weight: 800;
@@ -155,22 +156,31 @@
 }
 /*----------------------------------*/
 .nav .container .bottom_bar .offer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
   padding: 10px 20px;
-  background: #ffd54f;
+  gap: 20px;
 }
-.nav .container .bottom_bar .offer h2 {
-  font-size: 18px;
-  text-transform: uppercase;
-  color: #232323;
-  font-weight: 600;
-  letter-spacing: 1px;
-  margin-top: 0px;
-  padding: 10px 0px;
+.nav .container .bottom_bar .offer .box {
+  display: flex;
+  gap: 10px;
+}
+.nav .container .bottom_bar .offer .box .link {
+  cursor: pointer;
+  font-size: 1rem;
+  color: #fff;
+}
+.nav .container .bottom_bar .offer .box p {
+  cursor: pointer;
+  font-size: 1rem;
+  color: #fff;
 }
 /*Responsive for mobile devices*/
 @media (max-width: 1000px) {
   .nav .container .top_bar {
-    padding: 15px 25px;
+    padding: 20px 25px;
   }
   .nav .container .top_bar p {
     font-weight: 600;
@@ -192,12 +202,12 @@
 @media (max-width: 850px) {
   /*Responsive style top_bar*/
   .nav .container .top_bar {
-    padding: 12px 10px;
+    padding: 15px 12px;
   }
   .nav .container .top_bar p {
     color: #757575;
     font-weight: 600;
-    font-size: 11px;
+    font-size: 13px;
   }
 
   /*Responsive style mid_bar*/
@@ -231,6 +241,9 @@
     font-size: 16px;
     margin-top: 0px;
   }
+  .nav .container .mid_bar .content .icons {
+    opacity: 1;
+  }
 
   .nav .container .mid_bar .content .logo img {
     margin-top: 0px;
@@ -239,6 +252,9 @@
   .nav .container .mid_bar .content .search_bar {
     display: flex;
     margin-left: -20px;
+  }
+  .nav .container .bottom_bar .offer {
+    display: none;
   }
   /*Responsive style bottom_bar*/
   .nav .container .bottom_bar {

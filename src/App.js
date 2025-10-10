@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Rout from "./rout";
 import { BrowserRouter } from "react-router-dom";
 import Nav from "./components/nav";
-import Product from "./components/product";
+import Product from "./components/product1";
 import "./components/home.css";
 import { CiHeart, CiSearch } from "react-icons/ci";
 import { TfiReload } from "react-icons/tfi";
@@ -40,6 +40,46 @@ const App = () => {
       </div>
     );
   }
+  function ShopProduct({ currEl }) {
+    return (
+      <div className="box">
+        <div className="img-box">
+          <img src={currEl.Img} alt="Product-image"></img>
+        </div>
+        <div className="detail">
+          <div className="icons">
+            <div className="icon">
+              <CiHeart />
+            </div>
+            <div className="icon">
+              <TfiReload />
+            </div>
+            <div className="icon">
+              <CiSearch />
+            </div>
+          </div>
+
+          <h3>{currEl.Title}</h3>
+          <div className="prod-details">
+            <div className="rating">
+              <p>{Math.round(currEl.Rating)} stars</p>
+              <p>({currEl.NumRev} reviews)</p>
+            </div>
+            <div
+              className="productState"
+              style={{
+                color: currEl.State === "Available" ? "green" : "red",
+              }}
+            >
+              {currEl.State}
+            </div>
+          </div>
+          <h4>{currEl.Price} $</h4>
+          <button>Add To Cart</button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <BrowserRouter>
@@ -57,6 +97,7 @@ const App = () => {
         products={products}
         OneProduct={OneProduct}
         setProducts={setProducts}
+        ShopProduct={ShopProduct}
       />
       <Footer />
     </BrowserRouter>

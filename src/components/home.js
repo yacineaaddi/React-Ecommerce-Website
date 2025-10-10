@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FiTruck } from "react-icons/fi";
-import { BsCurrencyDollar } from "react-icons/bs";
-import { CiPercent } from "react-icons/ci";
-import { BiHeadphone } from "react-icons/bi";
+import { LiaShippingFastSolid } from "react-icons/lia";
+import { RiRefund2Line } from "react-icons/ri";
+import { TbDiscount } from "react-icons/tb";
+import { BiSupport } from "react-icons/bi";
 import "./home.css";
 
 const Home = ({ products, OneProduct }) => {
@@ -71,7 +71,7 @@ const Home = ({ products, OneProduct }) => {
           <div className="container">
             <div className="box">
               <div className="icon">
-                <FiTruck />
+                <LiaShippingFastSolid />
               </div>
               <div className="detail">
                 <h3>Free Shipping</h3>
@@ -80,7 +80,7 @@ const Home = ({ products, OneProduct }) => {
             </div>
             <div className="box">
               <div className="icon">
-                <BsCurrencyDollar />
+                <RiRefund2Line />
               </div>
               <div className="detail">
                 <h3>Return & Refund</h3>
@@ -89,7 +89,7 @@ const Home = ({ products, OneProduct }) => {
             </div>
             <div className="box">
               <div className="icon">
-                <CiPercent />
+                <TbDiscount />
               </div>
               <div className="detail">
                 <h3>Member Discount</h3>
@@ -98,7 +98,7 @@ const Home = ({ products, OneProduct }) => {
             </div>
             <div className="box">
               <div className="icon">
-                <BiHeadphone />
+                <BiSupport />
               </div>
               <div className="detail">
                 <h3>Customer Support</h3>

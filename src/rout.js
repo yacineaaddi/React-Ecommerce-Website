@@ -13,6 +13,7 @@ const Rout = ({
   OneProduct,
   Button,
   setProducts,
+  ShopProduct,
 }) => {
   return (
     <>
@@ -54,6 +55,7 @@ const Rout = ({
               products={products}
               OneProduct={OneProduct}
               setProducts={setProducts}
+              ShopProduct={ShopProduct}
             />
           }
         />
