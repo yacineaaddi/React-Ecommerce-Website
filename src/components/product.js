@@ -395,9 +395,7 @@ const Product = [
     Brand: "Asus",
     Model: "FA607NU-BS53-CBWeb",
     WebCode: "18933108",
-    Rating: "4",
-    NumRev: "333",
-    State: "Sold out",
+
   },
   {
     id: 37,

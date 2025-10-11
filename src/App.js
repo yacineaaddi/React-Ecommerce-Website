@@ -7,6 +7,7 @@ import "./components/home.css";
 import { CiHeart, CiSearch } from "react-icons/ci";
 import { TfiReload } from "react-icons/tfi";
 import Footer from "./components/footer";
+import StarRating from "./components/starRating";
 
 const App = () => {
   // Storing User Detail In Usestate Hooks
@@ -62,7 +63,8 @@ const App = () => {
           <h3>{currEl.Title}</h3>
           <div className="prod-details">
             <div className="rating">
-              <p>{Math.round(currEl.Rating)} stars</p>
+              <StarRating defaultRating={currEl.Rating} />
+              <p>{currEl.Rating}</p>
               <p>({currEl.NumRev} reviews)</p>
             </div>
             <div
