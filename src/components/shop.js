@@ -6,12 +6,13 @@ import { CgArrowsExchangeV } from "react-icons/cg";
 const Shop = ({ products, OneProduct, ShopProduct }) => {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
-  /*const [priceOrder, setPriceOrder] = useState(null);
-  const [ratingOrder, setRatingOrder] = useState(null);*/
+  const [priceOrder, setPriceOrder] = useState(null);
+  const [ratingOrder, setRatingOrder] = useState(null);
   const [inStock, setinStock] = useState(false);
-  const [sortType, setSortType] = useState(null);
+  const [PricedProducts, setPricedProducts] = useState([]);
+  /*const [sortType, setSortType] = useState(null);*/
   const [Categorie, setCategorie] = useState([]);
-  const [sortOrder, setSortOrder] = useState(true);
+  const [inStockProd, setinStockProd] = useState([]);
 
   function setCat(cat) {
     const temProducts = products
@@ -27,12 +28,48 @@ const Shop = ({ products, OneProduct, ShopProduct }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const filtered = Categorie.filter(
-      (p) => p.Price >= minPrice && p.Price <= maxPrice
+    if (minPrice === "" && maxPrice === "") return;
+    const filtered = [...Categorie].filter(
+      (p) => p.Price >= Number(minPrice) && p.Price <= Number(maxPrice)
     );
+    console.log(minPrice, maxPrice);
+    console.log(filtered);
     setCategorie(filtered);
   }
+  useEffect(() => {
+    if (priceOrder !== null) {
+      const sortedByPrice = [...Categorie].sort((a, b) =>
+        priceOrder ? b.Price - a.Price : a.Price - b.Price
+      );
+      setCategorie(sortedByPrice);
+      setRatingOrder(null);
+    }
+  }, [priceOrder, inStock]);
+  useEffect(() => {
+    if (ratingOrder !== null) {
+      const sortedByRate = (inStock ? [...inStockProd] : [...Categorie]).sort(
+        (a, b) => (ratingOrder ? b.Rating - a.Rating : a.Rating - b.Rating)
+      );
+      setCategorie(sortedByRate);
+      setPriceOrder(null);
+    }
+  }, [ratingOrder, inStock]);
 
+  useEffect(() => {
+    if (inStock) {
+      const filteredByStock = [...Categorie].filter(
+        (p) => p.State === "Available"
+      );
+      setinStockProd(filteredByStock);
+      console.log("true");
+      console.log(Categorie);
+    } else {
+      // show all if unchecked
+      setinStockProd([]);
+      console.log("false");
+    }
+  }, [inStock]);
+  /*
   const togglePriceSort = () => {
     setSortType("price");
     setSortOrder((prev) => !prev); // toggle ascending/descending
@@ -42,11 +79,11 @@ const Shop = ({ products, OneProduct, ShopProduct }) => {
     setSortType("rating");
     setSortOrder((prev) => !prev); // toggle ascending/descending
   };
-
+  
   useEffect(() => {
     let temp = [...Categorie];
 
-    if (inStock) temp = temp.filter((p) => p.Rating === 4.5);
+    //if (inStock) temp = temp.filter((p) => p.Rating === 4.5);
 
     // 3️⃣ Filter by min/max price
     if (minPrice !== "" && maxPrice !== "") {
@@ -55,7 +92,7 @@ const Shop = ({ products, OneProduct, ShopProduct }) => {
           p.Price >= parseFloat(minPrice) && p.Price <= parseFloat(maxPrice)
       );
     }
-
+    /*
     // 4️⃣ Sort by price or rating
     if (sortType === "price") {
       temp.sort((a, b) => (sortOrder ? a.Price - b.Price : b.Price - a.Price));
@@ -67,7 +104,7 @@ const Shop = ({ products, OneProduct, ShopProduct }) => {
 
     setCategorie(temp);
   }, [products, Categorie, inStock, minPrice, maxPrice, sortType, sortOrder]);
-
+*/
   /*
   // Then sort by price if user clicked price sort
   useEffect(() => {
@@ -164,43 +201,43 @@ const Shop = ({ products, OneProduct, ShopProduct }) => {
               <button type="submit">Apply</button>
             </form>
             <div className="price-rate">
-              <div className="price" onClick={togglePriceSort}>
-                {sortOrder ? (
+              <div className="price" onClick={() => setPriceOrder((e) => !e)}>
+                {priceOrder ? (
                   <CgArrowsExchangeAltV
                     style={{
-                      color: sortOrder ? "green" : "black",
+                      color: priceOrder ? "green" : "black",
                       fontSize: "20px",
                     }}
                   />
                 ) : (
                   <CgArrowsExchangeV
                     style={{
-                      color: sortOrder ? "green" : "black",
+                      color: priceOrder ? "green" : "black",
                       fontSize: "20px",
                     }}
                   />
                 )}
                 <p>
-                  {sortOrder ? "Price : High to low" : "Price : Low to high"}
+                  {priceOrder ? "Price : High to low" : "Price : Low to high"}
                 </p>
               </div>
-              <div className="rate" onClick={toggleRatingSort}>
-                {sortOrder ? (
+              <div className="rate" onClick={() => setRatingOrder((e) => !e)}>
+                {ratingOrder ? (
                   <CgArrowsExchangeAltV
                     style={{
-                      color: sortOrder ? "green" : "black",
+                      color: ratingOrder ? "green" : "black",
                       fontSize: "20px",
                     }}
                   />
                 ) : (
                   <CgArrowsExchangeV
                     style={{
-                      color: sortOrder ? "green" : "black",
+                      color: ratingOrder ? "green" : "black",
                       fontSize: "20px",
                     }}
                   />
                 )}
-                <p>{sortOrder ? "Highest rating" : "Lowest rating"}</p>
+                <p>{ratingOrder ? "Highest rating" : "Lowest rating"}</p>
               </div>
             </div>
             <div className="stock">
@@ -212,13 +249,23 @@ const Shop = ({ products, OneProduct, ShopProduct }) => {
               <p>In Stock</p>
             </div>
             <div className="results">
-              <p>{Categorie ? `${Categorie.length} results` : ""}</p>
+              <p>
+                {Categorie.length !== 0
+                  ? `${
+                      inStockProd.length === 0
+                        ? Categorie.length
+                        : inStockProd.length
+                    } results`
+                  : ""}
+              </p>
             </div>
           </div>
           <div className="products">
-            {Categorie.map((currEl) => (
-              <ShopProduct currEl={currEl} key={currEl.id} />
-            ))}
+            {(inStockProd.length === 0 ? Categorie : inStockProd).map(
+              (currEl) => (
+                <ShopProduct currEl={currEl} key={currEl.id} />
+              )
+            )}
           </div>
         </div>
       </div>

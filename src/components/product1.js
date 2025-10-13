@@ -25,7 +25,7 @@ const Product = [
     WebCode: "19335537",
     Rating: 3.7,
     NumRev: 2840,
-    State: "Sold out",
+    State: "soldout",
   },
   {
     id: 15,
@@ -67,7 +67,7 @@ const Product = [
     WebCode: "19204876",
     Rating: 4.6,
     NumRev: 2101,
-    State: "Sold out",
+    State: "soldout",
   },
   {
     id: 18,
@@ -95,7 +95,7 @@ const Product = [
     WebCode: "18931314",
     Rating: 4.1,
     NumRev: 2503,
-    State: "Sold out",
+    State: "soldout",
   },
   {
     id: 20,
@@ -123,7 +123,7 @@ const Product = [
     WebCode: "17077094",
     Rating: 4.0,
     NumRev: 2315,
-    State: "Sold out",
+    State: "soldout",
   },
   {
     id: 22,
@@ -165,7 +165,7 @@ const Product = [
     WebCode: "17650703",
     Rating: 4.5,
     NumRev: 1077,
-    State: "Sold out",
+    State: "soldout",
   },
   {
     id: 25,
@@ -207,7 +207,7 @@ const Product = [
     WebCode: "19362154",
     Rating: 4.0,
     NumRev: 2044,
-    State: "Sold out",
+    State: "soldout",
   },
   {
     id: 28,
@@ -235,7 +235,7 @@ const Product = [
     WebCode: "17462394",
     Rating: 4.8,
     NumRev: 3891,
-    State: "Sold out",
+    State: "soldout",
   },
   {
     id: 30,
@@ -277,7 +277,7 @@ const Product = [
     WebCode: "17147473",
     Rating: 4.1,
     NumRev: 468,
-    State: "Sold out",
+    State: "soldout",
   },
   {
     id: 33,
@@ -319,7 +319,7 @@ const Product = [
     WebCode: "18928809",
     Rating: 4.7,
     NumRev: 2670,
-    State: "Sold out",
+    State: "soldout",
   },
   {
     id: 36,
@@ -347,7 +347,7 @@ const Product = [
     WebCode: "19274603",
     Rating: 4.1,
     NumRev: 1905,
-    State: "Sold out",
+    State: "soldout",
   },
   {
     id: 38,
@@ -389,7 +389,7 @@ const Product = [
     WebCode: "19335010",
     Rating: 5.0,
     NumRev: 3899,
-    State: "Sold out",
+    State: "soldout",
   },
   {
     id: 41,
@@ -431,7 +431,7 @@ const Product = [
     WebCode: "19206463",
     Rating: 4.2,
     NumRev: 1670,
-    State: "Sold out",
+    State: "soldout",
   },
   {
     id: 44,
@@ -473,7 +473,7 @@ const Product = [
     WebCode: "15779885",
     Rating: 4.8,
     NumRev: 1989,
-    State: "Sold out",
+    State: "soldout",
   },
   {
     id: 47,
@@ -501,7 +501,7 @@ const Product = [
     WebCode: "19184501",
     Rating: 4.5,
     NumRev: 1322,
-    State: "Sold out",
+    State: "soldout",
   },
   {
     id: 49,
@@ -514,7 +514,7 @@ const Product = [
     Brand: "Canon",
     NumRev: 1322,
     Model: "2955",
-    State: "Sold out",
+    State: "soldout",
   },
 ];
 export default Product;
