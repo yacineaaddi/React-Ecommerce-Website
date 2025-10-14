@@ -8,6 +8,7 @@ import { CiHeart, CiSearch } from "react-icons/ci";
 import { TfiReload } from "react-icons/tfi";
 import Footer from "./components/footer";
 import StarRating from "./components/starRating";
+import "./App.css";
 
 const App = () => {
   // Storing User Detail In Usestate Hooks

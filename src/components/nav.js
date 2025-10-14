@@ -8,6 +8,7 @@ import { FaBars } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
+import { IoSearch } from "react-icons/io5";
 
 const Nav = ({ Auth, setAuth, userDetail, search, setSearch }) => {
   const [OpenNav, SetOpenNav] = useState(false);
@@ -74,7 +75,9 @@ const Nav = ({ Auth, setAuth, userDetail, search, setSearch }) => {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 ></input>
-                <button>Search</button>
+                <div className="search">
+                  <IoSearch />
+                </div>
               </div>
               <div className="icons">
                 <div className="icon">

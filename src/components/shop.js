@@ -3,16 +3,15 @@ import "./shop.css";
 import { CgArrowsExchangeAltV } from "react-icons/cg";
 import { CgArrowsExchangeV } from "react-icons/cg";
 
-const Shop = ({ products, OneProduct, ShopProduct }) => {
+const Shop = ({ products, ShopProduct }) => {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [priceOrder, setPriceOrder] = useState(null);
   const [ratingOrder, setRatingOrder] = useState(null);
   const [inStock, setinStock] = useState(false);
-  const [PricedProducts, setPricedProducts] = useState([]);
-  /*const [sortType, setSortType] = useState(null);*/
   const [Categorie, setCategorie] = useState([]);
   const [inStockProd, setinStockProd] = useState([]);
+  const [activeCat, setActiveCat] = useState("all");
 
   function setCat(cat) {
     const temProducts = products
@@ -35,6 +34,8 @@ const Shop = ({ products, OneProduct, ShopProduct }) => {
     console.log(minPrice, maxPrice);
     console.log(filtered);
     setCategorie(filtered);
+    setMinPrice("");
+    setMaxPrice("");
   }
   useEffect(() => {
     if (priceOrder !== null) {
@@ -44,7 +45,7 @@ const Shop = ({ products, OneProduct, ShopProduct }) => {
       setCategorie(sortedByPrice);
       setRatingOrder(null);
     }
-  }, [priceOrder, inStock]);
+  }, [priceOrder]);
   useEffect(() => {
     if (ratingOrder !== null) {
       const sortedByRate = (inStock ? [...inStockProd] : [...Categorie]).sort(
@@ -53,7 +54,7 @@ const Shop = ({ products, OneProduct, ShopProduct }) => {
       setCategorie(sortedByRate);
       setPriceOrder(null);
     }
-  }, [ratingOrder, inStock]);
+  }, [ratingOrder]);
 
   useEffect(() => {
     if (inStock) {
@@ -69,93 +70,6 @@ const Shop = ({ products, OneProduct, ShopProduct }) => {
       console.log("false");
     }
   }, [inStock]);
-  /*
-  const togglePriceSort = () => {
-    setSortType("price");
-    setSortOrder((prev) => !prev); // toggle ascending/descending
-  };
-
-  const toggleRatingSort = () => {
-    setSortType("rating");
-    setSortOrder((prev) => !prev); // toggle ascending/descending
-  };
-  
-  useEffect(() => {
-    let temp = [...Categorie];
-
-    //if (inStock) temp = temp.filter((p) => p.Rating === 4.5);
-
-    // 3️⃣ Filter by min/max price
-    if (minPrice !== "" && maxPrice !== "") {
-      temp = temp.filter(
-        (p) =>
-          p.Price >= parseFloat(minPrice) && p.Price <= parseFloat(maxPrice)
-      );
-    }
-    /*
-    // 4️⃣ Sort by price or rating
-    if (sortType === "price") {
-      temp.sort((a, b) => (sortOrder ? a.Price - b.Price : b.Price - a.Price));
-    } else if (sortType === "rating") {
-      temp.sort((a, b) =>
-        sortOrder ? a.Rating - b.Rating : b.Rating - a.Rating
-      );
-    }
-
-    setCategorie(temp);
-  }, [products, Categorie, inStock, minPrice, maxPrice, sortType, sortOrder]);
-*/
-  /*
-  // Then sort by price if user clicked price sort
-  useEffect(() => {
-    if (priceOrder !== null) {
-      const sortedByPrice = [...Categorie].sort((a, b) =>
-        priceOrder ? b.Price - a.Price : a.Price - b.Price
-      );
-      setCategorie(sortedByPrice);
-      setRatingOrder(null);
-    }
-  }, [priceOrder]);
-
-  useEffect(() => {
-    // Then sort by rating if user clicked rating sort
-    if (ratingOrder !== null) {
-      const sortedByRate = [...Categorie].sort((a, b) =>
-        ratingOrder ? b.Rating - a.Rating : a.Rating - b.Rating
-      );
-      setCategorie(sortedByRate);
-      setPriceOrder(null);
-    }
-  }, [ratingOrder]);
-
-  useEffect(() => {
-    if (inStock) {
-      const filteredByStock = Categorie.filter((p) => p.Rating === 4.3);
-      setCategorie(filteredByStock);
-    } else {
-      // show all if unchecked
-      setCategorie(Categorie);
-    }
-  }, [inStock]);
-  // Sort by price if user clicked price sort
-  /*
-  let sortedProducts = [...Categorie];
-
-  // Sort by price if user clicked price sort
-  if (priceOrder !== null) {
-    setRatingOrder(null);
-    sortedProducts.sort((a, b) =>
-      priceOrder ? a.Price - b.Price : b.Price - a.Price
-    );
-  }
-
-  // Then sort by rating if user clicked rating sort
-  if (ratingOrder !== null) {
-    setPriceOrder(null);
-    sortedProducts.sort((a, b) =>
-      ratingOrder ? a.Rating - b.Rating : b.Rating - a.Rating
-    );
-  }*/
 
   useEffect(() => {
     fetchProducts();
@@ -167,12 +81,78 @@ const Shop = ({ products, OneProduct, ShopProduct }) => {
         <div className="left-box">
           <h2>Categories</h2>
           <ul>
-            <li onClick={() => setCategorie(products)}>All</li>
-            <li onClick={() => setCat("cameras")}>Cameras</li>
-            <li onClick={() => setCat("tv")}>Tv & Audio</li>
-            <li onClick={() => setCat("computers")}>Computer & Laptop</li>
-            <li onClick={() => setCat("phones")}>Phones & Tablettes</li>
-            <li onClick={() => setCat("consoles")}>Game and Consoles</li>
+            <li
+              onClick={() => {
+                setCategorie(products);
+                setActiveCat("all");
+              }}
+              style={{
+                backgroundColor: activeCat === "all" ? "#2196f3" : "",
+                color: activeCat === "all" ? "#fff" : "",
+              }}
+            >
+              All
+            </li>
+            <li
+              onClick={() => {
+                setCat("cameras");
+                setActiveCat("cameras");
+              }}
+              style={{
+                backgroundColor: activeCat === "cameras" ? "#2196f3" : "",
+                color: activeCat === "cameras" ? "#fff" : "",
+              }}
+            >
+              Cameras
+            </li>
+            <li
+              onClick={() => {
+                setCat("tv");
+                setActiveCat("tv");
+              }}
+              style={{
+                backgroundColor: activeCat === "tv" ? "#2196f3" : "",
+                color: activeCat === "tv" ? "#fff" : "",
+              }}
+            >
+              Tv & Audio
+            </li>
+            <li
+              onClick={() => {
+                setCat("computers");
+                setActiveCat("computers");
+              }}
+              style={{
+                backgroundColor: activeCat === "computers" ? "#2196f3" : "",
+                color: activeCat === "computers" ? "#fff" : "",
+              }}
+            >
+              Computer & Laptop
+            </li>
+            <li
+              onClick={() => {
+                setCat("phones");
+                setActiveCat("phones");
+              }}
+              style={{
+                backgroundColor: activeCat === "phones" ? "#2196f3" : "",
+                color: activeCat === "phones" ? "#fff" : "",
+              }}
+            >
+              Phones & Tablettes
+            </li>
+            <li
+              onClick={() => {
+                setCat("consoles");
+                setActiveCat("consoles");
+              }}
+              style={{
+                backgroundColor: activeCat === "consoles" ? "#2196f3" : "",
+                color: activeCat === "consoles" ? "#fff" : "",
+              }}
+            >
+              Game and Consoles
+            </li>
           </ul>
         </div>
         <div className="right-box">

@@ -9,14 +9,14 @@
   justify-content: center;
   align-items: center;
   display: flex;
-  min-height: 100vh;
+  min-height: 80vh;
 }
 
 .auth .container {
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  padding: 30px;
+  padding: 20px;
   width: 400px;
   text-align: center;
 }

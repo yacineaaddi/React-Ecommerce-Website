@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaShoppingCart } from "react-icons/fa";
+import { MdOutlineLogin } from "react-icons/md";
 import { db, app } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 
@@ -53,7 +53,7 @@ const Login = ({ setUserDetail, setAuth }) => {
         <div className="container">
           <h2>Electro</h2>
           <div className="icon">
-            <FaShoppingCart />
+            <MdOutlineLogin />
           </div>
           <div className="form">
             <div className="box">

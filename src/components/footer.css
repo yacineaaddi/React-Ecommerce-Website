@@ -53,15 +53,13 @@
   font-size: 1.6rem;
   display: flex;
   gap: 10px;
-  color: #757575;
+  color: #2196f3;
   list-style: none;
 }
 .footer .container .upper-part .social-links ul li {
   cursor: pointer;
 }
-.footer .container .upper-part .social-links ul li:hover {
-  color: green;
-}
+
 .footer .container .upper-part .box .header h2 {
   color: #232323;
   font-size: 1.2rem;
@@ -99,7 +97,7 @@
 }
 .footer .container .upper-part .box .bottom .mobile-app .social-icon {
   font-size: 18px;
-  color: #757575;
+  color: #2196f3;
 }
 
 .footer .container .ligne {

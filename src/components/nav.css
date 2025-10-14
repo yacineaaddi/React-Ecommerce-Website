@@ -1,9 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-
 * {
   margin: 0;
   padding: 0;
-  font-family: "Montserrat", sans-serif;
   box-sizing: border-box;
 }
 
@@ -52,29 +49,26 @@
   cursor: pointer;
 }
 
-.nav .container .mid_bar .content .logo img:hover {
-  opacity: 0.6;
-}
 .nav .container .mid_bar .content .search_bar {
   display: flex;
+  position: relative;
 }
 .nav .container .mid_bar .content .search_bar input {
   width: 650px;
   padding: 8px 14px;
   outline: none;
-  border: 1px solid #bdbdbd;
-  border-radius: 2px;
+  border: 1px solid #2196f3;
+  border-radius: 20px;
 }
 
-.nav .container .mid_bar .content .search_bar button {
-  padding: 14px;
-  width: 80px;
-  outline: none;
-  border: 1px solid #2196f3;
-  background: #2196f3;
+.nav .container .mid_bar .content .search_bar .search {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #2196f3;
+  font-size: 1.4rem;
   cursor: pointer;
-  color: #fff;
-  border-radius: 2px;
 }
 .nav .container .mid_bar .content .icons {
   display: flex;
@@ -104,8 +98,9 @@
 .nav .container .bottom_bar .user-detail {
   display: flex;
   justify-content: space-between;
-  background: #1953b4;
+  background: #2196f3;
   padding: 10px 20px;
+  border-radius: 6px;
 }
 
 .nav .container .bottom_bar .user-detail .icon {
@@ -161,7 +156,9 @@
   justify-content: space-around;
   align-items: center;
   padding: 10px 20px;
-  gap: 20px;
+  gap: 20px; /*
+  background: #2196f3;
+  border-radius: 6px;*/
 }
 .nav .container .bottom_bar .offer .box {
   display: flex;

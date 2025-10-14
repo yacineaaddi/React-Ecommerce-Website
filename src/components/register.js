@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaRegUser } from "react-icons/fa";
 import { db, app } from "../firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 
@@ -71,7 +71,7 @@ const Register = ({ setUserDetail, setAuth, Auth, OneProduct, Button }) => {
         <div className="container">
           <h2>Electro</h2>
           <div className="icon">
-            <FaShoppingCart />
+            <FaRegUser />
           </div>
           <div className="form">
             <div className="box">
