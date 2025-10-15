@@ -16,7 +16,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background: #e3e3e3;
+  /*background-image: url("paper.gif");*/
 }
 
 .nav .container .top_bar p {
@@ -48,11 +48,11 @@
   transition: 0.5s;
   cursor: pointer;
 }
-
+/*++++++++++++++++++++++++++++++++++++++++++++++++*/
 .nav .container .mid_bar .content .search_bar {
   display: flex;
   position: relative;
-}
+} /*++++++++++++++++++++++++++++++++++++++++++++++++*/
 .nav .container .mid_bar .content .search_bar input {
   width: 650px;
   padding: 8px 14px;
@@ -60,11 +60,11 @@
   border: 1px solid #2196f3;
   border-radius: 20px;
 }
-
+/*++++++++++++++++++++++++++++++++++++++++++++++++*/
 .nav .container .mid_bar .content .search_bar .search {
   position: absolute;
   right: 20px;
-  top: 50%;
+  top: 55%;
   transform: translateY(-50%);
   color: #2196f3;
   font-size: 1.4rem;
@@ -99,7 +99,7 @@
   display: flex;
   justify-content: space-between;
   background: #2196f3;
-  padding: 10px 20px;
+  padding: 10px 35px;
   border-radius: 6px;
 }
 
@@ -190,7 +190,7 @@
   .nav .container .bottom_bar ul li {
     font-size: 16px;
     font-weight: 600;
-  }
+  } /*++++++++++++++++++++++++++++++++++++++++++++++++*/
   .nav .container .mid_bar .content .search_bar input {
     width: 450px;
   }
@@ -218,17 +218,18 @@
   .nav .container .mid_bar .content .navicon .closenav {
     font-size: 22px;
     margin-top: 12px;
-  }
+  } /*++++++++++++++++++++++++++++++++++++++++++++++++*/
   .nav .container .mid_bar .content .search_bar {
-    width: 100%;
+    width: 80%;
     position: absolute;
-    margin-top: 75px;
+    left: 40px;
+    top: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+  } /*++++++++++++++++++++++++++++++++++++++++++++++++*/
   .nav .container .mid_bar .content .search_bar input {
-    width: 450px;
+    width: 100%;
     padding: 14px;
     outline: none;
     border: 1px solid #bdbdbd;
@@ -245,10 +246,10 @@
   .nav .container .mid_bar .content .logo img {
     margin-top: 0px;
     width: 150px;
-  }
+  } /*++++++++++++++++++++++++++++++++++++++++++++++++*/
   .nav .container .mid_bar .content .search_bar {
     display: flex;
-    margin-left: -20px;
+    margin-left: 0px; /**/
   }
   .nav .container .bottom_bar .offer {
     display: none;

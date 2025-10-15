@@ -4,11 +4,14 @@ import { LiaShippingFastSolid } from "react-icons/lia";
 import { RiRefund2Line } from "react-icons/ri";
 import { TbDiscount } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
+import { FaArrowRightLong } from "react-icons/fa6";
+import background from "../img/background.jpg";
+
 import "./home.css";
 
-const Home = ({ products, OneProduct }) => {
+const Home = ({ products, OneProduct, ShopProduct, Specialoffers }) => {
   const [sale, setSales] = useState([]);
-  const [newProduct, setNewProduct] = useState([]);
+  const [Bestsellers, setBestsellers] = useState([]);
 
   function Brand({ id }) {
     return (
@@ -36,12 +39,14 @@ const Home = ({ products, OneProduct }) => {
     );
   }
   function fetchData() {
-    const salefilter = products.filter((currElm) => currElm.SubCat === "hot");
+    const salefilter = products.filter(
+      (currElm) => currElm.SubCat === "Specialoffers"
+    );
     const newproduct = products.filter(
-      (currElm) => currElm.SubCat === "featured"
+      (currElm) => currElm.SubCat === "Bestsellers"
     );
     setSales(salefilter);
-    setNewProduct(newproduct);
+    setBestsellers(newproduct);
   }
   useEffect(() => {
     fetchData();
@@ -50,10 +55,17 @@ const Home = ({ products, OneProduct }) => {
   return (
     <>
       <div className="home">
-        <div className="top-banner">
+        <div
+          className="top-banner"
+          style={{
+            backgroundImage: `url(${background})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
           <div className="content">
             <div className="info">
-              <h2>Take your gaming experience to the next level</h2>
+              <h2>Bring cinematic moments to your living room</h2>
               <p>
                 Get
                 <span> 30% off </span>This week
@@ -63,7 +75,7 @@ const Home = ({ products, OneProduct }) => {
               </Link>
             </div>
             <div className="img-box">
-              <img src="/img/rsz_msi.png" alt="Best gaming console"></img>
+              <img src="/img/tv77.png" alt="Best gaming console"></img>
             </div>
           </div>
         </div>
@@ -75,7 +87,7 @@ const Home = ({ products, OneProduct }) => {
               </div>
               <div className="detail">
                 <h3>Free Shipping</h3>
-                <p>Oder above $1000</p>
+                <p>Oder above $100</p>
               </div>
             </div>
             <div className="box">
@@ -108,10 +120,10 @@ const Home = ({ products, OneProduct }) => {
           </div>
         </div>
         <div className="sale-product">
-          <h2>Hot Deal Product</h2>
+          <h2>Special offers</h2>
           <div className="container">
             {sale?.map((currEl) => (
-              <OneProduct currEl={currEl} key={currEl.id} />
+              <Specialoffers currEl={currEl} key={currEl.id} />
             ))}
           </div>
         </div>
@@ -142,10 +154,10 @@ const Home = ({ products, OneProduct }) => {
           </div>
         </div>
         <div className="featured-product">
-          <h2>Featured Product</h2>
+          <h2>Best Sellers</h2>
           <div className="container">
-            {newProduct?.map((currEl) => (
-              <OneProduct currEl={currEl} key={currEl.id} />
+            {Bestsellers?.map((currEl) => (
+              <ShopProduct currEl={currEl} key={currEl.id} />
             ))}
           </div>
         </div>
@@ -160,7 +172,9 @@ const Home = ({ products, OneProduct }) => {
 
             <div className="box">
               <input type="text" placeholder="Enter Your Email"></input>
-              <button>Subscribe</button>
+              <div className="submit">
+                <FaArrowRightLong />
+              </div>
             </div>
           </div>
         </div>

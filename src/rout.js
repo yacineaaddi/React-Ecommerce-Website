@@ -14,6 +14,7 @@ const Rout = ({
   Button,
   setProducts,
   ShopProduct,
+  Specialoffers,
 }) => {
   return (
     <>
@@ -45,6 +46,8 @@ const Rout = ({
               setUserDetail={setUserDetail}
               products={products}
               OneProduct={OneProduct}
+              ShopProduct={ShopProduct}
+              Specialoffers={Specialoffers}
             />
           }
         />

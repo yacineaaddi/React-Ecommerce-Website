@@ -74,7 +74,7 @@
   cursor: pointer;
 }
 .footer .container .upper-part .box .bottom ul li:hover {
-  color: green;
+  color: #2196f3;
 }
 
 .footer .container .upper-part .box .bottom {
@@ -89,7 +89,7 @@
   cursor: pointer;
 }
 .footer .container .upper-part .box .bottom .mobile-app:hover {
-  color: green;
+  color: #2196f3;
 }
 .footer .container .upper-part .box .bottom .mobile-app p {
   font-size: 0.9rem;
@@ -126,7 +126,7 @@
   font-size: 0.77rem;
 }
 .footer .container .down-part .additional-links ul li:hover {
-  color: green;
+  color: #2196f3;
 }
 .footer .container .down-part .addresse p {
   color: #757575;

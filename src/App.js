@@ -83,6 +83,51 @@ const App = () => {
       </div>
     );
   }
+  function Specialoffers({ currEl }) {
+    return (
+      <div className="box">
+        <div className="img-box">
+          <img src={currEl.Img} alt="Product-image"></img>
+        </div>
+        <div className="detail">
+          <div className="icons">
+            <div className="icon">
+              <CiHeart />
+            </div>
+            <div className="icon">
+              <TfiReload />
+            </div>
+            <div className="icon">
+              <CiSearch />
+            </div>
+          </div>
+
+          <h3>{currEl.Title}</h3>
+          <div className="prod-details">
+            <div className="rating">
+              <StarRating defaultRating={currEl.Rating} />
+              <p>{currEl.Rating}</p>
+              <p>({currEl.NumRev} reviews)</p>
+            </div>
+          </div>
+          <div className="discount">
+            <h4
+              style={{
+                color: "gray",
+                textDecoration: "line-through",
+              }}
+            >
+              {currEl.Price} $
+            </h4>
+            <h4 style={{ color: "red", fontWeight: "bold" }}>
+              {currEl.DisountedPrice} $
+            </h4>
+          </div>
+          <button>Add To Cart</button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <BrowserRouter>
@@ -101,6 +146,7 @@ const App = () => {
         OneProduct={OneProduct}
         setProducts={setProducts}
         ShopProduct={ShopProduct}
+        Specialoffers={Specialoffers}
       />
       <Footer />
     </BrowserRouter>
