@@ -16,7 +16,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  /*background-image: url("paper.gif");*/
+  background: #eee;
 }
 
 .nav .container .top_bar p {
@@ -222,7 +222,8 @@
   .nav .container .mid_bar .content .search_bar {
     width: 80%;
     position: absolute;
-    left: 40px;
+    left: 50%;
+    transform: translateX(-50%);
     top: 100px;
     display: flex;
     justify-content: center;
@@ -250,6 +251,7 @@
   .nav .container .mid_bar .content .search_bar {
     display: flex;
     margin-left: 0px; /**/
+    margin-top: 55px; /**/
   }
   .nav .container .bottom_bar .offer {
     display: none;

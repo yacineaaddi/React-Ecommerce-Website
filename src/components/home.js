@@ -5,7 +5,7 @@ import { RiRefund2Line } from "react-icons/ri";
 import { TbDiscount } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
 import { FaArrowRightLong } from "react-icons/fa6";
-import background from "../img/background.jpg";
+import background from "../img/backgroundone.jpg";
 
 import "./home.css";
 
@@ -87,7 +87,7 @@ const Home = ({ products, OneProduct, ShopProduct, Specialoffers }) => {
               </div>
               <div className="detail">
                 <h3>Free Shipping</h3>
-                <p>Oder above $100</p>
+                <p>Order above $100</p>
               </div>
             </div>
             <div className="box">
