@@ -12,12 +12,23 @@ const Shop = ({ products, ShopProduct }) => {
   const [Categorie, setCategorie] = useState([]);
   const [inStockProd, setinStockProd] = useState([]);
   const [activeCat, setActiveCat] = useState("all");
+  const [PriceRangeProducts, setPriceRangeProducts] = useState([]);
+  const [temProducts, settemProducts] = useState([]);
+  const [finalProducts, setfinalProducts] = useState([]);
 
   function setCat(cat) {
-    const temProducts = products
-      .filter((currElm) => currElm.Cat === cat)
+    setinStock(false);
+    settemProducts([]);
+    setPriceRangeProducts([]);
+    settemProducts([]);
+    setPriceOrder(null);
+    setRatingOrder(null);
+    const temProducts = [...products]
+      .filter((currElm) => (cat === "" ? true : currElm.Cat === cat))
       .sort(() => Math.random() - 0.5);
     setCategorie(temProducts);
+    console.log(temProducts);
+    console.log("true");
   }
 
   function fetchProducts() {
@@ -33,34 +44,44 @@ const Shop = ({ products, ShopProduct }) => {
     );
     console.log(minPrice, maxPrice);
     console.log(filtered);
-    setCategorie(filtered);
+    setPriceRangeProducts(filtered);
     setMinPrice("");
     setMaxPrice("");
+    setinStock(false);
+    settemProducts([]);
+    setPriceOrder(null);
+    setRatingOrder(null);
   }
   useEffect(() => {
     if (priceOrder !== null) {
-      const sortedByPrice = [...Categorie].sort((a, b) =>
-        priceOrder ? b.Price - a.Price : a.Price - b.Price
-      );
-      setCategorie(sortedByPrice);
+      const sortedByPrice = (
+        PriceRangeProducts.length > 0 ? [...PriceRangeProducts] : [...Categorie]
+      ).sort((a, b) => (priceOrder ? b.Price - a.Price : a.Price - b.Price));
+      settemProducts(sortedByPrice);
       setRatingOrder(null);
     }
   }, [priceOrder]);
   useEffect(() => {
     if (ratingOrder !== null) {
-      const sortedByRate = (inStock ? [...inStockProd] : [...Categorie]).sort(
-        (a, b) => (ratingOrder ? b.Rating - a.Rating : a.Rating - b.Rating)
+      const sortedByRate = (
+        PriceRangeProducts.length > 0 ? [...PriceRangeProducts] : [...Categorie]
+      ).sort((a, b) =>
+        ratingOrder ? b.Rating - a.Rating : a.Rating - b.Rating
       );
-      setCategorie(sortedByRate);
+      settemProducts(sortedByRate);
       setPriceOrder(null);
     }
   }, [ratingOrder]);
 
   useEffect(() => {
     if (inStock) {
-      const filteredByStock = [...Categorie].filter(
-        (p) => p.State === "Available"
-      );
+      const filteredByStock = (
+        temProducts.length > 0
+          ? [...temProducts]
+          : PriceRangeProducts.length > 0
+          ? [...PriceRangeProducts]
+          : [...Categorie]
+      ).filter((p) => p.State === "Available");
       setinStockProd(filteredByStock);
       console.log("true");
       console.log(Categorie);
@@ -75,6 +96,18 @@ const Shop = ({ products, ShopProduct }) => {
     fetchProducts();
   }, [products]);
 
+  useEffect(() => {
+    setfinalProducts(
+      inStockProd.length > 0
+        ? inStockProd
+        : temProducts.length > 0
+        ? temProducts
+        : PriceRangeProducts.length > 0
+        ? PriceRangeProducts
+        : Categorie
+    );
+  }, [inStockProd, temProducts, PriceRangeProducts, Categorie]);
+
   return (
     <div className="shop">
       <div className="container">
@@ -83,7 +116,7 @@ const Shop = ({ products, ShopProduct }) => {
           <ul>
             <li
               onClick={() => {
-                setCategorie(products);
+                setCat("");
                 setActiveCat("all");
               }}
               style={{
@@ -230,22 +263,16 @@ const Shop = ({ products, ShopProduct }) => {
             </div>
             <div className="results">
               <p>
-                {Categorie.length !== 0
-                  ? `${
-                      inStockProd.length === 0
-                        ? Categorie.length
-                        : inStockProd.length
-                    } results`
+                {finalProducts.length !== 0
+                  ? `${finalProducts.length} results`
                   : ""}
               </p>
             </div>
           </div>
           <div className="products">
-            {(inStockProd.length === 0 ? Categorie : inStockProd).map(
-              (currEl) => (
-                <ShopProduct currEl={currEl} key={currEl.id} />
-              )
-            )}
+            {finalProducts.map((currEl) => (
+              <ShopProduct currEl={currEl} key={currEl.id} />
+            ))}
           </div>
         </div>
       </div>
