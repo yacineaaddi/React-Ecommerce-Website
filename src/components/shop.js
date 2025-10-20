@@ -148,7 +148,7 @@ const Shop = ({ products, ShopProduct }) => {
                 color: activeCat === "tv" ? "#fff" : "",
               }}
             >
-              Tv & Audio
+              Tv and Audio
             </li>
             <li
               onClick={() => {
@@ -160,7 +160,7 @@ const Shop = ({ products, ShopProduct }) => {
                 color: activeCat === "computers" ? "#fff" : "",
               }}
             >
-              Computer & Laptop
+              Computer and Laptop
             </li>
             <li
               onClick={() => {
@@ -172,7 +172,7 @@ const Shop = ({ products, ShopProduct }) => {
                 color: activeCat === "phones" ? "#fff" : "",
               }}
             >
-              Phones & Tablettes
+              Phones and Tablettes
             </li>
             <li
               onClick={() => {
