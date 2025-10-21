@@ -15,14 +15,19 @@ const Shop = ({ products, ShopProduct }) => {
   const [PriceRangeProducts, setPriceRangeProducts] = useState([]);
   const [temProducts, settemProducts] = useState([]);
   const [finalProducts, setfinalProducts] = useState([]);
+  const [PricedProducts, setPricedProducts] = useState(false);
 
-  function setCat(cat) {
+  function resetState() {
     setinStock(false);
-    settemProducts([]);
-    setPriceRangeProducts([]);
     settemProducts([]);
     setPriceOrder(null);
     setRatingOrder(null);
+  }
+  function setCat(cat) {
+    resetState();
+    settemProducts([]);
+    setPriceRangeProducts([]);
+
     const temProducts = [...products]
       .filter((currElm) => (cat === "" ? true : currElm.Cat === cat))
       .sort(() => Math.random() - 0.5);
@@ -42,15 +47,17 @@ const Shop = ({ products, ShopProduct }) => {
     const filtered = [...Categorie].filter(
       (p) => p.Price >= Number(minPrice) && p.Price <= Number(maxPrice)
     );
-    console.log(minPrice, maxPrice);
-    console.log(filtered);
-    setPriceRangeProducts(filtered);
-    setMinPrice("");
-    setMaxPrice("");
-    setinStock(false);
-    settemProducts([]);
-    setPriceOrder(null);
-    setRatingOrder(null);
+    if (!filtered || filtered.length === 0) {
+      setPricedProducts(true);
+    } else {
+      setPricedProducts(false);
+      console.log(minPrice, maxPrice);
+      console.log(filtered);
+      setPriceRangeProducts(filtered);
+      setMinPrice("");
+      setMaxPrice("");
+      resetState();
+    }
   }
   useEffect(() => {
     if (priceOrder !== null) {
@@ -270,9 +277,13 @@ const Shop = ({ products, ShopProduct }) => {
             </div>
           </div>
           <div className="products">
-            {finalProducts.map((currEl) => (
-              <ShopProduct currEl={currEl} key={currEl.id} />
-            ))}
+            {PricedProducts ? (
+              <p>No Products found !</p>
+            ) : (
+              finalProducts.map((currEl) => (
+                <ShopProduct currEl={currEl} key={currEl.id} />
+              ))
+            )}
           </div>
         </div>
       </div>

@@ -130,10 +130,10 @@ const Home = ({ products, OneProduct, ShopProduct, Specialoffers }) => {
         <div className="mid-banner">
           <div className="container">
             <div className="banner-box">
-              <img src="/img/jk-banner-46.jpg" alt=""></img>
+              <img src="/img/banner2.jpg" alt=""></img>
             </div>
             <div className="banner-box">
-              <img src="/img/jk-banner-66.jpg" alt=""></img>
+              <img src="/img/banner1.jpg" alt=""></img>
             </div>
           </div>
         </div>
