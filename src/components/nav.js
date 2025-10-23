@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./nav.css";
-import { CiHeart } from "react-icons/ci";
-import { BsCart4 } from "react-icons/bs";
 import { FaRegUser } from "react-icons/fa";
 import { FaBars } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
@@ -124,14 +122,14 @@ const Nav = ({ Auth, setAuth, userDetail, search, setSearch, setSidebar }) => {
               </li>
             </ul>
             <div className="offer">
-              <div className="box" onClick={() => setSidebar((e) => true)}>
+              <div className="box" onClick={() => setSidebar("cart")}>
                 <Link className="link" to="/cart">
                   <FaShoppingCart />
                 </Link>
 
                 <p>Cart</p>
               </div>
-              <div className="box" onClick={() => setSidebar((e) => true)}>
+              <div className="box" onClick={() => setSidebar("wishlist")}>
                 <Link className="link" to="/wishlist">
                   <FaHeart />
                 </Link>
