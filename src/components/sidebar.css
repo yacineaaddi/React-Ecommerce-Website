@@ -1,0 +1,38 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100vh;
+  background: #f7f7f9;
+  border-left: 1px solid #eeeeee;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px;
+  transform: translateX(0px);
+  opacity: 1;
+  transition: transform 1s ease, opacity 0.5s ease;
+}
+.close-btn {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 40px;
+  height: 40px;
+  border: 2px solid red;
+  background: transparent;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background 150ms ease, transform 120ms ease;
+}
+.sidebar.hidden {
+  transform: translateX(400px);
+  opacity: 0;
+}

@@ -10,7 +10,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 
-const Nav = ({ Auth, setAuth, userDetail, search, setSearch }) => {
+const Nav = ({ Auth, setAuth, userDetail, search, setSearch, setSidebar }) => {
   const [OpenNav, SetOpenNav] = useState(false);
 
   const Logout = () => {
@@ -124,14 +124,14 @@ const Nav = ({ Auth, setAuth, userDetail, search, setSearch }) => {
               </li>
             </ul>
             <div className="offer">
-              <div className="box">
+              <div className="box" onClick={() => setSidebar((e) => true)}>
                 <Link className="link" to="/cart">
                   <FaShoppingCart />
                 </Link>
 
                 <p>Cart</p>
               </div>
-              <div className="box">
+              <div className="box" onClick={() => setSidebar((e) => true)}>
                 <Link className="link" to="/wishlist">
                   <FaHeart />
                 </Link>

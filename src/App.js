@@ -2,20 +2,21 @@ import React, { useState } from "react";
 import Rout from "./rout";
 import { BrowserRouter } from "react-router-dom";
 import Nav from "./components/nav";
+import SideBar from "./components/sidebar";
 import Product from "./components/product1";
 import "./components/home.css";
 import { CiHeart, CiSearch } from "react-icons/ci";
 import { TfiReload } from "react-icons/tfi";
 import Footer from "./components/footer";
 import StarRating from "./components/starRating";
-import { db } from "./firebase"; /**/
+import { db } from "./firebase";
 import {
   doc,
   collection,
   addDoc,
   getDocs,
   updateDoc,
-} from "firebase/firestore"; /**/
+} from "firebase/firestore";
 
 import "./App.css";
 
@@ -25,7 +26,7 @@ const App = () => {
   const [Auth, setAuth] = useState(false);
   const [products, setProducts] = useState(Product);
   const [search, setSearch] = useState("");
-
+  const [sidebar, setSidebar] = useState();
   // Start : Firestore Add-to-Cart Function
   //Creates a React state variable
   const [cart, setCart] = useState([]); /**/
@@ -198,12 +199,14 @@ const App = () => {
 
   return (
     <BrowserRouter>
+      <SideBar sidebar={sidebar} setSidebar={setSidebar} />
       <Nav
         Auth={Auth}
         setAuth={setAuth}
         userDetail={userDetail}
         search={search}
         setSearch={setSearch}
+        setSidebar={setSidebar}
       />
       <Rout
         setUserDetail={setUserDetail}
