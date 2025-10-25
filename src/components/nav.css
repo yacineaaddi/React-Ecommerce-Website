@@ -52,6 +52,7 @@
 .nav .container .mid_bar .content .search_bar {
   display: flex;
   position: relative;
+  opacity: 0;
 } /*++++++++++++++++++++++++++++++++++++++++++++++++*/
 .nav .container .mid_bar .content .search_bar input {
   width: 650px;

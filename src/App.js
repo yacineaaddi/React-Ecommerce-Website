@@ -9,7 +9,7 @@ import { CiHeart, CiSearch } from "react-icons/ci";
 import { TfiReload } from "react-icons/tfi";
 import Footer from "./components/footer";
 import StarRating from "./components/starRating";
-import { db } from "./firebase";
+import { db } from "./components/firebase";
 import {
   doc,
   collection,
@@ -26,12 +26,14 @@ const App = () => {
   const [Auth, setAuth] = useState(false);
   const [products, setProducts] = useState(Product);
   const [search, setSearch] = useState("");
-  const [sidebar, setSidebar] = useState();
+  const [sidebar, setSidebar] = useState(false);
   // Start : Firestore Add-to-Cart Function
   //Creates a React state variable
   const [cart, setCart] = useState([]); /**/
+  const [wishlist, setWishlist] = useState([]); /**/
   //Reference to the "cartData" collection in Firestore
-  const cartdbref = collection(db, "cartData"); /**/
+  const cartdbref = collection(db, "cartData");
+  const wishListdbref = collection(db, "wishList"); /**/
   // Function to handle adding a product to the cart
   const addtocart = async (data) => {
     //Check if user is logged in
@@ -78,13 +80,74 @@ const App = () => {
           NumRev: data.NumRev,
           State: data.State,
           Qty: 1,
-        });
+        }); //1-Fetch all existing cart documents from Firestore
+        const fetchcartdata = await getDocs(cartdbref);
+        //Convert Firestore documents into plain JavaScript objects
+        const cartsnap = fetchcartdata.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setCart(cartsnap);
         alert("Product Added To Cart");
       }
     }
   };
   // End : Firestore Add-to-Cart Function
+  // Start : Firestore Add-to-wishlist Function
 
+  const addtowishlist = async (data) => {
+    //Check if user is logged in
+    if (Auth === false) {
+      // stop the function if not logged in
+      alert("Please Log In");
+      return;
+    } else {
+      //1-Fetch all existing cart documents from Firestore
+      const fetchwListchdata = await getDocs(wishListdbref);
+      //Convert Firestore documents into plain JavaScript objects
+      const cartsnap = fetchwListchdata.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      //Check if this product already exists in the user’s cart
+      const findwishlistdata = cartsnap.find((x) => {
+        return userDetail.id === x.userId && data.id === x.CartId;
+      });
+
+      //2-If product already exists in the cart, just update its quantity
+      if (findwishlistdata) {
+        alert("Product Already In Wishlist");
+      }
+      //If product doesn’t exist, add it as a new document
+      else {
+        //3
+        const addWishlistData = await addDoc(wishListdbref, {
+          userId: userDetail.id,
+          CartId: data.id,
+          Title: data.Title,
+          Cat: data.Cat,
+          Price: data.Price,
+          Img: data.Img,
+          SubCat: data.SubCat,
+          Brand: data.Brand,
+          Model: data.Model,
+          WebCode: data.WebCode,
+          Rating: data.Rating,
+          NumRev: data.NumRev,
+          State: data.State,
+          Qty: 1,
+        }); //1-Fetch all existing cart documents from Firestore
+        const fetchwListchdata = await getDocs(wishListdbref);
+        //Convert Firestore documents into plain JavaScript objects
+        const cartsnap = fetchwListchdata.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setWishlist(cartsnap);
+        alert("Product Added To Wishlist");
+      }
+    }
+  };
   function OneProduct({ currEl }) {
     return (
       <div className="box">
@@ -93,7 +156,7 @@ const App = () => {
         </div>
         <div className="detail">
           <div className="icons">
-            <div className="icon">
+            <div className="icon" onClick={() => addtowishlist(currEl)}>
               <CiHeart />
             </div>
             <div className="icon">
@@ -118,7 +181,7 @@ const App = () => {
         </div>
         <div className="detail">
           <div className="icons">
-            <div className="icon">
+            <div className="icon" onClick={() => addtowishlist(currEl)}>
               <CiHeart />
             </div>
             <div className="icon">
@@ -159,7 +222,7 @@ const App = () => {
         </div>
         <div className="detail">
           <div className="icons">
-            <div className="icon">
+            <div className="icon" onClick={() => addtowishlist(currEl)}>
               <CiHeart />
             </div>
             <div className="icon">
@@ -199,7 +262,17 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <SideBar sidebar={sidebar} setSidebar={setSidebar} />
+      <SideBar
+        sidebar={sidebar}
+        setSidebar={setSidebar}
+        userDetail={userDetail}
+        cart={cart}
+        setCart={setCart}
+        Auth={Auth}
+        wishlist={wishlist}
+        setWishlist={setWishlist}
+        addtocart={addtocart}
+      />
       <Nav
         Auth={Auth}
         setAuth={setAuth}

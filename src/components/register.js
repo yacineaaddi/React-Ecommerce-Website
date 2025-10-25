@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
-import { db, app } from "../firebase";
+import { db, app } from "./firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 
 import "./auth.css";
