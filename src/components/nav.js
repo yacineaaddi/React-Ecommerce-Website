@@ -79,12 +79,12 @@ const Nav = ({ Auth, setAuth, userDetail, search, setSearch, setSidebar }) => {
               </div>
               <div className="icons">
                 <div className="icon">
-                  <Link className="link" to="/cart">
+                  <Link className="link">
                     <FaShoppingCart />
                   </Link>
                 </div>
                 <div className="icon">
-                  <Link className="link" to="/wishlist">
+                  <Link className="link">
                     <FaHeart />
                   </Link>
                 </div>
@@ -100,7 +100,6 @@ const Nav = ({ Auth, setAuth, userDetail, search, setSearch, setSidebar }) => {
                 {Auth ? (
                   <>
                     <h2>{userDetail.Name}</h2>
-                    <p>{userDetail.Email}</p>
                   </>
                 ) : (
                   <h2>Please, Sign in</h2>

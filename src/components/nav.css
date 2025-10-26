@@ -99,27 +99,32 @@
 .nav .container .bottom_bar .user-detail {
   display: flex;
   justify-content: space-between;
+  justify-content: center;
   background: #2196f3;
-  padding: 10px 35px;
+  padding: 17px 35px;
   border-radius: 6px;
 }
 
 .nav .container .bottom_bar .user-detail .icon {
   color: #fff;
-  margin-top: 10px;
   font-size: 18px;
   font-weight: 600;
+  display: flex;
+  align-items: center;
 }
 
 .nav .container .bottom_bar .user-detail .detail {
   margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  flex-direction: column;
 }
 .nav .container .bottom_bar .user-detail .detail h2 {
   color: #fff;
   font-size: 14px;
   text-transform: uppercase;
   font-weight: 600;
-  margin-top: 10px;
 }
 .nav .container .bottom_bar p {
   color: #fff;

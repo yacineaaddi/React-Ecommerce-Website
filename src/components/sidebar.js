@@ -57,11 +57,13 @@ const SideBar = ({
             <div className="delete">
               <div
                 className="deleteBtn"
-                onClick={() =>
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
                   sidebar === "wishlist"
                     ? RemoveFromWishlist(currEl)
-                    : RemoveFromCart(currEl)
-                }
+                    : RemoveFromCart(currEl);
+                }}
               >
                 <MdDeleteForever />
               </div>
