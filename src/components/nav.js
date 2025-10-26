@@ -123,14 +123,14 @@ const Nav = ({ Auth, setAuth, userDetail, search, setSearch, setSidebar }) => {
             </ul>
             <div className="offer">
               <div className="box" onClick={() => setSidebar("cart")}>
-                <Link className="link" to="/cart">
+                <Link className="link">
                   <FaShoppingCart />
                 </Link>
 
                 <p>Cart</p>
               </div>
               <div className="box" onClick={() => setSidebar("wishlist")}>
-                <Link className="link" to="/wishlist">
+                <Link className="link">
                   <FaHeart />
                 </Link>
 
