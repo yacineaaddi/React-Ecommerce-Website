@@ -3,7 +3,7 @@ import Rout from "./rout";
 import { BrowserRouter } from "react-router-dom";
 import Nav from "./components/nav";
 import SideBar from "./components/sidebar";
-import Product from "./components/product1";
+import Product from "./components/product";
 import "./components/home.css";
 import { CiHeart, CiSearch } from "react-icons/ci";
 import { TfiReload } from "react-icons/tfi";
@@ -34,6 +34,22 @@ const App = () => {
   //Reference to the "cartData" collection in Firestore
   const cartdbref = collection(db, "cartData");
   const wishListdbref = collection(db, "wishList"); /**/
+
+  function isInCart(p) {
+    console.log(cart.some((item) => item.id === p.id));
+  }
+  function isWishlisted(p) {
+    return cart.some((item) => item.id === p.id);
+  }
+
+  const updatestate = async () => {
+    const fetchcartdata = await getDocs(cartdbref);
+    const cartsnap = fetchcartdata.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    setCart(cartsnap);
+  };
   // Function to handle adding a product to the cart
   const addtocart = async (data) => {
     //Check if user is logged in
@@ -56,11 +72,7 @@ const App = () => {
 
       //2-If product already exists in the cart, just update its quantity
       if (findcartdata) {
-        //Finds a reference to the exact document in Firestore
-        const cartdataref = doc(cartdbref, findcartdata.id);
-        //Updates that document’s Qty field by adding 1
-        await updateDoc(cartdataref, { Qty: findcartdata.Qty + 1 });
-        alert("Quantity Added Successfully");
+        alert("Product already in cart");
       }
       //If product doesn’t exist, add it as a new document
       else {
@@ -80,14 +92,9 @@ const App = () => {
           NumRev: data.NumRev,
           State: data.State,
           Qty: 1,
-        }); //1-Fetch all existing cart documents from Firestore
-        const fetchcartdata = await getDocs(cartdbref);
-        //Convert Firestore documents into plain JavaScript objects
-        const cartsnap = fetchcartdata.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setCart(cartsnap);
+        });
+        updatestate();
+
         alert("Product Added To Cart");
       }
     }
@@ -168,7 +175,9 @@ const App = () => {
           </div>
           <h3>{currEl.Title}</h3>
           <h4>{currEl.Price} $</h4>
-          <button onClick={() => addtocart(currEl)}>Add To Cart</button>
+          <button onClick={() => addtocart(currEl)}>
+            {isInCart(currEl) ? "Already in cart" : "Add To Cart"}
+          </button>
         </div>
       </div>
     );
@@ -181,7 +190,11 @@ const App = () => {
         </div>
         <div className="detail">
           <div className="icons">
-            <div className="icon" onClick={() => addtowishlist(currEl)}>
+            <div
+              className="icon"
+              onClick={() => addtowishlist(currEl)}
+              style={{ display: isWishlisted(currEl) ? "none" : "block" }}
+            >
               <CiHeart />
             </div>
             <div className="icon">
@@ -209,7 +222,9 @@ const App = () => {
             </div>
           </div>
           <h4>{currEl.Price} $</h4>
-          <button onClick={() => addtocart(currEl)}>Add To Cart</button>
+          <button onClick={() => addtocart(currEl)}>
+            {isInCart(currEl) ? "Already in cart" : "Add To Cart"}
+          </button>
         </div>
       </div>
     );
@@ -272,6 +287,8 @@ const App = () => {
         wishlist={wishlist}
         setWishlist={setWishlist}
         addtocart={addtocart}
+        updatestate={updatestate}
+        StarRating={StarRating}
       />
       <Nav
         Auth={Auth}

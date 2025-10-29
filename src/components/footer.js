@@ -88,18 +88,13 @@ const Footer = () => {
           <div className="additional-links">
             <ul className="links">
               <li>Terms & Conditions</li>
-              <li>Conditions of Use</li>
-              <li>Online Policies</li>
               <li>Privacy Policy</li>
               <li>Cookie Policy</li>
               <li>Credits</li>
             </ul>
           </div>
           <div className="addresse">
-            <p>
-              © Electro Canada Ltd. Suite #102, 425 West 6th Avenue, Vancouver,
-              BC V5Y 1L3
-            </p>
+            <p>© 2025 Electro US. All rights reserved</p>
           </div>
         </div>
       </div>

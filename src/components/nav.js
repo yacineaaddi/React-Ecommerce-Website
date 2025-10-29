@@ -45,7 +45,6 @@ const Nav = ({ Auth, setAuth, userDetail, search, setSearch, setSidebar }) => {
               </p>
             )}
           </div>
-          {/*Buttom navbar*/}
           <div className="mid_bar">
             <div className="content">
               <div className="navicon">
@@ -78,12 +77,12 @@ const Nav = ({ Auth, setAuth, userDetail, search, setSearch, setSidebar }) => {
                 </div>
               </div>
               <div className="icons">
-                <div className="icon">
+                <div className="icon" onClick={() => setSidebar("cart")}>
                   <Link className="link">
                     <FaShoppingCart />
                   </Link>
                 </div>
-                <div className="icon">
+                <div className="icon" onClick={() => setSidebar("wishlist")}>
                   <Link className="link">
                     <FaHeart />
                   </Link>

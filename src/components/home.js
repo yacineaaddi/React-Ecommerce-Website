@@ -5,7 +5,7 @@ import { RiRefund2Line } from "react-icons/ri";
 import { TbDiscount } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
 import { FaArrowRightLong } from "react-icons/fa6";
-import background from "../img/backgroundone.jpg";
+import background from "../img/backgroundonejpg.jpg";
 
 import "./home.css";
 
