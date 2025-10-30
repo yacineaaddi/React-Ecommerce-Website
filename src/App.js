@@ -9,6 +9,7 @@ import { CiHeart, CiSearch } from "react-icons/ci";
 import { TfiReload } from "react-icons/tfi";
 import Footer from "./components/footer";
 import StarRating from "./components/starRating";
+import SideMenu from "./components/sidemenu";
 import { db } from "./components/firebase";
 import {
   doc,
@@ -27,6 +28,7 @@ const App = () => {
   const [products, setProducts] = useState(Product);
   const [search, setSearch] = useState("");
   const [sidebar, setSidebar] = useState(false);
+  const [sideMenu, SetsideMenu] = useState(false);
   // Start : Firestore Add-to-Cart Function
   //Creates a React state variable
   const [cart, setCart] = useState([]); /**/
@@ -277,6 +279,12 @@ const App = () => {
 
   return (
     <BrowserRouter>
+      <SideMenu
+        sideMenu={sideMenu}
+        SetsideMenu={SetsideMenu}
+        userDetail={userDetail}
+        Auth={Auth}
+      />
       <SideBar
         sidebar={sidebar}
         setSidebar={setSidebar}
@@ -297,6 +305,8 @@ const App = () => {
         search={search}
         setSearch={setSearch}
         setSidebar={setSidebar}
+        sideMenu={sideMenu}
+        SetsideMenu={SetsideMenu}
       />
       <Rout
         setUserDetail={setUserDetail}

@@ -1,0 +1,109 @@
+.sidemenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 450px;
+  height: 100vh;
+  background: white;
+  border-left: 1px solid #2196f3;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(0px);
+  opacity: 1;
+  gap: 50px;
+  padding: 15px 60px 25px 60px;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+  z-index: 10;
+}
+.close-button {
+  position: absolute;
+  top: 16px;
+  right: 12px;
+  padding: 9px 14px;
+  background: #fff;
+  color: #2196f3;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1.5px solid #2196f3;
+  transition: background 150ms ease, transform 120ms ease;
+}
+.close-btn:hover {
+  background: none;
+}
+.sidemenu.hidden {
+  transform: translateX(-450px);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+.sidemenu .logo {
+  width: 220px;
+  height: 45px;
+  align-self: center;
+}
+.sidemenu .logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.sidemenu ul {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-self: center;
+  list-style: none;
+}
+.sidemenu ul li {
+  border: 2px solid #eeeeee;
+  width: 100%;
+  text-align: center;
+}
+.sidemenu ul li a {
+  display: block;
+  color: #2196f3;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 15px 110px;
+  border-radius: 8px;
+}
+
+.sidemenu .user-detail {
+  border: 2px solid #eeeeee;
+  border-radius: 8px;
+  padding: 20px 50px;
+  margin-top: auto;
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sidemenu .user-detail .icon {
+  color: #2196f3;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.sidemenu .user-detail .detail {
+  color: #2196f3;
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  font-size: 0.6rem;
+}
+@media (max-width: 500px) {
+  .sidemenu {
+    width: 100%;
+  }
+  .sidemenu.hidden {
+    transform: translateX(-100%);
+  }
+}

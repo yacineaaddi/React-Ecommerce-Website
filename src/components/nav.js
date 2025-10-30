@@ -8,17 +8,24 @@ import { FaShoppingCart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 
-const Nav = ({ Auth, setAuth, userDetail, search, setSearch, setSidebar }) => {
-  const [OpenNav, SetOpenNav] = useState(false);
-
+const Nav = ({
+  Auth,
+  setAuth,
+  userDetail,
+  search,
+  setSearch,
+  setSidebar,
+  sideMenu,
+  SetsideMenu,
+}) => {
   const Logout = () => {
     setAuth(false);
   };
   const navopen = () => {
-    SetOpenNav(true);
+    SetsideMenu(true);
   };
   const navclose = () => {
-    SetOpenNav(false);
+    SetsideMenu(false);
   };
   return (
     <>
@@ -48,7 +55,7 @@ const Nav = ({ Auth, setAuth, userDetail, search, setSearch, setSidebar }) => {
           <div className="mid_bar">
             <div className="content">
               <div className="navicon">
-                {OpenNav ? (
+                {sideMenu ? (
                   <>
                     <div className="closenav" onClick={navclose}>
                       <IoClose />
@@ -90,7 +97,7 @@ const Nav = ({ Auth, setAuth, userDetail, search, setSearch, setSidebar }) => {
               </div>
             </div>
           </div>
-          <div className={`bottom_bar ${OpenNav ? "active" : ""}`}>
+          <div className="bottom_bar">
             <div className="user-detail">
               <div className="icon">
                 <FaRegUser />
@@ -105,20 +112,7 @@ const Nav = ({ Auth, setAuth, userDetail, search, setSearch, setSidebar }) => {
                 )}
               </div>
             </div>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/shop">Shop</Link>
-              </li>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-              <li>
-                <Link to="/contact">Contact</Link>
-              </li>
-            </ul>
+
             <div className="offer">
               <div className="box" onClick={() => setSidebar("cart")}>
                 <Link className="link">

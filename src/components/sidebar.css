@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 460px;
+  width: 360px;
   height: 100vh;
   background: white;
   border-left: 1px solid #2196f3;
@@ -41,7 +41,7 @@
   background: none;
 }
 .sidebar.hidden {
-  transform: translateX(460px);
+  transform: translateX(360px);
   opacity: 0;
   transition: transform 0.4s ease, opacity 0.3s ease;
 }
