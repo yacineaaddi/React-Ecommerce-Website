@@ -6,7 +6,7 @@ import { collection, addDoc, getDocs } from "firebase/firestore";
 
 import "./auth.css";
 
-const Register = ({ setUserDetail, setAuth, Auth, OneProduct, Button }) => {
+const Register = ({ setUserDetail, setAuth }) => {
   // Storing the input value using usestate hooks
 
   const [name, setName] = useState("");

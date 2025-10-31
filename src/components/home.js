@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { RiRefund2Line } from "react-icons/ri";

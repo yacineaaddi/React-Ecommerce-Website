@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./nav.css";
 import { FaRegUser } from "react-icons/fa";
 import { FaBars } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
+import "./nav.css";
 
 const Nav = ({
   Auth,
@@ -17,7 +17,24 @@ const Nav = ({
   setSidebar,
   sideMenu,
   SetsideMenu,
+  products,
 }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filtredProducts, setfiltredProducts] = useState([]);
+
+  useEffect(() => {
+    if (searchTerm.trim() === "") {
+      setfiltredProducts([]);
+      return;
+    }
+    const results = products.filter(
+      (item) =>
+        item.Title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.Cat.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setfiltredProducts(results);
+  }, [searchTerm]);
+
   const Logout = () => {
     setAuth(false);
   };
@@ -76,9 +93,29 @@ const Nav = ({
                 <input
                   type="text"
                   placeholder="Search Product"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                 ></input>
+
+                {searchTerm && (
+                  <div className="search-result-box">
+                    {filtredProducts.length > 0 ? (
+                      filtredProducts.map((item) => (
+                        <div
+                          className="search-result-item"
+                          key={item.id}
+                          onClick={() => alert("clicked")}
+                        >
+                          <img src={item.Img} alt={item.Title} width="40" />
+                          <span>{item.Title}</span>
+                        </div>
+                      ))
+                    ) : (
+                      <p className="no-results">No results found</p>
+                    )}
+                  </div>
+                )}
+
                 <div className="search">
                   <IoSearch />
                 </div>
@@ -112,7 +149,20 @@ const Nav = ({
                 )}
               </div>
             </div>
-
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/shop">Shop</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/contact">Contact</Link>
+              </li>
+            </ul>
             <div className="offer">
               <div className="box" onClick={() => setSidebar("cart")}>
                 <Link className="link">

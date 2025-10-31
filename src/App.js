@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Rout from "./rout";
 import { BrowserRouter } from "react-router-dom";
 import Nav from "./components/nav";
@@ -11,6 +11,7 @@ import Footer from "./components/footer";
 import StarRating from "./components/starRating";
 import SideMenu from "./components/sidemenu";
 import { db } from "./components/firebase";
+import useKey from "./components/usekey";
 import {
   doc,
   collection,
@@ -22,23 +23,43 @@ import {
 import "./App.css";
 
 const App = () => {
-  // Storing User Detail In Usestate Hooks
   const [userDetail, setUserDetail] = useState("");
   const [Auth, setAuth] = useState(false);
   const [products, setProducts] = useState(Product);
   const [search, setSearch] = useState("");
   const [sidebar, setSidebar] = useState(false);
   const [sideMenu, SetsideMenu] = useState(false);
-  // Start : Firestore Add-to-Cart Function
-  //Creates a React state variable
-  const [cart, setCart] = useState([]); /**/
-  const [wishlist, setWishlist] = useState([]); /**/
-  //Reference to the "cartData" collection in Firestore
+  const [cart, setCart] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
   const cartdbref = collection(db, "cartData");
-  const wishListdbref = collection(db, "wishList"); /**/
+  const wishListdbref = collection(db, "wishList");
+
+  useKey("Escape", function () {
+    SetsideMenu(false);
+    setSidebar(false);
+  });
+
+  useEffect(() => {
+    const isAnyOpen = sidebar || sideMenu;
+
+    const scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+
+    if (isAnyOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    } else {
+      document.body.style.overflow = "auto";
+      document.body.style.paddingRight = "0px";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+    };
+  }, [sidebar, sideMenu]);
 
   function isInCart(p) {
-    console.log(cart.some((item) => item.id === p.id));
+    /*console.log(cart.some((item) => item.id === p.id));*/
   }
   function isWishlisted(p) {
     return cart.some((item) => item.id === p.id);
@@ -52,33 +73,31 @@ const App = () => {
     }));
     setCart(cartsnap);
   };
-  // Function to handle adding a product to the cart
   const addtocart = async (data) => {
-    //Check if user is logged in
+    //1-Check if user is logged in
     if (Auth === false) {
-      // stop the function if not logged in
+      //2-stop the function if not logged in
       alert("Please Log In");
       return;
     } else {
-      //1-Fetch all existing cart documents from Firestore
+      //3-Fetch all existing cart documents from Firestore
       const fetchcartdata = await getDocs(cartdbref);
-      //Convert Firestore documents into plain JavaScript objects
+      //4-Convert Firestore documents into plain JavaScript objects
       const cartsnap = fetchcartdata.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
-      //Check if this product already exists in the user’s cart
+      //5-Check if this product already exists in the user’s cart
       const findcartdata = cartsnap.find((x) => {
         return userDetail.id === x.userId && data.id === x.CartId;
       });
 
-      //2-If product already exists in the cart, just update its quantity
+      //6-If product already exists in the cart, just update its quantity
       if (findcartdata) {
         alert("Product already in cart");
       }
-      //If product doesn’t exist, add it as a new document
+      //7-If product doesn’t exist, add it as a new document
       else {
-        //3
         const addCartData = await addDoc(cartdbref, {
           userId: userDetail.id,
           CartId: data.id,
@@ -96,13 +115,10 @@ const App = () => {
           Qty: 1,
         });
         updatestate();
-
         alert("Product Added To Cart");
       }
     }
   };
-  // End : Firestore Add-to-Cart Function
-  // Start : Firestore Add-to-wishlist Function
 
   const addtowishlist = async (data) => {
     //Check if user is logged in
@@ -307,6 +323,7 @@ const App = () => {
         setSidebar={setSidebar}
         sideMenu={sideMenu}
         SetsideMenu={SetsideMenu}
+        products={products}
       />
       <Rout
         setUserDetail={setUserDetail}

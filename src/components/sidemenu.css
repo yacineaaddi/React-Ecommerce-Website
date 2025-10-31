@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 450px;
+  width: 410px;
   height: 100vh;
   background: white;
   border-left: 1px solid #2196f3;
@@ -37,7 +37,7 @@
   background: none;
 }
 .sidemenu.hidden {
-  transform: translateX(-450px);
+  transform: translateX(-410px);
   opacity: 0;
   transition: transform 0.4s ease, opacity 0.3s ease;
 }

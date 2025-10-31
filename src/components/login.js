@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { MdOutlineLogin } from "react-icons/md";
 import { db, app } from "./firebase";
