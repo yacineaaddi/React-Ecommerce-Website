@@ -3,12 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
 import { db, app } from "./firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
-
+import useKey from "./usekey";
 import "./auth.css";
 
 const Register = ({ setUserDetail, setAuth }) => {
-  // Storing the input value using usestate hooks
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -65,6 +63,11 @@ const Register = ({ setUserDetail, setAuth }) => {
       }
     }
   };
+
+  useKey("Enter", (e) => {
+    Authentication(e);
+  });
+
   return (
     <>
       <div className="auth">
@@ -101,12 +104,12 @@ const Register = ({ setUserDetail, setAuth }) => {
             <div className="box">
               <input
                 type="password"
-                placeholder="Password *"
+                placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               ></input>
             </div>
-            <button onClick={(e) => Authentication(e)}>Register</button>
+            <button>Register</button>
             <p>
               Already have an account ? <Link to="/login">Click Here</Link>
             </p>

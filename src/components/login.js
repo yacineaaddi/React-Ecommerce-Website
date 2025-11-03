@@ -68,7 +68,7 @@ const Login = ({ setUserDetail, setAuth }) => {
             <div className="box">
               <input
                 type="password"
-                placeholder="Password *"
+                placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               ></input>

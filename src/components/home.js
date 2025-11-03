@@ -9,7 +9,7 @@ import background from "../img/backgroundonejpg.jpg";
 
 import "./home.css";
 
-const Home = ({ products, OneProduct, ShopProduct, Specialoffers }) => {
+const Home = ({ products, ShopProduct, Specialoffers }) => {
   const [sale, setSales] = useState([]);
   const [Bestsellers, setBestsellers] = useState([]);
 
