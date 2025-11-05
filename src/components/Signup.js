@@ -6,7 +6,7 @@ import { collection, addDoc, getDocs } from "firebase/firestore";
 import useKey from "./usekey";
 import "./auth.css";
 
-const Register = ({ setUserDetail, setAuth }) => {
+const Signup = ({ setUserDetail, setAuth }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -64,9 +64,9 @@ const Register = ({ setUserDetail, setAuth }) => {
     }
   };
 
-  useKey("Enter", (e) => {
+  /*useKey("Enter", (e) => {
     Authentication(e);
-  });
+  });*/
 
   return (
     <>
@@ -120,4 +120,4 @@ const Register = ({ setUserDetail, setAuth }) => {
   );
 };
 
-export default Register;
+export default Signup;

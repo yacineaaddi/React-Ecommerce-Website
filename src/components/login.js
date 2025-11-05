@@ -75,7 +75,7 @@ const Login = ({ setUserDetail, setAuth }) => {
             </div>
             <button onClick={(e) => Authentication(e)}>Login</button>
             <p>
-              Don't have an account ? <Link to="/register">Register</Link>
+              Don't have an account ? <Link to="/signup">Sign up</Link>
             </p>
           </div>
         </div>

@@ -63,8 +63,8 @@ const Nav = ({
                   Login
                 </Link>
                 &nbsp;/&nbsp;
-                <Link className="link" to="/register">
-                  Register
+                <Link className="link" to="/signup">
+                  Sign up
                 </Link>
               </p>
             )}
@@ -145,7 +145,7 @@ const Nav = ({
                     <h2>{userDetail.Name}</h2>
                   </>
                 ) : (
-                  <h2>Please, Sign in</h2>
+                  <h2>Account</h2>
                 )}
               </div>
             </div>

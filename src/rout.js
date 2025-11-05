@@ -1,4 +1,4 @@
-import Register from "./components/register";
+import Signup from "./components/Signup";
 import { Route, Routes } from "react-router-dom";
 import Login from "./components/login";
 import Home from "./components/home";
@@ -18,8 +18,8 @@ const Rout = ({
     <>
       <Routes>
         <Route
-          path="/register"
-          element={<Register setUserDetail={setUserDetail} setAuth={setAuth} />}
+          path="/signup"
+          element={<Signup setUserDetail={setUserDetail} setAuth={setAuth} />}
         />
         <Route
           path="/login"

@@ -26,6 +26,7 @@ const SideBar = ({
   addtocart,
   updatestate,
   StarRating,
+  RemoveFromWishlist,
 }) => {
   const [coupon, setCoupon] = useState(false);
   const cartdbref = collection(db, "cartData");
@@ -181,21 +182,6 @@ const SideBar = ({
       console.error("Error deleting product: ", error);
     }
   };
-  const RemoveFromWishlist = async (data) => {
-    try {
-      await deleteDoc(doc(wishListdbref, data.id));
-
-      const updatedWishlistData = await getDocs(wishListdbref);
-      const updatedWishlist = updatedWishlistData.docs
-        .map((doc) => ({ id: doc.id, ...doc.data() }))
-        .filter((x) => x.userId === userDetail.id);
-
-      setWishlist(updatedWishlist);
-      alert("Product removed successfully from your wishlist!");
-    } catch (error) {
-      console.error("Error deleting product: ", error);
-    }
-  };
 
   useEffect(() => {
     fetchcartdata();
@@ -230,9 +216,8 @@ const SideBar = ({
     //Check if this product already exists in the user’s cart
     const findwishListdata = wishlistsnap.filter((x) => {
       return userDetail.id === x.userId;
-    }); //IIIIIIINFINIT LOOP
+    });
     setWishlist(findwishListdata);
-    console.log(findwishListdata);
   };
 
   return (

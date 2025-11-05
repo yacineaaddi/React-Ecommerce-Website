@@ -6,6 +6,7 @@ import SideBar from "./components/sidebar";
 import Product from "./components/product";
 import "./components/home.css";
 import { CiHeart, CiSearch } from "react-icons/ci";
+import { FaHeart } from "react-icons/fa";
 import { TfiReload } from "react-icons/tfi";
 import Footer from "./components/footer";
 import StarRating from "./components/starRating";
@@ -17,6 +18,7 @@ import {
   collection,
   addDoc,
   getDocs,
+  deleteDoc,
   updateDoc,
 } from "firebase/firestore";
 
@@ -59,10 +61,10 @@ const App = () => {
   }, [sidebar, sideMenu]);
 
   function isInCart(p) {
-    /*console.log(cart.some((item) => item.id === p.id));*/
+    return cart.some((product) => String(product.CartId) === String(p.id));
   }
   function isWishlisted(p) {
-    return cart.some((item) => item.id === p.id);
+    return wishlist.some((product) => String(product.CartId) === String(p.id));
   }
 
   const updatestate = async () => {
@@ -120,6 +122,21 @@ const App = () => {
     }
   };
 
+  const RemoveFromWishlist = async (data) => {
+    try {
+      await deleteDoc(doc(wishListdbref, data.id));
+
+      const updatedWishlistData = await getDocs(wishListdbref);
+      const updatedWishlist = updatedWishlistData.docs
+        .map((doc) => ({ id: doc.id, ...doc.data() }))
+        .filter((x) => x.userId === userDetail.id);
+
+      setWishlist(updatedWishlist);
+      alert("Product removed successfully from your wishlist!");
+    } catch (error) {
+      console.error("Error deleting product: ", error);
+    }
+  };
   const addtowishlist = async (data) => {
     //Check if user is logged in
     if (Auth === false) {
@@ -141,7 +158,7 @@ const App = () => {
 
       //2-If product already exists in the cart, just update its quantity
       if (findwishlistdata) {
-        alert("Product Already In Wishlist");
+        RemoveFromWishlist(findwishlistdata);
       }
       //If product doesn’t exist, add it as a new document
       else {
@@ -182,7 +199,7 @@ const App = () => {
         <div className="detail">
           <div className="icons">
             <div className="icon" onClick={() => addtowishlist(currEl)}>
-              <CiHeart />
+              <FaHeart color={isWishlisted(currEl) ? "red" : ""} />
             </div>
             <div className="icon">
               <TfiReload />
@@ -197,6 +214,13 @@ const App = () => {
             {isInCart(currEl) ? "Already in cart" : "Add To Cart"}
           </button>
         </div>
+        {isWishlisted(currEl) ? (
+          <div className="wishlist-icon">
+            <FaHeart color="red" />
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     );
   }
@@ -208,12 +232,8 @@ const App = () => {
         </div>
         <div className="detail">
           <div className="icons">
-            <div
-              className="icon"
-              onClick={() => addtowishlist(currEl)}
-              style={{ display: isWishlisted(currEl) ? "none" : "block" }}
-            >
-              <CiHeart />
+            <div className="icon" onClick={() => addtowishlist(currEl)}>
+              <FaHeart color={isWishlisted(currEl) ? "red" : ""} />
             </div>
             <div className="icon">
               <TfiReload />
@@ -244,6 +264,13 @@ const App = () => {
             {isInCart(currEl) ? "Already in cart" : "Add To Cart"}
           </button>
         </div>
+        {isWishlisted(currEl) ? (
+          <div className="wishlist-icon">
+            <FaHeart color="red" />
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     );
   }
@@ -256,7 +283,7 @@ const App = () => {
         <div className="detail">
           <div className="icons">
             <div className="icon" onClick={() => addtowishlist(currEl)}>
-              <CiHeart />
+              <FaHeart color={isWishlisted(currEl) ? "red" : ""} />
             </div>
             <div className="icon">
               <TfiReload />
@@ -287,8 +314,17 @@ const App = () => {
               {currEl.DisountedPrice} $
             </h4>
           </div>
-          <button onClick={() => addtocart(currEl)}>Add To Cart</button>
+          <button onClick={() => addtocart(currEl)}>
+            {isInCart(currEl) ? "Already in cart" : "Add To Cart"}
+          </button>
         </div>
+        {isWishlisted(currEl) ? (
+          <div className="wishlist-icon">
+            <FaHeart color="red" />
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     );
   }
@@ -313,6 +349,7 @@ const App = () => {
         addtocart={addtocart}
         updatestate={updatestate}
         StarRating={StarRating}
+        RemoveFromWishlist={RemoveFromWishlist}
       />
       <Nav
         Auth={Auth}
