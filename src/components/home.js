@@ -6,6 +6,8 @@ import { TbDiscount } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
 import { FaArrowRightLong } from "react-icons/fa6";
 import background from "../img/backgroundonejpg.jpg";
+import { Data } from "./SliderData";
+import Carousel from "./Carousel";
 
 import "./home.css";
 
@@ -57,13 +59,14 @@ const Home = ({ products, ShopProduct, Specialoffers }) => {
       <div className="home">
         <div
           className="top-banner"
-          style={{
-            backgroundImage: `url(${background})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
+          //style={{
+          // backgroundImage: `url(${background})`,
+          // backgroundSize: "cover",
+          // backgroundPosition: "center",
+          //  }}
         >
-          <div className="content">
+          {<Carousel images={Data} />}
+          {/*  <div className="content">
             <div className="info">
               <h2>Bring cinematic moments to your living room</h2>
               <p>
@@ -77,7 +80,7 @@ const Home = ({ products, ShopProduct, Specialoffers }) => {
             <div className="img-box">
               <img src="/img/tv77.png" alt="Best gaming console"></img>
             </div>
-          </div>
+          </div>*/}
         </div>
         <div className="about">
           <div className="container">
