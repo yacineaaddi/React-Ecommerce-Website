@@ -1,6 +1,6 @@
 .carousel {
   display: flex;
-  height: 40vh;
+  height: 100vh;
   width: 100%;
   overflow: hidden;
 }
@@ -9,6 +9,9 @@
   position: relative;
   width: 100%;
   height: 100%;
+  background-image: url("../img/homebackground.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 .carousel_card {
@@ -19,7 +22,11 @@
   height: 100%;
   overflow: hidden;
   opacity: 0;
-  pointer-events: none; /*
+  pointer-events: none;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 150px; /*
   transform: translateX(-100%);
   transition: transform 4s ease, opacity 3s ease;*/
 }
@@ -30,7 +37,59 @@
   pointer-events: visible; /*
   transition: transform 4s ease, opacity 3s ease;*/
 }
+.carousel_card .info {
+  width: 60%;
+}
+.carousel_card .info h2 {
+  font-size: 3.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 4.5rem;
+  color: white;
+  font-weight: 800;
+  width: 100%;
+}
+.carousel_card .info p {
+  color: white;
+  margin-top: 15px;
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+.carousel_card .info p span {
+  color: white;
+  font-weight: 700;
+}
+.carousel_card .info button {
+  margin-top: 30px;
+  padding: 10px 20px;
+  background: white;
+  color: #2196f3;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.2s;
+  border: 2px solid transparent;
+  font-size: 1.1rem;
+}
 
+.carousel_card .info button:hover {
+  color: #2196f3;
+  background: none;
+  border: 2px solid #2196f3;
+}
+
+.carousel_card .image {
+  width: 400px;
+  height: 400px;
+}
+.carousel_card .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/*
 .card_image {
   width: 100%;
   object-fit: cover;
@@ -75,7 +134,7 @@
 .carousel_arrow_right {
   right: 15px;
 }
-
+*/
 .carousel_pagination {
   position: absolute;
   bottom: 5px;
@@ -86,7 +145,7 @@
 .pagination_dot {
   height: 10px;
   width: 10px;
-  background-color: #f5f5f5;
+  background-color: steelblue;
   border-radius: 50%;
   display: inline-block;
   margin-left: 10px;
@@ -98,5 +157,5 @@
 }
 
 .pagination_dot-active {
-  background-color: steelblue;
+  background-color: #f5f5f5;
 }

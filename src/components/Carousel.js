@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import "./Carousel.css";
+import { Link } from "react-router-dom";
 
 const Carousel = ({ images }) => {
   const [current, setCurrent] = useState(0);
@@ -21,7 +22,7 @@ const Carousel = ({ images }) => {
     if (autoPlay) {
       setTimeout(() => {
         slideRight();
-      }, 5000);
+      }, 3000);
 
       return () => clearTimeout(timeOut);
     }
@@ -29,13 +30,13 @@ const Carousel = ({ images }) => {
   return (
     <div
       className="carousel"
-      onMouseEnter={() => {
-        setAutoplay(false);
-        clearTimeout(timeOut);
-      }}
-      onMouseLeave={() => {
-        setAutoplay(true);
-      }}
+      // onMouseEnter={() => {
+      //  setAutoplay(false);
+      // clearTimeout(timeOut);
+      //}}
+      // onMouseLeave={() => {
+      //  setAutoplay(true);
+      //}}
     >
       <div className="carousel_wrapper">
         {images.map((image, index) => {
@@ -63,19 +64,29 @@ const Carousel = ({ images }) => {
                 transition: "transform 1s ease-in-out, opacity 1s ease-in",
               }}
             >
-              <img className="card_image" src={image.image} alt="imagebox" />
-              <div className="card_overlay">
-                <h2 className="card_title">{image.title}</h2>
+              <div className="info">
+                <h2>{image.title}</h2>
+                <p>{image.subtext}</p>
+                <p>
+                  Get
+                  <span> {image.discount} % </span>off
+                </p>
+                <Link to="/shop">
+                  <button>Discover Now</button>
+                </Link>
+              </div>
+              <div className="image">
+                <img className="card_image" src={image.image} alt="imagebox" />
               </div>
             </div>
           );
         })}
-        <div className="carousel_arrow_left" onClick={slideLeft}>
+        {/*<div className="carousel_arrow_left" onClick={slideLeft}>
           &lsaquo;
         </div>
         <div className="carousel_arrow_right" onClick={slideRight}>
           &rsaquo;
-        </div>
+        </div>*/}
         <div className="carousel_pagination">
           {images.map((_, index) => {
             return (
