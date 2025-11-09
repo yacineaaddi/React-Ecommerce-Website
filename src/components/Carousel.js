@@ -22,7 +22,7 @@ const Carousel = ({ images }) => {
     if (autoPlay) {
       setTimeout(() => {
         slideRight();
-      }, 3000);
+      }, 9000);
 
       return () => clearTimeout(timeOut);
     }
@@ -66,11 +66,7 @@ const Carousel = ({ images }) => {
             >
               <div className="info">
                 <h2>{image.title}</h2>
-                <p>{image.subtext}</p>
-                <p>
-                  Get
-                  <span> {image.discount} % </span>off
-                </p>
+                <p>{image.discount}</p>
                 <Link to="/shop">
                   <button>Discover Now</button>
                 </Link>

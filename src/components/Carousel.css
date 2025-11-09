@@ -1,6 +1,6 @@
 .carousel {
   display: flex;
-  height: 100vh;
+  height: 91vh;
   width: 100%;
   overflow: hidden;
 }
@@ -26,7 +26,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 50px 150px; /*
+  padding: 50px 160px; /*
   transform: translateX(-100%);
   transition: transform 4s ease, opacity 3s ease;*/
 }
@@ -41,10 +41,10 @@
   width: 60%;
 }
 .carousel_card .info h2 {
-  font-size: 3.7rem;
+  font-size: 3.8rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  line-height: 4.5rem;
+  line-height: 4.9rem;
   color: white;
   font-weight: 800;
   width: 100%;
@@ -81,8 +81,8 @@
 }
 
 .carousel_card .image {
-  width: 400px;
-  height: 400px;
+  width: 420px;
+  height: 420px;
 }
 .carousel_card .image img {
   width: 100%;
