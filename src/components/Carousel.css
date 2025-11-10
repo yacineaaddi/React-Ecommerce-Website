@@ -1,6 +1,6 @@
 .carousel {
   display: flex;
-  height: 91vh;
+  height: 92vh;
   width: 100%;
   overflow: hidden;
 }
@@ -137,7 +137,7 @@
 */
 .carousel_pagination {
   position: absolute;
-  bottom: 5px;
+  bottom: 15px;
   left: 50%;
   transform: translate(-50%, 0);
 }
@@ -158,4 +158,56 @@
 
 .pagination_dot-active {
   background-color: #f5f5f5;
+}
+
+@media (max-width: 1700px) {
+  .carousel_card .info h2 {
+    font-size: 3.2rem;
+  }
+}
+@media (max-width: 1500px) {
+  .carousel_card {
+    flex-direction: column;
+    padding: 20px 30px 65px 30px;
+    gap: 10px;
+    justify-content: space-evenly;
+  }
+  .carousel_card .info {
+    width: 100%;
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .carousel_card .info h2 {
+    text-align: center;
+    font-size: 2.7rem;
+  }
+  .carousel_card .image {
+    width: 25%;
+    min-width: 180px;
+    height: auto;
+  }
+  .carousel_card .info p {
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 850px) {
+  .carousel_card .info h2 {
+    font-size: 1.9rem;
+    line-height: 2.8rem;
+  }
+  .carousel {
+    height: 88vh;
+  }
+  @media (max-width: 650px) {
+    .carousel_card .info h2 {
+      font-size: 1.4rem;
+      line-height: 2.5rem;
+    }
+    .carousel {
+      height: 76vh;
+    }
+  }
 }

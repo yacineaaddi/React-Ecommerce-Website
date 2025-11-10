@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
 import { FaBars } from "react-icons/fa6";
@@ -7,6 +7,8 @@ import { FaShoppingCart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import "./nav.css";
+import useKey from "./usekey";
+import { FiMenu } from "react-icons/fi";
 
 const Nav = ({
   Auth,
@@ -36,6 +38,9 @@ const Nav = ({
     setfiltredProducts(results);
   }, [searchTerm]);
 
+  useKey("Escape", function () {
+    resetSearch();
+  });
   const Logout = () => {
     setAuth(false);
   };
@@ -45,6 +50,13 @@ const Nav = ({
   const navclose = () => {
     SetsideMenu(false);
   };
+
+  const resetSearch = () => {
+    setHideMenu(true);
+    setSearchTerm("");
+    inputEl.current.blur();
+  };
+  const inputEl = useRef(null);
   {
     /*
   return (
@@ -190,6 +202,9 @@ const Nav = ({
   return (
     <>
       <div className="nav">
+        <div className="menu-button" onClick={() => SetsideMenu(() => true)}>
+          <FiMenu />
+        </div>
         <div className="logo">
           <img src="./img/Logo-ElectroPNG.png" alt="Logo"></img>
         </div>
@@ -197,30 +212,34 @@ const Nav = ({
           <li>
             <Link to="/">Home</Link>
           </li>
-          {hidemenu && (
-            <>
-              <li>
-                <Link to="/shop">Shop</Link>
-              </li>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-              <li>
-                <Link to="/contact">Contact</Link>
-              </li>
-            </>
-          )}
+
+          <>
+            <li>
+              <Link to="/shop">Shop</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+          </>
         </ul>
-        <div className="search_bar">
+        <div className={`search_bar ${hidemenu ? "" : "expanded"}`}>
           <input
             type="text"
             placeholder="Search Product"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onFocus={() => setHideMenu(false)}
-            onBlur={() => setHideMenu(true)}
-            className={`search_bar ${hidemenu ? "" : "expanded"}`}
+            onBlur={() => resetSearch()}
+            className="search_input"
+            ref={inputEl}
           ></input>
+
+          <div className="search">
+            <IoSearch />
+          </div>
 
           {searchTerm && (
             <div className="search-result-box">
@@ -232,7 +251,8 @@ const Nav = ({
                     onClick={() => alert("clicked")}
                   >
                     <img src={item.Img} alt={item.Title} width="40" />
-                    <span>{item.Title}</span>
+                    <span>{item.Title.split(" ").slice(0, 5).join(" ")}</span>
+                    <p>{item.Price} $</p>
                   </div>
                 ))
               ) : (
@@ -240,10 +260,6 @@ const Nav = ({
               )}
             </div>
           )}
-
-          <div className="search">
-            <IoSearch />
-          </div>
         </div>
         <div className="sidebar-wishlist">
           <div className="box" onClick={() => setSidebar("cart")}>
@@ -261,20 +277,18 @@ const Nav = ({
             <p>Wishlist</p>
           </div>
         </div>
-        <div className="user-detail">
-          <div className="icon">
-            <FaRegUser />
-          </div>
-          <div className="detail">
-            {Auth ? (
-              <>
+        {Auth && (
+          <>
+            <div className="user-detail">
+              <div className="icon">
+                <FaRegUser />
+              </div>
+              <div className="detail">
                 <h2>{userDetail.Name}</h2>
-              </>
-            ) : (
-              <h2>Account</h2>
-            )}
-          </div>
-        </div>
+              </div>
+            </div>
+          </>
+        )}
 
         <div className="login-signup">
           {Auth ? (

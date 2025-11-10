@@ -8,22 +8,28 @@
   width: 100%;
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  padding: 15px 25px 15px 25px;
+  padding: 15px 22px 15px 22px;
   z-index: 1;
   background-image: url("../img/homebackground1.jpg");
   background-repeat: no-repeat;
   background-size: 100% 600%;
-  border: 1px solid red;
+}
+.nav .menu-button {
+  color: #ffffff;
+  font-size: 1.5rem;
+  display: none;
 }
 .nav .logo {
-  width: 9%;
-  height: 8%;
+  width: 8%;
+  height: 7%;
   transition: 0.5s;
   cursor: pointer;
-  border: 1px solid red;
+  min-width: 130px;
+  margin: 0px 8px;
 }
 .nav .logo img {
   width: 100%;
@@ -37,8 +43,9 @@
   align-items: center;
   margin: 0;
   list-style: none;
-  border: 1px solid red;
+  transition: all 4s ease;
 }
+
 .nav ul li {
   font-size: 1.1rem;
   font-weight: 600;
@@ -54,18 +61,25 @@
 .nav ul li a:hover {
   color: #2196f3;
 }
-
+/*
 .search_bar {
   display: flex;
   position: relative;
   opacity: 1;
-  border: 1px solid red;
-  flex: 0 0 40%;
   transition: flex-basis 0.5s ease;
 }
-
+.nav .search_bar .search {
+  position: absolute;
+  right: 20px;
+  top: 55%;
+  transform: translateY(-50%);
+  color: #ffffff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  z-index: 11;
+}
 .search_bar.expanded {
-  flex: 0 0 50%;
+  flex-basis: 80%;
 }
 .nav .search_bar input {
   width: 100%;
@@ -76,10 +90,51 @@
   z-index: 10;
   background: transparent;
   color: #ffffff;
+}*/
+
+.search_bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* justify-content: flex-end;*/
+  transition: all 0.4s ease;
+  width: 25%;
+  min-width: 310px;
+  /* default width */
 }
+
+.search_bar.expanded {
+  width: 33%; /* expands to the left */
+  /* move it to the left */
+}
+
+/* Input */
+.search_input {
+  width: 100%;
+  padding: 8px 14px;
+  outline: none;
+  border-radius: 15px;
+  border: 2px solid #ffffff;
+  background: #ffffff;
+  color: #2196f3;
+  transition: all 0.4s ease;
+}
+
+/* Search icon */
+.search_bar .search {
+  position: absolute;
+  right: 15px;
+  top: 55%;
+  transform: translateY(-50%);
+  color: #2196f3;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+/*-------------------------------------*/
 .nav .search_bar .search-result-box {
   position: absolute;
-  top: 60px;
+  top: 50px;
   left: 0px;
   width: 100%;
   height: 600px;
@@ -88,7 +143,7 @@
   overflow-y: auto;
   z-index: 1000;
   border-top: none;
-  border: 1px solid #ffffff;
+  border: 1px solid #2196f3;
   z-index: 5;
   padding: 10px;
   border-radius: 10px;
@@ -103,9 +158,14 @@
 .nav .search_bar .search-result-item {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 10px;
   padding: 8px;
   cursor: pointer;
+}
+.nav .search_bar .search-result-item p {
+  margin-left: auto;
+  color: #2196f3;
 }
 
 .nav .search_bar .search-result-item:hover {
@@ -120,21 +180,11 @@
   border-radius: 5px;
   padding-right: 10px;
 }
-.nav .search_bar .search {
-  position: absolute;
-  right: 20px;
-  top: 55%;
-  transform: translateY(-50%);
-  color: #ffffff;
-  font-size: 1.4rem;
-  cursor: pointer;
-  z-index: 11;
-}
+
 .nav .user-detail {
   display: flex;
   justify-content: space-between;
   justify-content: center;
-  border: 1px solid red;
 }
 
 .nav .user-detail .icon {
@@ -164,18 +214,21 @@
   justify-content: space-around;
   align-items: center;
   padding: 10px 20px;
-  gap: 30px; /*
+  gap: 50px;
+  /*
   background: #2196f3;
   border-radius: 6px;*/
 }
 .nav .sidebar-wishlist .box {
   display: flex;
   gap: 20px;
-  border: 1px solid red;
+  color: red;
+  align-items: center;
+  justify-content: center;
 }
 .nav .sidebar-wishlist .box .link {
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #fff;
 }
 .nav .sidebar-wishlist .box .link:hover,
@@ -188,12 +241,14 @@
   font-size: 1rem;
   color: #fff;
 }
+.nav .login-signup {
+  margin-top: -7px;
+}
 .nav .login-signup p,
 .nav .login-signup .link {
   cursor: pointer;
   font-size: 1rem;
   color: #fff;
-  border: 1px solid red;
 }
 .nav .login-signup .link:hover {
   color: #2196f3;
@@ -205,7 +260,7 @@
   display: flex;
   justify-content: space-between;
   background: #eee;
-  border: 1px solid red;
+  
 }
 
 .nav  .top_bar p {
@@ -220,7 +275,7 @@
 
 .nav  .mid_bar {
   width: 100%;
-  border: 1px solid red;
+  
 }
 
 .nav  .mid_bar .content {
@@ -332,7 +387,7 @@
   background: #0163d2;
   padding: 0px;
   flex-wrap: wrap;
-  border: 1px solid red;
+  
 }
 .nav  .bottom_bar .user-detail {
   display: flex;
@@ -415,4 +470,68 @@
   font-size: 1rem;
   color: #fff;
 }
-*/
+*/ /*
+@media (max-width: 1600px) {
+  .nav .sidebar-wishlist .box p {
+    display: none;
+  }
+}*/
+@media (max-width: 1400px) {
+  /*.nav .sidebar-wishlist .box p {
+    display: none;
+  }*/
+  .nav ul {
+    display: none;
+  }
+  .nav .menu-button {
+    display: inline-block;
+  }
+  .nav .menu-button {
+    display: block;
+  }
+  .nav .user-detail {
+    display: none;
+  }
+  .search_bar.expanded {
+    width: 33%; /* expands to the left */
+    /* move it to the left */
+  }
+  .nav .search_bar .search-result-box span,
+  .search_bar .search-result-box p {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 1000px) {
+  .nav .sidebar-wishlist .box p {
+    display: none;
+  }
+  .search_bar.expanded {
+    width: 25%;
+  }
+}
+@media (max-width: 850px) {
+  .search_bar {
+    order: 5;
+    margin: 15px 0px;
+    width: 100%;
+  }
+  .search_bar.expanded {
+    width: 100%;
+  }
+
+  .nav .login-signup .link {
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #fff;
+  }
+  .nav .logo {
+    width: 7%;
+    height: 7%;
+    transition: 0.5s;
+    cursor: pointer;
+    min-width: 110px;
+  }
+  .nav .sidebar-wishlist {
+    gap: 30px;
+  }
+}
