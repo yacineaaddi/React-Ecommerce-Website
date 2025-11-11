@@ -13,11 +13,11 @@ const Carousel = ({ images }) => {
   const slideRight = () => {
     setCurrent(current === images.length - 1 ? 0 : current + 1);
   };
-
+  /*
   const slideLeft = () => {
     setCurrent(current === 0 ? images.length - 1 : current - 1);
   };
-
+*/
   useEffect(() => {
     if (autoPlay) {
       setTimeout(() => {
