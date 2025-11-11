@@ -184,7 +184,7 @@ const SideBar = ({
   };
 
   useEffect(() => {
-    fetchcartdata();
+    fetchcartdata(); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Auth]);
 
   const fetchcartdata = async () => {
@@ -203,7 +203,7 @@ const SideBar = ({
   };
 
   useEffect(() => {
-    fetchWishListdata();
+    fetchWishListdata(); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Auth]);
 
   const fetchWishListdata = async () => {

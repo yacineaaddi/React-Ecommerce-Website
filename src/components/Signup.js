@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
 import { db, app } from "./firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
-import useKey from "./usekey";
 import "./auth.css";
 
 const Signup = ({ setUserDetail, setAuth }) => {
@@ -16,7 +15,6 @@ const Signup = ({ setUserDetail, setAuth }) => {
   const dbref = collection(db, "User");
 
   // Creating New User Account On Firebase
-
   const Authentication = async (e) => {
     // Guard Clause to prevent empty values
     if (

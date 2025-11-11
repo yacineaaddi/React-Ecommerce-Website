@@ -66,7 +66,7 @@ const Shop = ({ products, ShopProduct }) => {
       ).sort((a, b) => (priceOrder ? b.Price - a.Price : a.Price - b.Price));
       settemProducts(sortedByPrice);
       setRatingOrder(null);
-    }
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [priceOrder]);
   useEffect(() => {
     if (ratingOrder !== null) {
@@ -77,7 +77,7 @@ const Shop = ({ products, ShopProduct }) => {
       );
       settemProducts(sortedByRate);
       setPriceOrder(null);
-    }
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ratingOrder]);
 
   useEffect(() => {
@@ -96,11 +96,11 @@ const Shop = ({ products, ShopProduct }) => {
       // show all if unchecked
       setinStockProd([]);
       console.log("false");
-    }
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inStock]);
 
   useEffect(() => {
-    fetchProducts();
+    fetchProducts(); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [products]);
 
   useEffect(() => {

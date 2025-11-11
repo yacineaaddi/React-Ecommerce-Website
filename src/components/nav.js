@@ -22,7 +22,7 @@ const Nav = ({
   const [searchTerm, setSearchTerm] = useState("");
   const [filtredProducts, setfiltredProducts] = useState([]);
   const [hidemenu, setHideMenu] = useState(true);
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (searchTerm.trim() === "") {
       setfiltredProducts([]);
@@ -34,6 +34,7 @@ const Nav = ({
         item.Cat.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setfiltredProducts(results);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchTerm]);
 
   useKey("Escape", function () {

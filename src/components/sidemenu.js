@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
 import "./sidemenu.css";

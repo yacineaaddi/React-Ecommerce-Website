@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { RiRefund2Line } from "react-icons/ri";
 import { TbDiscount } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
 import { FaArrowRightLong } from "react-icons/fa6";
-import background from "../img/backgroundonejpg.jpg";
 import { Data } from "./SliderData";
 import Carousel from "./Carousel";
 
@@ -50,8 +48,9 @@ const Home = ({ products, ShopProduct, Specialoffers }) => {
     setSales(salefilter);
     setBestsellers(newproduct);
   }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    fetchData();
+    fetchData(); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
