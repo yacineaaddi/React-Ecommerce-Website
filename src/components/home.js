@@ -12,6 +12,7 @@ import "./home.css";
 const Home = ({ products, ShopProduct, Specialoffers }) => {
   const [sale, setSales] = useState([]);
   const [Bestsellers, setBestsellers] = useState([]);
+  const [toprated, setToprated] = useState([]);
 
   function Brand({ id }) {
     return (
@@ -45,8 +46,13 @@ const Home = ({ products, ShopProduct, Specialoffers }) => {
     const newproduct = products.filter(
       (currElm) => currElm.SubCat === "Bestsellers"
     );
+    const topratedProduct = products
+      .filter((currElm) => currElm.Rating === 5)
+      .slice(0, 5);
+
     setSales(salefilter);
     setBestsellers(newproduct);
+    setToprated(topratedProduct);
   }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -123,7 +129,7 @@ const Home = ({ products, ShopProduct, Specialoffers }) => {
         </div>
         <div className="sale-product">
           <h2>Special offers</h2>
-          <div className="container">
+          <div className="prod-container">
             {sale?.map((currEl) => (
               <Specialoffers currEl={currEl} key={currEl.id} />
             ))}
@@ -155,14 +161,23 @@ const Home = ({ products, ShopProduct, Specialoffers }) => {
             </div>
           </div>
         </div>
-        <div className="featured-product">
+        <div className="toprated-product">
+          <h2>Top Rated</h2>
+          <div className="prod-container">
+            {toprated?.map((currEl) => (
+              <ShopProduct currEl={currEl} key={currEl.id} />
+            ))}
+          </div>
+        </div>
+        <div className="bestseller-product">
           <h2>Best Sellers</h2>
-          <div className="container">
+          <div className="prod-container">
             {Bestsellers?.map((currEl) => (
               <ShopProduct currEl={currEl} key={currEl.id} />
             ))}
           </div>
         </div>
+
         <div className="newsletter">
           <div className="container">
             <div className="main">

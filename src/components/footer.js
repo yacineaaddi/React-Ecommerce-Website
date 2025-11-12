@@ -1,4 +1,3 @@
-import React from "react";
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaSquareInstagram } from "react-icons/fa6";
 import { AiFillTikTok } from "react-icons/ai";
@@ -13,7 +12,7 @@ const Footer = () => {
         <div className="upper-part">
           <div className="detail-box">
             <div className="logo">
-              <img src="./img/Logo-Electro.png"></img>
+              <img src="./img/Logo-Electro.png" alt=""></img>
             </div>
             <div className="detail">
               <p>
