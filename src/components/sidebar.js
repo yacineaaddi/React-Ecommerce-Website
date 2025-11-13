@@ -29,8 +29,6 @@ const SideBar = ({
   RemoveFromWishlist,
 }) => {
   const [coupon, setCoupon] = useState(false);
-  const cartdbref = collection(db, "cartData");
-  const wishListdbref = collection(db, "wishList");
   const Subtotal = cart.reduce((sum, p) => sum + +(p.Price * p.Qty), 0);
 
   function SidebarProduct({ currEl }) {
@@ -137,14 +135,13 @@ const SideBar = ({
     if (data.State !== "Available") {
       alert("Out of stock");
       return;
-    } else {
-      try {
-        const cartdataref = doc(cartdbref, data.id);
-        await updateDoc(cartdataref, { Qty: data.Qty + 1 });
-        updatestate();
-      } catch (error) {
-        console.error("Error increasing Quantity: ", error);
-      }
+    }
+    try {
+      const cartdataref = doc(db, "users", userDetail.id, "cart", data.id);
+      await updateDoc(cartdataref, { Qty: data.Qty + 1 });
+      updatestate();
+    } catch (error) {
+      console.error("Error increasing Quantity: ", error);
     }
   };
 
@@ -152,31 +149,22 @@ const SideBar = ({
     if (data.State !== "Available") {
       alert("Out of stock");
       return;
-    } else {
-      try {
-        if (data.Qty <= 1) {
-          return;
-        } else {
-          const cartdataref = doc(cartdbref, data.id);
-          await updateDoc(cartdataref, { Qty: data.Qty - 1 });
-          updatestate();
-        }
-      } catch (error) {
-        console.error("Error decreasing Quantity: ", error);
+    }
+    try {
+      if (data.Qty > 1) {
+        const cartdataref = doc(db, "users", userDetail.id, "cart", data.id);
+        await updateDoc(cartdataref, { Qty: data.Qty - 1 });
+        updatestate();
       }
+    } catch (error) {
+      console.error("Error decreasing Quantity: ", error);
     }
   };
 
   const RemoveFromCart = async (data) => {
     try {
-      await deleteDoc(doc(cartdbref, data.id));
-
-      const updatedCartData = await getDocs(cartdbref);
-      const updatedCart = updatedCartData.docs
-        .map((doc) => ({ id: doc.id, ...doc.data() }))
-        .filter((x) => x.userId === userDetail.id);
-
-      setCart(updatedCart);
+      await deleteDoc(doc(db, "users", userDetail.id, "cart", data.id));
+      fetchcartdata();
       alert("Product removed successfully from your cart!");
     } catch (error) {
       console.error("Error deleting product: ", error);
@@ -188,18 +176,15 @@ const SideBar = ({
   }, [Auth]);
 
   const fetchcartdata = async () => {
-    const cartdata = await getDocs(cartdbref);
-    //Convert Firestore documents into plain JavaScript objects
+    if (!userDetail?.id) return; // <-- prevent error
+    const cartdata = await getDocs(
+      collection(db, "users", userDetail.id, "cart")
+    );
     const cartsnap = cartdata.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
     }));
-    //Check if this product already exists in the user’s cart
-    const findcartdata = cartsnap.filter((x) => {
-      return userDetail.id === x.userId;
-    }); //IIIIIIINFINIT LOOP
-    setCart(findcartdata);
-    console.log(findcartdata);
+    setCart(cartsnap);
   };
 
   useEffect(() => {
@@ -207,17 +192,15 @@ const SideBar = ({
   }, [Auth]);
 
   const fetchWishListdata = async () => {
-    const cartdata = await getDocs(wishListdbref);
-    //Convert Firestore documents into plain JavaScript objects
-    const wishlistsnap = cartdata.docs.map((doc) => ({
+    if (!userDetail?.id) return; // <-- prevent error
+    const wishlistdata = await getDocs(
+      collection(db, "users", userDetail.id, "wishlist")
+    );
+    const wishlistsnap = wishlistdata.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
     }));
-    //Check if this product already exists in the user’s cart
-    const findwishListdata = wishlistsnap.filter((x) => {
-      return userDetail.id === x.userId;
-    });
-    setWishlist(findwishListdata);
+    setWishlist(wishlistsnap);
   };
 
   return (

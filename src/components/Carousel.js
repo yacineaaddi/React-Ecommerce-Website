@@ -8,7 +8,6 @@ const Carousel = ({ images }) => {
   const [current, setCurrent] = useState(0);
   const [autoPlay, setAutoplay] = useState(true);
   let timeOut = null;
-  console.log(images);
 
   const slideRight = () => {
     setCurrent(current === images.length - 1 ? 0 : current + 1);

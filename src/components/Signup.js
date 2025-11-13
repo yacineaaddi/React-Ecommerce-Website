@@ -2,63 +2,49 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
 import { db, app } from "./firebase";
-import { collection, addDoc, getDocs } from "firebase/firestore";
 import "./auth.css";
 
-const Signup = ({ setUserDetail, setAuth }) => {
+const Signup = ({ setUserDetail, setAuth, userDetail }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const dbref = collection(db, "User");
-
   // Creating New User Account On Firebase
   const Authentication = async (e) => {
-    // Guard Clause to prevent empty values
-    if (
-      name.length === 0 ||
-      email.length === 0 ||
-      phone.length === 0 ||
-      password.length === 0
-    ) {
-      alert("All field are required");
-    } else {
-      try {
-        e.preventDefault();
-        const creatAccount = await app
-          .auth()
-          .createUserWithEmailAndPassword(email, password);
-        if (creatAccount) {
-          // Storing The User Data
-          const userInfo = await addDoc(dbref, {
-            Name: name,
-            Email: email,
-            Phone: phone,
-          });
-          if (userInfo) {
-            const getData = await getDocs(dbref);
-            const data = getData.docs.map((doc) => ({
-              id: doc.id,
-              ...doc.data(),
-            }));
-            console.log(data);
-            const userdata = data.findLast((info) => {
-              return info.Email === email;
-            });
-            setUserDetail(userdata);
-            alert("User Registre Successfully");
-            setAuth(true);
-            navigate("/");
-          }
-        }
-        /* } else {
-          alert("Error While Registring User");
-        }*/
-      } catch (err) {
-        console.log(err.message);
-      }
+    e.preventDefault();
+    if (!name || !email || !phone || !password) {
+      alert("All fields are required");
+      return;
+    }
+
+    try {
+      // 1️⃣ Create user account (Firebase Auth)
+      const createAccount = await app
+        .auth()
+        .createUserWithEmailAndPassword(email, password);
+      const user = createAccount.user; // ✅ This is the authenticated user
+
+      // 2️⃣ Write user data to Firestore using UID as document ID
+      const userRef = db.collection("users").doc(user.uid);
+      const newUserData = {
+        Name: name,
+        Email: email,
+        Phone: phone,
+        CreatedAt: new Date(),
+      };
+      await userRef.set(newUserData);
+
+      // 3️⃣ Update local state
+      setUserDetail({ id: user.uid, ...newUserData });
+
+      alert("User Registered Successfully");
+      setAuth(true);
+      navigate("/");
+    } catch (err) {
+      console.error("Error creating user:", err.message);
+      alert(err.message);
     }
   };
 
@@ -107,7 +93,7 @@ const Signup = ({ setUserDetail, setAuth }) => {
                 onChange={(e) => setPassword(e.target.value)}
               ></input>
             </div>
-            <button>Register</button>
+            <button onClick={(e) => Authentication(e)}>Register</button>
             <p>
               Already have an account ? <Link to="/login">Click Here</Link>
             </p>

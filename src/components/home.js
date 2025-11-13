@@ -62,31 +62,7 @@ const Home = ({ products, ShopProduct, Specialoffers }) => {
   return (
     <>
       <div className="home">
-        <div
-          className="top-banner"
-          //style={{
-          // backgroundImage: `url(${background})`,
-          // backgroundSize: "cover",
-          // backgroundPosition: "center",
-          //  }}
-        >
-          {<Carousel images={Data} />}
-          {/*  <div className="content">
-            <div className="info">
-              <h2>Bring cinematic moments to your living room</h2>
-              <p>
-                Get
-                <span> 30% off </span>This week
-              </p>
-              <Link to="/shop">
-                <button>Discover Now</button>
-              </Link>
-            </div>
-            <div className="img-box">
-              <img src="/img/tv77.png" alt="Best gaming console"></img>
-            </div>
-          </div>*/}
-        </div>
+        <div className="top-banner">{<Carousel images={Data} />}</div>
         <div className="about">
           <div className="container">
             <div className="box">

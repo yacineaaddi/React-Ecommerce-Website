@@ -5,7 +5,7 @@ import Nav from "./components/nav";
 import SideBar from "./components/sidebar";
 import Product from "./components/product";
 import "./components/home.css";
-import { CiHeart, CiSearch } from "react-icons/ci";
+import { CiSearch } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { TfiReload } from "react-icons/tfi";
 import Footer from "./components/footer";
@@ -19,7 +19,6 @@ import {
   addDoc,
   getDocs,
   deleteDoc,
-  updateDoc,
 } from "firebase/firestore";
 
 import "./App.css";
@@ -28,7 +27,6 @@ const App = () => {
   const [userDetail, setUserDetail] = useState("");
   const [Auth, setAuth] = useState(false);
   const [products, setProducts] = useState(Product);
-  const [search, setSearch] = useState("");
   const [sidebar, setSidebar] = useState(false);
   const [sideMenu, SetsideMenu] = useState(false);
   const [cart, setCart] = useState([]);
@@ -68,7 +66,9 @@ const App = () => {
   }
 
   const updatestate = async () => {
-    const fetchcartdata = await getDocs(cartdbref);
+    if (!userDetail?.id) return;
+    const cartRef = collection(db, "users", userDetail.id, "cart");
+    const fetchcartdata = await getDocs(cartRef);
     const cartsnap = fetchcartdata.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
@@ -76,118 +76,107 @@ const App = () => {
     setCart(cartsnap);
   };
   const addtocart = async (data) => {
-    //1-Check if user is logged in
-    if (Auth === false) {
-      //2-stop the function if not logged in
+    if (!Auth) {
       alert("Please Log In");
       return;
-    } else {
-      //3-Fetch all existing cart documents from Firestore
-      const fetchcartdata = await getDocs(cartdbref);
-      //4-Convert Firestore documents into plain JavaScript objects
-      const cartsnap = fetchcartdata.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      //5-Check if this product already exists in the user’s cart
-      const findcartdata = cartsnap.find((x) => {
-        return userDetail.id === x.userId && data.id === x.CartId;
-      });
+    }
+    if (!userDetail?.id) return;
 
-      //6-If product already exists in the cart, just update its quantity
-      if (findcartdata) {
-        alert("Product already in cart");
-      }
-      //7-If product doesn’t exist, add it as a new document
-      else {
-        const addCartData = await addDoc(cartdbref, {
-          userId: userDetail.id,
-          CartId: data.id,
-          Title: data.Title,
-          Cat: data.Cat,
-          Price: data.Price,
-          Img: data.Img,
-          SubCat: data.SubCat,
-          Brand: data.Brand,
-          Model: data.Model,
-          WebCode: data.WebCode,
-          Rating: data.Rating,
-          NumRev: data.NumRev,
-          State: data.State,
-          Qty: 1,
-        });
-        updatestate();
-        alert("Product Added To Cart");
-      }
+    const cartRef = collection(db, "users", userDetail.id, "cart");
+    const fetchcartdata = await getDocs(cartRef);
+    const cartsnap = fetchcartdata.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    const findcartdata = cartsnap.find((x) => x.CartId === data.id);
+
+    if (findcartdata) {
+      alert("Product already in cart");
+    } else {
+      await addDoc(cartRef, {
+        CartId: data.id,
+        Title: data.Title,
+        Cat: data.Cat,
+        Price: data.Price,
+        Img: data.Img,
+        SubCat: data.SubCat,
+        Brand: data.Brand,
+        Model: data.Model,
+        WebCode: data.WebCode,
+        Rating: data.Rating,
+        NumRev: data.NumRev,
+        State: data.State,
+        Qty: 1,
+      });
+      updatestate();
+      alert("Product Added To Cart");
     }
   };
 
   const RemoveFromWishlist = async (data) => {
+    if (!userDetail?.id) return;
     try {
-      await deleteDoc(doc(wishListdbref, data.id));
+      const wishlistRef = doc(db, "users", userDetail.id, "wishlist", data.id);
+      await deleteDoc(wishlistRef);
 
-      const updatedWishlistData = await getDocs(wishListdbref);
-      const updatedWishlist = updatedWishlistData.docs
-        .map((doc) => ({ id: doc.id, ...doc.data() }))
-        .filter((x) => x.userId === userDetail.id);
-
+      const updatedWishlistData = await getDocs(
+        collection(db, "users", userDetail.id, "wishlist")
+      );
+      const updatedWishlist = updatedWishlistData.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
       setWishlist(updatedWishlist);
       alert("Product removed successfully from your wishlist!");
     } catch (error) {
       console.error("Error deleting product: ", error);
     }
   };
+
+  // Add product to wishlist
   const addtowishlist = async (data) => {
-    //Check if user is logged in
-    if (Auth === false) {
-      // stop the function if not logged in
+    if (!Auth) {
       alert("Please Log In");
       return;
+    }
+    if (!userDetail?.id) return;
+
+    const wishlistRef = collection(db, "users", userDetail.id, "wishlist");
+    const fetchWishlistData = await getDocs(wishlistRef);
+    const wishlistSnap = fetchWishlistData.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    const findwishlistdata = wishlistSnap.find((x) => x.CartId === data.id);
+
+    if (findwishlistdata) {
+      RemoveFromWishlist(findwishlistdata);
     } else {
-      //1-Fetch all existing cart documents from Firestore
-      const fetchwListchdata = await getDocs(wishListdbref);
-      //Convert Firestore documents into plain JavaScript objects
-      const cartsnap = fetchwListchdata.docs.map((doc) => ({
+      await addDoc(wishlistRef, {
+        CartId: data.id,
+        Title: data.Title,
+        Cat: data.Cat,
+        Price: data.Price,
+        Img: data.Img,
+        SubCat: data.SubCat,
+        Brand: data.Brand,
+        Model: data.Model,
+        WebCode: data.WebCode,
+        Rating: data.Rating,
+        NumRev: data.NumRev,
+        State: data.State,
+        Qty: 1,
+      });
+
+      const updatedWishlistData = await getDocs(wishlistRef);
+      const updatedWishlist = updatedWishlistData.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
-      //Check if this product already exists in the user’s cart
-      const findwishlistdata = cartsnap.find((x) => {
-        return userDetail.id === x.userId && data.id === x.CartId;
-      });
-
-      //2-If product already exists in the cart, just update its quantity
-      if (findwishlistdata) {
-        RemoveFromWishlist(findwishlistdata);
-      }
-      //If product doesn’t exist, add it as a new document
-      else {
-        //3
-        const addWishlistData = await addDoc(wishListdbref, {
-          userId: userDetail.id,
-          CartId: data.id,
-          Title: data.Title,
-          Cat: data.Cat,
-          Price: data.Price,
-          Img: data.Img,
-          SubCat: data.SubCat,
-          Brand: data.Brand,
-          Model: data.Model,
-          WebCode: data.WebCode,
-          Rating: data.Rating,
-          NumRev: data.NumRev,
-          State: data.State,
-          Qty: 1,
-        }); //1-Fetch all existing cart documents from Firestore
-        const fetchwListchdata = await getDocs(wishListdbref);
-        //Convert Firestore documents into plain JavaScript objects
-        const cartsnap = fetchwListchdata.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setWishlist(cartsnap);
-        alert("Product Added To Wishlist");
-      }
+      setWishlist(updatedWishlist);
+      alert("Product Added To Wishlist");
     }
   };
   function OneProduct({ currEl }) {
@@ -355,10 +344,7 @@ const App = () => {
         Auth={Auth}
         setAuth={setAuth}
         userDetail={userDetail}
-        search={search}
-        setSearch={setSearch}
         setSidebar={setSidebar}
-        sideMenu={sideMenu}
         SetsideMenu={SetsideMenu}
         products={products}
       />
@@ -371,6 +357,7 @@ const App = () => {
         setProducts={setProducts}
         ShopProduct={ShopProduct}
         Specialoffers={Specialoffers}
+        userDetail={userDetail}
       />
       <Footer />
     </BrowserRouter>

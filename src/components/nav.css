@@ -61,51 +61,18 @@
 .nav ul li a:hover {
   color: #2196f3;
 }
-/*
-.search_bar {
-  display: flex;
-  position: relative;
-  opacity: 1;
-  transition: flex-basis 0.5s ease;
-}
-.nav .search_bar .search {
-  position: absolute;
-  right: 20px;
-  top: 55%;
-  transform: translateY(-50%);
-  color: #ffffff;
-  font-size: 1.4rem;
-  cursor: pointer;
-  z-index: 11;
-}
-.search_bar.expanded {
-  flex-basis: 80%;
-}
-.nav .search_bar input {
-  width: 100%;
-  padding: 8px 14px;
-  outline: none;
-  border-radius: 15px;
-  border: 2px solid #ffffff;
-  z-index: 10;
-  background: transparent;
-  color: #ffffff;
-}*/
 
 .search_bar {
   position: relative;
   display: flex;
   align-items: center;
-  /* justify-content: flex-end;*/
   transition: all 0.4s ease;
   width: 25%;
   min-width: 310px;
-  /* default width */
 }
 
 .search_bar.expanded {
-  width: 33%; /* expands to the left */
-  /* move it to the left */
+  width: 33%;
 }
 
 /* Input */
@@ -131,7 +98,6 @@
   cursor: pointer;
 }
 
-/*-------------------------------------*/
 .nav .search_bar .search-result-box {
   position: absolute;
   top: 50px;
@@ -215,9 +181,6 @@
   align-items: center;
   padding: 10px 20px;
   gap: 50px;
-  /*
-  background: #2196f3;
-  border-radius: 6px;*/
 }
 .nav .sidebar-wishlist .box {
   display: flex;
@@ -253,233 +216,7 @@
 .nav .login-signup .link:hover {
   color: #2196f3;
 }
-/*
-.nav  .top_bar {
-  padding: 17px 25px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  background: #eee;
-  
-}
-
-.nav  .top_bar p {
-  color: #757575;
-  font-weight: 600;
-  font-size: 15px;
-}
-
-.nav  .top_bar .link {
-  color: #757575;
-}
-
-.nav  .mid_bar {
-  width: 100%;
-  
-}
-
-.nav  .mid_bar .content {
-  display: flex;
-  justify-content: space-between;
-  background: #fff;
-  padding: 15px 15px;
-}
-.nav  .mid_bar .content .navicon {
-  display: none;
-}
-
-.nav  .mid_bar .content .logo img {
-  width: 150px;
-  transition: 0.5s;
-  cursor: pointer;
-}
-.nav  .mid_bar .content .search_bar {
-  display: flex;
-  position: relative;
-  opacity: 1;
-}
-.nav  .mid_bar .content .search_bar input {
-  width: 650px;
-  padding: 8px 14px;
-  outline: none;
-  border-radius: 15px;
-  border: 1px solid #2196f3;
-  z-index: 10;
-}
-.nav  .mid_bar .content .search_bar .search-result-box {
-  position: absolute;
-  top: 60px;
-  left: 0px;
-  width: 100%;
-  height: 600px;
-  background: #fff;
-  max-height: 300px;
-  overflow-y: auto;
-  z-index: 1000;
-  border-top: none;
-  border: 1px solid #2196f3;
-  z-index: 5;
-  padding: 10px;
-  border-radius: 10px;
-  box-sizing: border-box;
-}
-.nav  .mid_bar .content .search_bar .search-result-box span,
-.search_bar .search-result-box p {
-  font-size: 0.9rem;
-  color: #757575;
-  text-align: left;
-}
-.nav  .mid_bar .content .search_bar .search-result-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px;
-  cursor: pointer;
-}
-
-.nav  .mid_bar .content .search_bar .search-result-item:hover {
-  background: #f5f5f5;
-}
-.search-result-box::-webkit-scrollbar {
-  width: 6px;
-}
-
-.search-result-box::-webkit-scrollbar-thumb {
-  background: #2196f3;
-  border-radius: 5px;
-  padding-right: 10px;
-}
-
-.nav  .bottom_bar p {
-  color: #fff;
-  font-size: 12px;
-}
-.nav  .mid_bar .content .search_bar .search {
-  position: absolute;
-  right: 20px;
-  top: 55%;
-  transform: translateY(-50%);
-  color: #2196f3;
-  font-size: 1.4rem;
-  cursor: pointer;
-  z-index: 11;
-}
-.nav  .mid_bar .content .icons {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-}
-.nav  .mid_bar .content .icons .icon .link {
-  padding: 10px 12px;
-  color: #2196f3;
-  border: 1px solid #bdbdbd;
-  border-radius: 7px;
-  font-size: 19px;
-  cursor: pointer;
-  font-weight: 800;
-}
-.nav  .bottom_bar {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  background: #0163d2;
-  padding: 0px;
-  flex-wrap: wrap;
-  
-}
-.nav  .bottom_bar .user-detail {
-  display: flex;
-  justify-content: space-between;
-  justify-content: center;
-  background: #2196f3;
-  padding: 17px 35px;
-  border-radius: 6px;
-}
-
-.nav  .bottom_bar .user-detail .icon {
-  color: #fff;
-  font-size: 18px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-}
-
-.nav  .bottom_bar .user-detail .detail {
-  margin-left: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: left;
-  flex-direction: column;
-}
-.nav  .bottom_bar .user-detail .detail h2 {
-  color: #fff;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-}
-.nav  .bottom_bar p {
-  color: #fff;
-  font-size: 12px;
-}
-
-.nav  .bottom_bar ul {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-  margin: 0;
-  list-style: none;
-}
-.nav  .bottom_bar ul li {
-  font-size: 1px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1rem;
-}
-.nav  .bottom_bar ul li a {
-  color: #ffffff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.nav  .bottom_bar ul li a:hover {
-  color: #a9f406;
-}
-.nav  .bottom_bar .offer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  padding: 10px 20px;
-  gap: 20px;
-  background: #2196f3;
-  border-radius: 6px;
-}
-.nav  .bottom_bar .offer .box {
-  display: flex;
-  gap: 10px;
-}
-.nav  .bottom_bar .offer .box .link {
-  cursor: pointer;
-  font-size: 1rem;
-  color: #fff;
-}
-.nav  .bottom_bar .offer .box p {
-  cursor: pointer;
-  font-size: 1rem;
-  color: #fff;
-}
-*/ /*
-@media (max-width: 1600px) {
-  .nav .sidebar-wishlist .box p {
-    display: none;
-  }
-}*/
 @media (max-width: 1400px) {
-  /*.nav .sidebar-wishlist .box p {
-    display: none;
-  }*/
   .nav ul {
     display: none;
   }
@@ -493,8 +230,7 @@
     display: none;
   }
   .search_bar.expanded {
-    width: 33%; /* expands to the left */
-    /* move it to the left */
+    width: 33%;
   }
   .nav .search_bar .search-result-box span,
   .search_bar .search-result-box p {
@@ -521,7 +257,7 @@
 
   .nav .login-signup .link {
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: #fff;
   }
   .nav .logo {

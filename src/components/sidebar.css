@@ -56,18 +56,13 @@
   border-radius: 6px;
   color: #eeeeee;
   background: #2196f3;
-} /*
-.sidebar .line {
-  border-bottom: 1px solid #2196f3;
-  width: 400px;
-}*/
+}
 .sidebar .title p {
   font-size: 1.2rem;
 }
 .sidebar .title > :first-child {
   font-size: 1.2rem;
 }
-
 .sidebar .products {
   width: 90%;
 
@@ -153,17 +148,11 @@
   background: none;
 }
 
-.sidebar
-  .products
-  .box
-  .product-details
-  .product-detail
-  .product-qty
-  input::-webkit-inner-spin-button {
+.product-qty input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.sidebar .products .box .product-details .product-detail .product-qty button {
+.product-qty button {
   background: #2196f3;
   color: white;
   border: none;
@@ -187,33 +176,27 @@
   border-bottom-right-radius: 8px;
 }
 
-.sidebar
-  .products
-  .box
-  .product-details
-  .product-detail
-  .product-qty
-  button:hover {
+.product-qty button:hover {
   background: #0056b3;
 }
 
-.sidebar .products .box .product-details .delete {
+.product-details .delete {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: space-between;
   width: 17%;
 }
-.sidebar .products .box .product-details .delete .deleteBtn {
+.product-details .delete .deleteBtn {
   font-size: 1.5rem;
   color: #2196f3;
   cursor: pointer;
 }
-.sidebar .products .box .product-details .delete p {
+.product-details .delete p {
   font-size: 0.9rem;
   color: #2196f3;
 }
-.sidebar .products .box .add-to-cart {
+.box .add-to-cart {
   align-self: flex-end;
   text-align: center;
   cursor: pointer;
@@ -225,7 +208,7 @@
   font-size: 0.95rem;
   border: 1px solid transparent;
 }
-.sidebar .products .box .add-to-cart:hover {
+.box .add-to-cart:hover {
   color: #2196f3;
   background: none;
   border: 1px solid #2196f3;
@@ -250,11 +233,11 @@
   color: #757575;
   width: 45%;
 }
-.sidebar .checkout h1 {
+.checkout h1 {
   align-self: left;
   font-size: 1.3rem;
 }
-.sidebar .checkout-details {
+.checkout-details {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

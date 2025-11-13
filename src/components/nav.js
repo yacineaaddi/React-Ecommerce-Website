@@ -12,17 +12,13 @@ const Nav = ({
   Auth,
   setAuth,
   userDetail,
-  search,
-  setSearch,
   setSidebar,
-  sideMenu,
   SetsideMenu,
   products,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filtredProducts, setfiltredProducts] = useState([]);
   const [hidemenu, setHideMenu] = useState(true);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (searchTerm.trim() === "") {
       setfiltredProducts([]);
@@ -42,13 +38,7 @@ const Nav = ({
   });
   const Logout = () => {
     setAuth(false);
-  }; /*
-  const navopen = () => {
-    SetsideMenu(true);
   };
-  const navclose = () => {
-    SetsideMenu(false);
-  };*/
 
   const resetSearch = () => {
     setHideMenu(true);

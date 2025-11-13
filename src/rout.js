@@ -13,6 +13,7 @@ const Rout = ({
   setProducts,
   ShopProduct,
   Specialoffers,
+  userDetail,
 }) => {
   return (
     <>
@@ -28,6 +29,7 @@ const Rout = ({
               setUserDetail={setUserDetail}
               setAuth={setAuth}
               Auth={Auth}
+              userDetail={userDetail}
             />
           }
         />
