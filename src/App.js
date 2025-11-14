@@ -12,7 +12,6 @@ import Footer from "./components/footer";
 import StarRating from "./components/starRating";
 import SideMenu from "./components/sidemenu";
 import { db } from "./components/firebase";
-import useKey from "./components/usekey";
 import {
   doc,
   collection,
@@ -31,13 +30,6 @@ const App = () => {
   const [sideMenu, SetsideMenu] = useState(false);
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([]);
-  const cartdbref = collection(db, "cartData");
-  const wishListdbref = collection(db, "wishList");
-
-  useKey("Escape", function () {
-    SetsideMenu(false);
-    setSidebar(false);
-  });
 
   useEffect(() => {
     const isAnyOpen = sidebar || sideMenu;
@@ -76,11 +68,10 @@ const App = () => {
     setCart(cartsnap);
   };
   const addtocart = async (data) => {
-    if (!Auth) {
+    if (!Auth || !userDetail?.id) {
       alert("Please Log In");
       return;
     }
-    if (!userDetail?.id) return;
 
     const cartRef = collection(db, "users", userDetail.id, "cart");
     const fetchcartdata = await getDocs(cartRef);
@@ -117,16 +108,20 @@ const App = () => {
   const RemoveFromWishlist = async (data) => {
     if (!userDetail?.id) return;
     try {
+      //Build the Firestore reference to the exact wishlist item
       const wishlistRef = doc(db, "users", userDetail.id, "wishlist", data.id);
+      //Deletes the product from the user's wishlist
       await deleteDoc(wishlistRef);
-
+      //Re-fetch the updated wishlist, Reads all remaining wishlist items belonging to this user
       const updatedWishlistData = await getDocs(
         collection(db, "users", userDetail.id, "wishlist")
       );
+      //Turns Firestore documents into plain objects
       const updatedWishlist = updatedWishlistData.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
+      //Update your React state
       setWishlist(updatedWishlist);
       alert("Product removed successfully from your wishlist!");
     } catch (error) {

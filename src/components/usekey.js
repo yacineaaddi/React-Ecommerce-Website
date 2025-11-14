@@ -8,9 +8,9 @@ export default function useKey(key, action) {
           action();
         }
       }
-      document.addEventListener("keydown", callback);
+      document.addEventListener("keyup", callback);
       return function () {
-        document.removeEventListener("keydown", callback);
+        document.removeEventListener("keyup", callback);
       };
     },
     [action, key]

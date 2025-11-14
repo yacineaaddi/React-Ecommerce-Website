@@ -1,10 +1,22 @@
 import { Link } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
 import "./sidemenu.css";
+import useKey from "./usekey";
+import { useRef } from "react";
 
 const SideMenu = ({ sideMenu, SetsideMenu, userDetail, Auth }) => {
+  const sidemenu = useRef();
+  /*
+  useKey("Escape", function () {
+    if (!sidemenu.current.classList.contains("hidden")) {
+      SetsideMenu(false);
+      console.log(2);
+    } else {
+      return;
+    }
+  });*/
   return (
-    <div className={`sidemenu ${!sideMenu ? "hidden" : ""}`}>
+    <div ref={sidemenu} className={`sidemenu ${!sideMenu ? "hidden" : ""}`}>
       <button className="close-button" onClick={() => SetsideMenu(() => false)}>
         X
       </button>

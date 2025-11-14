@@ -19,6 +19,7 @@ const Nav = ({
   const [searchTerm, setSearchTerm] = useState("");
   const [filtredProducts, setfiltredProducts] = useState([]);
   const [hidemenu, setHideMenu] = useState(true);
+
   useEffect(() => {
     if (searchTerm.trim() === "") {
       setfiltredProducts([]);
@@ -32,10 +33,15 @@ const Nav = ({
     setfiltredProducts(results);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchTerm]);
-
+  /*
   useKey("Escape", function () {
-    resetSearch();
-  });
+    if (document.activeElement === inputEl.current) {
+      resetSearch();
+      console.log(1);
+    } else {
+      return;
+    }
+  });*/
   const Logout = () => {
     setAuth(false);
   };

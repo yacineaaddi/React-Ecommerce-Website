@@ -18,7 +18,6 @@ export default function StarRating({
   className = "",
   defaultRating,
 }) {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const [rating, setRating] = useState(defaultRating);
 
   return (

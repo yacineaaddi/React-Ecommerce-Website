@@ -21,7 +21,7 @@ const Carousel = ({ images }) => {
     if (autoPlay) {
       setTimeout(() => {
         slideRight();
-      }, 2000);
+      }, 3000);
 
       return () => clearTimeout(timeOut);
     }

@@ -4,15 +4,33 @@ import { MdOutlineLogin } from "react-icons/md";
 import { db, app } from "./firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
-
+import { useRef } from "react";
+import useKey from "./usekey";
 import "./auth.css";
+
 const Login = ({ setUserDetail, setAuth }) => {
   // Storing the input value using usestate hook
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
+  const inputEmail = useRef();
+  const inputPass = useRef();
+  /*
+  useKey("Escape", () => {
+    Promise.resolve().then(() => {
+      const active = document.activeElement;
+      // Ignore if focused in input
+      if (
+        active?.classList.contains("stop") ||
+        active?.getAttribute("aria-autocomplete") !== null
+      ) {
+        console.log(1);
+      } else {
+        console.log(2);
+      }
+    });
+  });*/
   const Authentication = async (e) => {
     e.preventDefault();
 
@@ -68,6 +86,8 @@ const Login = ({ setUserDetail, setAuth }) => {
                 type="email"
                 placeholder="Email"
                 value={email}
+                ref={inputEmail}
+                className="stop"
                 onChange={(e) => setEmail(e.target.value)}
               ></input>
             </div>
@@ -77,6 +97,8 @@ const Login = ({ setUserDetail, setAuth }) => {
                 type="password"
                 placeholder="Password"
                 value={password}
+                className="stop"
+                ref={inputPass}
                 onChange={(e) => setPassword(e.target.value)}
               ></input>
             </div>

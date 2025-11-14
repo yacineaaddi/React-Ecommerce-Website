@@ -20,20 +20,27 @@ const Signup = ({ setUserDetail, setAuth, userDetail }) => {
     }
 
     try {
-      // 1️⃣ Create user account (Firebase Auth)
+      //  Create user account (Firebase Auth) Firebase which returns a UserCredential object
+      // That contains information about the newly created user, credentials, and metadata
+
       const createAccount = await app
         .auth()
         .createUserWithEmailAndPassword(email, password);
-      const user = createAccount.user; // ✅ This is the authenticated user
 
-      // 2️⃣ Write user data to Firestore using UID as document ID
+      //Pulls the actual User object from the UserCredential
+      // user contains the authenticated user info such as uid, email, emailVerified, etc.
+
+      const user = createAccount.user;
+      // Write user data to Firestore using UID as document ID
       const userRef = db.collection("users").doc(user.uid);
+      // Prepares the object i want to save in Firestore
       const newUserData = {
         Name: name,
         Email: email,
         Phone: phone,
         CreatedAt: new Date(),
       };
+      //Writes the newUserData object to the document referenced by userRef.
       await userRef.set(newUserData);
 
       // 3️⃣ Update local state

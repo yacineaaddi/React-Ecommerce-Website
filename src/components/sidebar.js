@@ -13,6 +13,8 @@ import {
   updateDoc,
   deleteDoc,
 } from "firebase/firestore";
+import useKey from "./usekey";
+import { useRef } from "react";
 
 const SideBar = ({
   sidebar,
@@ -31,6 +33,17 @@ const SideBar = ({
   const [coupon, setCoupon] = useState(false);
   const Subtotal = cart.reduce((sum, p) => sum + +(p.Price * p.Qty), 0);
 
+  const sideBar = useRef();
+  /*
+  useKey("Escape", function () {
+    if (!sideBar.current.classList.contains("hidden")) {
+      setSidebar(false);
+      console.log(3);
+    } else {
+      return;
+    }
+  });
+*/
   function SidebarProduct({ currEl }) {
     return (
       <>
@@ -204,7 +217,7 @@ const SideBar = ({
   };
 
   return (
-    <div className={`sidebar ${!sidebar ? "hidden" : ""}`}>
+    <div ref={sideBar} className={`sidebar ${!sidebar ? "hidden" : ""}`}>
       <button className="close-btn" onClick={() => setSidebar((e) => "")}>
         X
       </button>
