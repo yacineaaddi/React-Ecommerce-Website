@@ -7,6 +7,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { useRef } from "react";
 import useKey from "./usekey";
 import "./auth.css";
+import toast from "react-hot-toast";
 
 const Login = ({ setUserDetail, setAuth }) => {
   // Storing the input value using usestate hook
@@ -36,7 +37,7 @@ const Login = ({ setUserDetail, setAuth }) => {
 
     // 1️⃣ Guard clause
     if (!email || !password) {
-      alert("All fields are required");
+      toast.error("All fields are required");
       return;
     }
 
@@ -60,15 +61,15 @@ const Login = ({ setUserDetail, setAuth }) => {
           console.log(userData); // Update local state
           setAuth(true);
 
-          alert("User Logged In Successfully");
+          toast.success("User Logged In Successfully");
           navigate("/"); // Redirect
         } else {
-          alert("User data not found in Firestore!");
+          toast.error("User data not found in Firestore!");
         }
       }
     } catch (err) {
       console.error("Login error:", err.message);
-      alert(err.message);
+      toast.error(err.message);
     }
   };
 
@@ -89,6 +90,7 @@ const Login = ({ setUserDetail, setAuth }) => {
                 ref={inputEmail}
                 className="stop"
                 onChange={(e) => setEmail(e.target.value)}
+                required
               ></input>
             </div>
 

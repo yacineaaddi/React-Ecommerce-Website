@@ -55,6 +55,10 @@
   border-radius: 8px;
 }
 
+input:invalid {
+  background-color: red;
+}
+
 .auth .container .form button {
   width: 100%;
   padding: 12px;

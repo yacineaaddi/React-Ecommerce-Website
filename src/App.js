@@ -19,9 +19,8 @@ import {
   getDocs,
   deleteDoc,
 } from "firebase/firestore";
-
+import { Toaster, toast } from "react-hot-toast";
 import "./App.css";
-
 const App = () => {
   const [userDetail, setUserDetail] = useState("");
   const [Auth, setAuth] = useState(false);
@@ -69,7 +68,7 @@ const App = () => {
   };
   const addtocart = async (data) => {
     if (!Auth || !userDetail?.id) {
-      alert("Please Log In");
+      toast.error("Please Log In");
       return;
     }
 
@@ -83,7 +82,7 @@ const App = () => {
     const findcartdata = cartsnap.find((x) => x.CartId === data.id);
 
     if (findcartdata) {
-      alert("Product already in cart");
+      toast.success("Product already in cart");
     } else {
       await addDoc(cartRef, {
         CartId: data.id,
@@ -101,7 +100,7 @@ const App = () => {
         Qty: 1,
       });
       updatestate();
-      alert("Product Added To Cart");
+      toast.success("Product Added To Cart");
     }
   };
 
@@ -123,16 +122,16 @@ const App = () => {
       }));
       //Update your React state
       setWishlist(updatedWishlist);
-      alert("Product removed successfully from your wishlist!");
+      toast.success("Product removed successfully!");
     } catch (error) {
-      console.error("Error deleting product: ", error);
+      toast.error("Error deleting product: ", error);
     }
   };
 
   // Add product to wishlist
   const addtowishlist = async (data) => {
     if (!Auth) {
-      alert("Please Log In");
+      toast.error("Please Log In");
       return;
     }
     if (!userDetail?.id) return;
@@ -171,7 +170,7 @@ const App = () => {
         ...doc.data(),
       }));
       setWishlist(updatedWishlist);
-      alert("Product Added To Wishlist");
+      toast.success("Product Added To Wishlist");
     }
   };
   function OneProduct({ currEl }) {
@@ -315,6 +314,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
+      <Toaster position="top-right" reverseOrder={false} />
       <SideMenu
         sideMenu={sideMenu}
         SetsideMenu={SetsideMenu}

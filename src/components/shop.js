@@ -32,8 +32,6 @@ const Shop = ({ products, ShopProduct }) => {
       .filter((currElm) => (cat === "" ? true : currElm.Cat === cat))
       .sort(() => Math.random() - 0.5);
     setCategorie(temProducts);
-    console.log(temProducts);
-    console.log("true");
   }
 
   function fetchProducts() {
@@ -51,8 +49,6 @@ const Shop = ({ products, ShopProduct }) => {
       setPricedProducts(true);
     } else {
       setPricedProducts(false);
-      console.log(minPrice, maxPrice);
-      console.log(filtered);
       setPriceRangeProducts(filtered);
       setMinPrice("");
       setMaxPrice("");
@@ -90,12 +86,9 @@ const Shop = ({ products, ShopProduct }) => {
           : [...Categorie]
       ).filter((p) => p.State === "Available");
       setinStockProd(filteredByStock);
-      console.log("true");
-      console.log(Categorie);
     } else {
       // show all if unchecked
       setinStockProd([]);
-      console.log("false");
     } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inStock]);
 

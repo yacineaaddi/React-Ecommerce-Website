@@ -1,8 +1,8 @@
-import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import "./Carousel.css";
 import { Link } from "react-router-dom";
+import { Toaster, toast } from "react-hot-toast";
 
 const Carousel = ({ images }) => {
   const [current, setCurrent] = useState(0);
@@ -66,7 +66,7 @@ const Carousel = ({ images }) => {
               <div className="info">
                 <h2>{image.title}</h2>
                 <p>{image.discount}</p>
-                <Link to="/shop">
+                <Link>
                   <button>Discover Now</button>
                 </Link>
               </div>

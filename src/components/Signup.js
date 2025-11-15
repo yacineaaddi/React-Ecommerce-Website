@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
 import { db, app } from "./firebase";
 import "./auth.css";
-
+import toast from "react-hot-toast";
 const Signup = ({ setUserDetail, setAuth, userDetail }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -15,7 +15,7 @@ const Signup = ({ setUserDetail, setAuth, userDetail }) => {
   const Authentication = async (e) => {
     e.preventDefault();
     if (!name || !email || !phone || !password) {
-      alert("All fields are required");
+      toast.error("All fields are required");
       return;
     }
 
@@ -46,12 +46,12 @@ const Signup = ({ setUserDetail, setAuth, userDetail }) => {
       // 3️⃣ Update local state
       setUserDetail({ id: user.uid, ...newUserData });
 
-      alert("User Registered Successfully");
+      toast.success("User Registered Successfully");
       setAuth(true);
       navigate("/");
     } catch (err) {
       console.error("Error creating user:", err.message);
-      alert(err.message);
+      toast.error(err.message);
     }
   };
 
@@ -82,11 +82,12 @@ const Signup = ({ setUserDetail, setAuth, userDetail }) => {
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
               ></input>
             </div>
             <div className="box">
               <input
-                type="text"
+                type="number"
                 placeholder="Phone Number"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}

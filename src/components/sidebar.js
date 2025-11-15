@@ -15,7 +15,7 @@ import {
 } from "firebase/firestore";
 import useKey from "./usekey";
 import { useRef } from "react";
-
+import toast from "react-hot-toast";
 const SideBar = ({
   sidebar,
   setSidebar,
@@ -146,31 +146,33 @@ const SideBar = ({
 
   const increseQty = async (data) => {
     if (data.State !== "Available") {
-      alert("Out of stock");
+      toast.error("Out of stock");
       return;
     }
     try {
       const cartdataref = doc(db, "users", userDetail.id, "cart", data.id);
       await updateDoc(cartdataref, { Qty: data.Qty + 1 });
       updatestate();
+      toast.success("Quantity added successfully!");
     } catch (error) {
-      console.error("Error increasing Quantity: ", error);
+      toast.error("Error increasing Quantity");
     }
   };
 
   const decreseQty = async (data) => {
     if (data.State !== "Available") {
-      alert("Out of stock");
+      toast.error("Out of stock");
       return;
     }
     try {
       if (data.Qty > 1) {
         const cartdataref = doc(db, "users", userDetail.id, "cart", data.id);
         await updateDoc(cartdataref, { Qty: data.Qty - 1 });
+        toast.success("Quantity decreased successfully!");
         updatestate();
       }
     } catch (error) {
-      console.error("Error decreasing Quantity: ", error);
+      toast.error("Error decreasing Quantity");
     }
   };
 
@@ -178,9 +180,9 @@ const SideBar = ({
     try {
       await deleteDoc(doc(db, "users", userDetail.id, "cart", data.id));
       fetchcartdata();
-      alert("Product removed successfully from your cart!");
+      toast.success("Product removed successfully!");
     } catch (error) {
-      console.error("Error deleting product: ", error);
+      console.error("Error deleting product");
     }
   };
 
