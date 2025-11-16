@@ -94,7 +94,6 @@ const Nav = ({
           <div className="search">
             <IoSearch />
           </div>
-
           {searchTerm && (
             <div className="search-result-box">
               {filtredProducts.length > 0 ? (

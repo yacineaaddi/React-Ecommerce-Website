@@ -14,6 +14,10 @@ const Rout = ({
   ShopProduct,
   Specialoffers,
   userDetail,
+  searchTerm,
+  setSearchTerm,
+  filtredProducts,
+  setfiltredProducts,
 }) => {
   return (
     <>
@@ -42,6 +46,10 @@ const Rout = ({
               OneProduct={OneProduct}
               ShopProduct={ShopProduct}
               Specialoffers={Specialoffers}
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              filtredProducts={filtredProducts}
+              setfiltredProducts={setfiltredProducts}
             />
           }
         />

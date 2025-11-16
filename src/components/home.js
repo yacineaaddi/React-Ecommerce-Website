@@ -6,10 +6,18 @@ import { BiSupport } from "react-icons/bi";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Data } from "./SliderData";
 import Carousel from "./Carousel";
+import Slider from "./Slider";
+import Swiper from "swiper";
 
 import "./home.css";
 
-const Home = ({ products, ShopProduct, Specialoffers }) => {
+const Home = ({
+  products,
+  ShopProduct,
+  Specialoffers,
+  searchTerm,
+  filtredProducts,
+}) => {
   const [sale, setSales] = useState([]);
   const [Bestsellers, setBestsellers] = useState([]);
   const [toprated, setToprated] = useState([]);
@@ -62,7 +70,8 @@ const Home = ({ products, ShopProduct, Specialoffers }) => {
   return (
     <>
       <div className="home">
-        <div className="top-banner">{<Carousel images={Data} />}</div>
+        <Slider />
+
         <div className="about">
           <div className="container">
             <div className="box">

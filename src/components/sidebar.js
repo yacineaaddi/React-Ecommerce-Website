@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-
+import { useEffect, useReducer, useState } from "react";
 import "./sidebar.css";
 import { FaShoppingCart } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
@@ -30,9 +29,29 @@ const SideBar = ({
   StarRating,
   RemoveFromWishlist,
 }) => {
+  const initialstate = "";
   const [coupon, setCoupon] = useState(false);
+  const [couponCode, setCouponCode] = useState("");
   const Subtotal = cart.reduce((sum, p) => sum + +(p.Price * p.Qty), 0);
+  const [state, dispatch] = useReducer(reducer, initialstate);
+  const couponmsg = "Coupon code added successfully!";
 
+  function reducer(state, action) {
+    switch (action.type) {
+      case "X7p9alq2":
+        toast.success(couponmsg);
+        return 20;
+      case "M4zt82rw":
+        toast.success(couponmsg);
+        return 30;
+      case "qh9lk3vj":
+        toast.success(couponmsg);
+        return 50;
+      default:
+        toast.error("Coupon code is not valid!");
+        return state;
+    }
+  }
   const sideBar = useRef();
   /*
   useKey("Escape", function () {
@@ -273,9 +292,15 @@ const SideBar = ({
           <span onClick={() => setCoupon((e) => !e)}>Have a coupon code ?</span>
           {coupon && (
             <div className="box">
-              <input type="text" placeholder="Coupon code"></input>
+              <input
+                type="text"
+                placeholder="Coupon code"
+                onChange={(e) => setCouponCode(e.target.value)}
+              ></input>
               <div className="submit">
-                <FaArrowRightLong />
+                <FaArrowRightLong
+                  onClick={() => dispatch({ type: `${couponCode}` })}
+                />
               </div>
             </div>
           )}
@@ -288,7 +313,7 @@ const SideBar = ({
             <div className="prices">
               <p>{`$ ${Subtotal}`}</p>
               <p>{`$ ${cart.length > 0 ? "15" : "0"}`}</p>
-              <p>{`$ ${Subtotal + 15} `}</p>
+              <p>{state ? `${state}%` : "0%"}</p>
             </div>
           </div>
           <hr></hr>
@@ -297,7 +322,7 @@ const SideBar = ({
               <h3>Total</h3>
             </div>
             <div className="prices">
-              <p>{`$ ${Subtotal + 15} `}</p>
+              <p>{`$ ${Subtotal + 15 - (((Subtotal * state) / 100) | 0)} `}</p>
             </div>
           </div>
           <button>Checkout</button>
