@@ -737,13 +737,4 @@
   .prod-container .box:hover .img-box {
     opacity: 100%;
   }
-  .prod-container .box .detail .icons {
-    display: none;
-  }
-  .prod-container .box:hover {
-    box-shadow: none;
-  }
-  .prod-container .box:hover .img-box {
-    opacity: 100%;
-  }
 }

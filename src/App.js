@@ -34,6 +34,12 @@ const App = () => {
   const [lightbox, setlightbox] = useState();
 
   useEffect(() => {
+    if (window.innerWidth > "850px") {
+    } else {
+    }
+  }, [sideMenu]);
+
+  useEffect(() => {
     const isAnyOpen = sidebar || sideMenu;
 
     const scrollbarWidth =

@@ -21,6 +21,21 @@ const Nav = ({
   const [hidemenu, setHideMenu] = useState(true);
 
   useEffect(() => {
+    function handleScroll() {
+      const nav = document.querySelector(".nav");
+      if (!nav) return;
+
+      if (window.scrollY < 50) {
+        nav.classList.remove("active");
+      } else {
+        nav.classList.add("active");
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
     if (searchTerm.trim() === "") {
       setfiltredProducts([]);
       return;
