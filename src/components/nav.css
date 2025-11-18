@@ -13,7 +13,7 @@
   flex-direction: row;
   align-items: center;
   padding: 15px 22px 15px 22px;
-  z-index: 1;
+  z-index: 11111;
   background-image: url("../img/homebackground1.webp");
   background-repeat: no-repeat;
   background-size: 100% 600%;

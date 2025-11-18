@@ -141,6 +141,7 @@
   align-items: center;
   width: 280px;
   position: relative;
+  cursor: pointer;
 }
 
 .shop .container .right-box .products .box .img-box img {
@@ -351,5 +352,14 @@
 
   .shop .container .right-box .products .box .detail h3 {
     font-size: 0.85rem;
+  }
+  .shop .container .right-box .products .box .detail .icons {
+    display: none;
+  }
+  .shop .container .right-box .products .box:hover {
+    box-shadow: none;
+  }
+  .shop .container .right-box .products .box:hover .img-box {
+    opacity: 100%;
   }
 }

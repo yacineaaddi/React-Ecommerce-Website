@@ -12,6 +12,7 @@ import Footer from "./components/footer";
 import StarRating from "./components/starRating";
 import SideMenu from "./components/sidemenu";
 import { db } from "./components/firebase";
+import Lightbox from "./components/lightbox";
 import {
   doc,
   collection,
@@ -21,6 +22,7 @@ import {
 } from "firebase/firestore";
 import { Toaster, toast } from "react-hot-toast";
 import "./App.css";
+
 const App = () => {
   const [userDetail, setUserDetail] = useState("");
   const [Auth, setAuth] = useState(false);
@@ -29,6 +31,7 @@ const App = () => {
   const [sideMenu, SetsideMenu] = useState(false);
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([]);
+  const [lightbox, setlightbox] = useState();
 
   useEffect(() => {
     const isAnyOpen = sidebar || sideMenu;
@@ -175,19 +178,30 @@ const App = () => {
   };
   function OneProduct({ currEl }) {
     return (
-      <div className="box">
+      <div
+        className="box"
+        onClick={(e) => {
+          if (e.target.closest(".icon") || e.target.closest("button")) {
+            return;
+          }
+
+          alert("yes");
+        }}
+      >
         <div className="img-box">
-          <img src={currEl.Img} alt="Product-image"></img>
+          <img src={currEl.Img[0]} alt="Product-image"></img>
         </div>
         <div className="detail">
           <div className="icons">
             <div className="icon" onClick={() => addtowishlist(currEl)}>
               <FaHeart color={isWishlisted(currEl) ? "red" : ""} />
             </div>
-            <div className="icon">
-              <TfiReload />
-            </div>
-            <div className="icon">
+            <div
+              className="icon"
+              onClick={() => {
+                setlightbox(currEl.id);
+              }}
+            >
               <CiSearch />
             </div>
           </div>
@@ -209,19 +223,30 @@ const App = () => {
   }
   function ShopProduct({ currEl }) {
     return (
-      <div className="box">
+      <div
+        className="box"
+        onClick={(e) => {
+          if (e.target.closest(".icon") || e.target.closest("button")) {
+            return;
+          }
+
+          alert("yes");
+        }}
+      >
         <div className="img-box">
-          <img src={currEl.Img} alt="Product-image"></img>
+          <img src={currEl.Img[0]} alt="Product-image"></img>
         </div>
         <div className="detail">
           <div className="icons">
             <div className="icon" onClick={() => addtowishlist(currEl)}>
               <FaHeart color={isWishlisted(currEl) ? "red" : ""} />
             </div>
-            <div className="icon">
-              <TfiReload />
-            </div>
-            <div className="icon">
+            <div
+              className="icon"
+              onClick={() => {
+                setlightbox(currEl.id);
+              }}
+            >
               <CiSearch />
             </div>
           </div>
@@ -259,19 +284,30 @@ const App = () => {
   }
   function Specialoffers({ currEl }) {
     return (
-      <div className="box">
+      <div
+        className="box"
+        onClick={(e) => {
+          if (e.target.closest(".icon") || e.target.closest("button")) {
+            return;
+          }
+
+          alert("yes");
+        }}
+      >
         <div className="img-box">
-          <img src={currEl.Img} alt="Product-image"></img>
+          <img src={currEl.Img[0]} alt="Product-image"></img>
         </div>
         <div className="detail">
           <div className="icons">
             <div className="icon" onClick={() => addtowishlist(currEl)}>
               <FaHeart color={isWishlisted(currEl) ? "red" : ""} />
             </div>
-            <div className="icon">
-              <TfiReload />
-            </div>
-            <div className="icon">
+            <div
+              className="icon"
+              onClick={() => {
+                setlightbox(currEl.id);
+              }}
+            >
               <CiSearch />
             </div>
           </div>
@@ -314,6 +350,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
+      {lightbox && <Lightbox lightbox={lightbox} setlightbox={setlightbox} />}
       <Toaster position="top-right" reverseOrder={false} />
       <SideMenu
         sideMenu={sideMenu}

@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { Data } from "./SliderData";
 
-const Slider = (searchTerm, filtredProducts) => {
+const Slider = () => {
   return (
     <div className="swiper">
       <Swiper
