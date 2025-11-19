@@ -7,7 +7,7 @@
 
 .shop {
   width: 100%;
-  padding: 70px 100px;
+  padding: 200px 100px 100px 100px;
 }
 .shop .container {
   display: flex;
@@ -271,7 +271,7 @@
 @media (max-width: 1500px) {
   .shop {
     width: 100%;
-    padding: 60px 50px;
+    padding: 130px 50px 60px 50px;
   }
   .shop .container {
     flex-direction: column;
@@ -306,7 +306,7 @@
 @media (max-width: 860px) {
   .shop {
     width: 100%;
-    padding: 60px 20px;
+    padding: 50px 20px 60px 20px;
   }
   .shop .container .left-box h2 {
     font-size: 1.3rem;

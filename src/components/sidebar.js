@@ -30,6 +30,8 @@ const SideBar = ({
   RemoveFromWishlist,
 }) => {
   const initialstate = "";
+  const scrollbarWidth =
+    window.innerWidth - document.documentElement.clientWidth;
   const [coupon, setCoupon] = useState(false);
   const [couponCode, setCouponCode] = useState("");
   const Subtotal = cart.reduce((sum, p) => sum + +(p.Price * p.Qty), 0);
@@ -69,7 +71,7 @@ const SideBar = ({
         <div className="box">
           <div className="product-details">
             <div className="product">
-              <img src={currEl.Img} alt="Product-image"></img>
+              <img src={currEl.Img[0]} alt="Product-image"></img>
             </div>
 
             <div className="product-detail">
@@ -158,6 +160,7 @@ const SideBar = ({
               Add To Cart
             </div>
           )}
+          <hr></hr>
         </div>
       </>
     );

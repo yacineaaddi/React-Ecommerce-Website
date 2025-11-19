@@ -12,10 +12,10 @@
   padding: 20px;
 }
 
-.close-btn {
+.closebtn {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: -20px;
+  left: 20px;
   font-size: 2.5rem;
   color: white;
   cursor: pointer;
@@ -37,6 +37,7 @@
   width: 50%;
   height: 80%;
   background: white !important;
+  position: relative;
 }
 .lightbox-slide {
   display: flex;

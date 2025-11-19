@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaRegUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa6";
 import { db, app } from "./firebase";
 import "./auth.css";
 import toast from "react-hot-toast";
@@ -65,7 +65,7 @@ const Signup = ({ setUserDetail, setAuth, userDetail }) => {
         <div className="container">
           <h2>Electro</h2>
           <div className="icon">
-            <FaRegUser />
+            <FaUser />
           </div>
           <div className="form">
             <div className="box">

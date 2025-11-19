@@ -26,9 +26,6 @@ const Lightbox = ({ lightbox, setlightbox }) => {
         }
       }}
     >
-      <div className="close-btn" onClick={() => setlightbox(null)}>
-        ×
-      </div>
       <Swiper
         className="lightbox-swiper"
         spaceBetween={20}
@@ -38,6 +35,9 @@ const Lightbox = ({ lightbox, setlightbox }) => {
         autoplay={{ delay: 2500 }}
         loop={true}
       >
+        <div className="closebtn" onClick={() => setlightbox(null)}>
+          ×
+        </div>
         {product.Img?.map((currEl, index) => (
           <SwiperSlide key={index} className="lightbox-slide">
             <div className="slide-img-container">

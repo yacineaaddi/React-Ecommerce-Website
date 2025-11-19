@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
 import "./sidemenu.css";
 import useKey from "./usekey";
 import { useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const SideMenu = ({ sideMenu, SetsideMenu, userDetail, Auth }) => {
   const sidemenu = useRef();
+  const navigate = useNavigate();
   /*
   useKey("Escape", function () {
     if (!sidemenu.current.classList.contains("hidden")) {
@@ -20,7 +21,7 @@ const SideMenu = ({ sideMenu, SetsideMenu, userDetail, Auth }) => {
       <button className="close-button" onClick={() => SetsideMenu(() => false)}>
         X
       </button>
-      <div className="logo">
+      <div className="logo" onClick={() => navigate("/")}>
         <img src="./img/Logo-Electro.png" alt="Logo"></img>
       </div>
       <ul>

@@ -33,13 +33,8 @@ const App = () => {
   const [wishlist, setWishlist] = useState([]);
   const [lightbox, setlightbox] = useState();
 
-  useEffect(() => {
-    if (window.innerWidth > "850px") {
-    } else {
-    }
-  }, [sideMenu]);
-
-  useEffect(() => {
+  {
+    /*useEffect(() => {
     const isAnyOpen = sidebar || sideMenu;
 
     const scrollbarWidth =
@@ -56,8 +51,8 @@ const App = () => {
       document.body.style.overflow = "";
       document.body.style.paddingRight = "";
     };
-  }, [sidebar, sideMenu]);
-
+  }, [sidebar, sideMenu]);*/
+  }
   function isInCart(p) {
     return cart.some((product) => String(product.CartId) === String(p.id));
   }
@@ -357,7 +352,7 @@ const App = () => {
   return (
     <BrowserRouter>
       {lightbox && <Lightbox lightbox={lightbox} setlightbox={setlightbox} />}
-      <Toaster position="top-right" reverseOrder={false} />
+      <Toaster position="buttom-center" reverseOrder={false} />
       <SideMenu
         sideMenu={sideMenu}
         SetsideMenu={SetsideMenu}

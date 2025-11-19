@@ -1,11 +1,11 @@
 .sidebar {
   position: fixed;
-  top: 0;
-  right: 0;
+  top: 120px;
+  right: -5px;
   width: 440px;
   height: 100vh;
   background: white;
-  border-left: 1px solid #2196f3;
+  border: 2px solid #2196f3;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -15,18 +15,20 @@
   transform: translateX(0px);
   opacity: 1;
   gap: 20px;
-  padding: 15px 10px 0px 10px;
+  padding: 15px 10px 120px 10px;
   transition: transform 0.4s ease, opacity 0.3s ease;
   z-index: 9;
   overflow: scroll;
+  border-radius: 15px 0px 0px 15px;
+  overscroll-behavior: contain;
 }
 .close-btn {
   position: absolute;
   top: 16px;
   left: 12px;
   padding: 9px 14px;
-  background: #fff;
-  color: #2196f3;
+  background: #2196f3;
+  color: #fff;
   font-size: 18px;
   line-height: 1;
   cursor: pointer;
@@ -80,7 +82,7 @@
   display: flex;
   flex-direction: column;
   gap: 22px;
-  border-bottom: 1px solid #d6d6d6;
+  /*border-bottom: 1px solid #d6d6d6;*/
   padding: 15px 0px 20px 0px;
 }
 
@@ -213,6 +215,10 @@
   background: none;
   border: 1px solid #2196f3;
 }
+.sidebar hr {
+  border: 1px solid #d6d6d6;
+  opacity: 50%;
+}
 .sidebar .checkout {
   display: flex;
   flex-direction: column;
@@ -315,6 +321,16 @@
   font-size: 1.4rem;
   cursor: pointer;
 }
+@media (max-width: 850px) {
+  .sidebar {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 440px;
+    height: 100vh;
+  }
+}
+
 /*Responsive for mobile devices (max-width: 750px)*/
 @media (max-width: 500px) {
   .sidebar {

@@ -10,13 +10,14 @@
   align-items: center;
   display: flex;
   min-height: 80vh;
+  padding: 210px 0px 150px 0px;
 }
 
 .auth .container {
   background: #fff;
   border-radius: 8px;
   border: 1px solid #2196f3;
-  /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);*/
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   padding: 40px;
   width: 400px;
   text-align: center;
@@ -34,7 +35,7 @@
 .auth .container .icon {
   font-size: 2.2rem;
   margin-top: 20px;
-  color: #232323;
+  color: #2196f3;
 }
 
 .auth .container .form {
@@ -53,10 +54,6 @@
   border: 1px solid #2196f3;
   outline: none;
   border-radius: 8px;
-}
-
-input:invalid {
-  background-color: red;
 }
 
 .auth .container .form button {
