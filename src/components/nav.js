@@ -46,8 +46,8 @@ const Nav = ({
         item.Cat.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setfiltredProducts(results);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchTerm]);
+
   /*
   useKey("Escape", function () {
     if (document.activeElement === inputEl.current) {
@@ -118,7 +118,7 @@ const Nav = ({
                     key={item.id}
                     onClick={() => alert("clicked")}
                   >
-                    <img src={item.Img} alt={item.Title} width="40" />
+                    <img src={item.Img[0]} alt={item.Title} width="40" />
                     <span>{item.Title.split(" ").slice(0, 5).join(" ")}</span>
                     <p>{item.Price} $</p>
                   </div>

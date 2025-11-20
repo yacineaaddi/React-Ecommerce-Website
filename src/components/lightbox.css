@@ -9,12 +9,12 @@
   align-items: center;
   flex-direction: column;
   z-index: 10;
-  padding: 20px;
+  padding: 50px 20px 20px 20px;
 }
 
 .closebtn {
   position: absolute;
-  top: -20px;
+  top: 110px;
   left: 20px;
   font-size: 2.5rem;
   color: white;
@@ -37,7 +37,6 @@
   width: 50%;
   height: 80%;
   background: white !important;
-  position: relative;
 }
 .lightbox-slide {
   display: flex;

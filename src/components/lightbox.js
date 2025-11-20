@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Pagination, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import "./lightbox.css";
 import "swiper/css";
@@ -26,18 +27,19 @@ const Lightbox = ({ lightbox, setlightbox }) => {
         }
       }}
     >
+      <div className="closebtn" onClick={() => setlightbox(null)}>
+        ×
+      </div>
       <Swiper
         className="lightbox-swiper"
-        spaceBetween={20}
+        spaceBetween={0}
         slidesPerView={1}
-        modules={[Pagination, Autoplay]}
+        modules={[Pagination, Autoplay, Navigation]}
         pagination={{ clickable: true }}
         autoplay={{ delay: 2500 }}
         loop={true}
+        navigation
       >
-        <div className="closebtn" onClick={() => setlightbox(null)}>
-          ×
-        </div>
         {product.Img?.map((currEl, index) => (
           <SwiperSlide key={index} className="lightbox-slide">
             <div className="slide-img-container">

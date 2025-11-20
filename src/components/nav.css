@@ -126,6 +126,7 @@
   border-radius: 10px;
   box-sizing: border-box;
   z-index: 100;
+  overscroll-behavior: contain;
 }
 .nav .search_bar .search-result-box span,
 .search_bar .search-result-box p {
@@ -150,7 +151,7 @@
   background: #f5f5f5;
 }
 .search-result-box::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 .search-result-box::-webkit-scrollbar-thumb {

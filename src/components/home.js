@@ -3,7 +3,7 @@ import { LiaShippingFastSolid } from "react-icons/lia";
 import { RiRefund2Line } from "react-icons/ri";
 import { TbDiscount } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
-import { FaArrowRightLong } from "react-icons/fa6";
+import Newsletter from "./newsletter";
 import { Data } from "./SliderData";
 import Carousel from "./Carousel";
 import Slider from "./Slider";
@@ -11,13 +11,7 @@ import Swiper from "swiper";
 
 import "./home.css";
 
-const Home = ({
-  products,
-  ShopProduct,
-  Specialoffers,
-  searchTerm,
-  filtredProducts,
-}) => {
+const Home = ({ products, ShopProduct, Specialoffers }) => {
   const [sale, setSales] = useState([]);
   const [Bestsellers, setBestsellers] = useState([]);
   const [toprated, setToprated] = useState([]);
@@ -162,24 +156,7 @@ const Home = ({
             ))}
           </div>
         </div>
-
-        <div className="newsletter">
-          <div className="container">
-            <div className="main">
-              <h3>Newsletter Sign Up</h3>
-              <p>
-                Get <span>30 % OFF</span> coupon today subscribers
-              </p>
-            </div>
-
-            <div className="box">
-              <input type="text" placeholder="Enter Your Email"></input>
-              <div className="submit">
-                <FaArrowRightLong />
-              </div>
-            </div>
-          </div>
-        </div>
+        <Newsletter />
         <div className="brands">
           <div className="container">
             {Array.from({ length: 7 }, (_, i) => i + 1).map((num) => (

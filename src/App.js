@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Rout from "./rout";
 import { BrowserRouter } from "react-router-dom";
 import Nav from "./components/nav";
@@ -7,7 +7,6 @@ import Product from "./components/product";
 import "./components/home.css";
 import { CiSearch } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
-import { TfiReload } from "react-icons/tfi";
 import Footer from "./components/footer";
 import StarRating from "./components/starRating";
 import SideMenu from "./components/sidemenu";
