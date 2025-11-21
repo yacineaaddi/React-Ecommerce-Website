@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import "./shop.css";
 import { CgArrowsExchangeAltV } from "react-icons/cg";
 import { CgArrowsExchangeV } from "react-icons/cg";
+import { useEffect, useState } from "react";
+import "./shop.css";
 
 const Shop = ({ products, ShopProduct }) => {
   const [minPrice, setMinPrice] = useState("");

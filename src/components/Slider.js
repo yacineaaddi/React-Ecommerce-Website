@@ -5,7 +5,7 @@ import "swiper/css";
 import "./Slider.css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
-import { Data } from "./SliderData";
+import { Data } from "./data";
 
 const Slider = () => {
   return (

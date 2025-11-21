@@ -12,7 +12,7 @@ import {
   updateDoc,
   deleteDoc,
 } from "firebase/firestore";
-import useKey from "./usekey";
+import useKey from "./useCustomHook";
 import { useRef } from "react";
 import toast from "react-hot-toast";
 const SideBar = ({
@@ -30,8 +30,6 @@ const SideBar = ({
   RemoveFromWishlist,
 }) => {
   const initialstate = "";
-  const scrollbarWidth =
-    window.innerWidth - document.documentElement.clientWidth;
   const [coupon, setCoupon] = useState(false);
   const [couponCode, setCouponCode] = useState("");
   const Subtotal = cart.reduce((sum, p) => sum + +(p.Price * p.Qty), 0);
@@ -229,7 +227,7 @@ const SideBar = ({
   }, [Auth]);
 
   const fetchWishListdata = async () => {
-    if (!userDetail?.id) return; // <-- prevent error
+    if (!userDetail?.id) return;
     const wishlistdata = await getDocs(
       collection(db, "users", userDetail.id, "wishlist")
     );

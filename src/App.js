@@ -3,7 +3,7 @@ import Rout from "./rout";
 import { BrowserRouter } from "react-router-dom";
 import Nav from "./components/nav";
 import SideBar from "./components/sidebar";
-import Product from "./components/product";
+import { Product } from "./components/data";
 import "./components/home.css";
 import { CiSearch } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";

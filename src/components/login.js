@@ -5,13 +5,11 @@ import { db, app } from "./firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { useRef } from "react";
-import useKey from "./usekey";
+import useKey from "./useCustomHook";
 import "./auth.css";
 import toast from "react-hot-toast";
 
 const Login = ({ setUserDetail, setAuth }) => {
-  // Storing the input value using usestate hook
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -35,14 +33,12 @@ const Login = ({ setUserDetail, setAuth }) => {
   const Authentication = async (e) => {
     e.preventDefault();
 
-    // 1️⃣ Guard clause
     if (!email || !password) {
       toast.error("All fields are required");
       return;
     }
 
     try {
-      // 2️⃣ Sign in the user with email/password
       const userCredential = await signInWithEmailAndPassword(
         app.auth(),
         email,
@@ -51,18 +47,17 @@ const Login = ({ setUserDetail, setAuth }) => {
       const user = userCredential.user;
 
       if (user) {
-        // 3️⃣ Get the Firestore document for this user (by UID)
         const userDocRef = doc(db, "users", user.uid);
         const userDoc = await getDoc(userDocRef);
 
         if (userDoc.exists()) {
           const userData = { id: userDoc.id, ...userDoc.data() };
           setUserDetail(userData);
-          console.log(userData); // Update local state
+          console.log(userData);
           setAuth(true);
 
           toast.success("User Logged In Successfully");
-          navigate("/"); // Redirect
+          navigate("/");
         } else {
           toast.error("User data not found in Firestore!");
         }

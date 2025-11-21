@@ -4,10 +4,7 @@ import { RiRefund2Line } from "react-icons/ri";
 import { TbDiscount } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
 import Newsletter from "./newsletter";
-import { Data } from "./SliderData";
-import Carousel from "./Carousel";
 import Slider from "./Slider";
-import Swiper from "swiper";
 
 import "./home.css";
 

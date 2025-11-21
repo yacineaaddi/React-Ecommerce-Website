@@ -6,7 +6,7 @@ import { FaHeart } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import { FiMenu } from "react-icons/fi";
 import "./nav.css";
-import useKey from "./usekey";
+import useKey from "./useCustomHook";
 
 const Nav = ({
   Auth,

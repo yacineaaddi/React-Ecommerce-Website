@@ -6,7 +6,7 @@ import "swiper/css/autoplay";
 import "./lightbox.css";
 import "swiper/css";
 import { useEffect, useState } from "react";
-import Product from "./product";
+import { Product } from "./data";
 
 const Lightbox = ({ lightbox, setlightbox }) => {
   const [product, setProduct] = useState(null);
