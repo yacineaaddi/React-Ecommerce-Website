@@ -3,6 +3,7 @@ import { db } from "./firebase";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { toast } from "react-hot-toast";
 import { doc, setDoc } from "firebase/firestore";
+import "./newsletter.css";
 
 const Newsletter = () => {
   const [email, setEmail] = useState("");

@@ -14,12 +14,12 @@
 
 .closebtn {
   position: absolute;
-  top: 110px;
-  left: 20px;
+  top: 120px;
+  left: 60px;
   font-size: 2.5rem;
-  color: white;
+  color: #2196f3;
   cursor: pointer;
-  background: #2196f3;
+  background: white;
   width: 45px;
   height: 45px;
   display: flex;
@@ -29,9 +29,9 @@
   transition: background 0.2s;
   cursor: pointer;
 }
-.close-btn:hover {
-  color: #2196f3;
-  background: white;
+.closebtn:hover {
+  color: white;
+  background: #2196f3;
 }
 .lightbox-swiper {
   width: 50%;

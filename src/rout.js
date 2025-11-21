@@ -3,6 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./components/login";
 import Home from "./components/home";
 import Shop from "./components/shop";
+import Contact from "./components/contact";
+import About from "./components/about";
 
 const Rout = ({
   setUserDetail,
@@ -64,6 +66,8 @@ const Rout = ({
             />
           }
         />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </>
   );

@@ -1,0 +1,8 @@
+.about-section {
+  position: relative;
+  padding: 120px 20px 20px 50px;
+  width: 100%;
+  height: 50vh;
+  background: pink;
+  display: none;
+}
