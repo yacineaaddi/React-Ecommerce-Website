@@ -12,6 +12,8 @@ import StarRating from "./components/starRating";
 import SideMenu from "./components/sidemenu";
 import { db } from "./components/firebase";
 import Lightbox from "./components/lightbox";
+import { useNavigate } from "react-router-dom";
+import UploadProductsOnce from "./components/uploadProducts";
 import {
   doc,
   collection,
@@ -31,27 +33,8 @@ const App = () => {
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([]);
   const [lightbox, setlightbox] = useState();
+  const navigate = useNavigate();
 
-  {
-    /*useEffect(() => {
-    const isAnyOpen = sidebar || sideMenu;
-
-    const scrollbarWidth =
-      window.innerWidth - document.documentElement.clientWidth;
-
-    if (isAnyOpen) {
-      document.body.style.overflow = "hidden";
-      document.body.style.paddingRight = `${scrollbarWidth}px`;
-    } else {
-      document.body.style.overflow = "auto";
-      document.body.style.paddingRight = "0px";
-    }
-    return () => {
-      document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
-    };
-  }, [sidebar, sideMenu]);*/
-  }
   function isInCart(p) {
     return cart.some((product) => String(product.CartId) === String(p.id));
   }
@@ -106,7 +89,6 @@ const App = () => {
       toast.success("Product Added To Cart");
     }
   };
-
   const RemoveFromWishlist = async (data) => {
     if (!userDetail?.id) return;
     try {
@@ -130,8 +112,6 @@ const App = () => {
       toast.error("Error deleting product: ", error);
     }
   };
-
-  // Add product to wishlist
   const addtowishlist = async (data) => {
     if (!Auth) {
       toast.error("Please Log In");
@@ -185,7 +165,11 @@ const App = () => {
             return;
           }
 
-          alert("yes");
+          navigate(
+            `shop/product/${currEl.id}/${currEl.Title.split(" ")
+              .slice()
+              .join("-")}`
+          );
         }}
       >
         <div className="img-box">
@@ -230,7 +214,11 @@ const App = () => {
             return;
           }
 
-          alert("yes");
+          navigate(
+            `shop/product/${currEl.id}/${currEl.Title.split(" ")
+              .slice()
+              .join("-")}`
+          );
         }}
       >
         <div className="img-box">
@@ -291,7 +279,11 @@ const App = () => {
             return;
           }
 
-          alert("yes");
+          navigate(
+            `shop/product/${currEl.id}/${currEl.Title.split(" ")
+              .slice()
+              .join("-")}`
+          );
         }}
       >
         <div className="img-box">
@@ -349,7 +341,8 @@ const App = () => {
   }
 
   return (
-    <BrowserRouter>
+    <>
+      {/*<UploadProductsOnce />*/}
       {lightbox && <Lightbox lightbox={lightbox} setlightbox={setlightbox} />}
       <Toaster position="buttom-center" reverseOrder={false} />
       <SideMenu
@@ -390,9 +383,10 @@ const App = () => {
         ShopProduct={ShopProduct}
         Specialoffers={Specialoffers}
         userDetail={userDetail}
+        setlightbox={setlightbox}
       />
       <Footer />
-    </BrowserRouter>
+    </>
   );
 };
 

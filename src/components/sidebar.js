@@ -34,9 +34,9 @@ const SideBar = ({
   const [couponCode, setCouponCode] = useState("");
   const Subtotal = cart.reduce((sum, p) => sum + +(p.Price * p.Qty), 0);
   const [state, dispatch] = useReducer(reducer, initialstate);
-  const couponmsg = "Coupon code added successfully!";
 
   function reducer(state, action) {
+    const couponmsg = "Coupon code added successfully!";
     switch (action.type) {
       case "X7p9alq2":
         toast.success(couponmsg);
@@ -137,8 +137,6 @@ const SideBar = ({
               <div
                 className="deleteBtn"
                 onClick={(e) => {
-                  e.stopPropagation();
-                  e.preventDefault();
                   sidebar === "wishlist"
                     ? RemoveFromWishlist(currEl)
                     : RemoveFromCart(currEl);

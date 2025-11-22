@@ -41,6 +41,7 @@
 }
 .close-btn:hover {
   background: none;
+  color: #2196f3;
 }
 .sidebar.hidden {
   transform: translateX(440px);

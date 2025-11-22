@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import "./shop.css";
 
 const Shop = ({ products, ShopProduct }) => {
+  const [Categorie, setCategorie] = useState([]);
+
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [priceOrder, setPriceOrder] = useState(null);
   const [ratingOrder, setRatingOrder] = useState(null);
   const [inStock, setinStock] = useState(false);
-  const [Categorie, setCategorie] = useState([]);
   const [inStockProd, setinStockProd] = useState([]);
   const [activeCat, setActiveCat] = useState("all");
   const [PriceRangeProducts, setPriceRangeProducts] = useState([]);
