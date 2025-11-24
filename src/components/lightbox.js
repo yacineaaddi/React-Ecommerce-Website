@@ -1,12 +1,12 @@
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay, Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useEffect, useState } from "react";
+import { Product } from "./data";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import "./lightbox.css";
 import "swiper/css";
-import { useEffect, useState } from "react";
-import { Product } from "./data";
 
 const Lightbox = ({ lightbox, setlightbox }) => {
   const [product, setProduct] = useState(null);

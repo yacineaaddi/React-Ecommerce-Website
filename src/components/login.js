@@ -1,13 +1,12 @@
-import { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { MdOutlineLogin } from "react-icons/md";
-import { db, app } from "./firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
-import { useRef } from "react";
+import { useState, useRef } from "react";
+import { db, app } from "./firebase";
 import useKey from "./useCustomHook";
-import "./auth.css";
 import toast from "react-hot-toast";
+import "./auth.css";
 
 const Login = ({ setUserDetail, setAuth }) => {
   const [email, setEmail] = useState("");

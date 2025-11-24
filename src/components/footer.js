@@ -1,7 +1,11 @@
-import { FaFacebookSquare, FaAppStoreIos } from "react-icons/fa";
-import { FaSquareInstagram, FaSquareXTwitter } from "react-icons/fa6";
 import { AiFillTikTok } from "react-icons/ai";
 import { ImAndroid } from "react-icons/im";
+import {
+  FaFacebookSquare,
+  FaAppStoreIos,
+  FaSquareInstagram,
+  FaSquareXTwitter,
+} from "react-icons/fa";
 
 import "./footer.css";
 const Footer = () => {

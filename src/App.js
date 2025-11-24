@@ -1,7 +1,6 @@
 import { useState } from "react";
-/*import "bootstrap/dist/css/bootstrap.min.css";*/
 import Rout from "./rout";
-import { BrowserRouter, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Nav from "./components/nav";
 import SideBar from "./components/sidebar";
 import { Product } from "./components/data";
@@ -13,7 +12,6 @@ import StarRating from "./components/starRating";
 import SideMenu from "./components/sidemenu";
 import { db } from "./components/firebase";
 import Lightbox from "./components/lightbox";
-import UploadProductsOnce from "./components/uploadProducts";
 import {
   doc,
   collection,

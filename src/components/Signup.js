@@ -4,7 +4,7 @@ import { FaUser } from "react-icons/fa6";
 import { db, app } from "./firebase";
 import "./auth.css";
 import toast from "react-hot-toast";
-const Signup = ({ setUserDetail, setAuth, userDetail }) => {
+const Signup = ({ setUserDetail, setAuth }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");

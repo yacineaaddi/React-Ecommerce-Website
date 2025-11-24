@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { RiRefund2Line } from "react-icons/ri";
+import { useEffect, useState } from "react";
 import { TbDiscount } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
 import Newsletter from "./newsletter";

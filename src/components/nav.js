@@ -1,9 +1,7 @@
+import { FaRegUser, FaShoppingCart, FaHeart } from "react-icons/fa";
 import React, { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
-import { FaRegUser } from "react-icons/fa";
-import { FaShoppingCart } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
+import { Link } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import "./nav.css";
 import useKey from "./useCustomHook";
