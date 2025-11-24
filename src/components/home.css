@@ -1,10 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  caret-color: transparent;
-}
-
 .home {
   width: 100%;
 }
@@ -72,7 +65,7 @@
   color: #232323;
   font-size: 1.5rem;
   border-bottom: 2px solid #2196f3;
-  width: 155px;
+  width: fit-content;
   align-self: flex-start;
 }
 .home .toprated-product h2 {
@@ -320,65 +313,7 @@
 }
 
 /* Newsletter Product section style*/
-.newsletter {
-  padding: 20px 80px;
-  width: 100%;
-  background: #fff;
-}
-.newsletter .container {
-  padding: 40px 20px;
-  border: 1px solid #fff;
-  background: #eee;
-  max-width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  border-radius: 8px;
-  justify-content: space-around;
-  align-items: center;
-}
-.newsletter .container .main {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-}
-.newsletter .container .main h3 {
-  font-size: 28px;
-  color: #232323;
-}
-.newsletter .container .main p {
-  margin-top: 10px;
-  color: #232323;
-}
-.newsletter .container .main p span {
-  color: #2196f3;
-  font-weight: 600;
-}
-.newsletter .container .box {
-  position: relative;
-  width: 40%;
-  height: 50px;
-}
-.newsletter .container .box input {
-  height: 100%;
-  width: 100%;
-  border: none;
-  outline: none;
-  padding: 15px 10px;
-  color: #232323;
-  border: 2px solid #2196f3;
-  border-radius: 5px;
-  font-size: 0.8rem;
-}
-.newsletter .container .box .submit {
-  position: absolute;
-  right: 20px;
-  top: 58%;
-  transform: translateY(-50%);
-  color: #2196f3;
-  font-size: 1.4rem;
-  cursor: pointer;
-}
+
 /* Brands Product section style*/
 .brands {
   padding: 50px 55px;

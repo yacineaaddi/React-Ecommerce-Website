@@ -125,13 +125,13 @@
   .swiper {
     height: 88vh;
   }
-  @media (max-width: 650px) {
-    .swiper-box .info h2 {
-      font-size: 1.4rem;
-      line-height: 2.5rem;
-    }
-    .swiper {
-      height: 76vh;
-    }
+}
+@media (max-width: 650px) {
+  .swiper-box .info h2 {
+    font-size: 1.4rem;
+    line-height: 2.5rem;
+  }
+  .swiper {
+    height: 76vh;
   }
 }

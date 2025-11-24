@@ -1,9 +1,8 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer, useState, useRef } from "react";
 import "./sidebar.css";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaHeart } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { FaHeart } from "react-icons/fa";
 import { db } from "./firebase";
 import {
   doc,
@@ -13,8 +12,8 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import useKey from "./useCustomHook";
-import { useRef } from "react";
 import toast from "react-hot-toast";
+import StarRating from "./starRating";
 const SideBar = ({
   sidebar,
   setSidebar,
@@ -26,7 +25,6 @@ const SideBar = ({
   setWishlist,
   addtocart,
   updatestate,
-  StarRating,
   RemoveFromWishlist,
 }) => {
   const initialstate = "";

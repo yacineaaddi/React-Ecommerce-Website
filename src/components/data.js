@@ -1,7 +1,7 @@
 export const Product = [
   {
     id: 13,
-    Title: "TCL 55 QM6K Series 4K UHD HDR QDMini LED ",
+    Title: "TCL 55 QM6K Series 4K UHD HDR QDMini LED",
     Cat: "tv",
     Price: "549",
     Img: [
@@ -17,7 +17,49 @@ export const Product = [
     Rating: 4.2,
     NumRev: 1530,
     State: "Available",
+
+    Overview: [
+      "The TCL 55 QM6K delivers stunning 4K UHD quality with QD-Mini LED technology that enhances brightness, contrast, and overall picture depth. Featuring Dolby Vision and HDR10+, it provides exceptional color accuracy and dynamic range for lifelike visuals. Its smooth motion performance makes it ideal for movies, sports, and gaming, while the slim bezel design and built-in smart TV functions ensure a modern, convenient, and immersive viewing experience.",
+    ],
+
+    Specifications: [
+      "Display: 55-inch QD-Mini LED panel, 4K UHD (3840 × 2160), HDR10+ & Dolby Vision.",
+      "Audio: Dual speakers with Dolby Audio processing.",
+      "Smart Features: Google TV OS, Wi-Fi, built-in Voice Assistant support.",
+      "Connectivity: 3 HDMI ports, 2 USB ports, Bluetooth, and Optical audio output.",
+    ],
+    Reviews: [
+      {
+        name: "Emma Johnson",
+        date: "2025-03-15",
+        rating: 5,
+        observation:
+          "Absolutely love this TV! The colors are vibrant and the motion is incredibly smooth. Setup was super easy.",
+      },
+      {
+        name: "Liam Smith",
+        date: "2025-03-12",
+        rating: 4,
+        observation:
+          "Great picture quality and HDR performance. The built-in apps are convenient, though the remote could be better.",
+      },
+      {
+        name: "Olivia Brown",
+        date: "2025-03-10",
+        rating: 4,
+        observation:
+          "Excellent value for the price. The sound is good but I recommend a soundbar for a more immersive experience.",
+      },
+      {
+        name: "Noah Davis",
+        date: "2025-03-08",
+        rating: 5,
+        observation:
+          "I’m impressed with this TCL TV. The QD-Mini LED makes a huge difference in contrast and brightness. Highly recommend!",
+      },
+    ],
   },
+
   {
     id: 14,
     Title: "Hisense 55 QD6QF Series 4K UHD HDR QLED Fire ",

@@ -2,7 +2,7 @@ import Signup from "./components/Signup";
 import { Route, Routes } from "react-router-dom";
 import Login from "./components/login";
 import Home from "./components/home";
-import Shop from "./components/shopV1";
+import Shop from "./components/shopV2";
 import Contact from "./components/contact";
 import About from "./components/about";
 import SingleProduct from "./components/singleProduct";
@@ -70,7 +70,12 @@ const Rout = ({
         />
         <Route
           path="/shop/product/:id/:title"
-          element={<SingleProduct setlightbox={setlightbox} />}
+          element={
+            <SingleProduct
+              setlightbox={setlightbox}
+              ShopProduct={ShopProduct}
+            />
+          }
         />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />

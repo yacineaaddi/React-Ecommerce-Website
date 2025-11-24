@@ -26,7 +26,7 @@ const Newsletter = () => {
   return (
     <>
       <div className="newsletter">
-        <div className="container">
+        <div className="newsletter-container">
           <div className="main">
             <h3>Newsletter Sign Up</h3>
             <p>

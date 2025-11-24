@@ -3,10 +3,14 @@
 html {
   font-size: 16px;
 }
-
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 * {
   font-family: "Nunito", sans-serif;
-  font-weight: 650;
+  font-weight: 500;
 }
 ::-webkit-scrollbar {
   width: 6px;

@@ -1,6 +1,7 @@
 import { useState } from "react";
+/*import "bootstrap/dist/css/bootstrap.min.css";*/
 import Rout from "./rout";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, useNavigate } from "react-router-dom";
 import Nav from "./components/nav";
 import SideBar from "./components/sidebar";
 import { Product } from "./components/data";
@@ -12,7 +13,6 @@ import StarRating from "./components/starRating";
 import SideMenu from "./components/sidemenu";
 import { db } from "./components/firebase";
 import Lightbox from "./components/lightbox";
-import { useNavigate } from "react-router-dom";
 import UploadProductsOnce from "./components/uploadProducts";
 import {
   doc,
@@ -362,7 +362,6 @@ const App = () => {
         setWishlist={setWishlist}
         addtocart={addtocart}
         updatestate={updatestate}
-        StarRating={StarRating}
         RemoveFromWishlist={RemoveFromWishlist}
       />
       <Nav
@@ -373,6 +372,7 @@ const App = () => {
         SetsideMenu={SetsideMenu}
         products={products}
       />
+
       <Rout
         setUserDetail={setUserDetail}
         setAuth={setAuth}

@@ -1,14 +1,13 @@
-import { FaFacebookSquare } from "react-icons/fa";
-import { FaSquareInstagram } from "react-icons/fa6";
+import { FaFacebookSquare, FaAppStoreIos } from "react-icons/fa";
+import { FaSquareInstagram, FaSquareXTwitter } from "react-icons/fa6";
 import { AiFillTikTok } from "react-icons/ai";
 import { ImAndroid } from "react-icons/im";
-import { FaAppStoreIos } from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
+
 import "./footer.css";
 const Footer = () => {
   return (
     <div className="footer">
-      <div className="container">
+      <div className="footer-container">
         <div className="upper-part">
           <div className="detail-box">
             <div className="logo">
@@ -83,7 +82,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="ligne"></div>
-        <div className="down-part">
+        <div className="bottom-section">
           <div className="additional-links">
             <ul className="links">
               <li>Terms & Conditions</li>

@@ -43,7 +43,7 @@ const Signup = ({ setUserDetail, setAuth, userDetail }) => {
       //Writes the newUserData object to the document referenced by userRef.
       await userRef.set(newUserData);
 
-      // 3️⃣ Update local state
+      // Update local state
       setUserDetail({ id: user.uid, ...newUserData });
 
       toast.success("User Registered Successfully");
