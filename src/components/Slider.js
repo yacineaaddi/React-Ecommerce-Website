@@ -9,7 +9,7 @@ import { Data } from "./data";
 
 const Slider = () => {
   return (
-    <div className="swiper">
+    <div className="home-swiper">
       <Swiper
         spaceBetween={0}
         slidesPerView={1}

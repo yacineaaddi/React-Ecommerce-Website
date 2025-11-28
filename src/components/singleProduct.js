@@ -4,6 +4,7 @@ import "./singleproduct.css";
 import { Product } from "./data";
 import Newsletter from "./newsletter";
 import StarRating from "./starRating";
+import ProductSlider from "./productslider";
 
 const SingleProduct = ({ setlightbox, ShopProduct }) => {
   const { id, title } = useParams();
@@ -33,6 +34,7 @@ const SingleProduct = ({ setlightbox, ShopProduct }) => {
       );
       setSimilarproduct(similar_product);
       console.log(similar_product);
+      console.log(product);
     }
     getproduct();
   }, [id]);
@@ -41,53 +43,30 @@ const SingleProduct = ({ setlightbox, ShopProduct }) => {
     <>
       <div className="single-product">
         <div className="product">
-          <div className="product-image">
-            <img
-              className="preview"
-              src={product?.Img[preview]}
-              alt="Image-view-1"
-              onClick={() => {
-                setlightbox(product.id);
-              }}
-            />
-            {product?.Img?.map((src, i) => (
+          {/*
+            <div className="product-image">
               <img
-                key={i + 1}
-                src={src}
-                alt={`img-${i + 1}`}
-                onClick={() => setPreview(i)}
-                style={{ border: preview === i ? "2px solid #2196f3" : "" }}
+                className="preview"
+                src={product?.Img[preview]}
+                alt="Image-view-1"
+                onClick={() => {
+                  setlightbox(product.id);
+                }}
               />
-            ))}
-          </div>
+              {product?.Img?.map((src, i) => (
+                <img
+                  key={i + 1}
+                  src={src}
+                  alt={`img-${i + 1}`}
+                  onClick={() => setPreview(i)}
+                  style={{ border: preview === i ? "2px solid #2196f3" : "" }}
+                />
+              ))}
+            </div>*/}
+          {product && <ProductSlider product={product} />}
           <div className="singleproduct-details"></div>
         </div>
-        <div className="product-description">
-          {/*<Accordion defaultActiveKey="0">
-            <Accordion.Item eventKey="0">
-              <Accordion.Header>Product Overview</Accordion.Header>
-              <Accordion.Body className="preserve">
-                {product?.Overview}
-              </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="1">
-              <Accordion.Header>Product Specifications</Accordion.Header>
-              <Accordion.Body className="">
-                {product?.Specifications.map((spec, index) => (
-                  <li key={index}>{spec}</li>
-                ))}
-              </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="2">
-              <Accordion.Header>Customer Reviews</Accordion.Header>
-              <Accordion.Body className="reviews">
-                {product?.Reviews.map((review, index) => (
-                  <CustomerReview key={index} review={review} />
-                ))}
-              </Accordion.Body>
-            </Accordion.Item>
-          </Accordion>*/}
-        </div>
+        <div className="product-description"></div>
         <div className="bestseller-product">
           <h2>Similar Products</h2>
           <div className="prod-container">

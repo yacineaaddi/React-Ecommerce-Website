@@ -77,3 +77,19 @@
   width: fit-content;
   padding: 8px;
 }
+.szh-accordion__item-heading {
+  background: #f8f8f8;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.szh-accordion__item-btn {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.szh-accordion__item-content {
+  padding: 15px;
+  border-left: 3px solid #2196f3;
+  background: #fff;
+}

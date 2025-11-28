@@ -5,7 +5,6 @@ import { TbDiscount } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
 import Newsletter from "./newsletter";
 import Slider from "./Slider";
-
 import "./home.css";
 
 const Home = ({ products, ShopProduct, Specialoffers }) => {
