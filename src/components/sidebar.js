@@ -134,7 +134,7 @@ const SideBar = ({
             <div className="delete">
               <div
                 className="deleteBtn"
-                onClick={(e) => {
+                onClick={() => {
                   sidebar === "wishlist"
                     ? RemoveFromWishlist(currEl)
                     : RemoveFromCart(currEl);

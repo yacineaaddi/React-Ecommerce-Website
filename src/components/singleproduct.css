@@ -26,8 +26,10 @@
 .singleproduct-details {
   width: 48%;
   height: 50px;
-  background-color: blue;
   border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .product-description {
   width: 90%;

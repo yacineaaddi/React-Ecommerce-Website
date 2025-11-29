@@ -110,7 +110,7 @@ const App = () => {
       toast.error("Error deleting product: ", error);
     }
   };
-  const addtowishlist = async (data) => {
+  const updatewishlist = async (data) => {
     if (!Auth) {
       toast.error("Please Log In");
       return;
@@ -175,7 +175,7 @@ const App = () => {
         </div>
         <div className="detail">
           <div className="icons">
-            <div className="icon" onClick={() => addtowishlist(currEl)}>
+            <div className="icon" onClick={() => updatewishlist(currEl)}>
               <FaHeart color={isWishlisted(currEl) ? "red" : ""} />
             </div>
             <div
@@ -224,7 +224,7 @@ const App = () => {
         </div>
         <div className="detail">
           <div className="icons">
-            <div className="icon" onClick={() => addtowishlist(currEl)}>
+            <div className="icon" onClick={() => updatewishlist(currEl)}>
               <FaHeart color={isWishlisted(currEl) ? "red" : ""} />
             </div>
             <div
@@ -289,7 +289,7 @@ const App = () => {
         </div>
         <div className="detail">
           <div className="icons">
-            <div className="icon" onClick={() => addtowishlist(currEl)}>
+            <div className="icon" onClick={() => updatewishlist(currEl)}>
               <FaHeart color={isWishlisted(currEl) ? "red" : ""} />
             </div>
             <div
@@ -382,6 +382,8 @@ const App = () => {
         Specialoffers={Specialoffers}
         userDetail={userDetail}
         setlightbox={setlightbox}
+        wishlist={wishlist}
+        updatewishlist={updatewishlist}
       />
       <Footer />
     </>

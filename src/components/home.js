@@ -69,7 +69,7 @@ const Home = ({ products, ShopProduct, Specialoffers }) => {
                 <LiaShippingFastSolid />
               </div>
               <div className="detail">
-                <h3>Free Shipping</h3>
+                <h3>Free Delivery</h3>
                 <p>Order above $100</p>
               </div>
             </div>

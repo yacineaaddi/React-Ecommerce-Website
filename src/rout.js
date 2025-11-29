@@ -22,6 +22,8 @@ const Rout = ({
   filtredProducts,
   setfiltredProducts,
   setlightbox,
+  wishlist,
+  updatewishlist,
 }) => {
   return (
     <>
@@ -74,6 +76,8 @@ const Rout = ({
             <SingleProduct
               setlightbox={setlightbox}
               ShopProduct={ShopProduct}
+              wishlist={wishlist}
+              updatewishlist={updatewishlist}
             />
           }
         />
