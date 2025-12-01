@@ -32,7 +32,6 @@ const SideBar = ({
   const [couponCode, setCouponCode] = useState("");
   const Subtotal = cart.reduce((sum, p) => sum + +(p.Price * p.Qty), 0);
   const [state, dispatch] = useReducer(reducer, initialstate);
-
   function reducer(state, action) {
     const couponmsg = "Coupon code added successfully!";
     switch (action.type) {
@@ -99,10 +98,9 @@ const SideBar = ({
                       type="number"
                       className="value"
                       disabled
-                      value={currEl.State !== "Available" ? "" : currEl.Qty}
+                      value={currEl.Qty < 1 ? "" : currEl.Qty}
                       style={{
-                        backgroundColor:
-                          currEl.State !== "Available" ? "#E0E0E0" : "",
+                        backgroundColor: currEl.Qty < 1 ? "#E0E0E0" : "",
                       }}
                     ></input>
                     <button
@@ -236,7 +234,7 @@ const SideBar = ({
 
   return (
     <div ref={sideBar} className={`sidebar ${!sidebar ? "hidden" : ""}`}>
-      <button className="close-btn" onClick={() => setSidebar((e) => "")}>
+      <button className="close-btn" onClick={() => setSidebar(() => "")}>
         X
       </button>
       <div className="title">

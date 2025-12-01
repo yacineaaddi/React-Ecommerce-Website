@@ -1,9 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .nav {
   position: fixed;
   top: 0%;
@@ -15,7 +9,7 @@
   flex-direction: row;
   align-items: center;
   padding: 15px 22px 15px 22px;
-  z-index: 11111;
+  z-index: 1000;
   background-image: url("../img/homebackground1.webp");
   background-repeat: no-repeat;
   background-size: 100% 600%;

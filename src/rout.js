@@ -24,6 +24,8 @@ const Rout = ({
   setlightbox,
   wishlist,
   updatewishlist,
+  addtocart,
+  isInCart,
 }) => {
   return (
     <>
@@ -78,6 +80,8 @@ const Rout = ({
               ShopProduct={ShopProduct}
               wishlist={wishlist}
               updatewishlist={updatewishlist}
+              addtocart={addtocart}
+              isInCart={isInCart}
             />
           }
         />

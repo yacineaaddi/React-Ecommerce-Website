@@ -384,6 +384,8 @@ const App = () => {
         setlightbox={setlightbox}
         wishlist={wishlist}
         updatewishlist={updatewishlist}
+        addtocart={addtocart}
+        isInCart={isInCart}
       />
       <Footer />
     </>

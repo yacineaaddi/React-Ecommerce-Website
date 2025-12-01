@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import "./nav.css";
 import useKey from "./useCustomHook";
+import { useNavigate } from "react-router-dom";
 
 const Nav = ({
   Auth,
@@ -14,9 +15,25 @@ const Nav = ({
   SetsideMenu,
   products,
 }) => {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [filtredProducts, setfiltredProducts] = useState([]);
   const [hidemenu, setHideMenu] = useState(true);
+  const [disableBlur, setDisableBlur] = useState(false);
+  const [enableblur, setEnableblur] = useState(true);
+
+  useEffect(() => {
+    function handleScroll() {
+      if (disableBlur) {
+        setEnableblur(false);
+        console.log("false");
+      } else {
+        setEnableblur(true);
+        console.log("true");
+      }
+    }
+    handleScroll();
+  }, [disableBlur]);
 
   useEffect(() => {
     function handleScroll() {
@@ -98,9 +115,14 @@ const Nav = ({
             placeholder="Search Product"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            onFocus={() => setHideMenu(false)}
-            onBlur={() => resetSearch()}
+            onClick={() => setHideMenu(false)}
             className="search_input"
+            onBlur={() => {
+              if (enableblur) {
+                setHideMenu(true);
+                setSearchTerm("");
+              }
+            }}
             ref={inputEl}
           ></input>
 
@@ -108,13 +130,25 @@ const Nav = ({
             <IoSearch />
           </div>
           {searchTerm && (
-            <div className="search-result-box">
+            <div
+              className="search-result-box"
+              onMouseEnter={() => setDisableBlur(true)} // fires before blur
+              onMouseLeave={() => setDisableBlur(false)}
+            >
               {filtredProducts.length > 0 ? (
                 filtredProducts.map((item) => (
                   <div
                     className="search-result-item"
                     key={item.id}
-                    onClick={() => alert("clicked")}
+                    onClick={() => {
+                      navigate(
+                        `shop/product/${item?.id}/${item?.Title.split(" ")
+                          .slice()
+                          .join("-")}`
+                      );
+                      setSearchTerm("");
+                      setHideMenu(true);
+                    }}
                   >
                     <img src={item.Img[0]} alt={item.Title} width="40" />
                     <span>{item.Title.split(" ").slice(0, 5).join(" ")}</span>

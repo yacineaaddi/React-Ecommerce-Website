@@ -3,10 +3,14 @@ import PropTypes from "prop-types";
 
 const containerStyle = {
   display: "flex",
+  alignitem: "center",
+  justifycontent: "center",
 };
 
 const starContainerStyle = {
   display: "flex",
+  alignitem: "center",
+  justifycontent: "center",
 };
 
 export default function StarRating({

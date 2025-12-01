@@ -144,6 +144,7 @@ export const Product = [
     Rating: 4.6,
     NumRev: 2101,
     State: "Sold out",
+    Stock: 51,
   },
   {
     id: 18,
@@ -591,6 +592,10 @@ export const Product = [
     Cat: "computers",
     Price: "1199",
     Img: [
+      "/img/laptop8-1.jpeg",
+      "/img/laptop8-2.jpg",
+      "/img/laptop8-3.jpg",
+      "/img/laptop8-4.jpg",
       "/img/laptop8-1.jpeg",
       "/img/laptop8-2.jpg",
       "/img/laptop8-3.jpg",
