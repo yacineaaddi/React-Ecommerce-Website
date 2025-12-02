@@ -9,6 +9,10 @@ export const Product = [
       "/img/tv1-2.jpg",
       "/img/tv1-3.jpg",
       "/img/tv1-4.jpg",
+      "/img/tv1-1.jpg",
+      "/img/tv1-2.jpg",
+      "/img/tv1-3.jpg",
+      "/img/tv1-4.jpg",
     ],
     SubCat: "hot",
     Brand: "TCL",
@@ -17,18 +21,19 @@ export const Product = [
     Rating: 4.2,
     NumRev: 1530,
     State: "Available",
+    Stock: 12,
 
     Overview: [
-      "The TCL 55 QM6K delivers stunning 4K UHD quality with QD-Mini LED technology that enhances brightness, contrast, and overall picture depth. Featuring Dolby Vision and HDR10+, it provides exceptional color accuracy and dynamic range for lifelike visuals. Its smooth motion performance makes it ideal for movies, sports, and gaming, while the slim bezel design and built-in smart TV functions ensure a modern, convenient, and immersive viewing experience.",
+      "The TCL 55 QM6K delivers sharp 4K UHD quality with bright, high-contrast QD-Mini LED and support for Dolby Vision/HDR10+. Its smooth motion, slim design, and smart features provide a modern, immersive viewing experience.",
     ],
-
+    Delivery: [],
     Specifications: [
       "Display: 55-inch QD-Mini LED panel, 4K UHD (3840 × 2160), HDR10+ & Dolby Vision.",
       "Audio: Dual speakers with Dolby Audio processing.",
       "Smart Features: Google TV OS, Wi-Fi, built-in Voice Assistant support.",
       "Connectivity: 3 HDMI ports, 2 USB ports, Bluetooth, and Optical audio output.",
     ],
-    Reviews: [
+    customerReviews: [
       {
         name: "Emma Johnson",
         date: "2025-03-15",

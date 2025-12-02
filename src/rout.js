@@ -12,10 +12,7 @@ const Rout = ({
   setAuth,
   Auth,
   products,
-  OneProduct,
   setProducts,
-  ShopProduct,
-  Specialoffers,
   userDetail,
   searchTerm,
   setSearchTerm,
@@ -26,6 +23,9 @@ const Rout = ({
   updatewishlist,
   addtocart,
   isInCart,
+  cart,
+  updatestate,
+  Productbox,
 }) => {
   return (
     <>
@@ -51,13 +51,11 @@ const Rout = ({
             <Home
               setUserDetail={setUserDetail}
               products={products}
-              OneProduct={OneProduct}
-              ShopProduct={ShopProduct}
-              Specialoffers={Specialoffers}
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
               filtredProducts={filtredProducts}
               setfiltredProducts={setfiltredProducts}
+              Productbox={Productbox}
             />
           }
         />
@@ -66,9 +64,8 @@ const Rout = ({
           element={
             <Shop
               products={products}
-              OneProduct={OneProduct}
               setProducts={setProducts}
-              ShopProduct={ShopProduct}
+              Productbox={Productbox}
             />
           }
         />
@@ -77,11 +74,14 @@ const Rout = ({
           element={
             <SingleProduct
               setlightbox={setlightbox}
-              ShopProduct={ShopProduct}
               wishlist={wishlist}
               updatewishlist={updatewishlist}
               addtocart={addtocart}
               isInCart={isInCart}
+              userDetail={userDetail}
+              cart={cart}
+              updatestate={updatestate}
+              Productbox={Productbox}
             />
           }
         />

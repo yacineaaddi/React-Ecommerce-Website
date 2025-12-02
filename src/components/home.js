@@ -7,7 +7,7 @@ import Newsletter from "./newsletter";
 import Slider from "./Slider";
 import "./home.css";
 
-const Home = ({ products, ShopProduct, Specialoffers }) => {
+const Home = ({ products, Productbox }) => {
   const [sale, setSales] = useState([]);
   const [Bestsellers, setBestsellers] = useState([]);
   const [toprated, setToprated] = useState([]);
@@ -106,7 +106,11 @@ const Home = ({ products, ShopProduct, Specialoffers }) => {
           <h2>Special offers</h2>
           <div className="prod-container">
             {sale?.map((currEl) => (
-              <Specialoffers currEl={currEl} key={currEl.id} />
+              <Productbox
+                currEl={currEl}
+                key={currEl.id}
+                variant="special-offers"
+              />
             ))}
           </div>
         </div>
@@ -140,7 +144,11 @@ const Home = ({ products, ShopProduct, Specialoffers }) => {
           <h2>Top Rated</h2>
           <div className="prod-container">
             {toprated?.map((currEl) => (
-              <ShopProduct currEl={currEl} key={currEl.id} />
+              <Productbox
+                currEl={currEl}
+                key={currEl.id}
+                variant="regular-box"
+              />
             ))}
           </div>
         </div>
@@ -148,7 +156,11 @@ const Home = ({ products, ShopProduct, Specialoffers }) => {
           <h2>Best Sellers</h2>
           <div className="prod-container">
             {Bestsellers?.map((currEl) => (
-              <ShopProduct currEl={currEl} key={currEl.id} />
+              <Productbox
+                currEl={currEl}
+                key={currEl.id}
+                variant="regular-box"
+              />
             ))}
           </div>
         </div>

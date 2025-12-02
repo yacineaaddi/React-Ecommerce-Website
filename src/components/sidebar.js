@@ -4,16 +4,13 @@ import { FaShoppingCart, FaHeart } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { db } from "./firebase";
-import {
-  doc,
-  collection,
-  getDocs,
-  updateDoc,
-  deleteDoc,
-} from "firebase/firestore";
-import useKey from "./useCustomHook";
+import { doc, collection, getDocs, deleteDoc } from "firebase/firestore";
+/*import useKey from "./useCustomHook";*/
 import toast from "react-hot-toast";
 import StarRating from "./starRating";
+import { increaseQty, decreseQty } from "./updatestates";
+import { reducer } from "./updatestates";
+
 const SideBar = ({
   sidebar,
   setSidebar,
@@ -32,23 +29,7 @@ const SideBar = ({
   const [couponCode, setCouponCode] = useState("");
   const Subtotal = cart.reduce((sum, p) => sum + +(p.Price * p.Qty), 0);
   const [state, dispatch] = useReducer(reducer, initialstate);
-  function reducer(state, action) {
-    const couponmsg = "Coupon code added successfully!";
-    switch (action.type) {
-      case "X7p9alq2":
-        toast.success(couponmsg);
-        return 20;
-      case "M4zt82rw":
-        toast.success(couponmsg);
-        return 30;
-      case "qh9lk3vj":
-        toast.success(couponmsg);
-        return 50;
-      default:
-        toast.error("Coupon code is not valid!");
-        return state;
-    }
-  }
+
   const sideBar = useRef();
   /*
   useKey("Escape", function () {
@@ -90,7 +71,9 @@ const SideBar = ({
                   <div className="product-qty">
                     <button
                       className="decrement"
-                      onClick={() => decreseQty(currEl)}
+                      onClick={() =>
+                        decreseQty(currEl, userDetail.id, updatestate)
+                      }
                     >
                       -
                     </button>
@@ -105,7 +88,9 @@ const SideBar = ({
                     ></input>
                     <button
                       className="increment"
-                      onClick={() => increseQty(currEl)}
+                      onClick={() =>
+                        increaseQty(currEl, userDetail.id, updatestate)
+                      }
                     >
                       +
                     </button>
@@ -157,38 +142,6 @@ const SideBar = ({
       </>
     );
   }
-
-  const increseQty = async (data) => {
-    if (data.State !== "Available") {
-      toast.error("Out of stock");
-      return;
-    }
-    try {
-      const cartdataref = doc(db, "users", userDetail.id, "cart", data.id);
-      await updateDoc(cartdataref, { Qty: data.Qty + 1 });
-      updatestate();
-      toast.success("Quantity added successfully!");
-    } catch (error) {
-      toast.error("Error increasing Quantity");
-    }
-  };
-
-  const decreseQty = async (data) => {
-    if (data.State !== "Available") {
-      toast.error("Out of stock");
-      return;
-    }
-    try {
-      if (data.Qty > 1) {
-        const cartdataref = doc(db, "users", userDetail.id, "cart", data.id);
-        await updateDoc(cartdataref, { Qty: data.Qty - 1 });
-        toast.success("Quantity decreased successfully!");
-        updatestate();
-      }
-    } catch (error) {
-      toast.error("Error decreasing Quantity");
-    }
-  };
 
   const RemoveFromCart = async (data) => {
     try {

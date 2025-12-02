@@ -11,7 +11,7 @@ const categories = [
   { key: "consoles", label: "Game and Consoles", value: "consoles" },
 ];
 
-const Shop = ({ products, ShopProduct }) => {
+const Shop = ({ products, Productbox }) => {
   const [activeCat, setActiveCat] = useState("all");
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
@@ -148,7 +148,7 @@ const Shop = ({ products, ShopProduct }) => {
               <p>No Products Found!</p>
             ) : (
               finalProducts.map((item) => (
-                <ShopProduct key={item.id} currEl={item} />
+                <Productbox key={item.id} currEl={item} variant="regular-box" />
               ))
             )}
           </div>

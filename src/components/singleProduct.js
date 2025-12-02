@@ -1,27 +1,55 @@
-import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useEffect, useState, useReducer } from "react";
 import "./singleproduct.css";
 import { Product } from "./data";
 import Newsletter from "./newsletter";
 import StarRating from "./starRating";
 import ProductSlider from "./productslider";
 import { LiaShippingFastSolid } from "react-icons/lia";
-import { RiRefund2Line } from "react-icons/ri";
 import { MdOutlineShoppingCart } from "react-icons/md";
+import { increaseQty, decreseQty } from "./updatestates";
+import { reducer } from "./updatestates";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const SingleProduct = ({
   setlightbox,
-  ShopProduct,
+  Productbox,
   wishlist,
   updatewishlist,
   addtocart,
   isInCart,
+  userDetail,
+  updatestate,
+  cart,
 }) => {
+  const initialstate = "";
+  const [openIndex, setOpenIndex] = useState(null);
+
   const { id, title } = useParams();
   const [product, setProduct] = useState(null);
-  const [preview, setPreview] = useState(0);
-  const [similarproduct, setSimilarproduct] = useState("");
+  const [coupon, setCoupon] = useState(false);
+  const [couponCode, setCouponCode] = useState("");
+  const [state, dispatch] = useReducer(reducer, initialstate);
+  const [similarproduct, setSimilarproduct] = useState([]);
+  const [productQty, updateproductQty] = useState(1);
   const soldout = product?.Stock < 1;
+  const productinCart = product ? isInCart(product) : false;
+
+  const singleproduct =
+    product && Array.isArray(cart)
+      ? cart.find((item) => String(item.CartId) === String(product.id))
+      : null;
+
+  const toggle = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+  function updateQty(n) {
+    updateproductQty((prev) => {
+      console.log(cart);
+      const updated = prev + n;
+      return updated < 1 ? 1 : updated;
+    });
+  }
 
   function CustomerReview({ review }) {
     return (
@@ -35,6 +63,10 @@ const SingleProduct = ({
       </div>
     );
   }
+  useEffect(() => {
+    updateproductQty(1);
+  }, []);
+
   useEffect(() => {
     function getproduct() {
       const currEl = Product.find((x) => Number(id) === x.id);
@@ -119,7 +151,13 @@ const SingleProduct = ({
               </div>*/}
             </div>
             <hr />
-
+            <div className="product-info">
+              <p>
+                <strong>Product overview : </strong>
+                {product?.Overview}
+              </p>
+            </div>
+            <hr />
             <div className="payment">
               <h2>{`$${product?.Price} or ${(product?.Price / 12).toFixed(
                 2
@@ -129,17 +167,35 @@ const SingleProduct = ({
             <hr />
             <div className="quantity">
               <div className="product-qty">
-                <button className="decrement">-</button>
+                <button
+                  className="decrement"
+                  onClick={() =>
+                    singleproduct
+                      ? decreseQty(singleproduct, userDetail.id, updatestate)
+                      : updateQty(-1)
+                  }
+                >
+                  -
+                </button>
                 <input
                   type="number"
                   className="value"
                   disabled
-                  value={soldout ? "" : product?.Qty}
+                  value={singleproduct ? singleproduct.Qty : productQty}
                   style={{
                     backgroundColor: soldout ? "#E0E0E0" : "",
                   }}
                 ></input>
-                <button className="increment">+</button>
+                <button
+                  className="increment"
+                  onClick={() =>
+                    singleproduct
+                      ? increaseQty(singleproduct, userDetail.id, updatestate)
+                      : updateQty(1)
+                  }
+                >
+                  +
+                </button>
               </div>
               {soldout ? (
                 <p>
@@ -153,14 +209,30 @@ const SingleProduct = ({
                 </p>
               )}
             </div>
+            <div className="coupon">
+              <p onClick={() => setCoupon((e) => !e)}>Have a coupon code ?</p>
+              {coupon && (
+                <div className="box">
+                  <input
+                    type="text"
+                    placeholder="Coupon code"
+                    onChange={(e) => setCouponCode(e.target.value)}
+                  ></input>
+                  <div className="submit">
+                    <FaArrowRightLong
+                      onClick={() => dispatch({ type: `${couponCode}` })}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
             <div className="buttons">
               <button>Buy Now</button>
               <button onClick={() => product && addtocart(product)}>
-                {product && isInCart(product)
-                  ? "Already in cart"
-                  : "Add To Cart"}
+                {product && productinCart ? "Already in cart" : "Add To Cart"}
               </button>
             </div>
+
             <div className="additional-info">
               <div className="box">
                 <div className="icon">
@@ -171,28 +243,63 @@ const SingleProduct = ({
                   <p>Order above $100</p>
                 </div>
               </div>
-              <div className="box">
-                <div className="icon">
-                  <RiRefund2Line />
-                </div>
-                <div className="detail">
-                  <h3>Return Delivery</h3>
-                  <p>
-                    Free 30 Days Delivery Returns. <Link></Link>
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
-        <div className="product-description"></div>
+
+        <div className="accordion-container">
+          <div className="accordion-item">
+            <button className="accordion-header" onClick={() => toggle(1)}>
+              Technical Specifications
+              <span className="icon">{openIndex === 1 ? "−" : "+"}</span>
+            </button>
+
+            {openIndex === 1 && (
+              <div className="accordion-content">{product?.Specifications}</div>
+            )}
+          </div>
+          <div className="accordion-item">
+            <button className="accordion-header" onClick={() => toggle(2)}>
+              Customer Reviews
+              <span className="icon">{openIndex === 2 ? "−" : "+"}</span>
+            </button>
+
+            {openIndex === 2 && (
+              <div className="accordion-content">{product?.Specifications}</div>
+            )}
+          </div>
+          <div className="accordion-item">
+            <button className="accordion-header" onClick={() => toggle(3)}>
+              Shipping & Delivery
+              <span className="icon">{openIndex === 3 ? "−" : "+"}</span>
+            </button>
+
+            {openIndex === 3 && (
+              <div className="accordion-content">{product?.Specifications}</div>
+            )}
+          </div>
+          <div className="accordion-item">
+            <button className="accordion-header" onClick={() => toggle(4)}>
+              FAQ
+              <span className="icon">{openIndex === 4 ? "−" : "+"}</span>
+            </button>
+
+            {openIndex === 4 && (
+              <div className="accordion-content">{product?.Specifications}</div>
+            )}
+          </div>
+        </div>
 
         <div className="bestseller-product">
           <h2>Similar Products</h2>
           <div className="prod-container">
             {similarproduct &&
               similarproduct?.map((currEl) => (
-                <ShopProduct currEl={currEl} key={currEl.id} />
+                <Productbox
+                  currEl={currEl}
+                  key={currEl.id}
+                  variant="regular-box"
+                />
               ))}
           </div>
         </div>

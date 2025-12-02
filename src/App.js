@@ -34,7 +34,10 @@ const App = () => {
   const navigate = useNavigate();
 
   function isInCart(p) {
-    return cart.some((product) => String(product.CartId) === String(p.id));
+    if (!p) return false; // avoid errors
+    if (!cart || !Array.isArray(cart)) return false;
+
+    return cart.some((item) => String(item.CartId) === String(p.id));
   }
   function isWishlisted(p) {
     return wishlist.some((product) => String(product.CartId) === String(p.id));
@@ -154,6 +157,100 @@ const App = () => {
       toast.success("Product Added To Wishlist");
     }
   };
+
+  function Productbox({ currEl, variant }) {
+    return (
+      <div
+        className="box"
+        onClick={(e) => {
+          if (e.target.closest(".icon") || e.target.closest("button")) {
+            return;
+          }
+
+          navigate(
+            `shop/product/${currEl.id}/${currEl.Title.split(" ")
+              .slice()
+              .join("-")}`
+          );
+        }}
+      >
+        <div className="img-box">
+          <img src={currEl.Img[0]} alt="Product-image"></img>
+        </div>
+        <div className="detail">
+          <div className="icons">
+            <div className="icon" onClick={() => updatewishlist(currEl)}>
+              <FaHeart color={isWishlisted(currEl) ? "red" : ""} />
+            </div>
+            <div
+              className="icon"
+              onClick={() => {
+                setlightbox(currEl.id);
+              }}
+            >
+              <CiSearch />
+            </div>
+          </div>
+          <h3>{currEl.Title}</h3>
+
+          {variant === "special-offers" && (
+            <>
+              <div className="prod-details">
+                <div className="rating">
+                  <StarRating defaultRating={currEl.Rating} />
+                  <p>{currEl.Rating}</p>
+                  <p>({currEl.NumRev} reviews)</p>
+                </div>
+              </div>
+              <div className="discount">
+                <h4
+                  style={{
+                    color: "gray",
+                    textDecoration: "line-through",
+                  }}
+                >
+                  {currEl.Price} $
+                </h4>
+                <h4 style={{ color: "red", fontWeight: "bold" }}>
+                  {currEl.DisountedPrice} $
+                </h4>
+              </div>
+            </>
+          )}
+
+          {variant === "regular-box" && (
+            <div className="prod-details">
+              <div className="rating">
+                <StarRating defaultRating={currEl.Rating} />
+                <p>{currEl.Rating}</p>
+                <p>({currEl.NumRev} reviews)</p>
+              </div>
+              <div
+                className="productState"
+                style={{
+                  color: currEl.State === "Available" ? "green" : "red",
+                }}
+              >
+                {currEl.State}
+              </div>
+            </div>
+          )}
+
+          <h4>{currEl.Price} $</h4>
+          <button onClick={() => addtocart(currEl)}>
+            {isInCart(currEl) ? "Already in cart" : "Add To Cart"}
+          </button>
+        </div>
+        {isWishlisted(currEl) ? (
+          <div className="wishlist-icon">
+            <FaHeart color="red" />
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
+    );
+  } /*
   function OneProduct({ currEl }) {
     return (
       <div
@@ -238,7 +335,7 @@ const App = () => {
           </div>
 
           <h3>{currEl.Title}</h3>
-          <div className="prod-details">
+        shop product <div className="prod-details">
             <div className="rating">
               <StarRating defaultRating={currEl.Rating} />
               <p>{currEl.Rating}</p>
@@ -303,7 +400,7 @@ const App = () => {
           </div>
 
           <h3>{currEl.Title}</h3>
-          <div className="prod-details">
+          specialoffers <div className="prod-details">
             <div className="rating">
               <StarRating defaultRating={currEl.Rating} />
               <p>{currEl.Rating}</p>
@@ -336,7 +433,7 @@ const App = () => {
         )}
       </div>
     );
-  }
+  }*/
 
   return (
     <>
@@ -375,17 +472,17 @@ const App = () => {
         setUserDetail={setUserDetail}
         setAuth={setAuth}
         Auth={Auth}
+        Productbox={Productbox}
         products={products}
-        OneProduct={OneProduct}
         setProducts={setProducts}
-        ShopProduct={ShopProduct}
-        Specialoffers={Specialoffers}
         userDetail={userDetail}
         setlightbox={setlightbox}
         wishlist={wishlist}
         updatewishlist={updatewishlist}
         addtocart={addtocart}
         isInCart={isInCart}
+        updatestate={updatestate}
+        cart={cart}
       />
       <Footer />
     </>

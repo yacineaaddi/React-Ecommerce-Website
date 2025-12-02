@@ -3,9 +3,8 @@ import { CgArrowsExchangeV } from "react-icons/cg";
 import { useEffect, useState } from "react";
 import "./shop.css";
 
-const Shop = ({ products, ShopProduct }) => {
+const Shop = ({ products, Productbox }) => {
   const [Categorie, setCategorie] = useState([]);
-
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [priceOrder, setPriceOrder] = useState(null);
@@ -275,7 +274,11 @@ const Shop = ({ products, ShopProduct }) => {
               <p>No Products found !</p>
             ) : (
               finalProducts.map((currEl) => (
-                <ShopProduct currEl={currEl} key={currEl.id} />
+                <Productbox
+                  currEl={currEl}
+                  key={currEl.id}
+                  variant="regular-box"
+                />
               ))
             )}
           </div>
