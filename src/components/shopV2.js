@@ -1,6 +1,11 @@
 import { CgArrowsExchangeAltV, CgArrowsExchangeV } from "react-icons/cg";
 import { useMemo, useState } from "react";
 import "./shop.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/autoplay";
 
 const categories = [
   { key: "all", label: "All", value: "" },
@@ -12,6 +17,10 @@ const categories = [
 ];
 
 const Shop = ({ products, Productbox }) => {
+  const RESULT_PER_PAGE = 16;
+  const [currentPage, setCurrentPage] = useState(0);
+  const start = currentPage * RESULT_PER_PAGE;
+  const end = start + RESULT_PER_PAGE;
   const [activeCat, setActiveCat] = useState("all");
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
@@ -29,6 +38,7 @@ const Shop = ({ products, Productbox }) => {
     let list = [...shuffledProducts];
 
     const selected = categories.find((c) => c.key === activeCat);
+
     if (selected.value) {
       list = list.filter((p) => p.Cat === selected.value);
     }
@@ -43,7 +53,7 @@ const Shop = ({ products, Productbox }) => {
     }
 
     if (inStock) {
-      list = list.filter((p) => p.State === "Available");
+      list = list.filter((p) => p.Stock < 1);
     }
 
     if (priceOrder !== null) {
@@ -147,11 +157,46 @@ const Shop = ({ products, Productbox }) => {
             {noPriceResults ? (
               <p>No Products Found!</p>
             ) : (
-              finalProducts.map((item) => (
-                <Productbox key={item.id} currEl={item} variant="regular-box" />
-              ))
+              finalProducts
+                .slice(start, end)
+                .map((item) => (
+                  <Productbox
+                    key={item.id}
+                    currEl={item}
+                    variant="regular-box"
+                  />
+                ))
             )}
           </div>
+          {finalProducts.length > RESULT_PER_PAGE && (
+            <div className="pagination">
+              <Swiper
+                spaceBetween={0}
+                slidesPerView={3}
+                modules={[Navigation]}
+                navigation={true}
+                className="pagination-box"
+              >
+                {Array.from(
+                  {
+                    length: 5,
+                  },
+                  (_, i) => (
+                    <SwiperSlide key={i}>
+                      <div className="pagination-num">
+                        <button
+                          className={i === currentPage ? "active" : ""}
+                          onClick={() => setCurrentPage(i)}
+                        >
+                          {i + 1}
+                        </button>
+                      </div>
+                    </SwiperSlide>
+                  )
+                )}
+              </Swiper>
+            </div>
+          )}
         </div>
       </div>
     </div>
