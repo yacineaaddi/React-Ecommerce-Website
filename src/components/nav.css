@@ -12,7 +12,7 @@
   z-index: 1000;
   background-image: url("../img/homebackground1.webp");
   background-repeat: no-repeat;
-  background-size: 100% 600%;
+  background-size: 100% 500%;
   transition: all 0.3s;
   transform: translateX(-50%);
 }
@@ -29,6 +29,9 @@
   display: none;
 }
 .nav .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 8%;
   height: 7%;
   transition: 0.5s;
@@ -60,11 +63,13 @@
 .nav ul li a {
   color: #ffffff;
   text-decoration: none;
-  transition: color 0.3s ease;
+}
+.nav ul li .active-link {
+  color: #66ff66;
 }
 
 .nav ul li a:hover {
-  color: #2196f3;
+  color: #66ff66;
 }
 
 .search_bar {
@@ -181,7 +186,8 @@
   font-weight: 600;
   letter-spacing: 1.5px;
 }
-.nav .sidebar-wishlist {
+
+.sidebar-wishlist {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -189,28 +195,21 @@
   padding: 10px 20px;
   gap: 50px;
 }
-.nav .sidebar-wishlist .box {
+.sidebar-wishlist .cart,
+.sidebar-wishlist .wishlist {
   display: flex;
-  gap: 20px;
-  color: red;
+  gap: 15px;
+  color: white;
   align-items: center;
   justify-content: center;
-}
-.nav .sidebar-wishlist .box .link {
   cursor: pointer;
-  font-size: 1.1rem;
-  color: #fff;
-}
-.nav .sidebar-wishlist .box .link:hover,
-.nav .sidebar-wishlist .box p:hover {
-  color: #2196f3;
 }
 
-.nav .sidebar-wishlist .box p {
-  cursor: pointer;
-  font-size: 1rem;
-  color: #fff;
+.sidebar-wishlist .cart:hover,
+.sidebar-wishlist .wishlist:hover {
+  color: #66ff66;
 }
+
 .nav .login-signup {
   margin-top: -7px;
 }
@@ -220,9 +219,13 @@
   font-size: 1rem;
   color: #fff;
 }
-.nav .login-signup .link:hover {
-  color: #2196f3;
+.nav .login-signup .active-link {
+  color: #66ff66;
 }
+.nav .login-signup .link:hover {
+  color: #66ff66;
+}
+
 @media (max-width: 1400px) {
   .nav ul {
     display: none;
@@ -244,8 +247,10 @@
     font-size: 0.8rem;
   }
 }
+
 @media (max-width: 1000px) {
-  .nav .sidebar-wishlist .box p {
+  .nav .sidebar-wishlist .cart p,
+  .nav .sidebar-wishlist .wishlist p {
     display: none;
   }
   .search_bar.expanded {
@@ -287,10 +292,11 @@
     width: 100%;
   }
 
-  .nav .login-signup .link {
-    cursor: pointer;
+  .login-signup .link {
     font-size: 0.8rem;
-    color: #fff;
+  }
+  .login-signup .active-link {
+    color: #66ff66;
   }
   .nav .logo {
     width: 7%;
@@ -298,6 +304,7 @@
     transition: 0.5s;
     cursor: pointer;
     min-width: 110px;
+    border: 1px solid red;
   }
   .nav .sidebar-wishlist {
     gap: 30px;

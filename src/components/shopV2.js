@@ -1,11 +1,12 @@
 import { CgArrowsExchangeAltV, CgArrowsExchangeV } from "react-icons/cg";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import "./shop.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
+import { useCart } from "./cartcontext";
 
 const categories = [
   { key: "all", label: "All", value: "" },
@@ -21,13 +22,19 @@ const Shop = ({ products, Productbox }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const start = currentPage * RESULT_PER_PAGE;
   const end = start + RESULT_PER_PAGE;
-  const [activeCat, setActiveCat] = useState("all");
+  const { activeCat, setActiveCat } = useCart();
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [priceOrder, setPriceOrder] = useState(null);
   const [ratingOrder, setRatingOrder] = useState(null);
   const [inStock, setInStock] = useState(false);
   const [noPriceResults, setNoPriceResults] = useState(false);
+  const selected = categories.find((c) => c.key === activeCat);
+  const result = selected ? selected.value : "";
+
+  useEffect(function () {
+    document.title = "Shop | Electro";
+  }, []);
 
   const shuffledProducts = useMemo(
     () => [...products].sort(() => Math.random() - 0.5),
@@ -53,7 +60,7 @@ const Shop = ({ products, Productbox }) => {
     }
 
     if (inStock) {
-      list = list.filter((p) => p.Stock < 1);
+      list = list.filter((p) => p.Stock > 1);
     }
 
     if (priceOrder !== null) {

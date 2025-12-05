@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa6";
 import { db, app } from "./firebase";
@@ -11,6 +11,9 @@ const Signup = ({ setUserDetail, setAuth }) => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  useEffect(function () {
+    document.title = "Sign Up | Electro";
+  }, []);
   // Creating New User Account On Firebase
   const Authentication = async (e) => {
     e.preventDefault();

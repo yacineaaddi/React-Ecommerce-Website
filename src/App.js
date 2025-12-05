@@ -21,6 +21,7 @@ import {
 } from "firebase/firestore";
 import { Toaster, toast } from "react-hot-toast";
 import "./App.css";
+import { useCart } from "./components/cartcontext";
 
 const App = () => {
   const [userDetail, setUserDetail] = useState("");

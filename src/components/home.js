@@ -6,11 +6,19 @@ import { BiSupport } from "react-icons/bi";
 import Newsletter from "./newsletter";
 import Slider from "./Slider";
 import "./home.css";
+import { useCart } from "./cartcontext";
+import { useNavigate } from "react-router-dom";
 
 const Home = ({ products, Productbox }) => {
+  const { activeCat, setActiveCat } = useCart();
   const [sale, setSales] = useState([]);
   const [Bestsellers, setBestsellers] = useState([]);
   const [toprated, setToprated] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(function () {
+    document.title = "Electro: Shop Online For Deals & Save";
+  }, []);
 
   function Brand({ id }) {
     return (
@@ -19,19 +27,37 @@ const Home = ({ products, Productbox }) => {
       </div>
     );
   }
+  const homeCategories = [
+    { key: "cameras", label: "Cameras", value: "cameras", id: 1 },
+    { key: "tv", label: "Tv and Audio", value: "tv", id: 2 },
+    {
+      key: "computers",
+      label: "Computer and Laptop",
+      value: "computers",
+      id: 3,
+    },
+    { key: "phones", label: "Phones and Tablettes", value: "phones", id: 4 },
+    { key: "consoles", label: "Game and Consoles", value: "consoles", id: 5 },
+  ];
 
-  function CategoryBox({ id, Title }) {
+  function CategoryBox({ currEl }) {
     return (
       <>
-        <div className="box">
+        <div
+          className="box"
+          onClick={() => {
+            setActiveCat(currEl.key);
+            navigate("/shop");
+          }}
+        >
           <div className="img-box">
             <img
-              src={`/img/category-slider-${id}.jpg`}
-              alt={`Category Box ${id}`}
+              src={`/img/category-slider-${currEl.id}.jpg`}
+              alt={`Category Box ${currEl.id}`}
             ></img>
           </div>
           <div className="info">
-            <h4>{Title}</h4>
+            <h4>{currEl.label}</h4>
           </div>
         </div>
       </>
@@ -60,8 +86,7 @@ const Home = ({ products, Productbox }) => {
   return (
     <>
       <div className="home">
-        <Slider />
-
+        <Slider setActiveCat={setActiveCat} navigate={navigate} />
         <div className="about">
           <div className="container">
             <div className="box">
@@ -117,10 +142,24 @@ const Home = ({ products, Productbox }) => {
         <div className="mid-banner">
           <div className="container">
             <div className="banner-box">
-              <img src="/img/banner2.jpg" alt=""></img>
+              <img
+                src="/img/banner2.jpg"
+                alt=""
+                onClick={() => {
+                  setActiveCat("phones");
+                  navigate("/shop");
+                }}
+              ></img>
             </div>
             <div className="banner-box">
-              <img src="/img/banner1.jpg" alt=""></img>
+              <img
+                src="/img/banner1.jpg"
+                alt=""
+                onClick={() => {
+                  setActiveCat("computers");
+                  navigate("/shop");
+                }}
+              ></img>
             </div>
           </div>
         </div>
@@ -129,14 +168,19 @@ const Home = ({ products, Productbox }) => {
             <div className="cat-box">
               <h2>Top Categories This Week</h2>
               <p>Fresh Deals, Just for You</p>
-              <button>view all Categories</button>
+              <button
+                onClick={() => {
+                  setActiveCat("all");
+                  navigate("/shop");
+                }}
+              >
+                view all Categories
+              </button>
             </div>
             <div className="categories">
-              <CategoryBox id={1} Title={"Game and Consoles"} />
-              <CategoryBox id={4} Title={"Phones & Tablettes"} />
-              <CategoryBox id={2} Title={"Cameras"} />
-              <CategoryBox id={5} Title={"Computers & Laptops"} />
-              <CategoryBox id={3} Title={"Tv & Audio"} />
+              {homeCategories.map((currEl) => (
+                <CategoryBox key={currEl.id} currEl={currEl} />
+              ))}
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { CgArrowsExchangeAltV } from "react-icons/cg";
 import { CgArrowsExchangeV } from "react-icons/cg";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./shop.css";
 
@@ -16,6 +17,12 @@ const Shop = ({ products, Productbox }) => {
   const [temProducts, settemProducts] = useState([]);
   const [finalProducts, setfinalProducts] = useState([]);
   const [PricedProducts, setPricedProducts] = useState(false);
+
+  const { title } = useParams();
+
+  useEffect(function () {
+    document.title = "Shop | Electro";
+  }, []);
 
   function resetState() {
     setinStock(false);

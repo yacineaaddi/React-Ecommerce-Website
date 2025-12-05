@@ -7,6 +7,7 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import toast from "react-hot-toast";
+import { useState } from "react";
 
 export const increaseQty = async (data, userId, updatestate) => {
   console.log(data);

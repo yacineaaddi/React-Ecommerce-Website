@@ -222,6 +222,7 @@
 .mid-banner .container .banner-box img {
   width: 855px;
   border-radius: 8px;
+  cursor: pointer;
 }
 /*Top Category style*/
 .top-category {
@@ -233,6 +234,7 @@
   display: flex;
   max-width: 100%;
   flex-wrap: wrap;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }

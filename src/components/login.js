@@ -1,8 +1,8 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { MdOutlineLogin } from "react-icons/md";
+import { useEffect, useState, useRef } from "react";
 import { doc, getDoc } from "firebase/firestore";
-import { useState, useRef } from "react";
 import { db, app } from "./firebase";
 import useKey from "./useCustomHook";
 import toast from "react-hot-toast";
@@ -28,7 +28,9 @@ const Login = ({ setUserDetail, setAuth }) => {
         console.log(2);
       }
     });
-  });*/
+  });*/ useEffect(function () {
+    document.title = "Log In | Electro";
+  }, []);
   const Authentication = async (e) => {
     e.preventDefault();
 

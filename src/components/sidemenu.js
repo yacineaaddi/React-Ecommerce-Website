@@ -2,7 +2,7 @@ import { FaRegUser } from "react-icons/fa";
 import "./sidemenu.css";
 import useKey from "./useCustomHook";
 import { useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 
 const SideMenu = ({ sideMenu, SetsideMenu, userDetail, Auth }) => {
   const sidemenu = useRef();
@@ -26,20 +26,22 @@ const SideMenu = ({ sideMenu, SetsideMenu, userDetail, Auth }) => {
         X
       </button>
       <div className="logo" onClick={() => navigate("/")}>
-        <img src="./img/Logo-Electro.png" alt="Logo"></img>
+        <NavLink to="/">
+          <img src="./img/Logo-Electro.png" alt="Logo"></img>
+        </NavLink>
       </div>
       <ul>
         <li onClick={() => closeSideMenu()}>
-          <Link to="/">Home</Link>
+          <NavLink to="/">Home</NavLink>
         </li>
         <li onClick={() => closeSideMenu()}>
-          <Link to="/shop">Shop</Link>
+          <NavLink to="/shop">Shop</NavLink>
         </li>
         <li onClick={() => closeSideMenu()}>
-          <Link to="/about">About</Link>
+          <NavLink to="/about">About</NavLink>
         </li>
         <li onClick={() => closeSideMenu()}>
-          <Link to="/contact">Contact</Link>
+          <NavLink to="/contact">Contact</NavLink>
         </li>
       </ul>
 

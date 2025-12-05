@@ -1,7 +1,7 @@
 import { FaRegUser, FaShoppingCart, FaHeart } from "react-icons/fa";
 import React, { useEffect, useState, useRef } from "react";
 import { IoSearch } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import "./nav.css";
 import useKey from "./useCustomHook";
@@ -81,6 +81,7 @@ const Nav = ({
     setSearchTerm("");
     inputEl.current.blur();
   };
+
   const inputEl = useRef(null);
 
   return (
@@ -90,22 +91,44 @@ const Nav = ({
           <FiMenu />
         </div>
         <div className="logo">
-          <img src="./img/Logo-ElectroPNG.png" alt="Logo"></img>
+          <NavLink to="/">
+            <img src="./img/Logo-ElectroPNG.png" alt="Logo"></img>
+          </NavLink>
         </div>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "active-link" : "")}
+            >
+              Home
+            </NavLink>
           </li>
 
           <>
             <li>
-              <Link to="/shop">Shop</Link>
+              <NavLink
+                to="/shop"
+                className={({ isActive }) => (isActive ? "active-link" : "")}
+              >
+                Shop
+              </NavLink>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <NavLink
+                to="/about"
+                className={({ isActive }) => (isActive ? "active-link" : "")}
+              >
+                About
+              </NavLink>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) => (isActive ? "active-link" : "")}
+              >
+                Contact
+              </NavLink>
             </li>
           </>
         </ul>
@@ -162,17 +185,12 @@ const Nav = ({
           )}
         </div>
         <div className="sidebar-wishlist">
-          <div className="box" onClick={() => setSidebar("cart")}>
-            <Link className="link">
-              <FaShoppingCart />
-            </Link>
-
+          <div className="cart" onClick={() => setSidebar("cart")}>
+            <FaShoppingCart />
             <p>Cart</p>
           </div>
-          <div className="box" onClick={() => setSidebar("wishlist")}>
-            <Link className="link">
-              <FaHeart />
-            </Link>
+          <div className="wishlist" onClick={() => setSidebar("wishlist")}>
+            <FaHeart />
 
             <p>Wishlist</p>
           </div>
@@ -193,19 +211,29 @@ const Nav = ({
         <div className="login-signup">
           {Auth ? (
             <p>
-              <Link className="link" to="/login" onClick={Logout}>
+              <NavLink className="link" to="/" onClick={Logout}>
                 Logout
-              </Link>
+              </NavLink>
             </p>
           ) : (
             <p>
-              <Link className="link" to="/login">
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "link active-link" : "link"
+                }
+                to="/login"
+              >
                 Login
-              </Link>
+              </NavLink>
               &nbsp;/&nbsp;
-              <Link className="link" to="/signup">
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "link active-link" : "link"
+                }
+                to="/signup"
+              >
                 Sign up
-              </Link>
+              </NavLink>
             </p>
           )}
         </div>

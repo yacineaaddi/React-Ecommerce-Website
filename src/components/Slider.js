@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { Data } from "./data";
 
-const Slider = () => {
+const Slider = ({ setActiveCat, navigate }) => {
   return (
     <div className="home-swiper">
       <Swiper
@@ -24,9 +24,14 @@ const Slider = () => {
               <div className="info">
                 <h2>{currEl.title}</h2>
                 <p>{currEl.discount}</p>
-                <Link>
-                  <button>Discover Now</button>
-                </Link>
+                <button
+                  onClick={() => {
+                    setActiveCat(currEl.cat);
+                    navigate("/shop");
+                  }}
+                >
+                  Discover Now
+                </button>
               </div>
               <div className="image">
                 <img className="card_image" src={currEl.image} alt="imagebox" />

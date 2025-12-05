@@ -24,7 +24,6 @@ const SingleProduct = ({
 }) => {
   const initialstate = "";
   const [openIndex, setOpenIndex] = useState(null);
-
   const { id, title } = useParams();
   const [product, setProduct] = useState(null);
   const [coupon, setCoupon] = useState(false);
@@ -34,6 +33,18 @@ const SingleProduct = ({
   const [productQty, updateproductQty] = useState(1);
   const soldout = product?.Stock < 1;
   const productinCart = product ? isInCart(product) : false;
+
+  useEffect(
+    function () {
+      if (!title) return;
+      document.title = `${title}`;
+
+      return function () {
+        document.title = "Electro";
+      };
+    },
+    [title]
+  );
 
   const singleproduct =
     product && Array.isArray(cart)
