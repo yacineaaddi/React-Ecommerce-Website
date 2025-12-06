@@ -7,23 +7,30 @@ import StarRating from "./starRating";
 import ProductSlider from "./productslider";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { MdOutlineShoppingCart } from "react-icons/md";
-import { increaseQty, decreseQty } from "./updatestates";
-import { reducer } from "./updatestates";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useAuth } from "./authContext";
+import { useCart } from "./cartContext";
+import { useWishlist } from "./wishlistContext";
+import { useUi } from "./uiContext";
+import { useUpdateStates } from "./updatestatesContext";
 
-const SingleProduct = ({
-  setlightbox,
-  Productbox,
-  wishlist,
-  updatewishlist,
-  addtocart,
-  isInCart,
-  userDetail,
-  updatestate,
-  cart,
-}) => {
+const SingleProduct = () => {
   const initialstate = "";
+  const { cart } = useCart();
+  const {
+    Productbox,
+    updatewishlist,
+    addtocart,
+    isInCart,
+    updatestate,
+    increaseQty,
+    decreseQty,
+    reducer,
+  } = useUpdateStates();
+  const { wishlist } = useWishlist();
+  const { setlightbox } = useUi();
   const [openIndex, setOpenIndex] = useState(null);
+  const { userDetail } = useAuth();
   const { id, title } = useParams();
   const [product, setProduct] = useState(null);
   const [coupon, setCoupon] = useState(false);
@@ -276,7 +283,13 @@ const SingleProduct = ({
             </button>
 
             {openIndex === 2 && (
-              <div className="accordion-content">{product?.Specifications}</div>
+              <div className="accordion-content">
+                <ul>
+                  {product?.Specifications?.map((spec, index) => (
+                    <li key={index}>{spec}</li>
+                  ))}
+                </ul>
+              </div>
             )}
           </div>
           <div className="accordion-item">

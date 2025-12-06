@@ -1,12 +1,16 @@
 import { FaRegUser } from "react-icons/fa";
 import "./sidemenu.css";
-import useKey from "./useCustomHook";
+import useKey from "./useKeyHook";
 import { useRef } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
+import { useUi } from "./uiContext";
+import { useAuth } from "./authContext";
 
-const SideMenu = ({ sideMenu, SetsideMenu, userDetail, Auth }) => {
+const SideMenu = () => {
   const sidemenu = useRef();
   const navigate = useNavigate();
+  const { userDetail, Auth } = useAuth();
+  const { sideMenu, SetsideMenu } = useUi();
 
   function closeSideMenu() {
     SetsideMenu(() => false);

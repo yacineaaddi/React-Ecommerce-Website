@@ -6,7 +6,9 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
-import { useCart } from "./cartcontext";
+import { useCart } from "./cartContext";
+import { useProduct } from "./productContext";
+import { useUpdateStates } from "./updatestatesContext";
 
 const categories = [
   { key: "all", label: "All", value: "" },
@@ -17,11 +19,13 @@ const categories = [
   { key: "consoles", label: "Game and Consoles", value: "consoles" },
 ];
 
-const Shop = ({ products, Productbox }) => {
+const Shop = () => {
   const RESULT_PER_PAGE = 16;
   const [currentPage, setCurrentPage] = useState(0);
+  const { Productbox } = useUpdateStates();
   const start = currentPage * RESULT_PER_PAGE;
   const end = start + RESULT_PER_PAGE;
+  const { products } = useProduct();
   const { activeCat, setActiveCat } = useCart();
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
@@ -29,8 +33,6 @@ const Shop = ({ products, Productbox }) => {
   const [ratingOrder, setRatingOrder] = useState(null);
   const [inStock, setInStock] = useState(false);
   const [noPriceResults, setNoPriceResults] = useState(false);
-  const selected = categories.find((c) => c.key === activeCat);
-  const result = selected ? selected.value : "";
 
   useEffect(function () {
     document.title = "Shop | Electro";

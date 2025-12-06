@@ -11,21 +11,17 @@ const Rout = ({
   setUserDetail,
   setAuth,
   Auth,
+  Productbox,
   products,
   setProducts,
   userDetail,
-  searchTerm,
-  setSearchTerm,
-  filtredProducts,
-  setfiltredProducts,
   setlightbox,
   wishlist,
   updatewishlist,
   addtocart,
   isInCart,
-  cart,
   updatestate,
-  Productbox,
+  cart,
 }) => {
   return (
     <>
@@ -47,17 +43,7 @@ const Rout = ({
         />
         <Route
           path="/"
-          element={
-            <Home
-              setUserDetail={setUserDetail}
-              products={products}
-              searchTerm={searchTerm}
-              setSearchTerm={setSearchTerm}
-              filtredProducts={filtredProducts}
-              setfiltredProducts={setfiltredProducts}
-              Productbox={Productbox}
-            />
-          }
+          element={<Home products={products} Productbox={Productbox} />}
         />
         <Route
           path="/shop"

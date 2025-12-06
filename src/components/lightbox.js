@@ -1,6 +1,7 @@
 import { Pagination, Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useEffect, useState } from "react";
+import { useUi } from "./uiContext";
 import { Product } from "./data";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -8,7 +9,8 @@ import "swiper/css/autoplay";
 import "./lightbox.css";
 import "swiper/css";
 
-const Lightbox = ({ lightbox, setlightbox }) => {
+const Lightbox = () => {
+  const { lightbox, setlightbox } = useUi();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {

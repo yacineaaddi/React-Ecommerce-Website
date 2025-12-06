@@ -4,18 +4,17 @@ import { IoSearch } from "react-icons/io5";
 import { NavLink, Link } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import "./nav.css";
-import useKey from "./useCustomHook";
+import useKey from "./useKeyHook";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "./authContext";
+import { useProduct } from "./productContext";
+import { useUi } from "./uiContext";
 
-const Nav = ({
-  Auth,
-  setAuth,
-  userDetail,
-  setSidebar,
-  SetsideMenu,
-  products,
-}) => {
+const Nav = () => {
   const navigate = useNavigate();
+  const { userDetail, Auth, setAuth } = useAuth();
+  const { products } = useProduct();
+  const { setSidebar, SetsideMenu } = useUi();
   const [searchTerm, setSearchTerm] = useState("");
   const [filtredProducts, setfiltredProducts] = useState([]);
   const [hidemenu, setHideMenu] = useState(true);

@@ -8,23 +8,27 @@ import { doc, collection, getDocs, deleteDoc } from "firebase/firestore";
 /*import useKey from "./useCustomHook";*/
 import toast from "react-hot-toast";
 import StarRating from "./starRating";
-import { increaseQty, decreseQty } from "./updatestates";
-import { reducer } from "./updatestates";
+import {} from "./updatestatesContext";
+import { useAuth } from "./authContext";
+import { useCart } from "./cartContext";
+import { useWishlist } from "./wishlistContext";
+import { useUi } from "./uiContext";
+import { useUpdateStates } from "./updatestatesContext";
 
-const SideBar = ({
-  sidebar,
-  setSidebar,
-  userDetail,
-  setCart,
-  cart,
-  Auth,
-  wishlist,
-  setWishlist,
-  addtocart,
-  updatestate,
-  RemoveFromWishlist,
-}) => {
+const SideBar = () => {
+  const {
+    addtocart,
+    updatestate,
+    RemoveFromWishlist,
+    increaseQty,
+    decreseQty,
+    reducer,
+  } = useUpdateStates();
   const initialstate = "";
+  const { userDetail, Auth } = useAuth();
+  const { cart, setCart } = useCart();
+  const { sidebar, setSidebar } = useUi();
+  const { wishlist, setWishlist } = useWishlist();
   const [coupon, setCoupon] = useState(false);
   const [couponCode, setCouponCode] = useState("");
   const Subtotal = cart.reduce((sum, p) => sum + +(p.Price * p.Qty), 0);

@@ -4,11 +4,13 @@ import { MdOutlineLogin } from "react-icons/md";
 import { useEffect, useState, useRef } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db, app } from "./firebase";
-import useKey from "./useCustomHook";
+import useKey from "./useKeyHook";
 import toast from "react-hot-toast";
+import { useAuth } from "./authContext";
 import "./auth.css";
 
-const Login = ({ setUserDetail, setAuth }) => {
+const Login = () => {
+  const { setUserDetail, setAuth } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();

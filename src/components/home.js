@@ -1,16 +1,20 @@
 import { LiaShippingFastSolid } from "react-icons/lia";
+import { useUpdateStates } from "./updatestatesContext";
+import { useNavigate } from "react-router-dom";
 import { RiRefund2Line } from "react-icons/ri";
+import { useProduct } from "./productContext";
 import { useEffect, useState } from "react";
 import { TbDiscount } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
+import { useCart } from "./cartContext";
 import Newsletter from "./newsletter";
 import Slider from "./Slider";
 import "./home.css";
-import { useCart } from "./cartcontext";
-import { useNavigate } from "react-router-dom";
 
-const Home = ({ products, Productbox }) => {
+const Home = () => {
   const { activeCat, setActiveCat } = useCart();
+  const { Productbox } = useUpdateStates();
+  const { products } = useProduct();
   const [sale, setSales] = useState([]);
   const [Bestsellers, setBestsellers] = useState([]);
   const [toprated, setToprated] = useState([]);

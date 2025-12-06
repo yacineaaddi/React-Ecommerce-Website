@@ -3,9 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa6";
 import { db, app } from "./firebase";
 import "./auth.css";
+import { useAuth } from "./authContext";
 import toast from "react-hot-toast";
-const Signup = ({ setUserDetail, setAuth }) => {
+
+const Signup = () => {
   const [name, setName] = useState("");
+  const { setUserDetail, setAuth } = useAuth();
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");

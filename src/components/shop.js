@@ -3,8 +3,10 @@ import { CgArrowsExchangeV } from "react-icons/cg";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./shop.css";
+import { useProduct } from "./productContext";
 
-const Shop = ({ products, Productbox }) => {
+const Shop = ({ Productbox }) => {
+  const { products } = useProduct();
   const [Categorie, setCategorie] = useState([]);
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
