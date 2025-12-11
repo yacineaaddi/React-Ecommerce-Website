@@ -26,6 +26,7 @@ export const Product = [
     Overview: [
       "The TCL 55 QM6K delivers sharp 4K UHD quality with bright, high-contrast QD-Mini LED and support for Dolby Vision/HDR10+. Its smooth motion, slim design, and smart features provide a modern, immersive viewing experience.",
     ],
+
     Delivery: [],
     Specifications: [
       "Display: 55-inch QD-Mini LED panel, 4K UHD (3840 × 2160), HDR10+ & Dolby Vision.",
@@ -52,28 +53,28 @@ export const Product = [
         name: "Emma Johnson",
         date: "2025-03-15",
         rating: 5,
-        observation:
+        review:
           "Absolutely love this TV! The colors are vibrant and the motion is incredibly smooth. Setup was super easy.",
       },
       {
         name: "Liam Smith",
         date: "2025-03-12",
         rating: 4,
-        observation:
+        review:
           "Great picture quality and HDR performance. The built-in apps are convenient, though the remote could be better.",
       },
       {
         name: "Olivia Brown",
         date: "2025-03-10",
         rating: 4,
-        observation:
+        review:
           "Excellent value for the price. The sound is good but I recommend a soundbar for a more immersive experience.",
       },
       {
         name: "Noah Davis",
         date: "2025-03-08",
         rating: 5,
-        observation:
+        review:
           "I’m impressed with this TCL TV. The QD-Mini LED makes a huge difference in contrast and brightness. Highly recommend!",
       },
     ],
@@ -1511,4 +1512,30 @@ export const Data = [
     subtext: "Stay connected",
     cat: "computers",
   },
+];
+
+export const Faq = [
+  "How can I track my order? Once your order is shipped, you will receive a tracking link via email or SMS. You can follow your package in real time.",
+  "How long does delivery take? Orders are typically delivered within 2–5 business days. For high-demand items or remote areas, delivery may take up to 7 days.",
+  "Do you offer cash on delivery (COD)? Yes, we offer cash on delivery in selected cities. You can check availability at checkout.",
+  "Does the price include VAT or taxes? Yes. All prices on our website are inclusive of VAT and taxes — no hidden fees.",
+  "Can I pay using credit card or PayPal? Yes, we support multiple secure payment options including credit card, PayPal, and bank transfer.",
+  "Can I return a product if I’m not satisfied? Yes. We offer a 7-day return policy for unopened products. If the item is defective, we provide free replacement or repair according to warranty terms.",
+  "What warranty comes with the products? Most of our electronics include a 1–2 year manufacturer warranty, depending on the brand. Warranty details are listed on each product page.",
+  "Are your products original and brand-new? Absolutely. All items we sell are 100% original, sealed, and purchased directly from authorized distributors.",
+  "Do you provide installation for TVs or large electronics? Yes, installation services are available for TVs, AC units, and large appliances. You can book installation during checkout.",
+  "What should I do if I receive a damaged or faulty product? Please contact our support team within 48 hours, and we will arrange a replacement or refund at no extra cost.",
+];
+
+export const ShippingAndDelivery = [
+  "Do you ship to all cities? We deliver to most major cities and towns. Some remote areas may have limited or delayed service.",
+  "How long does shipping take? Standard delivery takes 2–5 business days, while express delivery arrives within 24–48 hours.",
+  "How can I track my shipment? Once shipped, you’ll receive a tracking number via SMS or email to monitor your package in real time.",
+  "Are shipping delays possible? Delays may occur during holidays, high-demand periods, or due to unpredictable logistics issues.",
+  "How much does shipping cost? Shipping fees vary based on the delivery method and your city. Exact costs are shown at checkout.",
+  "Do you offer international shipping? Yes, international shipping is available for selected products. Delivery times and fees vary by destination.",
+  "What shipping methods do you offer? We provide standard, express, and same-day delivery options depending on your location.",
+  "Can I schedule a specific delivery time? Yes, you can choose a preferred delivery time window for eligible locations during checkout.",
+  "What happens if I’m not home during delivery? The courier will attempt delivery again or contact you to reschedule. In some cases, the package may be held at a pickup point.",
+  "What should I do if my order is delayed or lost? Contact our support team with your order number, and we will investigate and resolve the issue as quickly as possible.",
 ];

@@ -20,8 +20,6 @@ const Shop = ({ Productbox }) => {
   const [finalProducts, setfinalProducts] = useState([]);
   const [PricedProducts, setPricedProducts] = useState(false);
 
-  const { title } = useParams();
-
   useEffect(function () {
     document.title = "Shop | Electro";
   }, []);
