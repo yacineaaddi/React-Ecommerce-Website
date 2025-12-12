@@ -1,22 +1,21 @@
-import { NavLink, useParams } from "react-router-dom";
-import { useEffect, useState, useReducer } from "react";
-import "./singleproduct.css";
 import { Product, Faq, ShippingAndDelivery } from "./data";
-import Newsletter from "./newsletter";
-import StarRating from "./starRating";
-import ProductSlider from "./productslider";
+import { useEffect, useState, useReducer } from "react";
+import { useUpdateStates } from "./updatestatesContext";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { MdOutlineShoppingCart } from "react-icons/md";
+import { NavLink, useParams } from "react-router-dom";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useWishlist } from "./wishlistContext";
+import { useNavigate } from "react-router-dom";
+import ProductSlider from "./productslider";
 import { useAuth } from "./authContext";
 import { useCart } from "./cartContext";
-import { useWishlist } from "./wishlistContext";
+import Newsletter from "./newsletter";
+import StarRating from "./starRating";
 import { useUi } from "./uiContext";
-import { useUpdateStates } from "./updatestatesContext";
+import "./singleproduct.css";
 
 const SingleProduct = () => {
-  const initialstate = "";
-  const { cart } = useCart();
   const {
     Productbox,
     updatewishlist,
@@ -27,19 +26,28 @@ const SingleProduct = () => {
     decreseQty,
     reducer,
   } = useUpdateStates();
+  const { cart, setActiveCat } = useCart();
   const { wishlist } = useWishlist();
   const { setlightbox } = useUi();
-  const [openIndex, setOpenIndex] = useState(null);
   const { userDetail } = useAuth();
   const { id, title } = useParams();
-  const [product, setProduct] = useState(null);
-  const [coupon, setCoupon] = useState(false);
-  const [couponCode, setCouponCode] = useState("");
+
+  const initialstate = "";
   const [state, dispatch] = useReducer(reducer, initialstate);
   const [similarproduct, setSimilarproduct] = useState([]);
   const [productQty, updateproductQty] = useState(1);
+  const [openIndex, setOpenIndex] = useState(null);
+  const [couponCode, setCouponCode] = useState("");
+  const [product, setProduct] = useState(null);
+  const [coupon, setCoupon] = useState(false);
+
   const soldout = product?.Stock < 1;
+  const navigate = useNavigate();
   const productinCart = product ? isInCart(product) : false;
+  const singleproduct =
+    product && Array.isArray(cart)
+      ? cart.find((item) => String(item.CartId) === String(product.id))
+      : null;
 
   useEffect(
     function () {
@@ -53,40 +61,54 @@ const SingleProduct = () => {
     [title]
   );
 
-  const singleproduct =
-    product && Array.isArray(cart)
-      ? cart.find((item) => String(item.CartId) === String(product.id))
-      : null;
-
   const toggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
   function updateQty(n) {
     updateproductQty((prev) => {
-      console.log(cart);
       const updated = prev + n;
       return updated < 1 ? 1 : updated;
     });
   }
 
-  function CustomerReview({ review }) {
+  function CustomerReview({ currEl, index }) {
     return (
-      <div className="customer-review">
-        <p>{`${review.name} - ${review.date}`}</p>
-        <p>{review.observation}</p>
-        <div className="customer-review">
-          <StarRating defaultRating={review.rating} />
-          <p>{review.rating}</p>
+      <>
+        <div className="border">{currEl.review}</div>
+
+        <div className="box" key={index}>
+          <p className="border">{currEl.name}</p>
+          <p className="border">{currEl.date}</p>
+          <div className="rating border">
+            <StarRating defaultRating={currEl.rating} />
+            <span>{currEl.rating} / 5</span>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
+  /*
   useEffect(() => {
     updateproductQty(1);
   }, []);
+*/
+
+  const handleIncrease = () => {
+    const spIncrease = singleproduct?.Qty >= product.Stock;
+    const pIncrease = productQty >= product.Stock;
+
+    if (pIncrease || spIncrease) return;
+
+    if (singleproduct) {
+      increaseQty(singleproduct, userDetail.id, updatestate);
+    } else {
+      updateQty(1);
+    }
+  };
 
   useEffect(() => {
-    function getproduct() {
+    (function () {
       const currEl = Product.find((x) => Number(id) === x.id);
       setProduct(currEl);
       const similar_product = Product.filter((c) => c.Cat === currEl.Cat).slice(
@@ -96,8 +118,7 @@ const SingleProduct = () => {
       setSimilarproduct(similar_product);
       console.log(similar_product);
       console.log(product);
-    }
-    getproduct();
+    })();
   }, [id]);
 
   return (
@@ -105,8 +126,27 @@ const SingleProduct = () => {
       <div className="single-product">
         <div className="product-container">
           <div className="links">
-            <p>text</p>
-            <p>{">"}</p>
+            <NavLink to="/shop">
+              <p>Shop</p>
+            </NavLink>
+            <p>&gt;</p>
+            <NavLink to="/shop">
+              <p>Categories</p>
+            </NavLink>
+            <p>&gt;</p>
+            <div
+              onClick={() => {
+                setActiveCat(product?.Cat);
+                navigate("/shop");
+              }}
+            >
+              <NavLink>
+                <p>{product?.Cat}</p>
+              </NavLink>
+            </div>
+
+            <p>&gt;</p>
+            <p>Product Details</p>
           </div>
           <div className="product">
             {product && (
@@ -144,14 +184,8 @@ const SingleProduct = () => {
                   <div className="qty-icon">
                     <MdOutlineShoppingCart />
                   </div>
-                  <p>{`${35}+ bought in the last month`}</p>
+                  <p>{`${product?.BoughtLastMonth}+ bought in the last month`}</p>
                 </div>
-                {/*<div className="product-info">
-                <p>
-                  <strong>Availability : </strong>
-                  <span className="stock">{`${product?.Stock} items in stock`}</span>
-                </p>
-              </div>*/}
               </div>
               <hr />
               <div className="product-info">
@@ -191,11 +225,7 @@ const SingleProduct = () => {
                   ></input>
                   <button
                     className="increment"
-                    onClick={() =>
-                      singleproduct
-                        ? increaseQty(singleproduct, userDetail.id, updatestate)
-                        : updateQty(1)
-                    }
+                    onClick={() => handleIncrease()}
                   >
                     +
                   </button>
@@ -283,18 +313,7 @@ const SingleProduct = () => {
             {openIndex === 2 && (
               <div className="accordion-content customer-review">
                 {product?.customerReviews?.map((currEl, index) => (
-                  <>
-                    <div className="border">{currEl.review}</div>
-
-                    <div className="box" key={index}>
-                      <p className="border">{currEl.name}</p>
-                      <p className="border">{currEl.date}</p>
-                      <div className="rating border">
-                        <StarRating defaultRating={currEl.rating} />
-                        <span>{currEl.rating} / 5</span>
-                      </div>
-                    </div>
-                  </>
+                  <CustomerReview currEl={currEl} index={index} />
                 ))}
               </div>
             )}

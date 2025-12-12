@@ -184,14 +184,13 @@ const Shop = () => {
                 slidesPerView={3}
                 modules={[Navigation]}
                 navigation={true}
-                className="pagination-box"
               >
                 {Array.from(
                   {
                     length: 5,
                   },
                   (_, i) => (
-                    <SwiperSlide key={i}>
+                    <SwiperSlide key={i} style={{ width: "0px" }}>
                       <div className="pagination-num">
                         <button
                           className={i === currentPage ? "active" : ""}

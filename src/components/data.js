@@ -22,12 +22,12 @@ export const Product = [
     NumRev: 1530,
     State: "Available",
     Stock: 12,
+    BoughtLastMonth: 32,
 
     Overview: [
       "The TCL 55 QM6K delivers sharp 4K UHD quality with bright, high-contrast QD-Mini LED and support for Dolby Vision/HDR10+. Its smooth motion, slim design, and smart features provide a modern, immersive viewing experience.",
     ],
 
-    Delivery: [],
     Specifications: [
       "Display: 55-inch QD-Mini LED panel, 4K UHD (3840 × 2160), HDR10+ & Dolby Vision.",
       "Audio: Dual speakers with Dolby Audio processing.",
@@ -90,6 +90,10 @@ export const Product = [
       "/img/tv2-2.jpg",
       "/img/tv2-3.jpg",
       "/img/tv2-4.jpg",
+      "/img/tv2-1.jpg",
+      "/img/tv2-2.jpg",
+      "/img/tv2-3.jpg",
+      "/img/tv2-4.jpg",
     ],
     SubCat: "Trending",
     Brand: "Hisense",
@@ -98,6 +102,38 @@ export const Product = [
     Rating: 3.7,
     NumRev: 2840,
     State: "Sold out",
+    Stock: 7,
+    BoughtLastMonth: 27,
+    Overview: [
+      "The Hisense 55 QD6QF offers vibrant QLED color and solid HDR performance. Its Fire TV OS provides easy access to streaming apps and voice control.",
+    ],
+    Specifications: [
+      "Display: 55-inch QLED panel, 4K UHD (3840 × 2160), HDR10 & Dolby Vision.",
+      "Audio: Dual stereo speakers with DTS Studio Sound.",
+      "Smart Features: Fire TV OS, Alexa built-in, voice remote included.",
+      "Connectivity: 4 HDMI ports, 2 USB ports, Ethernet, Wi-Fi.",
+      "Processor & Performance: Quad-core processor with motion enhancement.",
+      "Refresh Rate: 60Hz native with motion interpolation.",
+      "Design: Slim bezel with adjustable stand.",
+      "Energy Efficiency: Power-saving mode supported.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Sophia Lee",
+        date: "2025-02-20",
+        rating: 4,
+        review:
+          "Good value for the price. Colors are bright but blacks could be deeper.",
+      },
+      {
+        name: "Ethan Wilson",
+        date: "2025-02-18",
+        rating: 3,
+        review:
+          "Overall decent TV but the motion handling is a bit laggy in fast scenes.",
+      },
+    ],
   },
   {
     id: 15,
@@ -105,6 +141,10 @@ export const Product = [
     Cat: "tv",
     Price: "796",
     Img: [
+      "/img/tv3-1.jpg",
+      "/img/tv3-2.jpg",
+      "/img/tv3-3.jpg",
+      "/img/tv3-4.jpg",
       "/img/tv3-1.jpg",
       "/img/tv3-2.jpg",
       "/img/tv3-3.jpg",
@@ -117,6 +157,37 @@ export const Product = [
     Rating: 4.8,
     NumRev: 3987,
     State: "Available",
+    Stock: 22,
+    BoughtLastMonth: 45,
+    Overview: [
+      "Samsung 75 U7900F delivers ultra-sharp 4K UHD visuals with vibrant HDR colors. Powered by Tizen OS for fast streaming and smart home integration.",
+    ],
+    Specifications: [
+      "Display: 75-inch LED panel, 4K UHD, HDR10+.",
+      "Audio: Dolby Digital Plus speakers for immersive sound.",
+      "Smart Features: Tizen OS, voice control, SmartThings integration.",
+      "Connectivity: 4 HDMI, 2 USB, Bluetooth, Wi-Fi.",
+      "Processor & Performance: Crystal Processor 4K for smooth upscaling.",
+      "Gaming Features: Low input lag with Game Mode.",
+      "Design: Ultra-slim bezel with sleek stand.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Mia Garcia",
+        date: "2025-01-30",
+        rating: 5,
+        review:
+          "Huge screen with amazing picture quality. Perfect for movie nights!",
+      },
+      {
+        name: "Lucas Martinez",
+        date: "2025-01-28",
+        rating: 4,
+        review:
+          "Excellent clarity and colors. Remote is a bit unintuitive at first.",
+      },
+    ],
   },
   {
     id: 16,
@@ -129,6 +200,10 @@ export const Product = [
       "/img/tv4-2.jpg",
       "/img/tv4-3.jpg",
       "/img/tv4-4.jpg",
+      "/img/tv4-1.jpg",
+      "/img/tv4-2.jpg",
+      "/img/tv4-3.jpg",
+      "/img/tv4-4.jpg",
     ],
     SubCat: "Specialoffers",
     Brand: "Insignia",
@@ -137,7 +212,32 @@ export const Product = [
     Rating: 4,
     NumRev: 674,
     State: "Available",
+    Stock: 18,
+    BoughtLastMonth: 12,
+    Overview: [
+      "Insignia 55-inch 4K UHD Fire TV provides smart streaming with Alexa voice control. Ideal for budget-friendly home entertainment.",
+    ],
+    Specifications: [
+      "Display: 55-inch LED panel, 4K UHD, HDR10.",
+      "Audio: 2.0 stereo speakers with DTS TruSurround.",
+      "Smart Features: Fire TV OS, Alexa voice remote.",
+      "Connectivity: 3 HDMI, 2 USB, Wi-Fi, Ethernet.",
+      "Processor & Performance: Dual-core CPU with smooth app navigation.",
+      "Energy Efficiency: Power-saving mode supported.",
+      "Design: Slim profile with center stand.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Ava Hernandez",
+        date: "2025-03-01",
+        rating: 4,
+        review:
+          "Good value for money. Picture is decent, sound is okay for casual watching.",
+      },
+    ],
   },
+
   {
     id: 17,
     Title: "Samsung 55 U7900F Series 4K UHD HDR LED Tizen ",
@@ -164,7 +264,37 @@ export const Product = [
     Rating: 4.6,
     NumRev: 2101,
     State: "Sold out",
-    Stock: 51,
+    Stock: 0,
+    BoughtLastMonth: 35,
+    Overview: [
+      "Samsung 55 U7900F features a bright 4K UHD LED panel with HDR support. Tizen OS ensures smooth streaming and intuitive smart functionality.",
+    ],
+    Specifications: [
+      "Display: 55-inch LED, 4K UHD, HDR10+.",
+      "Audio: Dolby Digital Plus with stereo speakers.",
+      "Smart Features: Tizen OS, voice control, Smart Hub.",
+      "Connectivity: 4 HDMI, 2 USB, Ethernet, Wi-Fi, Bluetooth.",
+      "Processor & Performance: Crystal Processor 4K.",
+      "Gaming Features: Auto Low Latency Mode for gaming.",
+      "Design: Slim bezels, minimalist stand.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Charlotte Evans",
+        date: "2025-02-10",
+        rating: 5,
+        review:
+          "Fantastic TV for the price. Colors pop and the smart features are very convenient.",
+      },
+      {
+        name: "James King",
+        date: "2025-02-08",
+        rating: 4,
+        review:
+          "Good overall, but brightness could be slightly better in daylight.",
+      },
+    ],
   },
   {
     id: 18,
@@ -172,6 +302,10 @@ export const Product = [
     Cat: "tv",
     Price: "497",
     Img: [
+      "/img/tv6-1.jpg",
+      "/img/tv6-2.jpg",
+      "/img/tv6-3.jpg",
+      "/img/tv6-4.jpg",
       "/img/tv6-1.jpg",
       "/img/tv6-2.jpg",
       "/img/tv6-3.jpg",
@@ -184,6 +318,30 @@ export const Product = [
     Rating: 4.3,
     NumRev: 389,
     State: "Available",
+    Stock: 15,
+    BoughtLastMonth: 20,
+    Overview: [
+      "Samsung 50 U8000F offers crisp 4K visuals with HDR support. Tizen OS allows quick access to popular apps and smart home integration.",
+    ],
+    Specifications: [
+      "Display: 50-inch LED, 4K UHD, HDR10+.",
+      "Audio: 2.1 channel with Dolby Digital Plus.",
+      "Smart Features: Tizen OS, Smart Hub, voice control.",
+      "Connectivity: 3 HDMI, 2 USB, Wi-Fi, Bluetooth.",
+      "Processor & Performance: Crystal Processor 4K for enhanced upscaling.",
+      "Design: Slim bezels, elegant stand.",
+      "Energy Efficiency: Eco mode supported.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Benjamin Moore",
+        date: "2025-03-05",
+        rating: 4,
+        review:
+          "Good TV for the living room. Picture quality is sharp and apps run smoothly.",
+      },
+    ],
   },
   {
     id: 19,
@@ -191,6 +349,10 @@ export const Product = [
     Cat: "tv",
     Price: "349",
     Img: [
+      "/img/tv7-1.jpg",
+      "/img/tv7-2.jpg",
+      "/img/tv7-3.jpg",
+      "/img/tv7-4.jpg",
       "/img/tv7-1.jpg",
       "/img/tv7-2.jpg",
       "/img/tv7-3.jpg",
@@ -203,6 +365,35 @@ export const Product = [
     Rating: 4.1,
     NumRev: 2503,
     State: "Sold out",
+    Stock: 9,
+    BoughtLastMonth: 18,
+    Overview: [
+      "Insignia 50-inch Fire TV delivers 4K UHD clarity with HDR. Its Alexa-enabled smart features make streaming easy and convenient.",
+    ],
+    Specifications: [
+      "Display: 50-inch LCD, 4K UHD, HDR10.",
+      "Audio: Stereo speakers with DTS TruSurround.",
+      "Smart Features: Fire TV OS, Alexa voice remote included.",
+      "Connectivity: 3 HDMI, 2 USB, Wi-Fi, Ethernet.",
+      "Processor & Performance: Dual-core CPU with smooth navigation.",
+      "Design: Slim frame with center stand.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Isabella Scott",
+        date: "2025-03-12",
+        rating: 4,
+        review: "Affordable and good quality. Streaming is fast and reliable.",
+      },
+      {
+        name: "Alexander Lewis",
+        date: "2025-03-10",
+        rating: 3,
+        review:
+          "Picture is decent but sound quality could be improved with external speakers.",
+      },
+    ],
   },
   {
     id: 20,
@@ -210,6 +401,10 @@ export const Product = [
     Cat: "tv",
     Price: "1399",
     Img: [
+      "/img/tv8-1.jpg",
+      "/img/tv8-2.jpg",
+      "/img/tv8-3.jpg",
+      "/img/tv8-4.jpg",
       "/img/tv8-1.jpg",
       "/img/tv8-2.jpg",
       "/img/tv8-3.jpg",
@@ -222,6 +417,37 @@ export const Product = [
     Rating: 4.9,
     NumRev: 1123,
     State: "Available",
+    Stock: 10,
+    BoughtLastMonth: 8,
+    Overview: [
+      "Samsung 65 QN70F Neo QLED combines breathtaking 4K HDR visuals with Quantum Matrix Technology. Tizen OS enables seamless smart TV experience.",
+    ],
+    Specifications: [
+      "Display: 65-inch Neo QLED, 4K UHD, HDR10+ & Quantum HDR.",
+      "Audio: Object Tracking Sound with Dolby Atmos.",
+      "Smart Features: Tizen OS, Smart Hub, voice control.",
+      "Connectivity: 4 HDMI, 3 USB, Ethernet, Wi-Fi, Bluetooth.",
+      "Processor & Performance: Neo Quantum Processor 4K.",
+      "Gaming Features: Motion Xcelerator Turbo+, Auto Low Latency Mode.",
+      "Design: Ultra-slim frame, minimalist stand.",
+      "Warranty: 1–2 year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Daniel Thomas",
+        date: "2025-01-25",
+        rating: 5,
+        review:
+          "Stunning picture quality and perfect for gaming and movies. Worth every penny!",
+      },
+      {
+        name: "Emma White",
+        date: "2025-01-20",
+        rating: 5,
+        review:
+          "Amazing brightness and colors. Smart features are very responsive.",
+      },
+    ],
   },
   {
     id: 21,
@@ -229,6 +455,10 @@ export const Product = [
     Cat: "consoles",
     Price: "379",
     Img: [
+      "/img/game1-1.jpeg",
+      "/img/game1-2.jpeg",
+      "/img/game1-3.jpeg",
+      "/img/game1-4.jpeg",
       "/img/game1-1.jpeg",
       "/img/game1-2.jpeg",
       "/img/game1-3.jpeg",
@@ -241,6 +471,35 @@ export const Product = [
     Rating: 4.0,
     NumRev: 2315,
     State: "Sold out",
+    Stock: 0,
+    BoughtLastMonth: 42,
+    Overview: [
+      "Xbox Series S offers next-gen performance in a compact design, with 512GB storage and access to Game Pass library for endless gaming options.",
+    ],
+    Specifications: [
+      "Console Type: Digital-only Xbox Series S.",
+      "Storage: 512GB SSD.",
+      "Performance: 4K gaming upscaled, 120fps support.",
+      "Connectivity: HDMI 2.1, Wi-Fi, Ethernet, Bluetooth.",
+      "Controller: Wireless Xbox controller included.",
+      "Energy Efficiency: Low power consumption mode.",
+      "Warranty: 1-year refurbished warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Ethan Parker",
+        date: "2025-03-01",
+        rating: 4,
+        review:
+          "Compact and powerful. Great for small spaces, but storage fills up quickly.",
+      },
+      {
+        name: "Mia Carter",
+        date: "2025-02-28",
+        rating: 5,
+        review: "Excellent console for the price. Game Pass is a huge bonus!",
+      },
+    ],
   },
   {
     id: 22,
@@ -248,6 +507,10 @@ export const Product = [
     Cat: "consoles",
     Price: "247",
     Img: [
+      "/img/game2-1.jpeg",
+      "/img/game1-2.jpeg",
+      "/img/game1-3.jpeg",
+      "/img/game1-4.jpeg",
       "/img/game2-1.jpeg",
       "/img/game1-2.jpeg",
       "/img/game1-3.jpeg",
@@ -260,6 +523,28 @@ export const Product = [
     Rating: 3.8,
     NumRev: 1624,
     State: "Available",
+    Stock: 25,
+    BoughtLastMonth: 18,
+    Overview: [
+      "Xbox One S 500GB refurbished console offers reliable gaming performance with access to popular titles and backward compatibility for older Xbox games.",
+    ],
+    Specifications: [
+      "Console Type: Xbox One S digital console.",
+      "Storage: 500GB HDD.",
+      "Performance: Full HD gaming, HDR support.",
+      "Connectivity: HDMI, USB, Wi-Fi, Ethernet, Bluetooth.",
+      "Controller: Wireless controller included.",
+      "Energy Efficiency: Power-saving mode available.",
+      "Warranty: 1-year refurbished warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Oliver Reed",
+        date: "2025-03-05",
+        rating: 4,
+        review: "Good refurbished console. Plays older games perfectly.",
+      },
+    ],
   },
   {
     id: 23,
@@ -275,11 +560,34 @@ export const Product = [
     ],
     SubCat: "Specialoffers",
     Brand: "Playstation",
-    Model: " 1000039655",
+    Model: "1000039655",
     WebCode: "17650702",
     Rating: 4.9,
     NumRev: 3889,
     State: "Available",
+    Stock: 12,
+    BoughtLastMonth: 30,
+    Overview: [
+      "PlayStation 5 Slim offers ultra-fast loading, stunning 4K visuals, and immersive haptic feedback. A top choice for next-gen gaming.",
+    ],
+    Specifications: [
+      "Console Type: PlayStation 5 Slim.",
+      "Storage: 825GB SSD.",
+      "Performance: 4K gaming up to 120fps, ray tracing support.",
+      "Connectivity: HDMI 2.1, USB, Wi-Fi, Bluetooth.",
+      "Controller: DualSense wireless controller included.",
+      "Energy Efficiency: Eco-friendly standby mode.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Liam Johnson",
+        date: "2025-02-15",
+        rating: 5,
+        review:
+          "Incredible console. Games load instantly and the DualSense controller is amazing.",
+      },
+    ],
   },
   {
     id: 24,
@@ -287,6 +595,10 @@ export const Product = [
     Cat: "consoles",
     Price: "529",
     Img: [
+      "/img/game4-1.jpeg",
+      "/img/game1-2.jpeg",
+      "/img/game1-3.jpeg",
+      "/img/game1-4.jpeg",
       "/img/game4-1.jpeg",
       "/img/game1-2.jpeg",
       "/img/game1-3.jpeg",
@@ -299,6 +611,29 @@ export const Product = [
     Rating: 4.5,
     NumRev: 1077,
     State: "Sold out",
+    Stock: 2,
+    BoughtLastMonth: 15,
+    Overview: [
+      "PS5 Slim Digital Edition is perfect for gamers who prefer digital games, offering fast loading times and a sleek modern design.",
+    ],
+    Specifications: [
+      "Console Type: Digital-only PlayStation 5 Slim.",
+      "Storage: 825GB SSD.",
+      "Performance: 4K up to 120fps, ray tracing.",
+      "Connectivity: HDMI 2.1, USB, Wi-Fi, Bluetooth.",
+      "Controller: DualSense included.",
+      "Energy Efficiency: Low standby power consumption.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Sophia Walker",
+        date: "2025-02-20",
+        rating: 5,
+        review:
+          "Sleek and fast. Love the all-digital setup and fast loading times.",
+      },
+    ],
   },
   {
     id: 25,
@@ -306,6 +641,10 @@ export const Product = [
     Cat: "consoles",
     Price: "804",
     Img: [
+      "/img/game5-1.jpeg",
+      "/img/game1-2.jpeg",
+      "/img/game1-3.jpeg",
+      "/img/game1-4.jpeg",
       "/img/game5-1.jpeg",
       "/img/game1-2.jpeg",
       "/img/game1-3.jpeg",
@@ -318,6 +657,28 @@ export const Product = [
     Rating: 5.0,
     NumRev: 2765,
     State: "Available",
+    Stock: 8,
+    BoughtLastMonth: 20,
+    Overview: [
+      "PS5 Pro delivers next-level gaming performance with 4K 120fps support, enhanced graphics, and immersive haptic feedback for an ultimate experience.",
+    ],
+    Specifications: [
+      "Console Type: PlayStation 5 Pro.",
+      "Storage: 1TB SSD.",
+      "Performance: 4K at 120fps, ray tracing, enhanced GPU.",
+      "Connectivity: HDMI 2.1, USB, Wi-Fi, Bluetooth.",
+      "Controller: DualSense with adaptive triggers.",
+      "Energy Efficiency: Eco standby mode.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "James Miller",
+        date: "2025-01-25",
+        rating: 5,
+        review: "Absolute powerhouse. The graphics and speed are phenomenal!",
+      },
+    ],
   },
   {
     id: 26,
@@ -337,6 +698,29 @@ export const Product = [
     Rating: 3.5,
     NumRev: 864,
     State: "Available",
+    Stock: 14,
+    BoughtLastMonth: 10,
+    Overview: [
+      "Xbox One S 2TB with 4K Bluray player offers expanded storage and multimedia functionality in a refurbished unit at a great price.",
+    ],
+    Specifications: [
+      "Console Type: Xbox One S 2TB with 4K Bluray.",
+      "Storage: 2TB HDD.",
+      "Performance: Full HD gaming, HDR support.",
+      "Connectivity: HDMI, USB, Wi-Fi, Ethernet, Bluetooth.",
+      "Controller: Wireless controller included.",
+      "Energy Efficiency: Power-saving mode available.",
+      "Warranty: 1-year refurbished warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Lucas White",
+        date: "2025-02-10",
+        rating: 4,
+        review:
+          "Great storage capacity and plays movies in 4K. Excellent for the price.",
+      },
+    ],
   },
   {
     id: 27,
@@ -344,6 +728,10 @@ export const Product = [
     Cat: "phones",
     Price: "519",
     Img: [
+      "/img/phone1-1.jpg",
+      "/img/phone1-2.jpg",
+      "/img/phone1-3.jpg",
+      "/img/phone1-4.jpg",
       "/img/phone1-1.jpg",
       "/img/phone1-2.jpg",
       "/img/phone1-3.jpg",
@@ -356,6 +744,29 @@ export const Product = [
     Rating: 4.0,
     NumRev: 2044,
     State: "Sold out",
+    Stock: 5,
+    BoughtLastMonth: 22,
+    Overview: [
+      "Samsung Galaxy A56 5G delivers fast performance, 128GB storage, and smooth connectivity with 5G support for modern mobile usage.",
+    ],
+    Specifications: [
+      "Display: 6.5-inch AMOLED, Full HD+.",
+      "Camera: 108MP main, 32MP front camera.",
+      "Battery: 4500mAh, fast charging.",
+      "Performance: Octa-core processor, 6GB RAM.",
+      "Connectivity: 5G, Wi-Fi, Bluetooth.",
+      "Storage: 128GB internal, expandable via microSD.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Ella Adams",
+        date: "2025-03-02",
+        rating: 4,
+        review:
+          "Great phone with solid 5G speed. Camera is good but could be better in low light.",
+      },
+    ],
   },
   {
     id: 28,
@@ -368,6 +779,10 @@ export const Product = [
       "/img/phone2-2.jpeg",
       "/img/phone2-3.jpeg",
       "/img/phone2-4.jpeg",
+      "/img/phone2-1.jpeg",
+      "/img/phone2-2.jpeg",
+      "/img/phone2-3.jpeg",
+      "/img/phone2-4.jpeg",
     ],
     SubCat: "Specialoffers",
     Brand: "Samsung",
@@ -376,6 +791,28 @@ export const Product = [
     Rating: 4.7,
     NumRev: 3560,
     State: "Available",
+    Stock: 18,
+    BoughtLastMonth: 27,
+    Overview: [
+      "Samsung Galaxy S25 offers a premium mobile experience with high-end performance, 128GB storage, and sleek design in Silver Shadow.",
+    ],
+    Specifications: [
+      "Display: 6.7-inch AMOLED, 120Hz refresh rate.",
+      "Camera: 200MP main, 40MP front camera.",
+      "Battery: 4800mAh, fast charging.",
+      "Performance: Snapdragon 8 Gen 3, 8GB RAM.",
+      "Connectivity: 5G, Wi-Fi 6E, Bluetooth 5.3.",
+      "Storage: 128GB internal.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Noah Bennett",
+        date: "2025-02-25",
+        rating: 5,
+        review: "Excellent device. Super fast and camera is amazing.",
+      },
+    ],
   },
   {
     id: 29,
@@ -388,6 +825,10 @@ export const Product = [
       "/img/phone3-2.jpeg",
       "/img/phone3-3.jpeg",
       "/img/phone3-4.jpeg",
+      "/img/phone3-1.jpeg",
+      "/img/phone3-2.jpeg",
+      "/img/phone3-3.jpeg",
+      "/img/phone3-4.jpeg",
     ],
     SubCat: "Specialoffers",
     Brand: "Apple",
@@ -396,6 +837,28 @@ export const Product = [
     Rating: 4.8,
     NumRev: 3891,
     State: "Sold out",
+    Stock: 0,
+    BoughtLastMonth: 35,
+    Overview: [
+      "Apple iPhone 15 512GB in Yellow offers top-tier performance, massive storage, and iOS ecosystem advantages for a premium smartphone experience.",
+    ],
+    Specifications: [
+      "Display: 6.1-inch Super Retina XDR OLED.",
+      "Camera: Dual 48MP + 12MP rear, 12MP front.",
+      "Battery: 4352mAh, fast charging.",
+      "Performance: A17 Bionic chip, 6GB RAM.",
+      "Connectivity: 5G, Wi-Fi 6, Bluetooth 5.3.",
+      "Storage: 512GB internal.",
+      "Warranty: 1-year Apple warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Olivia Martinez",
+        date: "2025-03-05",
+        rating: 5,
+        review: "Amazing phone! Fast, beautiful display, and huge storage.",
+      },
+    ],
   },
   {
     id: 30,
@@ -403,6 +866,10 @@ export const Product = [
     Cat: "phones",
     Price: "1449",
     Img: [
+      "/img/phone4-1.jpg",
+      "/img/phone4-2.jpg",
+      "/img/phone4-3.jpg",
+      "/img/phone4-4.jpg",
       "/img/phone4-1.jpg",
       "/img/phone4-2.jpg",
       "/img/phone4-3.jpg",
@@ -415,6 +882,28 @@ export const Product = [
     Rating: 4.9,
     NumRev: 2555,
     State: "Available",
+    Stock: 10,
+    BoughtLastMonth: 7,
+    Overview: [
+      "iPhone 16 Pro combines futuristic design with top-of-the-line performance, 128GB storage, and advanced camera capabilities.",
+    ],
+    Specifications: [
+      "Display: 6.7-inch ProMotion XDR OLED, 120Hz.",
+      "Camera: Triple rear system, LiDAR scanner.",
+      "Battery: 4500mAh, fast charging.",
+      "Performance: A18 Bionic chip, 8GB RAM.",
+      "Connectivity: 5G, Wi-Fi 6E, Bluetooth 5.3.",
+      "Storage: 128GB internal.",
+      "Warranty: 1-year Apple warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "William Davis",
+        date: "2025-03-01",
+        rating: 5,
+        review: "Super fast and sleek. Camera and display are exceptional.",
+      },
+    ],
   },
   {
     id: 31,
@@ -422,6 +911,10 @@ export const Product = [
     Cat: "phones",
     Price: "489",
     Img: [
+      "/img/phone5-1.jpeg",
+      "/img/phone5-2.jpeg",
+      "/img/phone5-3.jpeg",
+      "/img/phone5-4.jpeg",
       "/img/phone5-1.jpeg",
       "/img/phone5-2.jpeg",
       "/img/phone5-3.jpeg",
@@ -434,6 +927,35 @@ export const Product = [
     Rating: 4.3,
     NumRev: 1190,
     State: "Available",
+    Stock: 12,
+    BoughtLastMonth: 22,
+    Overview: [
+      "Apple iPhone 14 in Midnight offers a refined design, reliable performance, and excellent camera features for everyday use.",
+    ],
+    Specifications: [
+      "Display: 6.1-inch Super Retina XDR OLED.",
+      "Camera: Dual 12MP rear, 12MP front.",
+      "Battery: 3279mAh, fast charging.",
+      "Performance: A15 Bionic chip, 4GB RAM.",
+      "Connectivity: 5G, Wi-Fi 6, Bluetooth 5.0.",
+      "Storage: 128GB internal.",
+      "Warranty: 1-year Apple warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Sophia Turner",
+        date: "2025-03-10",
+        rating: 5,
+        review:
+          "Great phone with smooth performance and excellent camera quality.",
+      },
+      {
+        name: "Liam Carter",
+        date: "2025-03-08",
+        rating: 4,
+        review: "Good value for a refurbished iPhone. Battery could be better.",
+      },
+    ],
   },
   {
     id: 32,
@@ -441,6 +963,10 @@ export const Product = [
     Cat: "phones",
     Price: "299",
     Img: [
+      "/img/phone6-1.jpg",
+      "/img/phone6-2.jpg",
+      "/img/phone6-3.jpg",
+      "/img/phone6-4.jpg",
       "/img/phone6-1.jpg",
       "/img/phone6-2.jpg",
       "/img/phone6-3.jpg",
@@ -453,6 +979,29 @@ export const Product = [
     Rating: 4.1,
     NumRev: 468,
     State: "Sold out",
+    Stock: 6,
+    BoughtLastMonth: 9,
+    Overview: [
+      "OnePlus Nord N30 5G offers smooth performance, 128GB storage, and fast 5G connectivity for daily tasks and gaming.",
+    ],
+    Specifications: [
+      "Display: 6.43-inch AMOLED, 90Hz refresh rate.",
+      "Camera: 64MP + 2MP rear, 16MP front.",
+      "Battery: 4500mAh, Warp Charge 33.",
+      "Performance: Snapdragon 695, 6GB RAM.",
+      "Connectivity: 5G, Wi-Fi, Bluetooth 5.2.",
+      "Storage: 128GB internal.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Ella Brooks",
+        date: "2025-02-28",
+        rating: 4,
+        review:
+          "Good 5G phone with smooth performance. Battery lasts a full day.",
+      },
+    ],
   },
   {
     id: 33,
@@ -460,6 +1009,10 @@ export const Product = [
     Cat: "phones",
     Price: "199",
     Img: [
+      "/img/phone7-1.jpg",
+      "/img/phone7-2.jpg",
+      "/img/phone7-3.jpg",
+      "/img/phone7-4.jpg",
       "/img/phone7-1.jpg",
       "/img/phone7-2.jpg",
       "/img/phone7-3.jpg",
@@ -472,6 +1025,29 @@ export const Product = [
     Rating: 3.9,
     NumRev: 2178,
     State: "Available",
+    Stock: 30,
+    BoughtLastMonth: 14,
+    Overview: [
+      "Samsung Galaxy A16 5G provides reliable performance, 128GB storage, and seamless 5G connectivity at an affordable price.",
+    ],
+    Specifications: [
+      "Display: 6.6-inch PLS LCD, 90Hz refresh rate.",
+      "Camera: 50MP + 2MP rear, 13MP front.",
+      "Battery: 5000mAh, fast charging.",
+      "Performance: MediaTek Dimensity 6100, 4GB RAM.",
+      "Connectivity: 5G, Wi-Fi, Bluetooth 5.1.",
+      "Storage: 128GB internal, expandable via microSD.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Noah Reed",
+        date: "2025-03-05",
+        rating: 4,
+        review:
+          "Decent budget phone. Performance is okay and battery lasts long.",
+      },
+    ],
   },
   {
     id: 34,
@@ -479,6 +1055,10 @@ export const Product = [
     Cat: "computers",
     Price: "1299",
     Img: [
+      "/img/laptop1-1.jpg",
+      "/img/laptop1-2.jpg",
+      "/img/laptop1-3.jpg",
+      "/img/laptop1-4.jpg",
       "/img/laptop1-1.jpg",
       "/img/laptop1-2.jpg",
       "/img/laptop1-3.jpg",
@@ -491,6 +1071,35 @@ export const Product = [
     Rating: 4.4,
     NumRev: 1975,
     State: "Available",
+    Stock: 10,
+    BoughtLastMonth: 7,
+    Overview: [
+      "ASUS TUF F15 gaming laptop delivers 144Hz refresh rate, powerful CPU/GPU combination, and durable design for intense gaming sessions.",
+    ],
+    Specifications: [
+      "Display: 15.6-inch FHD, 144Hz refresh rate.",
+      "Processor: Intel Core i7-12700H.",
+      "Graphics: NVIDIA GeForce RTX 3060, 6GB.",
+      "RAM & Storage: 16GB RAM, 512GB SSD.",
+      "Connectivity: Wi-Fi 6, Bluetooth 5.2, HDMI.",
+      "Battery: 90Wh, fast charge supported.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Lucas White",
+        date: "2025-02-18",
+        rating: 5,
+        review:
+          "Excellent gaming laptop. Smooth FPS on high settings and durable design.",
+      },
+      {
+        name: "Emma Lewis",
+        date: "2025-02-15",
+        rating: 4,
+        review: "Good performance but a bit heavy for portability.",
+      },
+    ],
   },
   {
     id: 35,
@@ -498,6 +1107,10 @@ export const Product = [
     Cat: "computers",
     Price: "1499",
     Img: [
+      "/img/laptop2-1.jpg",
+      "/img/laptop2-2.jpg",
+      "/img/laptop2-3.jpg",
+      "/img/laptop2-4.jpg",
       "/img/laptop2-1.jpg",
       "/img/laptop2-2.jpg",
       "/img/laptop2-3.jpg",
@@ -510,6 +1123,29 @@ export const Product = [
     Rating: 4.7,
     NumRev: 2670,
     State: "Sold out",
+    Stock: 1,
+    BoughtLastMonth: 5,
+    Overview: [
+      "ASUS ROG Strix G16 gaming laptop offers high refresh rate, top-tier graphics, and advanced cooling system for smooth competitive gaming.",
+    ],
+    Specifications: [
+      "Display: 16-inch FHD, 165Hz refresh rate.",
+      "Processor: Intel Core i9-13900H.",
+      "Graphics: NVIDIA GeForce RTX 4070, 8GB.",
+      "RAM & Storage: 32GB RAM, 1TB SSD.",
+      "Connectivity: Wi-Fi 6E, Bluetooth 5.3, HDMI.",
+      "Battery: 90Wh, fast charging.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Ethan Miller",
+        date: "2025-01-20",
+        rating: 5,
+        review:
+          "Amazing laptop! Handles all games effortlessly and the 165Hz screen is perfect for competitive play.",
+      },
+    ],
   },
   {
     id: 36,
@@ -517,6 +1153,10 @@ export const Product = [
     Cat: "computers",
     Price: "1099",
     Img: [
+      "/img/laptop3-1.jpg",
+      "/img/laptop3-2.jpg",
+      "/img/laptop3-3.jpg",
+      "/img/laptop3-4.jpg",
       "/img/laptop3-1.jpg",
       "/img/laptop3-2.jpg",
       "/img/laptop3-3.jpg",
@@ -529,6 +1169,29 @@ export const Product = [
     Rating: 4.2,
     NumRev: 1340,
     State: "Available",
+    Stock: 8,
+    BoughtLastMonth: 6,
+    Overview: [
+      "ASUS TUF Gaming A16 combines performance, durability, and portability in a 16-inch laptop ideal for both gaming and creative work.",
+    ],
+    Specifications: [
+      "Display: 16-inch FHD, 144Hz refresh rate.",
+      "Processor: AMD Ryzen 7 6800H.",
+      "Graphics: NVIDIA GeForce RTX 3050, 4GB.",
+      "RAM & Storage: 16GB RAM, 512GB SSD.",
+      "Connectivity: Wi-Fi 6, Bluetooth 5.2, HDMI.",
+      "Battery: 90Wh, fast charging.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Olivia Scott",
+        date: "2025-03-01",
+        rating: 4,
+        review:
+          "Solid gaming laptop for the price. Runs games smoothly, but battery life is average.",
+      },
+    ],
   },
   {
     id: 37,
@@ -536,6 +1199,10 @@ export const Product = [
     Cat: "computers",
     Price: "999",
     Img: [
+      "/img/laptop4-1.jpg",
+      "/img/laptop4-2.jpg",
+      "/img/laptop4-3.jpg",
+      "/img/laptop4-4.jpg",
       "/img/laptop4-1.jpg",
       "/img/laptop4-2.jpg",
       "/img/laptop4-3.jpg",
@@ -548,6 +1215,29 @@ export const Product = [
     Rating: 4.1,
     NumRev: 1905,
     State: "Sold out",
+    Stock: 0,
+    BoughtLastMonth: 9,
+    Overview: [
+      "Acer Nitro V 15.6-inch AMD Ryzen 5 laptop offers balanced gaming performance, affordable price, and reliable build quality.",
+    ],
+    Specifications: [
+      "Display: 15.6-inch FHD, 144Hz refresh rate.",
+      "Processor: AMD Ryzen 5 5600H.",
+      "Graphics: NVIDIA GeForce GTX 1650, 4GB.",
+      "RAM & Storage: 8GB RAM, 512GB SSD.",
+      "Connectivity: Wi-Fi 6, Bluetooth 5.2, HDMI.",
+      "Battery: 57Wh, fast charging.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Daniel Wilson",
+        date: "2025-02-10",
+        rating: 4,
+        review:
+          "Good budget gaming laptop. Performance is acceptable for mid-tier games.",
+      },
+    ],
   },
   {
     id: 38,
@@ -555,6 +1245,10 @@ export const Product = [
     Cat: "computers",
     Price: "2199",
     Img: [
+      "/img/laptop5-1.jpg",
+      "/img/laptop5-2.jpg",
+      "/img/laptop5-3.jpg",
+      "/img/laptop5-4.jpg",
       "/img/laptop5-1.jpg",
       "/img/laptop5-2.jpg",
       "/img/laptop5-3.jpg",
@@ -567,6 +1261,29 @@ export const Product = [
     Rating: 4.9,
     NumRev: 3768,
     State: "Available",
+    Stock: 7,
+    BoughtLastMonth: 4,
+    Overview: [
+      "ASUS ROG Strix G18 2024 provides a massive 18-inch WQXGA display with 240Hz refresh, ultra-powerful GPU, and exceptional cooling for hardcore gamers.",
+    ],
+    Specifications: [
+      "Display: 18-inch WQXGA, 240Hz refresh rate.",
+      "Processor: Intel Core i9-14900H.",
+      "Graphics: NVIDIA GeForce RTX 4090, 16GB.",
+      "RAM & Storage: 32GB RAM, 2TB SSD.",
+      "Connectivity: Wi-Fi 6E, Bluetooth 5.3, HDMI.",
+      "Battery: 99Wh, fast charging.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Sophia Brown",
+        date: "2025-03-02",
+        rating: 5,
+        review:
+          "The ultimate gaming experience! Smooth and powerful with excellent visuals.",
+      },
+    ],
   },
   {
     id: 39,
@@ -574,6 +1291,10 @@ export const Product = [
     Cat: "computers",
     Price: "1399",
     Img: [
+      "/img/laptop6-1.jpg",
+      "/img/laptop6-2.jpg",
+      "/img/laptop6-3.jpg",
+      "/img/laptop6-4.jpg",
       "/img/laptop6-1.jpg",
       "/img/laptop6-2.jpg",
       "/img/laptop6-3.jpg",
@@ -586,6 +1307,29 @@ export const Product = [
     Rating: 4.3,
     NumRev: 2210,
     State: "Available",
+    Stock: 9,
+    BoughtLastMonth: 6,
+    Overview: [
+      "MSI Thin 15 15.6-inch gaming laptop offers sleek design with solid gaming performance, ideal for both work and gaming.",
+    ],
+    Specifications: [
+      "Display: 15.6-inch FHD, 144Hz refresh rate.",
+      "Processor: Intel Core i7-12700H.",
+      "Graphics: NVIDIA GeForce RTX 3060, 6GB.",
+      "RAM & Storage: 16GB RAM, 512GB SSD.",
+      "Connectivity: Wi-Fi 6, Bluetooth 5.2, HDMI.",
+      "Battery: 80Wh, fast charging.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "James Evans",
+        date: "2025-02-25",
+        rating: 4,
+        review:
+          "Solid gaming laptop, performs well and lightweight design is convenient.",
+      },
+    ],
   },
   {
     id: 40,
@@ -593,6 +1337,10 @@ export const Product = [
     Cat: "computers",
     Price: "2999",
     Img: [
+      "/img/laptop7-1.jpg",
+      "/img/laptop7-2.jpg",
+      "/img/laptop7-3.jpg",
+      "/img/laptop7-4.jpg",
       "/img/laptop7-1.jpg",
       "/img/laptop7-2.jpg",
       "/img/laptop7-3.jpg",
@@ -605,7 +1353,31 @@ export const Product = [
     Rating: 5.0,
     NumRev: 3899,
     State: "Sold out",
+    Stock: 0,
+    BoughtLastMonth: 3,
+    Overview: [
+      "ASUS ROG Strix 16 Eclipse Grey provides extreme gaming performance with premium build quality, high refresh display, and advanced thermal design.",
+    ],
+    Specifications: [
+      "Display: 16-inch QHD, 240Hz refresh rate.",
+      "Processor: Intel Core i9-14900H.",
+      "Graphics: NVIDIA GeForce RTX 4080, 16GB.",
+      "RAM & Storage: 32GB RAM, 2TB SSD.",
+      "Connectivity: Wi-Fi 6E, Bluetooth 5.3, HDMI.",
+      "Battery: 99Wh, fast charging.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Daniel Harris",
+        date: "2025-03-01",
+        rating: 5,
+        review:
+          "Absolutely perfect for high-end gaming. Fast, reliable, and stunning visuals.",
+      },
+    ],
   },
+
   {
     id: 41,
     Title: "Open Box  ASUS ROG Strix G16 16 165Hz Gaming Laptop",
@@ -628,6 +1400,35 @@ export const Product = [
     Rating: 4.5,
     NumRev: 1922,
     State: "Available",
+    Stock: 15,
+    BoughtLastMonth: 5,
+    Overview: [
+      "ASUS ROG Strix G16 offers high refresh gaming experience with durable build, powerful CPU/GPU, and immersive display for gamers.",
+    ],
+    Specifications: [
+      "Display: 16-inch FHD, 165Hz refresh rate.",
+      "Processor: Intel Core i7-13700H.",
+      "Graphics: NVIDIA GeForce RTX 4060, 8GB.",
+      "RAM & Storage: 16GB RAM, 1TB SSD.",
+      "Connectivity: Wi-Fi 6, Bluetooth 5.3, HDMI.",
+      "Battery: 90Wh, fast charging.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Mia Johnson",
+        date: "2025-03-05",
+        rating: 5,
+        review:
+          "Excellent gaming laptop! Smooth gameplay and great thermal management.",
+      },
+      {
+        name: "Ethan Williams",
+        date: "2025-02-28",
+        rating: 4,
+        review: "Very good laptop for gaming but a bit heavy for portability.",
+      },
+    ],
   },
   {
     id: 42,
@@ -640,6 +1441,10 @@ export const Product = [
       "/img/camera1-2.jpg",
       "/img/camera1-3.jpg",
       "/img/camera1-4.jpg",
+      "/img/camera1-1.jpg",
+      "/img/camera1-2.jpg",
+      "/img/camera1-3.jpg",
+      "/img/camera1-4.jpg",
     ],
     SubCat: "Specialoffers",
     Brand: "Sony",
@@ -648,6 +1453,29 @@ export const Product = [
     Rating: 5,
     NumRev: 2720,
     State: "Available",
+    Stock: 8,
+    BoughtLastMonth: 12,
+    Overview: [
+      "Sony Alpha a7 III is a full-frame mirrorless camera ideal for vloggers and professional photographers, delivering stunning image quality.",
+    ],
+    Specifications: [
+      "Sensor: 24.2MP Full-Frame Exmor R BSI CMOS.",
+      "ISO: 100-51200 expandable.",
+      "Video: 4K UHD recording.",
+      "Autofocus: 693-point phase-detection.",
+      "Connectivity: Wi-Fi, Bluetooth.",
+      "Battery: NP-FZ100, long lasting.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Olivia Smith",
+        date: "2025-03-02",
+        rating: 5,
+        review:
+          "Outstanding camera for video and photography. Great low-light performance.",
+      },
+    ],
   },
   {
     id: 43,
@@ -655,6 +1483,10 @@ export const Product = [
     Cat: "cameras",
     Price: "699",
     Img: [
+      "/img/camera2-1.jpg",
+      "/img/camera2-2.jpg",
+      "/img/camera2-3.jpg",
+      "/img/camera2-4.jpg",
       "/img/camera2-1.jpg",
       "/img/camera2-2.jpg",
       "/img/camera2-3.jpg",
@@ -667,6 +1499,27 @@ export const Product = [
     Rating: 4.2,
     NumRev: 1670,
     State: "Sold out",
+    Stock: 0,
+    BoughtLastMonth: 3,
+    Overview: [
+      "Panasonic LUMIX ZS99S is a compact camera with powerful zoom and WiFi connectivity, perfect for travel photography.",
+    ],
+    Specifications: [
+      "Sensor: 20.3MP 1-inch MOS sensor.",
+      "Zoom: 30x optical zoom.",
+      "Video: 4K UHD.",
+      "Connectivity: Wi-Fi and Bluetooth.",
+      "Battery: 1200mAh.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Liam Brown",
+        date: "2025-02-20",
+        rating: 4,
+        review: "Excellent compact camera with impressive zoom for travel.",
+      },
+    ],
   },
   {
     id: 44,
@@ -674,6 +1527,10 @@ export const Product = [
     Cat: "cameras",
     Price: "1149",
     Img: [
+      "/img/camera3-1.jpg",
+      "/img/camera3-2.jpg",
+      "/img/camera3-3.jpg",
+      "/img/camera3-4.jpg",
       "/img/camera3-1.jpg",
       "/img/camera3-2.jpg",
       "/img/camera3-3.jpg",
@@ -686,6 +1543,28 @@ export const Product = [
     Rating: 4.4,
     NumRev: 1432,
     State: "Available",
+    Stock: 7,
+    BoughtLastMonth: 6,
+    Overview: [
+      "Canon PowerShot G7 X Mark III is a compact vlogging camera with WiFi, high resolution, and 4.2x optical zoom.",
+    ],
+    Specifications: [
+      "Sensor: 20.1MP 1-inch CMOS sensor.",
+      "Lens: 4.2x optical zoom.",
+      "Video: 4K UHD recording.",
+      "Connectivity: Wi-Fi, Bluetooth.",
+      "Battery: NB-13L rechargeable.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Emma Davis",
+        date: "2025-03-01",
+        rating: 5,
+        review:
+          "Perfect vlogging camera with great video quality and compact size.",
+      },
+    ],
   },
   {
     id: 45,
@@ -693,6 +1572,10 @@ export const Product = [
     Cat: "cameras",
     Price: "2159",
     Img: [
+      "/img/camera4-1.jpg",
+      "/img/camera4-2.jpg",
+      "/img/camera4-3.jpg",
+      "/img/camera4-4.jpg",
       "/img/camera4-1.jpg",
       "/img/camera4-2.jpg",
       "/img/camera4-3.jpg",
@@ -705,6 +1588,28 @@ export const Product = [
     Rating: 4.7,
     NumRev: 3610,
     State: "Available",
+    Stock: 5,
+    BoughtLastMonth: 3,
+    Overview: [
+      "Fujifilm X100VI is an advanced compact digital camera with superior image quality, ideal for enthusiasts and street photographers.",
+    ],
+    Specifications: [
+      "Sensor: 40.2MP APS-C X-Trans CMOS 4.",
+      "Lens: Fixed 23mm f/2.",
+      "Video: 4K UHD.",
+      "Connectivity: Wi-Fi, Bluetooth.",
+      "Battery: NP-W126S rechargeable.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Noah Evans",
+        date: "2025-02-15",
+        rating: 5,
+        review:
+          "Excellent image quality and compact design. Perfect for daily use.",
+      },
+    ],
   },
   {
     id: 46,
@@ -712,6 +1617,10 @@ export const Product = [
     Cat: "cameras",
     Price: "2199",
     Img: [
+      "/img/camera5-1.jpg",
+      "/img/camera5-2.jpg",
+      "/img/camera5-3.jpg",
+      "/img/camera5-4.jpg",
       "/img/camera5-1.jpg",
       "/img/camera5-2.jpg",
       "/img/camera5-3.jpg",
@@ -724,6 +1633,28 @@ export const Product = [
     Rating: 4.8,
     NumRev: 1989,
     State: "Sold out",
+    Stock: 0,
+    BoughtLastMonth: 4,
+    Overview: [
+      "Sony Alpha 7 IV offers top-tier full-frame mirrorless performance with advanced 28-70mm lens for photography and vlogging.",
+    ],
+    Specifications: [
+      "Sensor: 33MP Full-Frame Exmor R CMOS.",
+      "Lens: 28-70mm kit lens.",
+      "Video: 4K UHD 60fps.",
+      "Connectivity: Wi-Fi, Bluetooth.",
+      "Battery: NP-FZ100 rechargeable.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Sophia Wilson",
+        date: "2025-03-01",
+        rating: 5,
+        review:
+          "Outstanding camera for professionals. Amazing image quality and low-light performance.",
+      },
+    ],
   },
   {
     id: 47,
@@ -731,6 +1662,10 @@ export const Product = [
     Cat: "cameras",
     Price: "1249",
     Img: [
+      "/img/camera6-1.jpeg",
+      "/img/camera6-2.jpeg",
+      "/img/camera6-3.jpeg",
+      "/img/camera6-4.jpeg",
       "/img/camera6-1.jpeg",
       "/img/camera6-2.jpeg",
       "/img/camera6-3.jpeg",
@@ -743,6 +1678,28 @@ export const Product = [
     Rating: 4.3,
     NumRev: 2784,
     State: "Available",
+    Stock: 6,
+    BoughtLastMonth: 5,
+    Overview: [
+      "Canon PowerShot SX740 is a compact digital camera with 40x optical zoom and WiFi connectivity, perfect for travel photography.",
+    ],
+    Specifications: [
+      "Sensor: 20.3MP 1-inch CMOS sensor.",
+      "Zoom: 40x optical.",
+      "Video: 4K UHD recording.",
+      "Connectivity: Wi-Fi, Bluetooth.",
+      "Battery: NB-13L rechargeable.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Liam Johnson",
+        date: "2025-02-25",
+        rating: 4,
+        review:
+          "Great zoom camera for travel. Easy to carry and good image quality.",
+      },
+    ],
   },
   {
     id: 48,
@@ -750,6 +1707,10 @@ export const Product = [
     Cat: "cameras",
     Price: "1199",
     Img: [
+      "/img/camera7-1.jpg",
+      "/img/camera7-2.jpg",
+      "/img/camera7-3.jpg",
+      "/img/camera7-4.jpg",
       "/img/camera7-1.jpg",
       "/img/camera7-2.jpg",
       "/img/camera7-3.jpg",
@@ -762,6 +1723,28 @@ export const Product = [
     Rating: 4.5,
     NumRev: 1322,
     State: "Available",
+    Stock: 10,
+    BoughtLastMonth: 7,
+    Overview: [
+      "Sony Alpha 6400 APSC mirrorless camera is compact and lightweight, perfect for vlogging and photography with 16-50mm lens.",
+    ],
+    Specifications: [
+      "Sensor: 24.2MP APS-C Exmor CMOS.",
+      "Lens: 16-50mm kit lens.",
+      "Video: 4K UHD.",
+      "Connectivity: Wi-Fi, Bluetooth.",
+      "Battery: NP-FW50 rechargeable.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Emma Miller",
+        date: "2025-03-03",
+        rating: 5,
+        review:
+          "Compact camera with excellent video quality and fast autofocus.",
+      },
+    ],
   },
   {
     id: 49,
@@ -773,14 +1756,40 @@ export const Product = [
       "/img/camera8-2.jpg",
       "/img/camera8-3.jpg",
       "/img/camera8-4.jpg",
+      "/img/camera8-1.jpg",
+      "/img/camera8-2.jpg",
+      "/img/camera8-3.jpg",
+      "/img/camera8-4.jpg",
     ],
     SubCat: "",
-    Rating: 4.5,
     Brand: "Canon",
     NumRev: 1322,
     Model: "2955",
     State: "Available",
     WebCode: "12383478",
+    Rating: 4.5,
+    Stock: 9,
+    BoughtLastMonth: 6,
+    Overview: [
+      "Canon PowerShot SX740 HS is a versatile compact camera with 40x optical zoom and Wi-Fi for easy sharing.",
+    ],
+    Specifications: [
+      "Sensor: 20.3MP 1-inch CMOS.",
+      "Zoom: 40x optical.",
+      "Video: 4K UHD.",
+      "Connectivity: Wi-Fi.",
+      "Battery: NB-13L rechargeable.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Noah Brown",
+        date: "2025-03-02",
+        rating: 5,
+        review:
+          "Great compact camera with powerful zoom and Wi-Fi connectivity.",
+      },
+    ],
   },
   {
     id: 50,
@@ -788,6 +1797,10 @@ export const Product = [
     Cat: "cameras",
     Price: "619",
     Img: [
+      "/img/camera9-1.jpg",
+      "/img/game1-2.jpeg",
+      "/img/game1-3.jpeg",
+      "/img/game1-4.jpeg",
       "/img/camera9-1.jpg",
       "/img/game1-2.jpeg",
       "/img/game1-3.jpeg",
@@ -800,6 +1813,28 @@ export const Product = [
     Rating: 3.8,
     NumRev: 105,
     State: "Available",
+    Stock: 5,
+    BoughtLastMonth: 1,
+    Overview: [
+      "Canon EOS Rebel T7 DSLR Camera is an entry-level DSLR providing easy handling and quality images with 18-55mm lens kit.",
+    ],
+    Specifications: [
+      "Sensor: 24.1MP APS-C CMOS.",
+      "Lens: 18-55mm kit lens.",
+      "Video: Full HD 1080p.",
+      "Connectivity: USB 2.0.",
+      "Battery: LP-E10 rechargeable.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Sophia Harris",
+        date: "2025-02-10",
+        rating: 4,
+        review:
+          "Great beginner DSLR. Easy to use and captures good quality photos.",
+      },
+    ],
   },
   {
     id: 51,
@@ -807,6 +1842,10 @@ export const Product = [
     Cat: "cameras",
     Price: "929",
     Img: [
+      "/img/camera10-1.jpg",
+      "/img/camera10-2.jpg",
+      "/img/camera10-3.jpg",
+      "/img/camera10-4.jpg",
       "/img/camera10-1.jpg",
       "/img/camera10-2.jpg",
       "/img/camera10-3.jpg",
@@ -819,6 +1858,28 @@ export const Product = [
     Rating: 1.5,
     NumRev: 100,
     State: "Available",
+    Stock: 4,
+    BoughtLastMonth: 0,
+    Overview: [
+      "Canon EOS Rebel SL3 is an entry-level DSLR ideal for beginners, offering easy handling and quality images with the 18-55mm lens kit.",
+    ],
+    Specifications: [
+      "Sensor: 24.1MP APS-C CMOS.",
+      "Lens: 18-55mm kit lens.",
+      "Video: Full HD 1080p recording.",
+      "Connectivity: USB 2.0, HDMI.",
+      "Battery: LP-E17 rechargeable.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Lucas Green",
+        date: "2025-02-05",
+        rating: 2,
+        review:
+          "Camera works fine but battery life is short and menu is not intuitive.",
+      },
+    ],
   },
   {
     id: 52,
@@ -826,6 +1887,10 @@ export const Product = [
     Cat: "cameras",
     Price: "639",
     Img: [
+      "/img/camera10-1.jpeg",
+      "/img/game1-2.jpeg",
+      "/img/game1-3.jpeg",
+      "/img/game1-4.jpeg",
       "/img/camera10-1.jpeg",
       "/img/game1-2.jpeg",
       "/img/game1-3.jpeg",
@@ -838,6 +1903,27 @@ export const Product = [
     Rating: 4.5,
     NumRev: 120,
     State: "Sold out",
+    Stock: 7,
+    BoughtLastMonth: 8,
+    Overview: [
+      "Canon EOS Rebel T7 DSLR Camera offers beginner-friendly features with excellent image quality and lightweight body.",
+    ],
+    Specifications: [
+      "Sensor: 24.1MP APS-C CMOS.",
+      "Lens: 18-55mm kit lens.",
+      "Video: Full HD 1080p.",
+      "Connectivity: USB 2.0, Wi-Fi.",
+      "Battery: LP-E10 rechargeable.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Ava Martin",
+        date: "2025-02-12",
+        rating: 5,
+        review: "Excellent beginner DSLR. Easy to use and good quality photos.",
+      },
+    ],
   },
   {
     id: 53,
@@ -845,6 +1931,10 @@ export const Product = [
     Cat: "cameras",
     Price: "849",
     Img: [
+      "/img/camera11-1.jpg",
+      "/img/camera11-2.jpg",
+      "/img/camera11-3.jpg",
+      "/img/camera11-4.jpg",
       "/img/camera11-1.jpg",
       "/img/camera11-2.jpg",
       "/img/camera11-3.jpg",
@@ -857,6 +1947,27 @@ export const Product = [
     Rating: 3.1,
     NumRev: 50,
     State: "Available",
+    Stock: 6,
+    BoughtLastMonth: 2,
+    Overview: [
+      "Canon EOS Rebel SL3 offers compact design and intuitive interface, making it suitable for new DSLR users.",
+    ],
+    Specifications: [
+      "Sensor: 24.1MP APS-C CMOS.",
+      "Lens: 18-55mm kit lens.",
+      "Video: Full HD 1080p.",
+      "Connectivity: USB 2.0.",
+      "Battery: LP-E17 rechargeable.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Ethan Walker",
+        date: "2025-02-20",
+        rating: 3,
+        review: "Decent camera for beginners, but lacks advanced features.",
+      },
+    ],
   },
   {
     id: 54,
@@ -864,6 +1975,10 @@ export const Product = [
     Cat: "cameras",
     Price: "2024",
     Img: [
+      "/img/camera12-1.jpeg",
+      "/img/game1-2.jpeg",
+      "/img/game1-3.jpeg",
+      "/img/game1-4.jpeg",
       "/img/camera12-1.jpeg",
       "/img/game1-2.jpeg",
       "/img/game1-3.jpeg",
@@ -876,6 +1991,28 @@ export const Product = [
     Rating: 4.9,
     NumRev: 159,
     State: "Available",
+    Stock: 5,
+    BoughtLastMonth: 3,
+    Overview: [
+      "Canon EOS 7D Mark II is a professional DSLR body offering fast shooting speeds, excellent autofocus, and rugged build quality.",
+    ],
+    Specifications: [
+      "Sensor: 20.2MP APS-C CMOS.",
+      "Video: Full HD 1080p.",
+      "ISO Range: 100-16000 expandable.",
+      "Autofocus: 65-point all cross-type.",
+      "Connectivity: USB 3.0, HDMI.",
+      "Battery: LP-E6N rechargeable.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Isabella Clark",
+        date: "2025-02-15",
+        rating: 5,
+        review: "Professional DSLR with fast autofocus and durable build.",
+      },
+    ],
   },
   {
     id: 55,
@@ -883,6 +2020,10 @@ export const Product = [
     Cat: "cameras",
     Price: "1487",
     Img: [
+      "/img/camera13-1.jpg",
+      "/img/game1-2.jpeg",
+      "/img/game1-3.jpeg",
+      "/img/game1-4.jpeg",
       "/img/camera13-1.jpg",
       "/img/game1-2.jpeg",
       "/img/game1-3.jpeg",
@@ -895,6 +2036,29 @@ export const Product = [
     Rating: 2.5,
     NumRev: 12,
     State: "Available",
+    Stock: 2,
+    BoughtLastMonth: 1,
+    Overview: [
+      "Nikon D7500 is a mid-range DSLR with solid performance and image quality, suitable for hobbyist photographers.",
+    ],
+    Specifications: [
+      "Sensor: 20.9MP DX CMOS.",
+      "Video: 4K UHD recording.",
+      "ISO Range: 100-51200 expandable.",
+      "Autofocus: 51-point AF.",
+      "Connectivity: USB 3.0, Wi-Fi.",
+      "Battery: EN-EL15 rechargeable.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Mason Lee",
+        date: "2025-02-10",
+        rating: 3,
+        review:
+          "Decent DSLR, but some features feel limited compared to higher-end models.",
+      },
+    ],
   },
   {
     id: 56,
@@ -902,6 +2066,10 @@ export const Product = [
     Cat: "cameras",
     Price: "3349",
     Img: [
+      "/img/camera14-1.jpg",
+      "/img/camera14-2.jpg",
+      "/img/camera14-3.jpg",
+      "/img/camera14-4.jpg",
       "/img/camera14-1.jpg",
       "/img/camera14-2.jpg",
       "/img/camera14-3.jpg",
@@ -914,6 +2082,29 @@ export const Product = [
     Rating: 2.5,
     NumRev: 650,
     State: "Available",
+    Stock: 7,
+    BoughtLastMonth: 4,
+    Overview: [
+      "Nikon D780 is a full-frame DSLR combining high-resolution imaging and 4K video capabilities for professional photographers.",
+    ],
+    Specifications: [
+      "Sensor: 24.5MP FX CMOS.",
+      "Lens: 24-120mm f/4 VR lens.",
+      "Video: 4K UHD 30fps.",
+      "Autofocus: 51-point AF.",
+      "Connectivity: USB 3.0, Wi-Fi, Bluetooth.",
+      "Battery: EN-EL15b rechargeable.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Charlotte Adams",
+        date: "2025-02-22",
+        rating: 3,
+        review:
+          "Great image quality but a bit heavy and expensive for casual use.",
+      },
+    ],
   },
   {
     id: 57,
@@ -921,6 +2112,10 @@ export const Product = [
     Cat: "cameras",
     Price: "2199",
     Img: [
+      "/img/camera14-1.jpg",
+      "/img/camera14-2.jpg",
+      "/img/camera14-3.jpg",
+      "/img/camera14-4.jpg",
       "/img/camera14-1.jpg",
       "/img/camera14-2.jpg",
       "/img/camera14-3.jpg",
@@ -933,6 +2128,28 @@ export const Product = [
     Rating: 4.8,
     NumRev: 286,
     State: "Available",
+    Stock: 5,
+    BoughtLastMonth: 6,
+    Overview: [
+      "Panasonic Lumix G9 II is a mirrorless camera offering excellent stills and video performance with rugged design and fast autofocus.",
+    ],
+    Specifications: [
+      "Sensor: 20.3MP Micro Four Thirds.",
+      "Video: 4K UHD 60fps.",
+      "Autofocus: 225-point DFD AF.",
+      "Connectivity: Wi-Fi, Bluetooth.",
+      "Battery: DMW-BLK22 rechargeable.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "James Scott",
+        date: "2025-02-18",
+        rating: 5,
+        review:
+          "Perfect mirrorless camera for photography and video. Fast AF and solid build.",
+      },
+    ],
   },
   {
     id: 58,
@@ -940,6 +2157,10 @@ export const Product = [
     Cat: "tv",
     Price: "999",
     Img: [
+      "/img/tv9-1.jpg",
+      "/img/tv9-2.jpg",
+      "/img/tv9-3.jpg",
+      "/img/tv9-4.jpg",
       "/img/tv9-1.jpg",
       "/img/tv9-2.jpg",
       "/img/tv9-3.jpg",
@@ -952,6 +2173,27 @@ export const Product = [
     Rating: 2.6,
     NumRev: 29,
     State: "Available",
+    Stock: 3,
+    BoughtLastMonth: 1,
+    Overview: [
+      'LG 65" QNED evo AI QNED85 is a Smart TV with MiniLED technology, offering AI upscaling and excellent HDR picture quality.',
+    ],
+    Specifications: [
+      "Display: 65-inch 4K UHD MiniLED.",
+      "HDR: HDR10, Dolby Vision IQ.",
+      "Smart: webOS with AI ThinQ.",
+      "Connectivity: Wi-Fi, HDMI 2.1, USB.",
+      "Audio: Dolby Atmos.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Benjamin Moore",
+        date: "2025-03-01",
+        rating: 3,
+        review: "Good TV, but colors are slightly oversaturated.",
+      },
+    ],
   },
   {
     id: 59,
@@ -959,6 +2201,10 @@ export const Product = [
     Cat: "tv",
     Price: "549",
     Img: [
+      "/img/tv10-1.jpg",
+      "/img/tv10-2.jpg",
+      "/img/tv10-3.jpg",
+      "/img/tv10-4.jpg",
       "/img/tv10-1.jpg",
       "/img/tv10-2.jpg",
       "/img/tv10-3.jpg",
@@ -971,6 +2217,28 @@ export const Product = [
     Rating: 4.4,
     NumRev: 315,
     State: "Available",
+    Stock: 6,
+    BoughtLastMonth: 4,
+    Overview: [
+      'LG 65" UT7000 Series LED TV offers 4K UHD resolution with HDR support and webOS smart platform for streaming and apps.',
+    ],
+    Specifications: [
+      "Display: 65-inch 4K UHD LED.",
+      "HDR: HDR10, HLG.",
+      "Smart: webOS with AI ThinQ.",
+      "Connectivity: Wi-Fi, HDMI, USB.",
+      "Audio: 20W stereo.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Emma Clark",
+        date: "2025-03-04",
+        rating: 5,
+        review:
+          "Excellent value for money. Picture quality is sharp and bright.",
+      },
+    ],
   },
   {
     id: 60,
@@ -978,6 +2246,10 @@ export const Product = [
     Cat: "tv",
     Price: "589",
     Img: [
+      "/img/tv11-1.jpg",
+      "/img/tv11-2.jpg",
+      "/img/tv11-3.jpg",
+      "/img/tv11-4.jpg",
       "/img/tv11-1.jpg",
       "/img/tv11-2.jpg",
       "/img/tv11-3.jpg",
@@ -990,6 +2262,27 @@ export const Product = [
     Rating: 2.7,
     NumRev: 380,
     State: "Available",
+    Stock: 4,
+    BoughtLastMonth: 2,
+    Overview: [
+      'TCL 65" Q65 Series QLED Smart TV features 4K UHD resolution, HDR support, and Google TV platform for streaming and apps.',
+    ],
+    Specifications: [
+      "Display: 65-inch 4K UHD QLED.",
+      "HDR: HDR10, Dolby Vision.",
+      "Smart: Google TV with AI recommendations.",
+      "Connectivity: Wi-Fi, HDMI, USB.",
+      "Audio: 20W speakers.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Mia Thompson",
+        date: "2025-02-28",
+        rating: 3,
+        review: "Decent picture but black levels could be better.",
+      },
+    ],
   },
   {
     id: 61,
@@ -997,6 +2290,10 @@ export const Product = [
     Cat: "tv",
     Price: "549",
     Img: [
+      "/img/tv12-1.jpg",
+      "/img/tv12-2.jpg",
+      "/img/tv12-3.jpg",
+      "/img/tv12-4.jpg",
       "/img/tv12-1.jpg",
       "/img/tv12-2.jpg",
       "/img/tv12-3.jpg",
@@ -1009,6 +2306,27 @@ export const Product = [
     Rating: 4.7,
     NumRev: 5222,
     State: "Available",
+    Stock: 8,
+    BoughtLastMonth: 122,
+    Overview: [
+      'TCL Q5 Class 65" is a QLED Fire TV offering 4K UHD resolution with vibrant colors and smart features for streaming apps.',
+    ],
+    Specifications: [
+      "Display: 65-inch 4K UHD QLED.",
+      "HDR: HDR10, Dolby Vision.",
+      "Smart: Fire TV OS.",
+      "Connectivity: Wi-Fi, HDMI, USB.",
+      "Audio: 20W speakers.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Oliver Johnson",
+        date: "2025-03-05",
+        rating: 5,
+        review: "Fantastic picture quality and smart features at this price.",
+      },
+    ],
   },
   {
     id: 62,
@@ -1016,6 +2334,10 @@ export const Product = [
     Cat: "tv",
     Price: "629",
     Img: [
+      "/img/tv13-1.jpg",
+      "/img/tv13-2.jpg",
+      "/img/tv13-3.jpg",
+      "/img/tv13-4.jpg",
       "/img/tv13-1.jpg",
       "/img/tv13-2.jpg",
       "/img/tv13-3.jpg",
@@ -1028,6 +2350,27 @@ export const Product = [
     Rating: 4,
     NumRev: 92,
     State: "Available",
+    Stock: 5,
+    BoughtLastMonth: 7,
+    Overview: [
+      'Hisense 65" QD7QFM Series offers MiniLED backlighting, delivering high contrast and excellent HDR performance for home entertainment.',
+    ],
+    Specifications: [
+      "Display: 65-inch 4K UHD MiniLED.",
+      "HDR: HDR10, Dolby Vision.",
+      "Smart: Android TV.",
+      "Connectivity: Wi-Fi, HDMI 2.1, USB.",
+      "Audio: 20W stereo.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Sophia Lee",
+        date: "2025-02-28",
+        rating: 4,
+        review: "Great TV for movies, bright colors and solid HDR performance.",
+      },
+    ],
   },
   {
     id: 63,
@@ -1035,6 +2378,10 @@ export const Product = [
     Cat: "tv",
     Price: "699",
     Img: [
+      "/img/tv14-1.jpg",
+      "/img/tv14-2.jpg",
+      "/img/tv14-3.jpg",
+      "/img/tv14-4.jpg",
       "/img/tv14-1.jpg",
       "/img/tv14-2.jpg",
       "/img/tv14-3.jpg",
@@ -1047,6 +2394,27 @@ export const Product = [
     Rating: 4.3,
     NumRev: 1478,
     State: "Available",
+    Stock: 6,
+    BoughtLastMonth: 15,
+    Overview: [
+      'LG 65" UA7700 is an AI-powered Smart TV offering 4K UHD resolution, HDR support, and webOS for easy streaming.',
+    ],
+    Specifications: [
+      "Display: 65-inch 4K UHD LCD.",
+      "HDR: HDR10, HLG.",
+      "Smart: webOS with AI ThinQ.",
+      "Connectivity: Wi-Fi, HDMI, USB.",
+      "Audio: 20W stereo.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Liam Carter",
+        date: "2025-03-01",
+        rating: 4,
+        review: "Good TV, AI upscaling improves older content nicely.",
+      },
+    ],
   },
   {
     id: 64,
@@ -1054,6 +2422,10 @@ export const Product = [
     Cat: "tv",
     Price: "849",
     Img: [
+      "/img/tv15-1.jpg",
+      "/img/tv15-2.jpg",
+      "/img/tv15-3.jpg",
+      "/img/tv15-4.jpg",
       "/img/tv15-1.jpg",
       "/img/tv15-2.jpg",
       "/img/tv15-3.jpg",
@@ -1066,6 +2438,28 @@ export const Product = [
     Rating: 4.6,
     NumRev: 238,
     State: "Sold out",
+    Stock: 0,
+    BoughtLastMonth: 30,
+    Overview: [
+      'LG 65" QNED webOS TV provides excellent HDR brightness and deep blacks, ideal for home theater setups.',
+    ],
+    Specifications: [
+      "Display: 65-inch 4K UHD QNED.",
+      "HDR: HDR10, Dolby Vision.",
+      "Smart: webOS Smart TV.",
+      "Connectivity: Wi-Fi, HDMI, USB.",
+      "Audio: Dolby Atmos.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Emma Wilson",
+        date: "2025-03-06",
+        rating: 5,
+        review:
+          "Amazing contrast and vivid colors, highly recommend for movies.",
+      },
+    ],
   },
   {
     id: 65,
@@ -1073,6 +2467,10 @@ export const Product = [
     Cat: "tv",
     Price: "879",
     Img: [
+      "/img/tv16-1.jpg",
+      "/img/tv16-2.jpg",
+      "/img/tv16-3.jpg",
+      "/img/tv16-4.jpg",
       "/img/tv16-1.jpg",
       "/img/tv16-2.jpg",
       "/img/tv16-3.jpg",
@@ -1085,6 +2483,27 @@ export const Product = [
     Rating: 4.7,
     NumRev: 121,
     State: "Sold out",
+    Stock: 0,
+    BoughtLastMonth: 22,
+    Overview: [
+      "LG QNED80AUA Series offers 4K UHD resolution with AI enhancements for picture quality and smart webOS features.",
+    ],
+    Specifications: [
+      "Display: 65-inch 4K UHD QNED.",
+      "HDR: HDR10, Dolby Vision IQ.",
+      "Smart: webOS with AI ThinQ.",
+      "Connectivity: Wi-Fi, HDMI, USB.",
+      "Audio: 20W stereo.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Noah Johnson",
+        date: "2025-03-03",
+        rating: 5,
+        review: "Great TV with sharp picture and AI upscaling works well.",
+      },
+    ],
   },
   {
     id: 66,
@@ -1092,6 +2511,10 @@ export const Product = [
     Cat: "phones",
     Price: "529",
     Img: [
+      "/img/phone8-1.jpg",
+      "/img/phone8-2.jpg",
+      "/img/phone8-3.jpg",
+      "/img/phone8-4.jpg",
       "/img/phone8-1.jpg",
       "/img/phone8-2.jpg",
       "/img/phone8-3.jpg",
@@ -1104,6 +2527,28 @@ export const Product = [
     Rating: 4.7,
     NumRev: 57,
     State: "Available",
+    Stock: 10,
+    BoughtLastMonth: 5,
+    Overview: [
+      "Google Pixel 9a offers a clean Android experience with excellent camera quality and smooth performance.",
+    ],
+    Specifications: [
+      "Display: 6.1-inch OLED.",
+      "Camera: 50MP rear, 8MP front.",
+      "Processor: Snapdragon 7 Gen 1.",
+      "RAM: 6GB.",
+      "Battery: 4300mAh.",
+      "Connectivity: 5G, Wi-Fi 6, Bluetooth 5.2.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Mia Carter",
+        date: "2025-02-25",
+        rating: 5,
+        review: "Excellent phone with great camera and smooth UI.",
+      },
+    ],
   },
   {
     id: 67,
@@ -1111,6 +2556,10 @@ export const Product = [
     Cat: "phones",
     Price: "2399",
     Img: [
+      "/img/phone9-1.jpg",
+      "/img/phone9-2.jpg",
+      "/img/phone9-3.jpg",
+      "/img/phone9-4.jpg",
       "/img/phone9-1.jpg",
       "/img/phone9-2.jpg",
       "/img/phone9-3.jpg",
@@ -1123,6 +2572,28 @@ export const Product = [
     Rating: 4.8,
     NumRev: 133,
     State: "Sold out",
+    Stock: 7,
+    BoughtLastMonth: 12,
+    Overview: [
+      "Google Pixel 10 Pro Fold is a premium foldable phone with large 256GB storage and high-end camera capabilities.",
+    ],
+    Specifications: [
+      "Display: 7.6-inch foldable OLED.",
+      "Camera: 108MP rear, 12MP front.",
+      "Processor: Snapdragon 8 Gen 3.",
+      "RAM: 12GB.",
+      "Battery: 5000mAh.",
+      "Connectivity: 5G, Wi-Fi 7, Bluetooth 5.3.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Ethan Brown",
+        date: "2025-03-02",
+        rating: 5,
+        review: "Fantastic foldable device, perfect for multitasking.",
+      },
+    ],
   },
   {
     id: 68,
@@ -1130,6 +2601,10 @@ export const Product = [
     Cat: "phones",
     Price: "299",
     Img: [
+      "/img/phone10-1.jpg",
+      "/img/phone10-2.jpg",
+      "/img/phone10-3.jpg",
+      "/img/phone10-4.jpg",
       "/img/phone10-1.jpg",
       "/img/phone10-2.jpg",
       "/img/phone10-3.jpg",
@@ -1142,6 +2617,28 @@ export const Product = [
     Rating: 4.9,
     NumRev: 42,
     State: "Available",
+    Stock: 9,
+    BoughtLastMonth: 3,
+    Overview: [
+      "Apple iPhone 17 Pro delivers advanced performance with vibrant display and premium design, ideal for daily use.",
+    ],
+    Specifications: [
+      "Display: 6.7-inch Super Retina XDR OLED.",
+      "Camera: 48MP triple rear, 12MP front.",
+      "Processor: A19 Bionic.",
+      "RAM: 12GB.",
+      "Battery: 4500mAh.",
+      "Connectivity: 5G, Wi-Fi 7, Bluetooth 5.3.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Sophia Davis",
+        date: "2025-03-04",
+        rating: 5,
+        review: "Amazing phone, fast and beautiful screen.",
+      },
+    ],
   },
   {
     id: 69,
@@ -1149,6 +2646,10 @@ export const Product = [
     Cat: "phones",
     Price: "1129",
     Img: [
+      "/img/phone11-1.jpg",
+      "/img/phone11-2.jpg",
+      "/img/phone11-3.jpg",
+      "/img/phone11-4.jpg",
       "/img/phone11-1.jpg",
       "/img/phone11-2.jpg",
       "/img/phone11-3.jpg",
@@ -1161,6 +2662,28 @@ export const Product = [
     Rating: 1.6,
     NumRev: 1367,
     State: "Sold out",
+    Stock: 1,
+    BoughtLastMonth: 85,
+    Overview: [
+      "Apple iPhone 15 offers a compact design with iOS features but limited stock availability due to high demand.",
+    ],
+    Specifications: [
+      "Display: 6.1-inch Super Retina OLED.",
+      "Camera: 48MP dual rear, 12MP front.",
+      "Processor: A17 Bionic.",
+      "RAM: 8GB.",
+      "Battery: 3200mAh.",
+      "Connectivity: 5G, Wi-Fi 7, Bluetooth 5.3.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Liam Scott",
+        date: "2025-02-27",
+        rating: 2,
+        review: "Good phone, but overpriced and hard to find.",
+      },
+    ],
   },
   {
     id: 70,
@@ -1168,6 +2691,10 @@ export const Product = [
     Cat: "phones",
     Price: "784",
     Img: [
+      "/img/phone12-1.jpg",
+      "/img/phone12-2.jpg",
+      "/img/phone12-3.jpg",
+      "/img/phone12-4.jpg",
       "/img/phone12-1.jpg",
       "/img/phone12-2.jpg",
       "/img/phone12-3.jpg",
@@ -1180,6 +2707,28 @@ export const Product = [
     Rating: 2.9,
     NumRev: 55,
     State: "Available",
+    Stock: 4,
+    BoughtLastMonth: 6,
+    Overview: [
+      "iPhone 17 Pro Max combines large screen size with premium performance, suitable for productivity and media consumption.",
+    ],
+    Specifications: [
+      "Display: 6.9-inch Super Retina OLED.",
+      "Camera: 48MP triple rear, 12MP front.",
+      "Processor: A19 Bionic.",
+      "RAM: 12GB.",
+      "Battery: 4800mAh.",
+      "Connectivity: 5G, Wi-Fi 7, Bluetooth 5.3.",
+      "Warranty: 1-year manufacturer warranty.",
+    ],
+    customerReviews: [
+      {
+        name: "Olivia Harris",
+        date: "2025-03-01",
+        rating: 3,
+        review: "Large and fast, but a bit heavy and expensive.",
+      },
+    ],
   },
   {
     id: 71,
@@ -1187,6 +2736,10 @@ export const Product = [
     Cat: "phones",
     Price: "299",
     Img: [
+      "/img/phone13-1.jpeg",
+      "/img/phone13-2.png",
+      "/img/phone13-3.png",
+      "/img/phone13-4.png",
       "/img/phone13-1.jpeg",
       "/img/phone13-2.png",
       "/img/phone13-3.png",
@@ -1199,6 +2752,28 @@ export const Product = [
     Rating: 4.5,
     NumRev: 280,
     State: "Available",
+    Stock: 12,
+    BoughtLastMonth: 18,
+    Overview: [
+      "Refurbished Apple iPhone 12 offers a 64GB storage, dual-camera system, and OLED display with smooth iOS experience.",
+    ],
+    Specifications: [
+      "Display: 6.1-inch Super Retina XDR OLED",
+      "Camera: Dual 12MP rear, 12MP front",
+      "Processor: A14 Bionic",
+      "RAM: 4GB",
+      "Battery: 2815mAh",
+      "Connectivity: 5G, Wi-Fi 6, Bluetooth 5.0",
+      "Warranty: 1-year refurbished warranty",
+    ],
+    customerReviews: [
+      {
+        name: "Ava Thompson",
+        date: "2025-03-02",
+        rating: 5,
+        review: "Great refurbished phone, works like new!",
+      },
+    ],
   },
   {
     id: 72,
@@ -1206,6 +2781,10 @@ export const Product = [
     Cat: "phones",
     Price: "449",
     Img: [
+      "/img/phone14-1.jpg",
+      "/img/phone14-2.jpg",
+      "/img/phone14-3.jpg",
+      "/img/phone14-4.jpg",
       "/img/phone14-1.jpg",
       "/img/phone14-2.jpg",
       "/img/phone14-3.jpg",
@@ -1218,6 +2797,29 @@ export const Product = [
     Rating: 4.8,
     NumRev: 327,
     State: "Sold out",
+    Stock: 9,
+    BoughtLastMonth: 28,
+    Overview: [
+      "Apple iPhone 17 256GB offers a sleek design, fast performance, and ample storage, perfect for multitasking and media.",
+    ],
+    Specifications: [
+      "Display: 6.7-inch Super Retina OLED",
+      "Camera: 48MP triple rear, 12MP front",
+      "Processor: A19 Bionic",
+      "RAM: 12GB",
+      "Battery: 4500mAh",
+      "Connectivity: 5G, Wi-Fi 7, Bluetooth 5.3",
+      "Warranty: 1-year manufacturer warranty",
+    ],
+    customerReviews: [
+      {
+        name: "Ethan Wilson",
+        date: "2025-03-04",
+        rating: 5,
+        review:
+          "Excellent performance and color, just wish it was in stock more often.",
+      },
+    ],
   },
   {
     id: 73,
@@ -1225,6 +2827,10 @@ export const Product = [
     Cat: "phones",
     Price: "369",
     Img: [
+      "/img/phone15-1.jpeg",
+      "/img/phone15-2.jpeg",
+      "/img/phone15-3.jpeg",
+      "/img/phone15-4.jpeg",
       "/img/phone15-1.jpeg",
       "/img/phone15-2.jpeg",
       "/img/phone15-3.jpeg",
@@ -1237,6 +2843,28 @@ export const Product = [
     Rating: 4.8,
     NumRev: 1258,
     State: "Available",
+    Stock: 7,
+    BoughtLastMonth: 85,
+    Overview: [
+      "Open Box Samsung Galaxy S23 features 128GB storage, high refresh AMOLED display, and top-tier cameras for photography.",
+    ],
+    Specifications: [
+      "Display: 6.1-inch AMOLED 120Hz",
+      "Camera: 50MP wide, 10MP telephoto, 12MP ultra-wide",
+      "Processor: Snapdragon 8 Gen 2",
+      "RAM: 8GB",
+      "Battery: 3900mAh",
+      "Connectivity: 5G, Wi-Fi 6E, Bluetooth 5.3",
+      "Warranty: 6-month open box warranty",
+    ],
+    customerReviews: [
+      {
+        name: "Liam Brown",
+        date: "2025-03-01",
+        rating: 5,
+        review: "Amazing value for an open box device, works flawlessly.",
+      },
+    ],
   },
   {
     id: 74,
@@ -1248,14 +2876,40 @@ export const Product = [
       "/img/laptop8-2.jpg",
       "/img/laptop8-3.jpg",
       "/img/laptop8-4.jpg",
+      "/img/laptop8-1.jpeg",
+      "/img/laptop8-2.jpg",
+      "/img/laptop8-3.jpg",
+      "/img/laptop8-4.jpg",
     ],
     SubCat: "",
     Brand: "Asus",
-    Model: " FX607VJBB53CB",
+    Model: "FX607VJBB53CB",
     WebCode: "19339454",
     Rating: 4.5,
     NumRev: 1258,
     State: "Available",
+    Stock: 10,
+    BoughtLastMonth: 34,
+    Overview: [
+      "ASUS TUF Gaming F16 features 16-inch display, high refresh rate, and durable design for competitive gaming.",
+    ],
+    Specifications: [
+      "Display: 16-inch FHD 144Hz",
+      "Processor: Intel Core i7 12700H",
+      "RAM: 16GB",
+      "Storage: 512GB SSD",
+      "GPU: NVIDIA RTX 4050",
+      "Connectivity: Wi-Fi 6, Bluetooth 5.2",
+      "Warranty: 1-year manufacturer warranty",
+    ],
+    customerReviews: [
+      {
+        name: "Noah Miller",
+        date: "2025-02-28",
+        rating: 5,
+        review: "Solid gaming laptop with excellent performance and build.",
+      },
+    ],
   },
   {
     id: 75,
@@ -1267,14 +2921,41 @@ export const Product = [
       "/img/laptop9-2.jpg",
       "/img/laptop9-3.jpg",
       "/img/laptop9-4.jpg",
+      "/img/laptop9-1.jpg",
+      "/img/laptop9-2.jpg",
+      "/img/laptop9-3.jpg",
+      "/img/laptop9-4.jpg",
     ],
     SubCat: "",
     Brand: "Asus",
     Model: "G835LXXS99CA",
-    WebCode: " 19186642",
+    WebCode: "19186642",
     Rating: 4.8,
     NumRev: 53,
     State: "Available",
+    Stock: 3,
+    BoughtLastMonth: 2,
+    Overview: [
+      "ASUS ROG Strix SCAR 18 is a premium gaming laptop with 18-inch display, high-end GPU, and fast refresh rate for enthusiasts.",
+    ],
+    Specifications: [
+      "Display: 18-inch QHD 240Hz",
+      "Processor: Intel Core i9 13900HX",
+      "RAM: 32GB",
+      "Storage: 2TB SSD",
+      "GPU: NVIDIA RTX 5090",
+      "Connectivity: Wi-Fi 7, Bluetooth 5.3",
+      "Warranty: 1-year manufacturer warranty",
+    ],
+    customerReviews: [
+      {
+        name: "Sophia Anderson",
+        date: "2025-03-03",
+        rating: 5,
+        review:
+          "Extremely powerful laptop, perfect for 4K gaming and streaming.",
+      },
+    ],
   },
   {
     id: 76,
@@ -1282,6 +2963,10 @@ export const Product = [
     Cat: "computers",
     Price: "1449",
     Img: [
+      "/img/laptop10-1.jpg",
+      "/img/laptop10-2.jpg",
+      "/img/laptop10-3.jpg",
+      "/img/laptop10-4.jpg",
       "/img/laptop10-1.jpg",
       "/img/laptop10-2.jpg",
       "/img/laptop10-3.jpg",
@@ -1294,6 +2979,28 @@ export const Product = [
     Rating: 2.8,
     NumRev: 125,
     State: "Sold out",
+    Stock: 5,
+    BoughtLastMonth: 18,
+    Overview: [
+      "Apple MacBook Air 13.6 Touch ID 2025 offers lightweight design, Retina display, and M3 chip for everyday tasks.",
+    ],
+    Specifications: [
+      "Display: 13.6-inch Retina",
+      "Processor: Apple M3",
+      "RAM: 8GB",
+      "Storage: 256GB SSD",
+      "Battery: Up to 18 hours",
+      "Connectivity: Wi-Fi 7, Bluetooth 5.3",
+      "Warranty: 1-year manufacturer warranty",
+    ],
+    customerReviews: [
+      {
+        name: "Lucas White",
+        date: "2025-02-27",
+        rating: 3,
+        review: "Good for light tasks, but underpowered for gaming.",
+      },
+    ],
   },
   {
     id: 77,
@@ -1301,6 +3008,10 @@ export const Product = [
     Cat: "computers",
     Price: "649",
     Img: [
+      "/img/laptop11-1.jpeg",
+      "/img/game1-2.jpeg",
+      "/img/game1-3.jpeg",
+      "/img/game1-4.jpeg",
       "/img/laptop11-1.jpeg",
       "/img/game1-2.jpeg",
       "/img/game1-3.jpeg",
@@ -1313,6 +3024,29 @@ export const Product = [
     Rating: 5,
     NumRev: 1258,
     State: "Sold out",
+    Stock: 3,
+    BoughtLastMonth: 35,
+    Overview: [
+      "Refurbished Apple MacBook Pro Touch Bar 16 offers high-end performance, Retina display, and Touch Bar features for creative professionals.",
+    ],
+    Specifications: [
+      "Display: 16-inch Retina",
+      "Processor: Intel Core i9",
+      "RAM: 32GB",
+      "Storage: 1TB SSD",
+      "GPU: AMD Radeon Pro 5500M",
+      "Connectivity: Wi-Fi 6, Bluetooth 5.2",
+      "Warranty: 6-month refurbished warranty",
+    ],
+    customerReviews: [
+      {
+        name: "Mason Scott",
+        date: "2025-03-02",
+        rating: 5,
+        review:
+          "Excellent refurbished MacBook, perfect for editing and productivity.",
+      },
+    ],
   },
   {
     id: 78,
@@ -1320,6 +3054,10 @@ export const Product = [
     Cat: "computers",
     Price: "799",
     Img: [
+      "/img/laptop12-1.jpeg",
+      "/img/laptop12-2.jpeg",
+      "/img/laptop12-3.jpeg",
+      "/img/laptop12-4.jpeg",
       "/img/laptop12-1.jpeg",
       "/img/laptop12-2.jpeg",
       "/img/laptop12-3.jpeg",
@@ -1332,6 +3070,28 @@ export const Product = [
     Rating: 1.8,
     NumRev: 14,
     State: "Available",
+    Stock: 2,
+    BoughtLastMonth: 1,
+    Overview: [
+      "Open Box Apple MacBook Pro 13.3 Touch Bar 2020 offers compact performance with Touch Bar and solid build quality.",
+    ],
+    Specifications: [
+      "Display: 13.3-inch Retina",
+      "Processor: Intel Core i5",
+      "RAM: 16GB",
+      "Storage: 512GB SSD",
+      "GPU: Intel Iris Plus",
+      "Connectivity: Wi-Fi 6, Bluetooth 5.0",
+      "Warranty: 6-month open box warranty",
+    ],
+    customerReviews: [
+      {
+        name: "Ella Martin",
+        date: "2025-02-25",
+        rating: 2,
+        review: "Works okay but performance is limited for heavy tasks.",
+      },
+    ],
   },
   {
     id: 79,
@@ -1339,6 +3099,10 @@ export const Product = [
     Cat: "computers",
     Price: "649",
     Img: [
+      "/img/laptop13-1.jpeg",
+      "/img/laptop13-2.jpeg",
+      "/img/laptop13-3.jpeg",
+      "/img/laptop13-4.jpeg",
       "/img/laptop13-1.jpeg",
       "/img/laptop13-2.jpeg",
       "/img/laptop13-3.jpeg",
@@ -1351,16 +3115,39 @@ export const Product = [
     Rating: 3.8,
     NumRev: 58,
     State: "Sold out",
+    Stock: 0,
+    BoughtLastMonth: 4,
+    Overview: [
+      "Refurbished Microsoft Surface Laptop 3 offers 13-inch touchscreen, lightweight design, and reliable performance for productivity.",
+    ],
+    Specifications: [
+      "Display: 13.5-inch PixelSense",
+      "Processor: Intel Core i5",
+      "RAM: 8GB",
+      "Storage: 256GB SSD",
+      "GPU: Intel Iris Plus",
+      "Connectivity: Wi-Fi 6, Bluetooth 5.0",
+      "Warranty: 6-month refurbished warranty",
+    ],
+    customerReviews: [
+      {
+        name: "James Taylor",
+        date: "2025-03-01",
+        rating: 4,
+        review: "Good refurbished laptop, light and portable for work.",
+      },
+    ],
   },
-
-  /* CONSOLES */
-
   {
     id: 80,
     Title: "PlayStation 5 DualSense Wireless Controller",
     Cat: "consoles",
     Price: "99",
     Img: [
+      "/img/game7-1.jpg",
+      "/img/game7-2.jpg",
+      "/img/game7-3.jpg",
+      "/img/game7-4.jpg",
       "/img/game7-1.jpg",
       "/img/game7-2.jpg",
       "/img/game7-3.jpg",
@@ -1373,13 +3160,38 @@ export const Product = [
     Rating: 4.4,
     NumRev: 14,
     State: "Sold out",
+    Stock: 12,
+    BoughtLastMonth: 5,
+    Overview: [
+      "PlayStation 5 DualSense Wireless Controller provides haptic feedback, adaptive triggers, and ergonomic design for immersive gaming.",
+    ],
+    Specifications: [
+      "Connectivity: Wireless, USB-C",
+      "Battery: Built-in rechargeable",
+      "Compatibility: PS5 and PC",
+      "Color: White/Black",
+      "Warranty: 1-year manufacturer warranty",
+    ],
+    customerReviews: [
+      {
+        name: "Mia Thompson",
+        date: "2025-03-03",
+        rating: 5,
+        review: "Excellent controller, very responsive and comfortable to use.",
+      },
+    ],
   },
+
   {
     id: 81,
     Title: "Meta Quest 3S 128GB VR Headset",
     Cat: "consoles",
     Price: "399",
     Img: [
+      "/img/game8-1.jpg",
+      "/img/game8-2.jpg",
+      "/img/game8-3.jpg",
+      "/img/game8-4.jpg",
       "/img/game8-1.jpg",
       "/img/game8-2.jpg",
       "/img/game8-3.jpg",
@@ -1392,6 +3204,29 @@ export const Product = [
     Rating: 4.8,
     NumRev: 308,
     State: "Available",
+    Stock: 15,
+    BoughtLastMonth: 42,
+    Overview: [
+      "Meta Quest 3S is a standalone VR headset offering 128GB storage, immersive graphics, and precise tracking for VR gaming.",
+    ],
+    Specifications: [
+      "Display: Fast-switch LCD, 2160x2160 per eye",
+      "Processor: Snapdragon XR2 Gen 2",
+      "RAM: 12GB",
+      "Storage: 128GB",
+      "Battery: Up to 3 hours",
+      "Connectivity: Wi-Fi 6, Bluetooth 5.2",
+      "Controllers: Included Touch controllers",
+      "Warranty: 1-year manufacturer warranty",
+    ],
+    customerReviews: [
+      {
+        name: "Olivia Johnson",
+        date: "2025-03-05",
+        rating: 5,
+        review: "Amazing VR experience, very responsive and lightweight.",
+      },
+    ],
   },
   {
     id: 82,
@@ -1399,6 +3234,10 @@ export const Product = [
     Cat: "consoles",
     Price: "649",
     Img: [
+      "/img/game9-1.jpg",
+      "/img/game9-2.jpg",
+      "/img/game9-3.jpg",
+      "/img/game9-1.jpg",
       "/img/game9-1.jpg",
       "/img/game9-2.jpg",
       "/img/game9-3.jpg",
@@ -1411,6 +3250,28 @@ export const Product = [
     Rating: 1.8,
     NumRev: 45,
     State: "Sold out",
+    Stock: 50,
+    BoughtLastMonth: 5,
+    Overview: [
+      "PlayStation 5 Slim Console provides next-gen gaming in a compact design with high-speed SSD and ray tracing support.",
+    ],
+    Specifications: [
+      "CPU: AMD Ryzen Zen 2",
+      "GPU: AMD RDNA 2",
+      "RAM: 16GB GDDR6",
+      "Storage: 825GB SSD",
+      "Resolution: Up to 4K",
+      "Connectivity: Wi-Fi 6, Bluetooth 5.1",
+      "Warranty: 1-year manufacturer warranty",
+    ],
+    customerReviews: [
+      {
+        name: "Noah Evans",
+        date: "2025-03-04",
+        rating: 2,
+        review: "Good console but limited stock and minor overheating issues.",
+      },
+    ],
   },
   {
     id: 83,
@@ -1418,6 +3279,10 @@ export const Product = [
     Cat: "consoles",
     Price: "464",
     Img: [
+      "/img/game10-1.jpeg",
+      "/img/game9-2.jpg",
+      "/img/game9-3.jpg",
+      "/img/game9-1.jpg",
       "/img/game10-1.jpeg",
       "/img/game9-2.jpg",
       "/img/game9-3.jpg",
@@ -1430,6 +3295,28 @@ export const Product = [
     Rating: 4.5,
     NumRev: 120,
     State: "Available",
+    Stock: 8,
+    BoughtLastMonth: 17,
+    Overview: [
+      "Refurbished Sony PlayStation 5 with disc drive, providing next-gen gaming performance with ray tracing and fast load times.",
+    ],
+    Specifications: [
+      "CPU: AMD Ryzen Zen 2",
+      "GPU: AMD RDNA 2",
+      "RAM: 16GB GDDR6",
+      "Storage: 825GB SSD",
+      "Optical Drive: Ultra HD Blu-ray",
+      "Connectivity: Wi-Fi 6, Bluetooth 5.1",
+      "Warranty: 6-month refurbished warranty",
+    ],
+    customerReviews: [
+      {
+        name: "Liam Scott",
+        date: "2025-03-01",
+        rating: 5,
+        review: "Excellent refurbished console, works like new!",
+      },
+    ],
   },
   {
     id: 84,
@@ -1437,6 +3324,10 @@ export const Product = [
     Cat: "consoles",
     Price: "94",
     Img: [
+      "/img/game11-1.jpg",
+      "/img/game11-2.jpg",
+      "/img/game11-3.jpg",
+      "/img/game11-4.jpg",
       "/img/game11-1.jpg",
       "/img/game11-2.jpg",
       "/img/game11-3.jpg",
@@ -1449,6 +3340,26 @@ export const Product = [
     Rating: 4.6,
     NumRev: 280,
     State: "Sold out",
+    Stock: 10,
+    BoughtLastMonth: 11,
+    Overview: [
+      "Midnight PlayStation 5 DualSense Wireless Controller features adaptive triggers, haptic feedback, and ergonomic design.",
+    ],
+    Specifications: [
+      "Connectivity: Wireless, USB-C",
+      "Battery: Built-in rechargeable",
+      "Compatibility: PS5 and PC",
+      "Color: Midnight Black",
+      "Warranty: 1-year manufacturer warranty",
+    ],
+    customerReviews: [
+      {
+        name: "Emma Davis",
+        date: "2025-03-02",
+        rating: 5,
+        review: "Controller is very responsive and comfortable to hold.",
+      },
+    ],
   },
   {
     id: 85,
@@ -1456,6 +3367,10 @@ export const Product = [
     Cat: "consoles",
     Price: "299",
     Img: [
+      "/img/game12-1.jpg",
+      "/img/game12-2.jpg",
+      "/img/game12-3.jpg",
+      "/img/game12-4.jpg",
       "/img/game12-1.jpg",
       "/img/game12-2.jpg",
       "/img/game12-3.jpg",
@@ -1468,6 +3383,26 @@ export const Product = [
     Rating: 2.7,
     NumRev: 1540,
     State: "Available",
+    Stock: 9,
+    BoughtLastMonth: 21,
+    Overview: [
+      "Logitech G29 Driving Force Racing Wheel delivers immersive racing experience with force feedback and responsive pedals.",
+    ],
+    Specifications: [
+      "Compatibility: PlayStation 4, PlayStation 5, PC",
+      "Force Feedback: Yes",
+      "Pedals: Included (accelerator, brake, clutch)",
+      "Connectivity: USB",
+      "Warranty: 1-year manufacturer warranty",
+    ],
+    customerReviews: [
+      {
+        name: "Oliver Brown",
+        date: "2025-03-03",
+        rating: 3,
+        review: "Fun for casual racing, but pedals feel a bit flimsy.",
+      },
+    ],
   },
   {
     id: 86,
@@ -1475,6 +3410,10 @@ export const Product = [
     Cat: "consoles",
     Price: "39",
     Img: [
+      "/img/game13-1.jpg",
+      "/img/game13-2.jpg",
+      "/img/game13-3.jpg",
+      "/img/game13-4.jpg",
       "/img/game13-1.jpg",
       "/img/game13-2.jpg",
       "/img/game13-3.jpg",
@@ -1487,6 +3426,27 @@ export const Product = [
     Rating: 5,
     NumRev: 2180,
     State: "Sold out",
+    Stock: 40,
+    BoughtLastMonth: 35,
+    Overview: [
+      "PlayStation 5 DualSense Wireless Controller delivers precise input, haptic feedback, and immersive gaming for PS5 and PC.",
+    ],
+    Specifications: [
+      "Connectivity: Wireless, USB-C",
+      "Battery: Built-in rechargeable",
+      "Compatibility: PS5 and PC",
+      "Color: White/Black",
+      "Warranty: 1-year manufacturer warranty",
+    ],
+    customerReviews: [
+      {
+        name: "Ava Wilson",
+        date: "2025-03-05",
+        rating: 5,
+        review:
+          "Best PS5 controller ever, extremely responsive and comfortable.",
+      },
+    ],
   },
 ];
 
