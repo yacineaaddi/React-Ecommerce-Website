@@ -1,14 +1,14 @@
 import { FaRegUser, FaShoppingCart, FaHeart } from "react-icons/fa";
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
+import { useProduct } from "../useContext/productContext";
+import { useAuth } from "../useContext/authContext";
 import { IoSearch } from "react-icons/io5";
-import { NavLink, Link } from "react-router-dom";
-import { FiMenu } from "react-icons/fi";
-import "./nav.css";
-import useKey from "./useKeyHook";
+import { NavLink } from "react-router-dom";
+import { useUi } from "../useContext/uiContext";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "./authContext";
-import { useProduct } from "./productContext";
-import { useUi } from "./uiContext";
+import { FiMenu } from "react-icons/fi";
+import useKey from "../hooks/useKeyHook";
+import "./nav.css";
 
 const Nav = () => {
   const navigate = useNavigate();

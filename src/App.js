@@ -1,16 +1,13 @@
-import Rout from "./rout";
-
-import Nav from "./components/nav";
-import SideBar from "./components/sidebar";
-import "./components/home.css";
-
-import Footer from "./components/footer";
+import { useUi } from "./useContext/uiContext";
 import SideMenu from "./components/sidemenu";
 import Lightbox from "./components/lightbox";
-import { useUi } from "./components/uiContext";
-
+import SideBar from "./components/sidebar";
 import { Toaster } from "react-hot-toast";
-import "./App.css";
+import Footer from "./components/footer";
+import Nav from "./components/nav";
+import "./components/home.css";
+import Rout from "./routes/rout";
+import "./styles/App.css";
 
 const App = () => {
   const { lightbox, setlightbox } = useUi();
@@ -23,7 +20,6 @@ const App = () => {
       <SideMenu />
       <SideBar />
       <Nav />
-
       <Rout />
       <Footer />
     </>

@@ -1,15 +1,15 @@
-import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs, Scrollbar } from "swiper/modules";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
-import { useState } from "react";
-import "./productslider.css";
-import "swiper/css";
-import "swiper/css/scrollbar";
-import { BsAspectRatio } from "react-icons/bs";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { IoMdHeartEmpty } from "react-icons/io";
+import { BsAspectRatio } from "react-icons/bs";
 import { IoMdHeart } from "react-icons/io";
+import { useState } from "react";
+import "swiper/css/navigation";
+import "swiper/css/free-mode";
+import "swiper/css/scrollbar";
+import "./productslider.css";
+import "swiper/css/thumbs";
+import "swiper/css";
 
 const ProductSlider = ({ product, setlightbox, wishlist, updatewishlist }) => {
   const [thumbsSwiper, setThumbSwiper] = useState(null);

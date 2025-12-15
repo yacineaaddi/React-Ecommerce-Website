@@ -1,14 +1,15 @@
+import { useUpdateStates } from "../useContext/updatestatesContext";
+import { useProduct } from "../useContext/productContext";
 import { LiaShippingFastSolid } from "react-icons/lia";
-import { useUpdateStates } from "./updatestatesContext";
+import { useCart } from "../useContext/cartContext";
 import { useNavigate } from "react-router-dom";
 import { RiRefund2Line } from "react-icons/ri";
-import { useProduct } from "./productContext";
 import { useEffect, useState } from "react";
 import { TbDiscount } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
-import { useCart } from "./cartContext";
 import Newsletter from "./newsletter";
 import Slider from "./Slider";
+
 import "./home.css";
 
 const Home = () => {

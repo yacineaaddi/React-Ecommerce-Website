@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { db } from "./firebase";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { toast } from "react-hot-toast";
 import { doc, setDoc } from "firebase/firestore";
+import { db } from "../services/firebase";
+import { toast } from "react-hot-toast";
+import { useState } from "react";
 import "./newsletter.css";
 
 const Newsletter = () => {

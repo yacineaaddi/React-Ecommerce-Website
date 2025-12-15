@@ -1,4 +1,4 @@
-import { db } from "./firebase";
+import { db } from "../services/firebase";
 import {
   doc,
   addDoc,
@@ -15,7 +15,7 @@ import { useAuth } from "./authContext";
 import { useNavigate } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
-import StarRating from "./starRating";
+import StarRating from "../components/starRating";
 import { createContext, useContext } from "react";
 
 const UpdateStatesContext = createContext();

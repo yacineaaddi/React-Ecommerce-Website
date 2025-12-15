@@ -1,10 +1,10 @@
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../useContext/authContext";
+import { useUi } from "../useContext/uiContext";
 import { FaRegUser } from "react-icons/fa";
-import "./sidemenu.css";
-import useKey from "./useKeyHook";
+import useKey from "../hooks/useKeyHook";
 import { useRef } from "react";
-import { NavLink, Link, useNavigate } from "react-router-dom";
-import { useUi } from "./uiContext";
-import { useAuth } from "./authContext";
+import "./sidemenu.css";
 
 const SideMenu = () => {
   const sidemenu = useRef();

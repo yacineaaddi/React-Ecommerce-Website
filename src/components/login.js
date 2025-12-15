@@ -1,12 +1,12 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { MdOutlineLogin } from "react-icons/md";
 import { useEffect, useState, useRef } from "react";
+import { useAuth } from "../useContext/authContext";
 import { doc, getDoc } from "firebase/firestore";
-import { db, app } from "./firebase";
-import useKey from "./useKeyHook";
+import { MdOutlineLogin } from "react-icons/md";
+import { db, app } from "../services/firebase";
+import useKey from "../hooks/useKeyHook";
 import toast from "react-hot-toast";
-import { useAuth } from "./authContext";
 import "./auth.css";
 
 const Login = () => {

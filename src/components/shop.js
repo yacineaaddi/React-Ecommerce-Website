@@ -1,119 +1,99 @@
-import { CgArrowsExchangeAltV } from "react-icons/cg";
-import { CgArrowsExchangeV } from "react-icons/cg";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { CgArrowsExchangeAltV, CgArrowsExchangeV } from "react-icons/cg";
+import { useUpdateStates } from "../useContext/updatestatesContext";
+import { useProduct } from "../useContext/productContext";
+import { useMemo, useState, useEffect } from "react";
+import { useCart } from "../useContext/cartContext";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css/navigation";
+import "swiper/css/autoplay";
 import "./shop.css";
-import { useProduct } from "./productContext";
+import "swiper/css";
 
-const Shop = ({ Productbox }) => {
+const categories = [
+  { key: "all", label: "All", value: "" },
+  { key: "cameras", label: "Cameras", value: "cameras" },
+  { key: "tv", label: "Tv and Audio", value: "tv" },
+  { key: "computers", label: "Computer and Laptop", value: "computers" },
+  { key: "phones", label: "Phones and Tablettes", value: "phones" },
+  { key: "consoles", label: "Game and Consoles", value: "consoles" },
+];
+
+const Shop = () => {
+  const RESULT_PER_PAGE = 16;
+  const [currentPage, setCurrentPage] = useState(0);
+  const { Productbox } = useUpdateStates();
+  const start = currentPage * RESULT_PER_PAGE;
+  const end = start + RESULT_PER_PAGE;
   const { products } = useProduct();
-  const [Categorie, setCategorie] = useState([]);
+  const { activeCat, setActiveCat } = useCart();
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [priceOrder, setPriceOrder] = useState(null);
   const [ratingOrder, setRatingOrder] = useState(null);
-  const [inStock, setinStock] = useState(false);
-  const [inStockProd, setinStockProd] = useState([]);
-  const [activeCat, setActiveCat] = useState("all");
-  const [PriceRangeProducts, setPriceRangeProducts] = useState([]);
-  const [temProducts, settemProducts] = useState([]);
-  const [finalProducts, setfinalProducts] = useState([]);
-  const [PricedProducts, setPricedProducts] = useState(false);
+  const [inStock, setInStock] = useState(false);
+  const [noPriceResults, setNoPriceResults] = useState(false);
 
   useEffect(function () {
     document.title = "Shop | Electro";
   }, []);
 
-  function resetState() {
-    setinStock(false);
-    settemProducts([]);
-    setPriceOrder(null);
-    setRatingOrder(null);
-  }
-  function setCat(cat) {
-    resetState();
-    settemProducts([]);
-    setPriceRangeProducts([]);
+  const shuffledProducts = useMemo(
+    () => [...products].sort(() => Math.random() - 0.5),
+    [products]
+  );
 
-    const temProducts = [...products]
-      .filter((currElm) => (cat === "" ? true : currElm.Cat === cat))
-      .sort(() => Math.random() - 0.5);
-    setCategorie(temProducts);
-  }
+  const finalProducts = useMemo(() => {
+    let list = [...shuffledProducts];
 
-  function fetchProducts() {
-    const randomProducts = [...products].sort(() => Math.random() - 0.5);
-    setCategorie(randomProducts);
-  }
+    const selected = categories.find((c) => c.key === activeCat);
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (minPrice === "" && maxPrice === "") return;
-    const filtered = [...Categorie].filter(
-      (p) => p.Price >= Number(minPrice) && p.Price <= Number(maxPrice)
-    );
-    if (!filtered || filtered.length === 0) {
-      setPricedProducts(true);
-    } else {
-      setPricedProducts(false);
-      setPriceRangeProducts(filtered);
-      setMinPrice("");
-      setMaxPrice("");
-      resetState();
+    if (selected.value) {
+      list = list.filter((p) => p.Cat === selected.value);
     }
-  }
-  useEffect(() => {
+
+    if (minPrice || maxPrice) {
+      list = list.filter(
+        (p) =>
+          p.Price >= Number(minPrice || 0) &&
+          p.Price <= Number(maxPrice || Infinity)
+      );
+      setNoPriceResults(list.length === 0);
+    }
+
+    if (inStock) {
+      list = list.filter((p) => p.Stock > 1);
+    }
+
     if (priceOrder !== null) {
-      const sortedByPrice = (
-        PriceRangeProducts.length > 0 ? [...PriceRangeProducts] : [...Categorie]
-      ).sort((a, b) => (priceOrder ? b.Price - a.Price : a.Price - b.Price));
-      settemProducts(sortedByPrice);
-      setRatingOrder(null);
-    } // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [priceOrder]);
-  useEffect(() => {
+      list.sort((a, b) => (priceOrder ? b.Price - a.Price : a.Price - b.Price));
+    }
+
     if (ratingOrder !== null) {
-      const sortedByRate = (
-        PriceRangeProducts.length > 0 ? [...PriceRangeProducts] : [...Categorie]
-      ).sort((a, b) =>
+      list.sort((a, b) =>
         ratingOrder ? b.Rating - a.Rating : a.Rating - b.Rating
       );
-      settemProducts(sortedByRate);
-      setPriceOrder(null);
-    } // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ratingOrder]);
+    }
 
-  useEffect(() => {
-    if (inStock) {
-      const filteredByStock = (
-        temProducts.length > 0
-          ? [...temProducts]
-          : PriceRangeProducts.length > 0
-          ? [...PriceRangeProducts]
-          : [...Categorie]
-      ).filter((p) => p.State === "Available");
-      setinStockProd(filteredByStock);
-    } else {
-      // show all if unchecked
-      setinStockProd([]);
-    } // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inStock]);
+    return list;
+  }, [
+    shuffledProducts,
+    activeCat,
+    minPrice,
+    maxPrice,
+    priceOrder,
+    ratingOrder,
+    inStock,
+  ]);
 
-  useEffect(() => {
-    fetchProducts(); // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [products]);
+  const NumberofPages = Math.round(finalProducts.length / RESULT_PER_PAGE);
 
-  useEffect(() => {
-    setfinalProducts(
-      inStockProd.length > 0
-        ? inStockProd
-        : temProducts.length > 0
-        ? temProducts
-        : PriceRangeProducts.length > 0
-        ? PriceRangeProducts
-        : Categorie
-    );
-  }, [inStockProd, temProducts, PriceRangeProducts, Categorie]);
+  const handlePriceSubmit = (e) => {
+    e.preventDefault();
+    if (!minPrice && !maxPrice) return;
+    setPriceOrder(null);
+    setRatingOrder(null);
+  };
 
   return (
     <div className="shop">
@@ -121,174 +101,112 @@ const Shop = ({ Productbox }) => {
         <div className="left-box">
           <h2>Categories</h2>
           <ul>
-            <li
-              onClick={() => {
-                setCat("");
-                setActiveCat("all");
-              }}
-              style={{
-                backgroundColor: activeCat === "all" ? "#2196f3" : "",
-                color: activeCat === "all" ? "#fff" : "",
-              }}
-            >
-              All
-            </li>
-            <li
-              onClick={() => {
-                setCat("cameras");
-                setActiveCat("cameras");
-              }}
-              style={{
-                backgroundColor: activeCat === "cameras" ? "#2196f3" : "",
-                color: activeCat === "cameras" ? "#fff" : "",
-              }}
-            >
-              Cameras
-            </li>
-            <li
-              onClick={() => {
-                setCat("tv");
-                setActiveCat("tv");
-              }}
-              style={{
-                backgroundColor: activeCat === "tv" ? "#2196f3" : "",
-                color: activeCat === "tv" ? "#fff" : "",
-              }}
-            >
-              Tv and Audio
-            </li>
-            <li
-              onClick={() => {
-                setCat("computers");
-                setActiveCat("computers");
-              }}
-              style={{
-                backgroundColor: activeCat === "computers" ? "#2196f3" : "",
-                color: activeCat === "computers" ? "#fff" : "",
-              }}
-            >
-              Computer and Laptop
-            </li>
-            <li
-              onClick={() => {
-                setCat("phones");
-                setActiveCat("phones");
-              }}
-              style={{
-                backgroundColor: activeCat === "phones" ? "#2196f3" : "",
-                color: activeCat === "phones" ? "#fff" : "",
-              }}
-            >
-              Phones and Tablettes
-            </li>
-            <li
-              onClick={() => {
-                setCat("consoles");
-                setActiveCat("consoles");
-              }}
-              style={{
-                backgroundColor: activeCat === "consoles" ? "#2196f3" : "",
-                color: activeCat === "consoles" ? "#fff" : "",
-              }}
-            >
-              Game and Consoles
-            </li>
+            {categories.map((c) => (
+              <li
+                key={c.key}
+                onClick={() => setActiveCat(c.key)}
+                style={{
+                  backgroundColor: activeCat === c.key ? "#2196f3" : "",
+                  color: activeCat === c.key ? "#fff" : "",
+                }}
+              >
+                {c.label}
+              </li>
+            ))}
           </ul>
         </div>
+
         <div className="right-box">
           <div className="propreties">
-            <form className="price-min-max" onSubmit={handleSubmit}>
-              <label htmlFor="min">Price min</label>
+            <form className="price-min-max" onSubmit={handlePriceSubmit}>
+              <label>Price min</label>
               <input
                 type="number"
-                id="min"
-                name="min"
-                placeholder="0"
                 value={minPrice}
                 onChange={(e) => setMinPrice(e.target.value)}
               />
 
-              <label htmlFor="max">Max</label>
+              <label>Max</label>
               <input
                 type="number"
-                id="max"
-                name="max"
-                placeholder="1000"
                 value={maxPrice}
                 onChange={(e) => setMaxPrice(e.target.value)}
               />
 
               <button type="submit">Apply</button>
             </form>
+
             <div className="price-rate">
-              <div className="price" onClick={() => setPriceOrder((e) => !e)}>
-                {priceOrder ? (
-                  <CgArrowsExchangeAltV
-                    style={{
-                      color: priceOrder ? "green" : "black",
-                      fontSize: "20px",
-                    }}
-                  />
-                ) : (
-                  <CgArrowsExchangeV
-                    style={{
-                      color: priceOrder ? "green" : "black",
-                      fontSize: "20px",
-                    }}
-                  />
-                )}
-                <p>
-                  {priceOrder ? "Price : High to low" : "Price : Low to high"}
-                </p>
+              <div className="price" onClick={() => setPriceOrder((p) => !p)}>
+                {priceOrder ? <CgArrowsExchangeAltV /> : <CgArrowsExchangeV />}
+                <p>{priceOrder ? "Price: High → Low" : "Price: Low → High"}</p>
               </div>
-              <div className="rate" onClick={() => setRatingOrder((e) => !e)}>
-                {ratingOrder ? (
-                  <CgArrowsExchangeAltV
-                    style={{
-                      color: ratingOrder ? "green" : "black",
-                      fontSize: "20px",
-                    }}
-                  />
-                ) : (
-                  <CgArrowsExchangeV
-                    style={{
-                      color: ratingOrder ? "green" : "black",
-                      fontSize: "20px",
-                    }}
-                  />
-                )}
+
+              <div className="rate" onClick={() => setRatingOrder((r) => !r)}>
+                {ratingOrder ? <CgArrowsExchangeAltV /> : <CgArrowsExchangeV />}
                 <p>{ratingOrder ? "Highest rating" : "Lowest rating"}</p>
               </div>
             </div>
+
             <div className="stock">
               <input
                 type="checkbox"
                 checked={inStock}
-                onChange={() => setinStock((e) => !e)}
-              ></input>
+                onChange={() => setInStock((v) => !v)}
+              />
               <p>In Stock</p>
             </div>
+
             <div className="results">
               <p>
-                {finalProducts.length !== 0
-                  ? `${finalProducts.length} results`
-                  : ""}
+                {finalProducts.length ? `${finalProducts.length} results` : ""}
               </p>
             </div>
           </div>
+
           <div className="products">
-            {PricedProducts ? (
-              <p>No Products found !</p>
+            {noPriceResults ? (
+              <p>No Products Found!</p>
             ) : (
-              finalProducts.map((currEl) => (
-                <Productbox
-                  currEl={currEl}
-                  key={currEl.id}
-                  variant="regular-box"
-                />
-              ))
+              finalProducts
+                .slice(start, end)
+                .map((item) => (
+                  <Productbox
+                    key={item.id}
+                    currEl={item}
+                    variant="regular-box"
+                  />
+                ))
             )}
           </div>
+          {finalProducts.length > RESULT_PER_PAGE && (
+            <div className="pagination">
+              <Swiper
+                spaceBetween={0}
+                slidesPerView={3}
+                modules={[Navigation]}
+                navigation={true}
+              >
+                {Array.from(
+                  {
+                    length: NumberofPages,
+                  },
+                  (_, i) => (
+                    <SwiperSlide key={i} style={{ width: "0px" }}>
+                      <div className="pagination-num">
+                        <button
+                          className={i === currentPage ? "active" : ""}
+                          onClick={() => setCurrentPage(i)}
+                        >
+                          {i + 1}
+                        </button>
+                      </div>
+                    </SwiperSlide>
+                  )
+                )}
+              </Swiper>
+            </div>
+          )}
         </div>
       </div>
     </div>

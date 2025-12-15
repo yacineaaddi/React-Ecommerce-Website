@@ -1,11 +1,10 @@
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
-import { Link } from "react-router-dom";
-import "swiper/css";
-import "./Slider.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Data } from "../data/data";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
-import { Data } from "./data";
+import "./Slider.css";
+import "swiper/css";
 
 const Slider = ({ setActiveCat, navigate }) => {
   return (

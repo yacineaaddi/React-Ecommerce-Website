@@ -1,8 +1,8 @@
 import { Pagination, Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useEffect, useState } from "react";
-import { useUi } from "./uiContext";
-import { Product } from "./data";
+import { useUi } from "../useContext/uiContext";
+import { Product } from "../data/data";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";

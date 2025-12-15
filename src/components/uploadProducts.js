@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import products from "./productdata.json";
-import { db } from "./firebase";
 import { collection, addDoc } from "firebase/firestore";
+import products from "./productdata.json";
+import { useEffect } from "react";
+import { db } from "../services/firebase";
 
 export default function UploadProductsOnce() {
   useEffect(() => {

@@ -1,18 +1,18 @@
-import { Product, Faq, ShippingAndDelivery } from "./data";
+import { useUpdateStates } from "../useContext/updatestatesContext";
+import { Product, Faq, ShippingAndDelivery } from "../data/data";
+import { useWishlist } from "../useContext/wishlistContext";
 import { useEffect, useState, useReducer } from "react";
-import { useUpdateStates } from "./updatestatesContext";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { NavLink, useParams } from "react-router-dom";
+import { useAuth } from "../useContext/authContext";
+import { useCart } from "../useContext/cartContext";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { useWishlist } from "./wishlistContext";
+import { useUi } from "../useContext/uiContext";
 import { useNavigate } from "react-router-dom";
 import ProductSlider from "./productslider";
-import { useAuth } from "./authContext";
-import { useCart } from "./cartContext";
 import Newsletter from "./newsletter";
 import StarRating from "./starRating";
-import { useUi } from "./uiContext";
 import "./singleproduct.css";
 
 const SingleProduct = () => {

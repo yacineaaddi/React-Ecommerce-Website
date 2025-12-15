@@ -1,7 +1,6 @@
-import React from "react";
-import "./contact.css";
-import { useEffect, useState } from "react";
 import Newsletter from "./newsletter";
+import { useEffect } from "react";
+import "./contact.css";
 
 const Contact = () => {
   useEffect(function () {

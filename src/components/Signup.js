@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../useContext/authContext";
+import { useState, useEffect } from "react";
+import { db, app } from "../services/firebase";
 import { FaUser } from "react-icons/fa6";
-import { db, app } from "./firebase";
-import "./auth.css";
-import { useAuth } from "./authContext";
 import toast from "react-hot-toast";
+import "./auth.css";
 
 const Signup = () => {
   const [name, setName] = useState("");
