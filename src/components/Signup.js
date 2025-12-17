@@ -5,10 +5,13 @@ import { db, app } from "../services/firebase";
 import { FaUser } from "react-icons/fa6";
 import toast from "react-hot-toast";
 import "./auth.css";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout, setUserDetail } from "../features/auth/authSlice";
 
 const Signup = () => {
+  const dispatch = useDispatch();
   const [name, setName] = useState("");
-  const { setUserDetail, setAuth } = useAuth();
+  /*const { setUserDetail, setAuth } = useAuth();*/
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
@@ -50,10 +53,10 @@ const Signup = () => {
       await userRef.set(newUserData);
 
       // Update local state
-      setUserDetail({ id: user.uid, ...newUserData });
+      dispatch(setUserDetail({ id: user.uid, ...newUserData }));
 
       toast.success("User Registered Successfully");
-      setAuth(true);
+      dispatch(login());
       navigate("/");
     } catch (err) {
       console.error("Error creating user:", err.message);

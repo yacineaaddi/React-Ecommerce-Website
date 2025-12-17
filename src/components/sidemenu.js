@@ -5,11 +5,15 @@ import { FaRegUser } from "react-icons/fa";
 import useKey from "../hooks/useKeyHook";
 import { useRef } from "react";
 import "./sidemenu.css";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout, setUserDetail } from "../features/auth/authSlice";
 
 const SideMenu = () => {
+  const { userDetail, isAuthenticated } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const sidemenu = useRef();
   const navigate = useNavigate();
-  const { userDetail, Auth } = useAuth();
+  /*const { userDetail, Auth } = useAuth();*/
   const { sideMenu, SetsideMenu } = useUi();
 
   function closeSideMenu() {
@@ -54,7 +58,7 @@ const SideMenu = () => {
           <FaRegUser />
         </div>
         <div className="detail">
-          {Auth ? (
+          {isAuthenticated ? (
             <>
               <h2>{userDetail.Name}</h2>
             </>

@@ -7,10 +7,14 @@ import { MdOutlineLogin } from "react-icons/md";
 import { db, app } from "../services/firebase";
 import useKey from "../hooks/useKeyHook";
 import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout, setUserDetail } from "../features/auth/authSlice";
 import "./auth.css";
 
 const Login = () => {
-  const { setUserDetail, setAuth } = useAuth();
+  const { userDetail, isAuthenticated } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  /*const { setUserDetail, setAuth } = useAuth();*/
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -55,9 +59,9 @@ const Login = () => {
 
         if (userDoc.exists()) {
           const userData = { id: userDoc.id, ...userDoc.data() };
-          setUserDetail(userData);
+          dispatch(setUserDetail(userData));
           console.log(userData);
-          setAuth(true);
+          dispatch(login());
 
           toast.success("User Logged In Successfully");
           navigate("/");

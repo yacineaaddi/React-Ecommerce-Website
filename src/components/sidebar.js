@@ -14,8 +14,12 @@ import { db } from "../services/firebase";
 import StarRating from "./starRating";
 import toast from "react-hot-toast";
 import "./sidebar.css";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout, setUserDetail } from "../features/auth/authSlice";
 
 const SideBar = () => {
+  const { userDetail, isAuthenticated } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const {
     addtocart,
     updatestate,
@@ -25,14 +29,14 @@ const SideBar = () => {
     reducer,
   } = useUpdateStates();
   const initialstate = "";
-  const { userDetail, Auth } = useAuth();
+  /*const { userDetail, Auth } = useAuth();*/
   const { cart, setCart } = useCart();
   const { sidebar, setSidebar } = useUi();
   const { wishlist, setWishlist } = useWishlist();
   const [coupon, setCoupon] = useState(false);
   const [couponCode, setCouponCode] = useState("");
-  const Subtotal = cart.reduce((sum, p) => sum + +(p.Price * p.Qty), 0);
-  const [state, dispatch] = useReducer(reducer, initialstate);
+  const Subtotal = cart.reduce((sum, p) => sum + +(p.Price * p.Qty), 0); /*
+  const [state, dispatch] = useReducer(reducer, initialstate);*/
 
   const sideBar = useRef();
   /*
@@ -159,7 +163,7 @@ const SideBar = () => {
 
   useEffect(() => {
     fetchcartdata(); // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [Auth]);
+  }, [isAuthenticated]);
 
   const fetchcartdata = async () => {
     if (!userDetail?.id) return; // <-- prevent error
@@ -175,7 +179,7 @@ const SideBar = () => {
 
   useEffect(() => {
     fetchWishListdata(); // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [Auth]);
+  }, [isAuthenticated]);
 
   const fetchWishListdata = async () => {
     if (!userDetail?.id) return;
@@ -265,7 +269,7 @@ const SideBar = () => {
             <div className="prices">
               <p>{`$ ${Subtotal}`}</p>
               <p>{`$ ${cart.length > 0 ? "15" : "0"}`}</p>
-              <p>{state ? `${state}%` : "0%"}</p>
+              {/*<p>{state ? `${state}%` : "0%"}</p>*/}
             </div>
           </div>
           <hr></hr>
@@ -274,7 +278,9 @@ const SideBar = () => {
               <h3>Total</h3>
             </div>
             <div className="prices">
-              <p>{`$ ${Subtotal + 15 - (((Subtotal * state) / 100) | 0)} `}</p>
+              <p>
+                {/*`$ ${Subtotal + 15 - (((Subtotal * state) / 100) | 0)} `*/}
+              </p>
             </div>
           </div>
           <button>Checkout</button>

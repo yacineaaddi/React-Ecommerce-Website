@@ -9,10 +9,14 @@ import { useNavigate } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import useKey from "../hooks/useKeyHook";
 import "./nav.css";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout, setUserDetail } from "../features/auth/authSlice";
 
 const Nav = () => {
   const navigate = useNavigate();
-  const { userDetail, Auth, setAuth } = useAuth();
+  const { userDetail, isAuthenticated } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  /*const { userDetail, Auth, setAuth } = useAuth();*/
   const { products } = useProduct();
   const { setSidebar, SetsideMenu } = useUi();
   const [searchTerm, setSearchTerm] = useState("");
@@ -72,7 +76,7 @@ const Nav = () => {
     }
   });*/
   const Logout = () => {
-    setAuth(false);
+    dispatch(logout());
   };
 
   const resetSearch = () => {
@@ -194,7 +198,7 @@ const Nav = () => {
             <p>Wishlist</p>
           </div>
         </div>
-        {Auth && (
+        {isAuthenticated && (
           <>
             <div className="user-detail">
               <div className="icon">
@@ -208,7 +212,7 @@ const Nav = () => {
         )}
 
         <div className="login-signup">
-          {Auth ? (
+          {isAuthenticated ? (
             <p>
               <NavLink className="link" to="/" onClick={Logout}>
                 Logout

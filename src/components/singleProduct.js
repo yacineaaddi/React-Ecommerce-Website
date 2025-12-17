@@ -5,7 +5,6 @@ import { useEffect, useState, useReducer } from "react";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { NavLink, useParams } from "react-router-dom";
-import { useAuth } from "../useContext/authContext";
 import { useCart } from "../useContext/cartContext";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useUi } from "../useContext/uiContext";
@@ -15,7 +14,13 @@ import Newsletter from "./newsletter";
 import StarRating from "./starRating";
 import "./singleproduct.css";
 
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout, setUserDetail } from "../features/auth/authSlice";
+
 const SingleProduct = () => {
+  const dispatch = useDispatch();
+  const { userDetail } = useSelector((state) => state.auth);
+
   const {
     Productbox,
     updatewishlist,
@@ -29,11 +34,11 @@ const SingleProduct = () => {
   const { cart, setActiveCat } = useCart();
   const { wishlist } = useWishlist();
   const { setlightbox } = useUi();
-  const { userDetail } = useAuth();
+  /*const { userDetail } = useAuth();*/
   const { id, title } = useParams();
 
   const initialstate = "";
-  const [state, dispatch] = useReducer(reducer, initialstate);
+  /*const [state, dispatch] = useReducer(reducer, initialstate);*/
   const [similarproduct, setSimilarproduct] = useState([]);
   const [productQty, updateproductQty] = useState(1);
   const [openIndex, setOpenIndex] = useState(null);
