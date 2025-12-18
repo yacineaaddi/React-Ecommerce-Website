@@ -1,4 +1,6 @@
 import { FreeMode, Navigation, Thumbs, Scrollbar } from "swiper/modules";
+import { useDispatch, useSelector } from "react-redux";
+import { setlightbox } from "../features/ui/uiSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { BsAspectRatio } from "react-icons/bs";
@@ -11,14 +13,15 @@ import "./productslider.css";
 import "swiper/css/thumbs";
 import "swiper/css";
 
-const ProductSlider = ({ product, setlightbox, wishlist, updatewishlist }) => {
+const ProductSlider = ({ product, updatewishlist }) => {
+  const { wishlist } = useSelector((state) => state.wishlist);
+  const dispatch = useDispatch();
+
   const [thumbsSwiper, setThumbSwiper] = useState(null);
 
   function isWishlisted(product) {
     const { id } = product;
     const result = wishlist?.some((item) => String(item.CartId) === String(id));
-    console.log(result);
-    console.log(wishlist);
     return result;
   }
 
@@ -34,7 +37,7 @@ const ProductSlider = ({ product, setlightbox, wishlist, updatewishlist }) => {
           <div
             className="fill"
             onClick={() => {
-              setlightbox(product.id);
+              dispatch(setlightbox(product.id));
             }}
           >
             <BsAspectRatio />

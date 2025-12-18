@@ -1,17 +1,15 @@
+import { login, setUserDetail } from "../features/auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../useContext/authContext";
-import { useState, useEffect } from "react";
 import { db, app } from "../services/firebase";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { FaUser } from "react-icons/fa6";
 import toast from "react-hot-toast";
 import "./auth.css";
-import { useDispatch, useSelector } from "react-redux";
-import { login, logout, setUserDetail } from "../features/auth/authSlice";
 
 const Signup = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
-  /*const { setUserDetail, setAuth } = useAuth();*/
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");

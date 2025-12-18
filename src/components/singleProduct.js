@@ -1,13 +1,10 @@
 import { useUpdateStates } from "../useContext/updatestatesContext";
 import { Product, Faq, ShippingAndDelivery } from "../data/data";
-import { useWishlist } from "../useContext/wishlistContext";
 import { useEffect, useState, useReducer } from "react";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { NavLink, useParams } from "react-router-dom";
-import { useCart } from "../useContext/cartContext";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { useUi } from "../useContext/uiContext";
 import { useNavigate } from "react-router-dom";
 import ProductSlider from "./productslider";
 import Newsletter from "./newsletter";
@@ -15,11 +12,13 @@ import StarRating from "./starRating";
 import "./singleproduct.css";
 
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout, setUserDetail } from "../features/auth/authSlice";
+import { setActiveCat } from "../features/cart/cartSlice";
+import { setlightbox } from "../features/ui/uiSlice";
 
 const SingleProduct = () => {
-  const dispatch = useDispatch();
+  const { cart } = useSelector((state) => state.cart);
   const { userDetail } = useSelector((state) => state.auth);
+  const { wishlist } = useSelector((state) => state.wishlist);
 
   const {
     Productbox,
@@ -28,16 +27,15 @@ const SingleProduct = () => {
     isInCart,
     updatestate,
     increaseQty,
-    decreseQty,
-    reducer,
+    decreseQty /*
+    reducer,*/,
   } = useUpdateStates();
-  const { cart, setActiveCat } = useCart();
-  const { wishlist } = useWishlist();
-  const { setlightbox } = useUi();
-  /*const { userDetail } = useAuth();*/
+
+  const dispatch = useDispatch();
+
   const { id, title } = useParams();
 
-  const initialstate = "";
+  /*const initialstate = "";*/
   /*const [state, dispatch] = useReducer(reducer, initialstate);*/
   const [similarproduct, setSimilarproduct] = useState([]);
   const [productQty, updateproductQty] = useState(1);
@@ -141,7 +139,7 @@ const SingleProduct = () => {
             <p>&gt;</p>
             <div
               onClick={() => {
-                setActiveCat(product?.Cat);
+                dispatch(setActiveCat(product?.Cat));
                 navigate("/shop");
               }}
             >
@@ -157,7 +155,6 @@ const SingleProduct = () => {
             {product && (
               <ProductSlider
                 product={product}
-                setlightbox={setlightbox}
                 wishlist={wishlist}
                 updatewishlist={updatewishlist}
               />

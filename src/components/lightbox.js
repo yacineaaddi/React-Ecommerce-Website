@@ -1,7 +1,8 @@
 import { Pagination, Autoplay, Navigation } from "swiper/modules";
+import { useDispatch, useSelector } from "react-redux";
+import { setlightbox } from "../features/ui/uiSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useEffect, useState } from "react";
-import { useUi } from "../useContext/uiContext";
 import { Product } from "../data/data";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -10,8 +11,9 @@ import "./lightbox.css";
 import "swiper/css";
 
 const Lightbox = () => {
-  const { lightbox, setlightbox } = useUi();
+  const { lightbox } = useSelector((state) => state.ui);
   const [product, setProduct] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const foundProduct = Product.find((item) => item.id === lightbox);
@@ -25,11 +27,11 @@ const Lightbox = () => {
       className="lightbox"
       onClick={(e) => {
         if (e.target.classList.contains("lightbox")) {
-          setlightbox(null);
+          dispatch(setlightbox(null));
         }
       }}
     >
-      <div className="closebtn" onClick={() => setlightbox(null)}>
+      <div className="closebtn" onClick={() => dispatch(setlightbox(null))}>
         ×
       </div>
       <Swiper

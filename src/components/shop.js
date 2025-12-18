@@ -1,8 +1,8 @@
 import { CgArrowsExchangeAltV, CgArrowsExchangeV } from "react-icons/cg";
 import { useUpdateStates } from "../useContext/updatestatesContext";
-import { useProduct } from "../useContext/productContext";
+import { setActiveCat } from "../features/cart/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { useMemo, useState, useEffect } from "react";
-import { useCart } from "../useContext/cartContext";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css/navigation";
@@ -20,13 +20,14 @@ const categories = [
 ];
 
 const Shop = () => {
+  const { products } = useSelector((state) => state.product);
+  const { activeCat } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
   const RESULT_PER_PAGE = 16;
   const [currentPage, setCurrentPage] = useState(0);
   const { Productbox } = useUpdateStates();
   const start = currentPage * RESULT_PER_PAGE;
   const end = start + RESULT_PER_PAGE;
-  const { products } = useProduct();
-  const { activeCat, setActiveCat } = useCart();
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [priceOrder, setPriceOrder] = useState(null);
@@ -104,7 +105,7 @@ const Shop = () => {
             {categories.map((c) => (
               <li
                 key={c.key}
-                onClick={() => setActiveCat(c.key)}
+                onClick={() => dispatch(setActiveCat(c.key))}
                 style={{
                   backgroundColor: activeCat === c.key ? "#2196f3" : "",
                   color: activeCat === c.key ? "#fff" : "",

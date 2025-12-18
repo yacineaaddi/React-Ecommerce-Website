@@ -1,28 +1,25 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "../useContext/authContext";
-import { useUi } from "../useContext/uiContext";
+import { useDispatch, useSelector } from "react-redux";
+import { SetsideMenu } from "../features/ui/uiSlice";
 import { FaRegUser } from "react-icons/fa";
 import useKey from "../hooks/useKeyHook";
 import { useRef } from "react";
 import "./sidemenu.css";
-import { useDispatch, useSelector } from "react-redux";
-import { login, logout, setUserDetail } from "../features/auth/authSlice";
 
 const SideMenu = () => {
   const { userDetail, isAuthenticated } = useSelector((state) => state.auth);
+  const { sideMenu } = useSelector((state) => state.ui);
   const dispatch = useDispatch();
   const sidemenu = useRef();
   const navigate = useNavigate();
-  /*const { userDetail, Auth } = useAuth();*/
-  const { sideMenu, SetsideMenu } = useUi();
 
   function closeSideMenu() {
-    SetsideMenu(() => false);
+    dispatch(SetsideMenu(false));
   }
   /*
   useKey("Escape", function () {
     if (!sidemenu.current.classList.contains("hidden")) {
-      SetsideMenu(false);
+      dispatch(SetsideMenu(false));
       console.log(2);
     } else {
       return;

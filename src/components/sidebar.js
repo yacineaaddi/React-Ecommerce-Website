@@ -1,48 +1,43 @@
 import { doc, collection, getDocs, deleteDoc } from "firebase/firestore";
 import { useUpdateStates } from "../useContext/updatestatesContext";
+import { setWishlist } from "../features/wishlist/wishlistSlice";
 import { useEffect, useReducer, useState, useRef } from "react";
-import { useWishlist } from "../useContext/wishlistContext";
 import { FaShoppingCart, FaHeart } from "react-icons/fa";
-import { useCart } from "../useContext/cartContext";
-import { useAuth } from "../useContext/authContext";
-import {} from "../useContext/updatestatesContext";
+import { useDispatch, useSelector } from "react-redux";
+import { setCart } from "../features/cart/cartSlice";
+import { setSidebar } from "../features/ui/uiSlice";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { MdDeleteForever } from "react-icons/md";
-import { useUi } from "../useContext/uiContext";
 import { db } from "../services/firebase";
 /*import useKey from "./useCustomHook";*/
 import StarRating from "./starRating";
 import toast from "react-hot-toast";
 import "./sidebar.css";
-import { useDispatch, useSelector } from "react-redux";
-import { login, logout, setUserDetail } from "../features/auth/authSlice";
 
 const SideBar = () => {
+  const { cart } = useSelector((state) => state.cart);
+  const { sidebar } = useSelector((state) => state.ui);
   const { userDetail, isAuthenticated } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
   const {
     addtocart,
     updatestate,
     RemoveFromWishlist,
     increaseQty,
-    decreseQty,
-    reducer,
-  } = useUpdateStates();
-  const initialstate = "";
-  /*const { userDetail, Auth } = useAuth();*/
-  const { cart, setCart } = useCart();
-  const { sidebar, setSidebar } = useUi();
-  const { wishlist, setWishlist } = useWishlist();
+    decreseQty /*
+    reducer,*/,
+  } = useUpdateStates(); /*
+  const initialstate = "";*/
+  const { wishlist } = useSelector((state) => state.wishlist);
   const [coupon, setCoupon] = useState(false);
   const [couponCode, setCouponCode] = useState("");
   const Subtotal = cart.reduce((sum, p) => sum + +(p.Price * p.Qty), 0); /*
   const [state, dispatch] = useReducer(reducer, initialstate);*/
-
+  const dispatch = useDispatch();
   const sideBar = useRef();
   /*
   useKey("Escape", function () {
     if (!sideBar.current.classList.contains("hidden")) {
-      setSidebar(false);
+      dispatch(setSidebar(false));
       console.log(3);
     } else {
       return;
@@ -190,12 +185,12 @@ const SideBar = () => {
       id: doc.id,
       ...doc.data(),
     }));
-    setWishlist(wishlistsnap);
+    dispatch(setWishlist(wishlistsnap));
   };
 
   return (
     <div ref={sideBar} className={`sidebar ${!sidebar ? "hidden" : ""}`}>
-      <button className="close-btn" onClick={() => setSidebar(() => "")}>
+      <button className="close-btn" onClick={() => dispatch(setSidebar(""))}>
         X
       </button>
       <div className="title">

@@ -1,7 +1,7 @@
 import { useUpdateStates } from "../useContext/updatestatesContext";
-import { useProduct } from "../useContext/productContext";
+import { setActiveCat } from "../features/cart/cartSlice";
 import { LiaShippingFastSolid } from "react-icons/lia";
-import { useCart } from "../useContext/cartContext";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RiRefund2Line } from "react-icons/ri";
 import { useEffect, useState } from "react";
@@ -13,12 +13,12 @@ import Slider from "./Slider";
 import "./home.css";
 
 const Home = () => {
-  const { activeCat, setActiveCat } = useCart();
-  const { Productbox } = useUpdateStates();
-  const { products } = useProduct();
-  const [sale, setSales] = useState([]);
+  const { products } = useSelector((state) => state.product);
   const [Bestsellers, setBestsellers] = useState([]);
   const [toprated, setToprated] = useState([]);
+  const { Productbox } = useUpdateStates();
+  const [sale, setSales] = useState([]);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(function () {
@@ -51,7 +51,7 @@ const Home = () => {
         <div
           className="box"
           onClick={() => {
-            setActiveCat(currEl.key);
+            dispatch(setActiveCat(currEl.key));
             navigate("/shop");
           }}
         >
@@ -151,7 +151,7 @@ const Home = () => {
                 src="/img/banner2.jpg"
                 alt=""
                 onClick={() => {
-                  setActiveCat("phones");
+                  dispatch(setActiveCat("phones"));
                   navigate("/shop");
                 }}
               ></img>
@@ -161,7 +161,7 @@ const Home = () => {
                 src="/img/banner1.jpg"
                 alt=""
                 onClick={() => {
-                  setActiveCat("computers");
+                  dispatch(setActiveCat("computers"));
                   navigate("/shop");
                 }}
               ></img>
@@ -175,7 +175,7 @@ const Home = () => {
               <p>Fresh Deals, Just for You</p>
               <button
                 onClick={() => {
-                  setActiveCat("all");
+                  dispatch(setActiveCat("all"));
                   navigate("/shop");
                 }}
               >

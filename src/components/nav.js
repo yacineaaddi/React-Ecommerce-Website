@@ -1,29 +1,26 @@
 import { FaRegUser, FaShoppingCart, FaHeart } from "react-icons/fa";
+import { setSidebar, SetsideMenu } from "../features/ui/uiSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState, useRef } from "react";
-import { useProduct } from "../useContext/productContext";
-import { useAuth } from "../useContext/authContext";
+import { logout } from "../features/auth/authSlice";
+import { useNavigate } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
-import { useUi } from "../useContext/uiContext";
-import { useNavigate } from "react-router-dom";
-import { FiMenu } from "react-icons/fi";
 import useKey from "../hooks/useKeyHook";
+import { FiMenu } from "react-icons/fi";
+
 import "./nav.css";
-import { useDispatch, useSelector } from "react-redux";
-import { login, logout, setUserDetail } from "../features/auth/authSlice";
 
 const Nav = () => {
-  const navigate = useNavigate();
   const { userDetail, isAuthenticated } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
-  /*const { userDetail, Auth, setAuth } = useAuth();*/
-  const { products } = useProduct();
-  const { setSidebar, SetsideMenu } = useUi();
-  const [searchTerm, setSearchTerm] = useState("");
+  const { products } = useSelector((state) => state.product);
   const [filtredProducts, setfiltredProducts] = useState([]);
-  const [hidemenu, setHideMenu] = useState(true);
   const [disableBlur, setDisableBlur] = useState(false);
   const [enableblur, setEnableblur] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [hidemenu, setHideMenu] = useState(true);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     function handleScroll() {
@@ -90,7 +87,10 @@ const Nav = () => {
   return (
     <>
       <div className="nav">
-        <div className="menu-button" onClick={() => SetsideMenu(() => true)}>
+        <div
+          className="menu-button"
+          onClick={() => dispatch(SetsideMenu(true))}
+        >
           <FiMenu />
         </div>
         <div className="logo">
@@ -188,11 +188,14 @@ const Nav = () => {
           )}
         </div>
         <div className="sidebar-wishlist">
-          <div className="cart" onClick={() => setSidebar("cart")}>
+          <div className="cart" onClick={() => dispatch(setSidebar("cart"))}>
             <FaShoppingCart />
             <p>Cart</p>
           </div>
-          <div className="wishlist" onClick={() => setSidebar("wishlist")}>
+          <div
+            className="wishlist"
+            onClick={() => dispatch(setSidebar("wishlist"))}
+          >
             <FaHeart />
 
             <p>Wishlist</p>

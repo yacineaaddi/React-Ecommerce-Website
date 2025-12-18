@@ -1,4 +1,13 @@
+import { setWishlist } from "../features/wishlist/wishlistSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setCart } from "../features/cart/cartSlice";
+import { setlightbox } from "../features/ui/uiSlice";
+import StarRating from "../components/starRating";
+import { createContext, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { db } from "../services/firebase";
+import { CiSearch } from "react-icons/ci";
+import { FaHeart } from "react-icons/fa";
 import {
   doc,
   addDoc,
@@ -8,24 +17,15 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import toast from "react-hot-toast";
-import { useUi } from "./uiContext";
-import { useCart } from "./cartContext";
-import { useWishlist } from "./wishlistContext";
-import { useAuth } from "./authContext";
-import { useNavigate } from "react-router-dom";
-import { CiSearch } from "react-icons/ci";
-import { FaHeart } from "react-icons/fa";
-import StarRating from "../components/starRating";
-import { createContext, useContext } from "react";
 
 const UpdateStatesContext = createContext();
 
 export function UpdateStatesProvider({ children }) {
-  const { userDetail, Auth } = useAuth();
-  const { cart, setCart } = useCart();
-  const { lightbox, setlightbox } = useUi();
-  const { wishlist, setWishlist } = useWishlist();
+  const { userDetail, isAuthenticated } = useSelector((state) => state.auth);
+  const { wishlist } = useSelector((state) => state.wishlist);
+  const { cart } = useSelector((state) => state.cart);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   function isInCart(p) {
     if (!p) return false; // avoid errors
@@ -48,7 +48,7 @@ export function UpdateStatesProvider({ children }) {
     setCart(cartsnap);
   };
   const addtocart = async (data) => {
-    if (!Auth || !userDetail?.id) {
+    if (!isAuthenticated || !userDetail?.id) {
       toast.error("Please Log In");
       return;
     }
@@ -101,14 +101,14 @@ export function UpdateStatesProvider({ children }) {
         ...doc.data(),
       }));
       //Update your React state
-      setWishlist(updatedWishlist);
+      dispatch(setWishlist(updatedWishlist));
       toast.success("Product removed successfully!");
     } catch (error) {
       toast.error("Error deleting product: ", error);
     }
   };
   const updatewishlist = async (data) => {
-    if (!Auth) {
+    if (!isAuthenticated) {
       toast.error("Please Log In");
       return;
     }
@@ -147,7 +147,7 @@ export function UpdateStatesProvider({ children }) {
         id: doc.id,
         ...doc.data(),
       }));
-      setWishlist(updatedWishlist);
+      dispatch(setWishlist(updatedWishlist));
       toast.success("Product Added To Wishlist");
     }
   };
@@ -179,7 +179,7 @@ export function UpdateStatesProvider({ children }) {
             <div
               className="icon"
               onClick={() => {
-                setlightbox(currEl.id);
+                dispatch(setlightbox(currEl.id));
               }}
             >
               <CiSearch />
