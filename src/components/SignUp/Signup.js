@@ -45,7 +45,6 @@ const Signup = () => {
         Name: name,
         Email: email,
         Phone: phone,
-        CreatedAt: new Date(),
       };
       //Writes the newUserData object to the document referenced by userRef.
       await userRef.set(newUserData);

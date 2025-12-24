@@ -5,7 +5,7 @@ const initialState = {
 };
 
 const WishlistSlice = createSlice({
-  name: "cart",
+  name: "wishlist",
   initialState,
   reducers: {
     setWishlist(state, action) {

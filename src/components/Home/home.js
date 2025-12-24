@@ -1,4 +1,3 @@
-import { useUpdateStates } from "../useContext/updatestatesContext";
 import { setActiveCat } from "../features/cart/cartSlice";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +7,7 @@ import { useEffect, useState } from "react";
 import { TbDiscount } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
 import Newsletter from "./newsletter";
+import Productbox from "./ProductBox";
 import Slider from "./Slider";
 
 import "./home.css";
@@ -16,7 +16,6 @@ const Home = () => {
   const { products } = useSelector((state) => state.product);
   const [Bestsellers, setBestsellers] = useState([]);
   const [toprated, setToprated] = useState([]);
-  const { Productbox } = useUpdateStates();
   const [sale, setSales] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();

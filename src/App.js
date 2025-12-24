@@ -1,11 +1,11 @@
-import SideMenu from "./components/sidemenu";
-import Lightbox from "./components/lightbox";
-import SideBar from "./components/sidebar";
+import SideMenu from "./components/Sidemenu/sidemenu";
+import Lightbox from "./components/Lightbox/lightbox";
+import SideBar from "./components/Sidebar/sidebar";
 import { Toaster } from "react-hot-toast";
-import Footer from "./components/footer";
+import Footer from "./components/Footer/footer";
 import { useSelector } from "react-redux";
-import Nav from "./components/nav";
-import "./components/home.css";
+import Nav from "./components/Nav/nav";
+import "./components/Home/home.css";
 import Rout from "./routes/rout";
 import "./styles/App.css";
 

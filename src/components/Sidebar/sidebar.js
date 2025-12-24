@@ -1,7 +1,7 @@
-import { doc, collection, getDocs, deleteDoc } from "firebase/firestore";
-import { useUpdateStates } from "../useContext/updatestatesContext";
+import { doc, collection, getDocs, onSnapshot } from "firebase/firestore";
 import { setWishlist } from "../features/wishlist/wishlistSlice";
-import { useEffect, useReducer, useState, useRef } from "react";
+import { setReduction } from "../features/coupon/couponSlice";
+import { useEffect, useState, useRef } from "react";
 import { FaShoppingCart, FaHeart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../features/cart/cartSlice";
@@ -13,27 +13,60 @@ import { db } from "../services/firebase";
 import StarRating from "./starRating";
 import toast from "react-hot-toast";
 import "./sidebar.css";
+import {
+  addToCart,
+  increaseQty,
+  decreaseQty,
+  removeFromCart,
+} from "../features/cart/cartThunk";
+import { removeFromWishlist } from "../features/wishlist/wishlistThunks";
 
 const SideBar = () => {
   const { cart } = useSelector((state) => state.cart);
   const { sidebar } = useSelector((state) => state.ui);
   const { userDetail, isAuthenticated } = useSelector((state) => state.auth);
-  const {
-    addtocart,
-    updatestate,
-    RemoveFromWishlist,
-    increaseQty,
-    decreseQty /*
-    reducer,*/,
-  } = useUpdateStates(); /*
-  const initialstate = "";*/
   const { wishlist } = useSelector((state) => state.wishlist);
-  const [coupon, setCoupon] = useState(false);
-  const [couponCode, setCouponCode] = useState("");
-  const Subtotal = cart.reduce((sum, p) => sum + +(p.Price * p.Qty), 0); /*
-  const [state, dispatch] = useReducer(reducer, initialstate);*/
+  const { reduction, isValid } = useSelector((state) => state.coupon);
   const dispatch = useDispatch();
   const sideBar = useRef();
+
+  useEffect(() => {
+    if (!userDetail?.id) return;
+
+    const unsub = onSnapshot(
+      collection(db, "users", userDetail.id, "cart"),
+      (snapshot) => {
+        dispatch(
+          setCart(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
+        );
+      }
+    );
+
+    return () => unsub();
+  }, [userDetail?.id, dispatch]);
+
+  useEffect(() => {
+    if (!userDetail?.id) return;
+
+    const unsub = onSnapshot(
+      collection(db, "users", userDetail.id, "wishlist"),
+      (snapshot) => {
+        dispatch(
+          setWishlist(
+            snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+          )
+        );
+      }
+    );
+
+    return () => unsub();
+  }, [userDetail?.id, dispatch]);
+
+  const [coupon, setCoupon] = useState(false);
+  const [couponCode, setCouponCode] = useState("");
+
+  const Subtotal = cart.reduce((sum, p) => sum + +(p.Price * p.Qty), 0);
+
   /*
   useKey("Escape", function () {
     if (!sideBar.current.classList.contains("hidden")) {
@@ -75,7 +108,12 @@ const SideBar = () => {
                     <button
                       className="decrement"
                       onClick={() =>
-                        decreseQty(currEl, userDetail.id, updatestate)
+                        dispatch(
+                          decreaseQty({
+                            product: currEl,
+                            userId: userDetail.id,
+                          })
+                        )
                       }
                     >
                       -
@@ -92,7 +130,12 @@ const SideBar = () => {
                     <button
                       className="increment"
                       onClick={() =>
-                        increaseQty(currEl, userDetail.id, updatestate)
+                        dispatch(
+                          increaseQty({
+                            product: currEl,
+                            userId: userDetail.id,
+                          })
+                        )
                       }
                     >
                       +
@@ -122,8 +165,18 @@ const SideBar = () => {
                 className="deleteBtn"
                 onClick={() => {
                   sidebar === "wishlist"
-                    ? RemoveFromWishlist(currEl)
-                    : RemoveFromCart(currEl);
+                    ? dispatch(
+                        removeFromWishlist({
+                          itemId: currEl.id,
+                          userId: userDetail.id,
+                        })
+                      )
+                    : dispatch(
+                        removeFromCart({
+                          productId: currEl.id,
+                          userId: userDetail.id,
+                        })
+                      );
                 }}
               >
                 <MdDeleteForever />
@@ -136,7 +189,19 @@ const SideBar = () => {
             </div>
           </div>
           {sidebar === "wishlist" && (
-            <div className="add-to-cart" onClick={() => addtocart(currEl)}>
+            <div
+              className="add-to-cart"
+              onClick={() => {
+                dispatch(
+                  addToCart({
+                    product: currEl,
+                    userId: userDetail.id,
+                    isAuthenticated,
+                  })
+                );
+                console.log(currEl, userDetail.id, isAuthenticated);
+              }}
+            >
               Add To Cart
             </div>
           )}
@@ -146,19 +211,17 @@ const SideBar = () => {
     );
   }
 
-  const RemoveFromCart = async (data) => {
-    try {
-      await deleteDoc(doc(db, "users", userDetail.id, "cart", data.id));
-      fetchcartdata();
-      toast.success("Product removed successfully!");
-    } catch (error) {
-      console.error("Error deleting product");
-    }
-  };
-
   useEffect(() => {
     fetchcartdata(); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated]);
+
+  useEffect(() => {
+    if (isValid === true) {
+      toast.success("Coupon code added successfully!");
+    } else if (isValid === false) {
+      toast.error("Coupon code is not valid!");
+    }
+  }, [isValid]);
 
   const fetchcartdata = async () => {
     if (!userDetail?.id) return; // <-- prevent error
@@ -169,7 +232,7 @@ const SideBar = () => {
       id: doc.id,
       ...doc.data(),
     }));
-    setCart(cartsnap);
+    dispatch(setCart(cartsnap));
   };
 
   useEffect(() => {
@@ -250,7 +313,7 @@ const SideBar = () => {
               ></input>
               <div className="submit">
                 <FaArrowRightLong
-                  onClick={() => dispatch({ type: `${couponCode}` })}
+                  onClick={() => dispatch(setReduction(couponCode))}
                 />
               </div>
             </div>
@@ -264,7 +327,7 @@ const SideBar = () => {
             <div className="prices">
               <p>{`$ ${Subtotal}`}</p>
               <p>{`$ ${cart.length > 0 ? "15" : "0"}`}</p>
-              {/*<p>{state ? `${state}%` : "0%"}</p>*/}
+              <p>{reduction ? `${reduction}%` : "0%"}</p>
             </div>
           </div>
           <hr></hr>
@@ -274,7 +337,7 @@ const SideBar = () => {
             </div>
             <div className="prices">
               <p>
-                {/*`$ ${Subtotal + 15 - (((Subtotal * state) / 100) | 0)} `*/}
+                {`$ ${Subtotal + 15 - (((Subtotal * reduction) / 100) | 0)} `}
               </p>
             </div>
           </div>

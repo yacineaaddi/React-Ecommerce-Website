@@ -1,11 +1,11 @@
-import SingleProduct from "../components/singleProduct";
+import SingleProduct from "../components/SingleProduct/singleProduct";
 import { Route, Routes } from "react-router-dom";
-import Contact from "../components/contact";
-import Signup from "../components/Signup";
-import Login from "../components/login";
-import Shop from "../components/shop";
-import About from "../components/about";
-import Home from "../components/home";
+import Contact from "../components/Contact/contact";
+import Signup from "../components/SignUp/Signup";
+import Login from "../components/Login/login";
+import Shop from "../components/Shop/shop";
+import About from "../components/About/about";
+import Home from "../components/Home/home";
 
 const Rout = () => {
   return (

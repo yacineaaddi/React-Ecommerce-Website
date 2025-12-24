@@ -1,52 +1,50 @@
-import { useUpdateStates } from "../useContext/updatestatesContext";
 import { Product, Faq, ShippingAndDelivery } from "../data/data";
-import { useEffect, useState, useReducer } from "react";
+import { setReduction } from "../features/coupon/couponSlice";
+import { setActiveCat } from "../features/cart/cartSlice";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { MdOutlineShoppingCart } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-import ProductSlider from "./productslider";
-import Newsletter from "./newsletter";
-import StarRating from "./starRating";
-import "./singleproduct.css";
-
-import { useDispatch, useSelector } from "react-redux";
-import { setActiveCat } from "../features/cart/cartSlice";
-import { setlightbox } from "../features/ui/uiSlice";
+import { useEffect, useState } from "react";
+import ProductSlider from "./Productslider/productslider";
+import toast from "react-hot-toast";
+import Newsletter from "./Newsletter/newsletter";
+import StarRating from "./StarRating/starRating";
+import "./Singleproduct/singleproduct.css";
+import Productbox from "./ProductBox";
+import {
+  addToCart,
+  increaseQty,
+  decreaseQty,
+} from "../features/cart/cartThunk";
+import { selectIsInCart } from "../features/cart/cartSelectors";
 
 const SingleProduct = () => {
   const { cart } = useSelector((state) => state.cart);
-  const { userDetail } = useSelector((state) => state.auth);
-  const { wishlist } = useSelector((state) => state.wishlist);
+  const { userDetail, isAuthenticated } = useSelector((state) => state.auth);
+  const { reduction, isValid } = useSelector((state) => state.coupon);
 
-  const {
-    Productbox,
-    updatewishlist,
-    addtocart,
-    isInCart,
-    updatestate,
-    increaseQty,
-    decreseQty /*
-    reducer,*/,
-  } = useUpdateStates();
+  const productInCart = useSelector((state) =>
+    product ? selectIsInCart(state, product.id) : false
+  );
 
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const { id, title } = useParams();
 
-  /*const initialstate = "";*/
-  /*const [state, dispatch] = useReducer(reducer, initialstate);*/
   const [similarproduct, setSimilarproduct] = useState([]);
   const [productQty, updateproductQty] = useState(1);
   const [openIndex, setOpenIndex] = useState(null);
+
   const [couponCode, setCouponCode] = useState("");
-  const [product, setProduct] = useState(null);
+
   const [coupon, setCoupon] = useState(false);
+  const [product, setProduct] = useState(null);
 
   const soldout = product?.Stock < 1;
-  const navigate = useNavigate();
-  const productinCart = product ? isInCart(product) : false;
+
   const singleproduct =
     product && Array.isArray(cart)
       ? cart.find((item) => String(item.CartId) === String(product.id))
@@ -63,6 +61,14 @@ const SingleProduct = () => {
     },
     [title]
   );
+
+  useEffect(() => {
+    if (isValid === true) {
+      toast.success("Coupon code added successfully!");
+    } else if (isValid === false) {
+      toast.error("Coupon code is not valid!");
+    }
+  }, [isValid]);
 
   const toggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -104,7 +110,12 @@ const SingleProduct = () => {
     if (pIncrease || spIncrease) return;
 
     if (singleproduct) {
-      increaseQty(singleproduct, userDetail.id, updatestate);
+      dispatch(
+        increaseQty({
+          product: singleproduct,
+          userId: userDetail.id,
+        })
+      );
     } else {
       updateQty(1);
     }
@@ -113,14 +124,18 @@ const SingleProduct = () => {
   useEffect(() => {
     (function () {
       const currEl = Product.find((x) => Number(id) === x.id);
+      if (!currEl) return;
+      console.log(currEl);
       setProduct(currEl);
       const similar_product = Product.filter((c) => c.Cat === currEl.Cat).slice(
         0,
         5
       );
+      console.log("no");
       setSimilarproduct(similar_product);
       console.log(similar_product);
       console.log(product);
+      console.log("yes");
     })();
   }, [id]);
 
@@ -152,13 +167,7 @@ const SingleProduct = () => {
             <p>Product Details</p>
           </div>
           <div className="product">
-            {product && (
-              <ProductSlider
-                product={product}
-                wishlist={wishlist}
-                updatewishlist={updatewishlist}
-              />
-            )}
+            {product && <ProductSlider product={product} />}
             <div className="singleproduct-details">
               <div className="product-des">
                 <h1>{product?.Title}</h1>
@@ -210,7 +219,12 @@ const SingleProduct = () => {
                     className="decrement"
                     onClick={() =>
                       singleproduct
-                        ? decreseQty(singleproduct, userDetail.id, updatestate)
+                        ? dispatch(
+                            decreaseQty({
+                              product: singleproduct,
+                              userId: userDetail.id,
+                            })
+                          )
                         : updateQty(-1)
                     }
                   >
@@ -255,7 +269,7 @@ const SingleProduct = () => {
                     ></input>
                     <div className="submit">
                       <FaArrowRightLong
-                        onClick={() => dispatch({ type: `${couponCode}` })}
+                        onClick={() => dispatch(setReduction(couponCode))}
                       />
                     </div>
                   </div>
@@ -263,8 +277,19 @@ const SingleProduct = () => {
               </div>
               <div className="buttons">
                 <button>Buy Now</button>
-                <button onClick={() => product && addtocart(product)}>
-                  {product && productinCart ? "Already in cart" : "Add To Cart"}
+                <button
+                  onClick={() =>
+                    product &&
+                    dispatch(
+                      addToCart({
+                        product,
+                        userId: userDetail.id,
+                        isAuthenticated,
+                      })
+                    )
+                  }
+                >
+                  {product && productInCart ? "Already in cart" : "Add To Cart"}
                 </button>
               </div>
 

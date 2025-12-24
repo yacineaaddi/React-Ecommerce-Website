@@ -1,10 +1,10 @@
 import { CgArrowsExchangeAltV, CgArrowsExchangeV } from "react-icons/cg";
-import { useUpdateStates } from "../useContext/updatestatesContext";
 import { setActiveCat } from "../features/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useMemo, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import Productbox from "./ProductBox";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import "./shop.css";
@@ -25,7 +25,6 @@ const Shop = () => {
   const dispatch = useDispatch();
   const RESULT_PER_PAGE = 16;
   const [currentPage, setCurrentPage] = useState(0);
-  const { Productbox } = useUpdateStates();
   const start = currentPage * RESULT_PER_PAGE;
   const end = start + RESULT_PER_PAGE;
   const [minPrice, setMinPrice] = useState("");

@@ -35,6 +35,7 @@ const Login = () => {
   });*/ useEffect(function () {
     document.title = "Log In | Electro";
   }, []);
+
   const Authentication = async (e) => {
     e.preventDefault();
 
@@ -58,7 +59,6 @@ const Login = () => {
         if (userDoc.exists()) {
           const userData = { id: userDoc.id, ...userDoc.data() };
           dispatch(setUserDetail(userData));
-          console.log(userData);
           dispatch(login());
 
           toast.success("User Logged In Successfully");
