@@ -1,8 +1,8 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { SetsideMenu } from "../features/ui/uiSlice";
+import { SetsideMenu } from "../../features/ui/uiSlice";
 import { FaRegUser } from "react-icons/fa";
-import useKey from "../hooks/useKeyHook";
+/*import useKey from "../../hooks/useKeyHook";*/
 import { useRef } from "react";
 import "./sidemenu.css";
 

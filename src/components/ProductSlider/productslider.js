@@ -1,7 +1,7 @@
 import { FreeMode, Navigation, Thumbs, Scrollbar } from "swiper/modules";
-import { toggleWishlist } from "../features/wishlist/wishlistThunks";
+import { toggleWishlist } from "../../features/wishlist/wishlistThunks";
 import { useDispatch, useSelector } from "react-redux";
-import { setlightbox } from "../features/ui/uiSlice";
+import { setlightbox } from "../../features/ui/uiSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { BsAspectRatio } from "react-icons/bs";
@@ -13,7 +13,7 @@ import "swiper/css/scrollbar";
 import "./productslider.css";
 import "swiper/css/thumbs";
 import "swiper/css";
-import { selectIsWishlisted } from "../features/wishlist/wishlistSelectors";
+import { selectIsWishlisted } from "../../features/wishlist/wishlistSelectors";
 
 const ProductSlider = ({ product }) => {
   const { userDetail, isAuthenticated } = useSelector((state) => state.auth);

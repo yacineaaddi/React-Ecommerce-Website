@@ -1,15 +1,15 @@
-import { login, setUserDetail } from "../features/auth/authSlice";
+import { login, setUserDetail } from "../../features/auth/authSlice";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { MdOutlineLogin } from "react-icons/md";
-import { db, app } from "../services/firebase";
+import { db, app } from "../../services/firebase";
 import { useDispatch } from "react-redux";
-import useKey from "../hooks/useKeyHook";
+/*import useKey from "../../hooks/useKeyHook";*/
 import toast from "react-hot-toast";
 
-import "./auth.css";
+import "../Auth/auth.css";
 
 const Login = () => {
   const [password, setPassword] = useState("");

@@ -10,7 +10,7 @@
   align-items: center;
   padding: 15px 22px 15px 22px;
   z-index: 1000;
-  background-image: url("../img/homebackground1.webp");
+  background-image: url("../../img/homebackground1.webp");
   background-repeat: no-repeat;
   background-size: 100% 500%;
   transition: all 0.3s;
@@ -270,7 +270,7 @@
     align-items: center;
     padding: 15px 22px 15px 22px;
     z-index: 8;
-    background-image: url("../img/homebackground1.webp");
+    background-image: url("../../img/homebackground1.webp");
     background-repeat: no-repeat;
     background-size: 100% 600%;
     transition: all 3s;

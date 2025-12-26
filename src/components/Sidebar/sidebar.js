@@ -1,16 +1,16 @@
 import { doc, collection, getDocs, onSnapshot } from "firebase/firestore";
-import { setWishlist } from "../features/wishlist/wishlistSlice";
-import { setReduction } from "../features/coupon/couponSlice";
+import { setWishlist } from "../../features/wishlist/wishlistSlice";
+import { setReduction } from "../../features/coupon/couponSlice";
 import { useEffect, useState, useRef } from "react";
 import { FaShoppingCart, FaHeart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { setCart } from "../features/cart/cartSlice";
-import { setSidebar } from "../features/ui/uiSlice";
+import { setCart } from "../../features/cart/cartSlice";
+import { setSidebar } from "../../features/ui/uiSlice";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { MdDeleteForever } from "react-icons/md";
-import { db } from "../services/firebase";
+import { db } from "../../services/firebase";
 /*import useKey from "./useCustomHook";*/
-import StarRating from "./starRating";
+import StarRating from "../StarRating/starRating";
 import toast from "react-hot-toast";
 import "./sidebar.css";
 import {
@@ -18,8 +18,8 @@ import {
   increaseQty,
   decreaseQty,
   removeFromCart,
-} from "../features/cart/cartThunk";
-import { removeFromWishlist } from "../features/wishlist/wishlistThunks";
+} from "../../features/cart/cartThunk";
+import { removeFromWishlist } from "../../features/wishlist/wishlistThunks";
 
 const SideBar = () => {
   const { cart } = useSelector((state) => state.cart);

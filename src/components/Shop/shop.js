@@ -1,13 +1,13 @@
 import { CgArrowsExchangeAltV, CgArrowsExchangeV } from "react-icons/cg";
-import { setActiveCat } from "../features/cart/cartSlice";
+import { setActiveCat } from "../../features/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useMemo, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import Productbox from "./ProductBox";
+import Productbox from "../ProductBox/ProductBox";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
-import "./shop.css";
+import "../Shop/shop.css";
 import "swiper/css";
 
 const categories = [

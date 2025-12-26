@@ -1,6 +1,6 @@
 import { FaArrowRightLong } from "react-icons/fa6";
 import { doc, setDoc } from "firebase/firestore";
-import { db } from "../services/firebase";
+import { db } from "../../services/firebase";
 import { toast } from "react-hot-toast";
 import { useState } from "react";
 import "./newsletter.css";

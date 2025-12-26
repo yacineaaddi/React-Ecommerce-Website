@@ -1,9 +1,9 @@
 import { Pagination, Autoplay, Navigation } from "swiper/modules";
 import { useDispatch, useSelector } from "react-redux";
-import { setlightbox } from "../features/ui/uiSlice";
+import { setlightbox } from "../../features/ui/uiSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useEffect, useState } from "react";
-import { Product } from "../data/data";
+import { Product } from "../../data/data";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";

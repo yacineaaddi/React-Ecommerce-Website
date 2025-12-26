@@ -1,4 +1,4 @@
-import { setActiveCat } from "../features/cart/cartSlice";
+import { setActiveCat } from "../../features/cart/cartSlice";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -6,9 +6,9 @@ import { RiRefund2Line } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { TbDiscount } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
-import Newsletter from "./newsletter";
-import Productbox from "./ProductBox";
-import Slider from "./Slider";
+import Newsletter from "../Newsletter/newsletter";
+import Productbox from "../ProductBox/ProductBox";
+import Slider from "../Slider/Slider";
 
 import "./home.css";
 

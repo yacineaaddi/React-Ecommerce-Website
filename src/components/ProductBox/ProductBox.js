@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import { setlightbox } from "../features/ui/uiSlice";
-import StarRating from "./starRating";
+import { setlightbox } from "../../features/ui/uiSlice";
+import StarRating from "../StarRating/starRating";
 import { CiSearch } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleWishlist } from "../features/wishlist/wishlistThunks";
-import { addToCart } from "../features/cart/cartThunk";
-import { selectIsInCart } from "../features/cart/cartSelectors";
-import { selectIsWishlisted } from "../features/wishlist/wishlistSelectors";
+import { toggleWishlist } from "../../features/wishlist/wishlistThunks";
+import { addToCart } from "../../features/cart/cartThunk";
+import { selectIsInCart } from "../../features/cart/cartSelectors";
+import { selectIsWishlisted } from "../../features/wishlist/wishlistSelectors";
 
 export default function Productbox({ currEl, variant }) {
   const { userDetail, isAuthenticated } = useSelector((state) => state.auth);
@@ -38,7 +38,7 @@ export default function Productbox({ currEl, variant }) {
         }
 
         navigate(
-          `shop/product/${currEl.id}/${currEl.Title.split(" ")
+          `/shop/product/${currEl.id}/${currEl.Title.split(" ")
             .slice()
             .join("-")}`
         );

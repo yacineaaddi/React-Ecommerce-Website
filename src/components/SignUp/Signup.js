@@ -1,11 +1,11 @@
-import { login, setUserDetail } from "../features/auth/authSlice";
+import { login, setUserDetail } from "../../features/auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { db, app } from "../services/firebase";
+import { db, app } from "../../services/firebase";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { FaUser } from "react-icons/fa6";
 import toast from "react-hot-toast";
-import "./auth.css";
+import "../Auth/auth.css";
 
 const Signup = () => {
   const dispatch = useDispatch();
