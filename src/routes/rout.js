@@ -1,4 +1,4 @@
-import SingleProduct from "../components/SingleProduct/singleProduct";
+import SingleProductPage from "../components/SingleProduct/SingleProductPage";
 import { Route, Routes } from "react-router-dom";
 import Contact from "../components/Contact/contact";
 import Signup from "../components/SignUp/Signup";
@@ -15,7 +15,10 @@ const Rout = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
-        <Route path="/shop/product/:id/:title" element={<SingleProduct />} />
+        <Route
+          path="/shop/product/:id/:title"
+          element={<SingleProductPage />}
+        />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
