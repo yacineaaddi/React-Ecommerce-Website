@@ -1,4 +1,4 @@
-import { login, setUserDetail } from "../../features/auth/authSlice";
+import { login, setUserDetail } from "../../features/auth/AuthSlice";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
