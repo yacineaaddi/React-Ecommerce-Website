@@ -1,3 +1,4 @@
+/*  Slider styles: React Swiper Slide  */
 .home-swiper {
   position: relative;
   height: 100vh;
@@ -84,6 +85,8 @@
   height: 100%;
   object-fit: cover;
 }
+
+/* --- Responsive styles --- */
 
 @media (max-width: 1700px) {
   .swiper-box .info h2 {

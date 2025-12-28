@@ -6,6 +6,7 @@ import "swiper/css/autoplay";
 import "./Slider.css";
 import "swiper/css";
 
+// Slider component: displays a carousel using React Swiper Slide
 const Slider = ({ setActiveCat, navigate }) => {
   return (
     <div className="home-swiper">
@@ -17,12 +18,15 @@ const Slider = ({ setActiveCat, navigate }) => {
         autoplay={{ delay: 2500 }}
         loop={true}
       >
+        {/* Loop through data to render each slide */}
         {Data?.map((currEl, index) => (
           <SwiperSlide key={index}>
             <div className="swiper-box">
               <div className="info">
                 <h2>{currEl.title}</h2>
                 <p>{currEl.discount}</p>
+
+                {/* When clicked: set active category and navigate to shop page */}
                 <button
                   onClick={() => {
                     setActiveCat(currEl.cat);
@@ -32,6 +36,8 @@ const Slider = ({ setActiveCat, navigate }) => {
                   Discover Now
                 </button>
               </div>
+
+              {/* Slide image */}
               <div className="image">
                 <img className="card_image" src={currEl.image} alt="imagebox" />
               </div>
