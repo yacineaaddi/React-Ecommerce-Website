@@ -1,12 +1,14 @@
+// Import PropTypes
 import PropTypes from "prop-types";
-import { useState } from "react";
 
+// Container style for the whole rating component
 const containerStyle = {
   display: "flex",
   alignitem: "center",
   justifycontent: "center",
 };
 
+// Container style for stars row
 const starContainerStyle = {
   display: "flex",
   alignitem: "center",
@@ -20,11 +22,10 @@ export default function StarRating({
   className = "",
   defaultRating = 0,
 }) {
-  const [rating, setRating] = useState(defaultRating);
-
+  // Decide whether each star should be full, half or empty
   const getStarType = (index) => {
-    if (rating >= index + 1) return "full";
-    if (rating >= index + 0.5) return "half";
+    if (defaultRating >= index + 1) return "full";
+    if (defaultRating >= index + 0.5) return "half";
     return "empty";
   };
   return (
@@ -39,6 +40,7 @@ export default function StarRating({
 }
 
 function Star({ type, color, size }) {
+  // Basic inline style for each star icon
   const starStyle = {
     width: `${size}px`,
     height: `${size}px`,
@@ -47,6 +49,7 @@ function Star({ type, color, size }) {
   };
   return (
     <span style={starStyle}>
+      {/* Full star */}
       {type === "full" && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -56,6 +59,7 @@ function Star({ type, color, size }) {
           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
         </svg>
       )}
+      {/* Half star */}
       {type === "half" && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -79,6 +83,7 @@ function Star({ type, color, size }) {
           />
         </svg>
       )}
+      {/* Empty star */}
       {type === "empty" && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -97,6 +102,7 @@ function Star({ type, color, size }) {
     </span>
   );
 }
+
 // Type checking component props using PropTypes
 StarRating.propTypes = {
   maxRating: PropTypes.number,
