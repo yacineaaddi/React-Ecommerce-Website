@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import Signup from "./AuthSlice";
+import { HandleLogin, HandleSignup } from "./authSlice";
 
 const AuthFuncSlice = createSlice({
   name: "auth",
@@ -10,14 +10,25 @@ const AuthFuncSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // 🟢 fetchCart
-      .addCase(Signup.pending, (state) => {
+      // HandleSignup
+      .addCase(HandleSignup.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(Signup.fulfilled, (state, action) => {
+      .addCase(HandleSignup.fulfilled, (state, action) => {
         state.status = "succeeded";
       })
-      .addCase(Signup.rejected, (state, action) => {
+      .addCase(HandleSignup.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      })
+      // HandleLogin
+      .addCase(HandleLogin.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(HandleLogin.fulfilled, (state, action) => {
+        state.status = "succeeded";
+      })
+      .addCase(HandleLogin.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
       });

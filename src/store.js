@@ -1,4 +1,4 @@
-import authReducer from "./features/auth/AuthSlice";
+import authReducer from "./features/auth/authSlice";
 import cartReducer from "./features/cart/cartSlice";
 import productReducer from "./features/product/productSlice";
 import wishlistReducer from "./features/wishlist/wishlistSlice";

@@ -2,7 +2,7 @@ import { FaRegUser, FaShoppingCart, FaHeart } from "react-icons/fa";
 import { setSidebar, SetsideMenu } from "../../features/ui/uiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState, useRef } from "react";
-import { logout } from "../../features/auth/AuthSlice";
+import { logout } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import { NavLink } from "react-router-dom";

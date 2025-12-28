@@ -14,7 +14,7 @@ import { FaUser } from "react-icons/fa6";
 import "../Auth/auth.css";
 
 // Thunk function responsible for handling signup logic
-import { HandleSignup } from "../../features/auth/AuthThunk";
+import { HandleSignup } from "../../features/auth/authThunk";
 
 // Signup component (registration form)
 const Signup = () => {
@@ -84,8 +84,10 @@ const Signup = () => {
 
             {/* Dispatch signup thunk on click */}
             <button
-              onClick={(e) =>
-                dispatch(HandleSignup(name, email, phone, password, navigate))
+              onClick={() =>
+                dispatch(
+                  HandleSignup({ name, email, phone, password, navigate })
+                )
               }
             >
               Register

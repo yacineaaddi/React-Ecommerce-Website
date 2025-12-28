@@ -1,23 +1,38 @@
-import { login, setUserDetail } from "../../features/auth/AuthSlice";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { Link, useNavigate } from "react-router-dom";
+// React / Router imports
 import { useEffect, useState, useRef } from "react";
-import { doc, getDoc } from "firebase/firestore";
-import { MdOutlineLogin } from "react-icons/md";
-import { db, app } from "../../services/firebase";
-import { useDispatch } from "react-redux";
-/*import useKey from "../../hooks/useKeyHook";*/
-import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 
+// Redux imports
+import { useDispatch } from "react-redux";
+import { HandleLogin } from "../../features/auth/authThunk";
+
+// Icons imports
+import { MdOutlineLogin } from "react-icons/md";
+
+// Styles imports
 import "../Auth/auth.css";
 
+/*import useKey from "../../hooks/useKeyHook";*/
+
 const Login = () => {
+  // State to store the password input value
   const [password, setPassword] = useState("");
+
+  // State to store the email input value
   const [email, setEmail] = useState("");
+
+  // Redux dispatch function to send actions to the store
   const dispatch = useDispatch();
+
+  // React Router navigate function to programmatically navigate
   const navigate = useNavigate();
+
+  // Ref for the email input element (can be used to focus or read value directly)
   const inputEmail = useRef();
+
+  // Ref for the password input element (can be used to focus or read value directly)
   const inputPass = useRef();
+
   /*
   useKey("Escape", () => {
     Promise.resolve().then(() => {
@@ -32,56 +47,28 @@ const Login = () => {
         console.log(2);
       }
     });
-  });*/ useEffect(function () {
+  });*/
+  // Set page title once when component mounts
+  useEffect(function () {
     document.title = "Log In | Electro";
   }, []);
-
-  const Authentication = async (e) => {
-    e.preventDefault();
-
-    if (!email || !password) {
-      toast.error("All fields are required");
-      return;
-    }
-
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        app.auth(),
-        email,
-        password
-      );
-      const user = userCredential.user;
-
-      if (user) {
-        const userDocRef = doc(db, "users", user.uid);
-        const userDoc = await getDoc(userDocRef);
-
-        if (userDoc.exists()) {
-          const userData = { id: userDoc.id, ...userDoc.data() };
-          dispatch(setUserDetail(userData));
-          dispatch(login());
-
-          toast.success("User Logged In Successfully");
-          navigate("/");
-        } else {
-          toast.error("User data not found in Firestore!");
-        }
-      }
-    } catch (err) {
-      console.error("Login error:", err.message);
-      toast.error(err.message);
-    }
-  };
-
   return (
     <>
+      {/* Wrapper fragment */}
       <div className="auth">
+        {/* Main auth container */}
         <div className="container">
+          {/* Website / app title */}
           <h2>Electro</h2>
+
+          {/* Icon above the form */}
           <div className="icon">
             <MdOutlineLogin />
           </div>
+
+          {/* Form container */}
           <div className="form">
+            {/* Email input box */}
             <div className="box">
               <input
                 type="email"
@@ -91,9 +78,10 @@ const Login = () => {
                 className="stop"
                 onChange={(e) => setEmail(e.target.value)}
                 required
-              ></input>
+              />
             </div>
 
+            {/* Password input box */}
             <div className="box">
               <input
                 type="password"
@@ -102,9 +90,20 @@ const Login = () => {
                 className="stop"
                 ref={inputPass}
                 onChange={(e) => setPassword(e.target.value)}
-              ></input>
+              />
             </div>
-            <button onClick={(e) => Authentication(e)}>Login</button>
+
+            {/* Login button */}
+            <button
+              onClick={() =>
+                // Dispatch the login thunk with email, password, and navigate function
+                dispatch(HandleLogin({ email, password, navigate }))
+              }
+            >
+              Login
+            </button>
+
+            {/* Link to signup page */}
             <p>
               Don't have an account ? <Link to="/signup">Sign up</Link>
             </p>
