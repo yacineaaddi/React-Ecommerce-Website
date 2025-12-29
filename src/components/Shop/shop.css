@@ -1,3 +1,4 @@
+/*  ===== Shop style ===== */
 .shop {
   width: 100%;
   padding: 200px 100px 100px 100px;
@@ -330,7 +331,7 @@
   transform: scale(1.2);
 }
 
-/**/
+/* --- Responsive styles --- */
 @media (max-width: 1500px) {
   .shop {
     width: 100%;

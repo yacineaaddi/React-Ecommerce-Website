@@ -1,6 +1,10 @@
+// Import Redux Toolkit function to create a slice of state
 import { createSlice } from "@reduxjs/toolkit";
+
+// Import async thunks for authentication operations
 import { HandleLogin, HandleSignup } from "./authSlice";
 
+// Slice to track async status of login/signup operations
 const AuthFuncSlice = createSlice({
   name: "auth",
   initialState: {
@@ -10,7 +14,7 @@ const AuthFuncSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // HandleSignup
+      // ----- Handle Signup -----
       .addCase(HandleSignup.pending, (state) => {
         state.status = "loading";
       })
@@ -21,7 +25,8 @@ const AuthFuncSlice = createSlice({
         state.status = "failed";
         state.error = action.payload;
       })
-      // HandleLogin
+
+      // ----- Handle Login -----
       .addCase(HandleLogin.pending, (state) => {
         state.status = "loading";
       })
@@ -35,4 +40,5 @@ const AuthFuncSlice = createSlice({
   },
 });
 
+// Export reducer to include in Redux store
 export default AuthFuncSlice.reducer;

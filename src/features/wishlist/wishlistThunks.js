@@ -105,3 +105,14 @@ export const removeFromWishlist = createAsyncThunk(
     }
   }
 );
+// ----- FETCH WISHLISTED PRODUCTS -----
+export const fetchWishlist = createAsyncThunk(
+  "wishlist/fetchWishlist",
+  async (userId, thunkAPI) => {
+    if (!userId) return [];
+    const wishlistSnapshot = await getDocs(
+      collection(db, "users", userId, "wishlist")
+    );
+    return wishlistSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  }
+);

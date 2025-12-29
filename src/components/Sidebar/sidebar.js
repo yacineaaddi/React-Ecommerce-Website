@@ -1,35 +1,51 @@
-import { doc, collection, getDocs, onSnapshot } from "firebase/firestore";
-import { setWishlist } from "../../features/wishlist/wishlistSlice";
+// Firestore functions to access collections, fetch documents, and subscribe to real-time updates
+import { collection, onSnapshot } from "firebase/firestore";
+
+// async thunk function
+import { fetchCart } from "../../features/cart/cartThunk";
+import { fetchWishlist } from "../../features/wishlist/wishlistThunks";
+
+// Redux actions for updating wishlist and coupon state
+import { setWishlist } from "../../features/wishlist/wishListSlice";
 import { setReduction } from "../../features/coupon/couponSlice";
+
+// React hooks
 import { useEffect, useState, useRef } from "react";
+
+// Icons from React Icons library
 import { FaShoppingCart, FaHeart } from "react-icons/fa";
+import { FaArrowRightLong } from "react-icons/fa6";
+
+// Redux hooks and actions
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../../features/cart/cartSlice";
 import { setSidebar } from "../../features/ui/uiSlice";
-import { FaArrowRightLong } from "react-icons/fa6";
-import { MdDeleteForever } from "react-icons/md";
+
+// import sidebarProduct component
+import SidebarProduct from "./sidebarProduct";
+
+// Firestore database instance
 import { db } from "../../services/firebase";
-/*import useKey from "./useCustomHook";*/
-import StarRating from "../StarRating/starRating";
-import toast from "react-hot-toast";
+
+// custom hook for key events
+// import useKey from "./useCustomHook";
+
+// Component-specific CSS
 import "./sidebar.css";
-import {
-  addToCart,
-  increaseQty,
-  decreaseQty,
-  removeFromCart,
-} from "../../features/cart/cartThunk";
-import { removeFromWishlist } from "../../features/wishlist/wishlistThunks";
 
 const SideBar = () => {
+  // Redux state selectors
   const { cart } = useSelector((state) => state.cart);
   const { sidebar } = useSelector((state) => state.ui);
-  const { userDetail, isAuthenticated } = useSelector((state) => state.auth);
+  const { userDetail } = useSelector((state) => state.auth);
   const { wishlist } = useSelector((state) => state.wishlist);
-  const { reduction, isValid } = useSelector((state) => state.coupon);
+  const { reduction } = useSelector((state) => state.coupon);
+
   const dispatch = useDispatch();
+  // Ref for the sidebar DOM element
   const sideBar = useRef();
 
+  // Real-time Firestore subscription for cart updates
   useEffect(() => {
     if (!userDetail?.id) return;
 
@@ -42,9 +58,11 @@ const SideBar = () => {
       }
     );
 
+    // Cleanup subscription on unmount
     return () => unsub();
   }, [userDetail?.id, dispatch]);
 
+  // Real-time Firestore subscription for wishlist updates
   useEffect(() => {
     if (!userDetail?.id) return;
 
@@ -59,203 +77,42 @@ const SideBar = () => {
       }
     );
 
+    // Cleanup subscription on unmount
     return () => unsub();
   }, [userDetail?.id, dispatch]);
 
+  // Local state for coupon display and input
   const [coupon, setCoupon] = useState(false);
   const [couponCode, setCouponCode] = useState("");
 
+  // Calculate subtotal of cart
   const Subtotal = cart.reduce((sum, p) => sum + +(p.Price * p.Qty), 0);
 
   /*
+  // Optional Escape key handling to close sidebar
   useKey("Escape", function () {
     if (!sideBar.current.classList.contains("hidden")) {
       dispatch(setSidebar(false));
-      console.log(3);
-    } else {
-      return;
     }
   });
-*/
-  function SidebarProduct({ currEl }) {
-    return (
-      <>
-        <div className="box">
-          <div className="product-details">
-            <div className="product">
-              <img src={currEl.Img[0]} alt="Product-image"></img>
-            </div>
-
-            <div className="product-detail">
-              <h2>{currEl.Title.split(" ").slice(0, 7).join(" ")}</h2>
-              <p>{currEl.Brand}</p>
-
-              {sidebar === "cart" ? (
-                <>
-                  <p
-                    style={{
-                      color: "#2196f3",
-                    }}
-                  >{`${currEl.Price} $`}</p>
-                  <p
-                    style={{
-                      color: currEl.State === "Available" ? "green" : "red",
-                    }}
-                  >
-                    {currEl.State}
-                  </p>
-                  <div className="product-qty">
-                    <button
-                      className="decrement"
-                      onClick={() =>
-                        dispatch(
-                          decreaseQty({
-                            product: currEl,
-                            userId: userDetail.id,
-                          })
-                        )
-                      }
-                    >
-                      -
-                    </button>
-                    <input
-                      type="number"
-                      className="value"
-                      disabled
-                      value={currEl.Qty < 1 ? "" : currEl.Qty}
-                      style={{
-                        backgroundColor: currEl.Qty < 1 ? "#E0E0E0" : "",
-                      }}
-                    ></input>
-                    <button
-                      className="increment"
-                      onClick={() =>
-                        dispatch(
-                          increaseQty({
-                            product: currEl,
-                            userId: userDetail.id,
-                          })
-                        )
-                      }
-                    >
-                      +
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="rating">
-                    <StarRating defaultRating={currEl.Rating} />
-                    <p>{currEl.Rating}</p>
-                  </div>
-
-                  <p
-                    style={{
-                      color: currEl.State === "Available" ? "green" : "red",
-                    }}
-                  >
-                    {currEl.State}
-                  </p>
-                </>
-              )}
-            </div>
-
-            <div className="delete">
-              <div
-                className="deleteBtn"
-                onClick={() => {
-                  sidebar === "wishlist"
-                    ? dispatch(
-                        removeFromWishlist({
-                          itemId: currEl.id,
-                          userId: userDetail.id,
-                        })
-                      )
-                    : dispatch(
-                        removeFromCart({
-                          productId: currEl.id,
-                          userId: userDetail.id,
-                        })
-                      );
-                }}
-              >
-                <MdDeleteForever />
-              </div>
-              <p
-                style={{
-                  color: "green",
-                }}
-              >{`${(currEl.Price * currEl.Qty).toFixed(0)} $`}</p>
-            </div>
-          </div>
-          {sidebar === "wishlist" && (
-            <div
-              className="add-to-cart"
-              onClick={() => {
-                dispatch(
-                  addToCart({
-                    product: currEl,
-                    userId: userDetail.id,
-                    isAuthenticated,
-                  })
-                );
-                console.log(currEl, userDetail.id, isAuthenticated);
-              }}
-            >
-              Add To Cart
-            </div>
-          )}
-          <hr></hr>
-        </div>
-      </>
-    );
-  }
+  */
 
   useEffect(() => {
-    fetchcartdata(); // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthenticated]);
-
-  useEffect(() => {
-    if (isValid === true) {
-      toast.success("Coupon code added successfully!");
-    } else if (isValid === false) {
-      toast.error("Coupon code is not valid!");
+    if (userDetail?.id) {
+      dispatch(fetchCart(userDetail.id));
+      dispatch(fetchWishlist(userDetail.id));
     }
-  }, [isValid]);
+  }, [dispatch, userDetail?.id]);
 
-  const fetchcartdata = async () => {
-    if (!userDetail?.id) return; // <-- prevent error
-    const cartdata = await getDocs(
-      collection(db, "users", userDetail.id, "cart")
-    );
-    const cartsnap = cartdata.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-    dispatch(setCart(cartsnap));
-  };
-
-  useEffect(() => {
-    fetchWishListdata(); // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthenticated]);
-
-  const fetchWishListdata = async () => {
-    if (!userDetail?.id) return;
-    const wishlistdata = await getDocs(
-      collection(db, "users", userDetail.id, "wishlist")
-    );
-    const wishlistsnap = wishlistdata.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-    dispatch(setWishlist(wishlistsnap));
-  };
-
+  // Render Sidebar component
   return (
     <div ref={sideBar} className={`sidebar ${!sidebar ? "hidden" : ""}`}>
+      {/* Close button */}
       <button className="close-btn" onClick={() => dispatch(setSidebar(""))}>
         X
       </button>
+
+      {/* Sidebar title */}
       <div className="title">
         {sidebar === "cart" && (
           <>
@@ -270,36 +127,35 @@ const SideBar = () => {
           </>
         )}
       </div>
+
       <div className="line"></div>
 
+      {/* Products list */}
       <div className="products">
-        {sidebar === "cart" && (
-          <>
-            {cart.length > 0 ? (
-              cart?.map((currEl) => (
-                <SidebarProduct currEl={currEl} key={currEl.id} />
-              ))
-            ) : (
-              <div className="empty">
-                <p>Cart is empty !</p>
-              </div>
-            )}
-          </>
-        )}
-        {sidebar === "wishlist" && (
-          <>
-            {wishlist.length > 0 ? (
-              wishlist?.map((currEl) => (
-                <SidebarProduct currEl={currEl} key={currEl.id} />
-              ))
-            ) : (
-              <div className="empty">
-                <p>Wishlist is empty !</p>
-              </div>
-            )}
-          </>
-        )}
+        {sidebar === "cart" &&
+          (cart.length > 0 ? (
+            cart.map((currEl) => (
+              <SidebarProduct currEl={currEl} key={currEl.id} />
+            ))
+          ) : (
+            <div className="empty">
+              <p>Cart is empty !</p>
+            </div>
+          ))}
+
+        {sidebar === "wishlist" &&
+          (wishlist.length > 0 ? (
+            wishlist.map((currEl) => (
+              <SidebarProduct currEl={currEl} key={currEl.id} />
+            ))
+          ) : (
+            <div className="empty">
+              <p>Wishlist is empty !</p>
+            </div>
+          ))}
       </div>
+
+      {/* Checkout section (only for cart) */}
       {sidebar === "cart" && (
         <div className="checkout">
           <h1>Order Summary</h1>
@@ -310,7 +166,7 @@ const SideBar = () => {
                 type="text"
                 placeholder="Coupon code"
                 onChange={(e) => setCouponCode(e.target.value)}
-              ></input>
+              />
               <div className="submit">
                 <FaArrowRightLong
                   onClick={() => dispatch(setReduction(couponCode))}
@@ -318,6 +174,8 @@ const SideBar = () => {
               </div>
             </div>
           )}
+
+          {/* Price breakdown */}
           <div className="checkout-details">
             <div className="description">
               <p>Subtotal</p>
@@ -330,17 +188,21 @@ const SideBar = () => {
               <p>{reduction ? `${reduction}%` : "0%"}</p>
             </div>
           </div>
-          <hr></hr>
+
+          <hr />
+
+          {/* Total */}
           <div className="checkout-details" style={{ color: "#2196f3" }}>
             <div className="description">
               <h3>Total</h3>
             </div>
             <div className="prices">
-              <p>
-                {`$ ${Subtotal + 15 - (((Subtotal * reduction) / 100) | 0)} `}
-              </p>
+              <p>{`$ ${
+                Subtotal + 15 - (((Subtotal * reduction) / 100) | 0)
+              } `}</p>
             </div>
           </div>
+
           <button>Checkout</button>
         </div>
       )}
@@ -348,4 +210,5 @@ const SideBar = () => {
   );
 };
 
+// Export the component
 export default SideBar;

@@ -1,3 +1,4 @@
+/*  ===== Sidemenu style ===== */
 .sidebar {
   position: fixed;
   top: 120px;
@@ -322,6 +323,7 @@
   font-size: 1.4rem;
   cursor: pointer;
 }
+/* --- Responsive styles --- */
 @media (max-width: 850px) {
   .sidebar {
     position: fixed;
@@ -332,7 +334,6 @@
     border-radius: 0px;
   }
 }
-/*Responsive for mobile devices (max-width: 550px)*/
 @media (max-width: 500px) {
   .sidebar {
     width: 100%;

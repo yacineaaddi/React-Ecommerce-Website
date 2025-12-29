@@ -1,9 +1,20 @@
+// Swiper modules for pagination and autoplay functionality
 import { Pagination, Autoplay } from "swiper/modules";
+
+// Core Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import the data to display in the slider
 import { Data } from "../../data/data";
+
+// Import Swiper styles for pagination and autoplay
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
+
+// Import custom styles for your slider component
 import "./Slider.css";
+
+// Import core Swiper styles (required for basic Swiper functionality)
 import "swiper/css";
 
 // Slider component: displays a carousel using React Swiper Slide
@@ -49,4 +60,5 @@ const Slider = ({ setActiveCat, navigate }) => {
   );
 };
 
+// Export the Slider component
 export default Slider;

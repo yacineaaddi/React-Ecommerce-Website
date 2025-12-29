@@ -1,4 +1,7 @@
+// Utility to create async Redux actions
 import { createAsyncThunk } from "@reduxjs/toolkit";
+
+// Firestore functions for CRUD operations
 import {
   doc,
   updateDoc,
@@ -8,30 +11,23 @@ import {
   addDoc,
 } from "firebase/firestore";
 
+// Firestore database instance
 import { db } from "../../services/firebase";
-import {} from "firebase/firestore";
-import toast from "react-hot-toast";
-/*
-export const fetchCart = createAsyncThunk(
-  "cart/fetchCart",
-  async (userId, thunkAPI) => {
-    try {
-      const cartRef = collection(db, "users", userId, "cart");
-      const snapshot = await getDocs(cartRef);
 
-      return snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+// Toast notifications for user feedback
+import toast from "react-hot-toast";
+
+/*
+  (Disabled) — thunk for fetching the cart for a user.
+  You can re-enable later if you want to sync cart state on demand.
 */
+// export const fetchCart = createAsyncThunk( ... )
+
+// ----- INCREASE QUANTITY -----
 export const increaseQty = createAsyncThunk(
   "cart/increaseQty",
   async ({ product, userId }, thunkAPI) => {
+    // Prevent increasing beyond available stock
     if (product.Stock === 0 || product.Qty >= product.Stock) {
       toast.error("Out of stock");
       return thunkAPI.rejectWithValue("Out of stock");
@@ -39,9 +35,9 @@ export const increaseQty = createAsyncThunk(
 
     try {
       const cartRef = doc(db, "users", userId, "cart", product.id);
-      await updateDoc(cartRef, { Qty: product.Qty + 1 });
 
-      /* thunkAPI.dispatch(fetchCart(userId));*/
+      // Increment Qty by 1
+      await updateDoc(cartRef, { Qty: product.Qty + 1 });
 
       toast.success("Quantity added successfully!");
       return true;
@@ -52,16 +48,17 @@ export const increaseQty = createAsyncThunk(
   }
 );
 
+// ----- DECREASE QUANTITY -----
 export const decreaseQty = createAsyncThunk(
   "cart/decreaseQty",
   async ({ product, userId }, thunkAPI) => {
-    // 🔴 out of stock
+    // Item must exist in stock
     if (product.Stock === 0) {
       toast.error("Out of stock");
       return thunkAPI.rejectWithValue("Out of stock");
     }
 
-    // 🔴 ما ننقصوش أقل من 1
+    // Do not allow going below 1
     if (product.Qty <= 1) {
       return thunkAPI.rejectWithValue("Minimum quantity reached");
     }
@@ -69,15 +66,12 @@ export const decreaseQty = createAsyncThunk(
     try {
       const cartRef = doc(db, "users", userId, "cart", product.id);
 
+      // Decrease Qty by 1
       await updateDoc(cartRef, {
         Qty: product.Qty - 1,
       });
 
       toast.success("Quantity decreased successfully!");
-
-      // 🔥 نحدّث Redux state
-      /*thunkAPI.dispatch(fetchCart(userId));*/
-
       return true;
     } catch (error) {
       toast.error("Error decreasing quantity");
@@ -85,9 +79,12 @@ export const decreaseQty = createAsyncThunk(
     }
   }
 );
+
+// ----- ADD TO CART -----
 export const addToCart = createAsyncThunk(
   "cart/addToCart",
   async ({ product, userId, isAuthenticated }, thunkAPI) => {
+    // User must be logged in
     if (!isAuthenticated) {
       toast.error("Please Log In");
       return thunkAPI.rejectWithValue("Not authenticated");
@@ -98,14 +95,14 @@ export const addToCart = createAsyncThunk(
     try {
       const cartRef = collection(db, "users", userId, "cart");
 
-      // 1️⃣ fetch cart
+      // 1️ Get existing cart
       const snapshot = await getDocs(cartRef);
       const cart = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
 
-      // 2️⃣ check if product exists
+      // 2️ Check if product already exists in cart
       const existingItem = cart.find((item) => item.CartId === product.id);
 
       if (existingItem) {
@@ -113,7 +110,7 @@ export const addToCart = createAsyncThunk(
         return thunkAPI.rejectWithValue("Already in cart");
       }
 
-      // 3️⃣ add product
+      // 3️ Add new item
       await addDoc(cartRef, {
         CartId: product.id,
         Title: product.Title,
@@ -131,9 +128,6 @@ export const addToCart = createAsyncThunk(
         Qty: 1,
       });
 
-      // 4️⃣ refresh cart
-      /*thunkAPI.dispatch(fetchCart(userId));*/
-
       toast.success("Product Added To Cart");
 
       return true;
@@ -144,20 +138,42 @@ export const addToCart = createAsyncThunk(
     }
   }
 );
+
+// ----- REMOVE FROM CART -----
 export const removeFromCart = createAsyncThunk(
   "cart/removeFromCart",
   async ({ productId, userId }, { dispatch, rejectWithValue }) => {
     try {
+      // Delete document from Firestore
       await deleteDoc(doc(db, "users", userId, "cart", productId));
-
-      /*dispatch(fetchCart(userId));*/
 
       toast.success("Product removed successfully!");
 
+      // Return deleted product id so reducer can update UI
       return productId;
     } catch (err) {
       console.error(err);
       return rejectWithValue("Failed to remove product");
     }
+  }
+);
+// ----- FETCH CART PRODUCTS -----
+export const fetchCart = createAsyncThunk(
+  "cart/fetchCart",
+  async (userId, thunkAPI) => {
+    if (!userId) return [];
+    const cartSnapshot = await getDocs(collection(db, "users", userId, "cart"));
+    return cartSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  }
+);
+// ----- FETCH WISHLISTED PRODUCTS -----
+export const fetchWishlist = createAsyncThunk(
+  "wishlist/fetchWishlist",
+  async (userId, thunkAPI) => {
+    if (!userId) return [];
+    const wishlistSnapshot = await getDocs(
+      collection(db, "users", userId, "wishlist")
+    );
+    return wishlistSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
   }
 );

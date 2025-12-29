@@ -1,3 +1,4 @@
+/*  ===== Sidemenu style ===== */
 .sidemenu {
   position: fixed;
   top: 120px;
@@ -113,13 +114,14 @@
   align-items: left;
   font-size: 0.6rem;
 }
+/* --- Responsive styles --- */
 @media (max-width: 850px) {
   .sidemenu {
     position: fixed;
     top: 0px;
     left: 0px;
     border-radius: 0px;
-    height: 100vh; /*a ajuster pour mobile phone*/
+    height: 100vh;
   }
 }
 @media (max-width: 500px) {
