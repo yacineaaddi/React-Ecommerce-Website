@@ -1,14 +1,18 @@
+// Import createSlice from Redux Toolkit to define a Redux slice
 import { createSlice } from "@reduxjs/toolkit";
 
+// Initial state for the coupon slice
 const initialState = {
   reduction: 0,
   isValid: null,
 };
 
+// Create a Redux slice for coupon functionality
 const CouponSlice = createSlice({
   name: "coupon",
   initialState,
   reducers: {
+    // Reducer to set the coupon reduction based on the coupon code
     setReduction(state, action) {
       switch (action.payload) {
         case "X7p9alq2":
@@ -28,5 +32,8 @@ const CouponSlice = createSlice({
   },
 });
 
+// Export the setReduction action to be dispatched in components
 export const { setReduction } = CouponSlice.actions;
+
+// Export the reducer to be included in the Redux store
 export default CouponSlice.reducer;

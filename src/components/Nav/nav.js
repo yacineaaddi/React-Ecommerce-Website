@@ -1,12 +1,31 @@
+// Import user icon , shopping cart icon, and heart from react-icons
 import { FaRegUser, FaShoppingCart, FaHeart } from "react-icons/fa";
+
+// Import UI actions to toggle sidebar and side menu
 import { setSidebar, SetsideMenu } from "../../features/ui/uiSlice";
+
+// Redux hooks: dispatch actions and read values from state
 import { useDispatch, useSelector } from "react-redux";
+
+// React hooks for lifecycle, local state, and DOM references
 import { useEffect, useState, useRef } from "react";
+
+// Import logout action to sign the user out
 import { logout } from "../../features/auth/authSlice";
+
+// Hook for navigating programmatically between routes
 import { useNavigate } from "react-router-dom";
+
+// Import search icon
 import { IoSearch } from "react-icons/io5";
+
+// NavLink component for navigation links with active styles
 import { NavLink } from "react-router-dom";
-/*import useKey from "../hooks/useKeyHook";*/
+
+// Custom keyboard shortcut hook (currently disabled/commented out)
+// import useKey from "../hooks/useKeyHook";
+
+// Menu (hamburger) icon for mobile navigation
 import { FiMenu } from "react-icons/fi";
 
 import "./nav.css";
@@ -72,15 +91,6 @@ const Nav = () => {
       return;
     }
   });*/
-  const Logout = () => {
-    dispatch(logout());
-  };
-
-  const resetSearch = () => {
-    setHideMenu(true);
-    setSearchTerm("");
-    inputEl.current.blur();
-  };
 
   const inputEl = useRef(null);
 
@@ -217,7 +227,11 @@ const Nav = () => {
         <div className="login-signup">
           {isAuthenticated ? (
             <p>
-              <NavLink className="link" to="/" onClick={Logout}>
+              <NavLink
+                className="link"
+                to="/"
+                onClick={() => dispatch(logout())}
+              >
                 Logout
               </NavLink>
             </p>

@@ -1,3 +1,4 @@
+/*  ===== Lightbox style ===== */
 .home {
   width: 100%;
 }
@@ -39,7 +40,7 @@
   color: #757575;
   font-size: 0.9rem;
 }
-/*'Hot Deal Products' and 'Featured Product' and 'Toprated Product' section style*/
+/*'Hot Deal Products','Featured Product' and 'Toprated Product' section style*/
 .sale-product,
 .bestseller-product,
 .toprated-product {
@@ -338,7 +339,7 @@
 .brands .container .box img {
   width: 90px;
 }
-/*Responsive for mobile devices (max-width: 1700px)*/
+/* --- Responsive styles --- */
 @media (max-width: 1700px) {
   .top-banner .content {
     flex-direction: column-reverse;
@@ -377,7 +378,7 @@
     flex-direction: column;
   }
 }
-/*Responsive for mobile devices (max-width: 1300px)*/
+
 @media (max-width: 1300px) {
   .top-banner .content {
     flex-wrap: wrap;
@@ -420,7 +421,7 @@
     width: 76%;
   }
 }
-/*Responsive for mobile devices (max-width: 950px)*/
+
 @media (max-width: 850px) {
   .top-banner .content {
     flex-direction: column-reverse; /**/
@@ -434,7 +435,7 @@
     width: 350px;
   }
 }
-/*Responsive for mobile devices (max-width: 740px)*/
+
 @media (max-width: 740px) {
   .top-category .container .categories {
     gap: 15px;
@@ -641,7 +642,7 @@
     border: 1px solid #2196f3;
   }
 }
-/*Responsive for mobile devices (max-width: 750px)*/
+
 @media (max-width: 550px) {
   .sale-product,
   .bestseller-product,

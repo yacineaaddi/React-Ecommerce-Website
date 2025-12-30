@@ -1,3 +1,4 @@
+/*  ===== Nav style ===== */
 .nav {
   position: fixed;
   top: 0%;
@@ -85,7 +86,6 @@
   width: 33%;
 }
 
-/* Input */
 .search_input {
   width: 100%;
   padding: 8px 14px;
@@ -97,7 +97,6 @@
   transition: all 0.4s ease;
 }
 
-/* Search icon */
 .search_bar .search {
   position: absolute;
   right: 15px;
@@ -225,7 +224,7 @@
 .nav .login-signup .link:hover {
   color: #66ff66;
 }
-
+/* --- Responsive styles --- */
 @media (max-width: 1400px) {
   .nav ul {
     display: none;
