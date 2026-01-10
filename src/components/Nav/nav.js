@@ -30,17 +30,25 @@ import { FiMenu } from "react-icons/fi";
 
 import "./nav.css";
 
+// Navigation component
 const Nav = () => {
+  // Get user and auth state from Redux
   const { userDetail, isAuthenticated } = useSelector((state) => state.auth);
+
+  // Get products list
   const { products } = useSelector((state) => state.product);
-  const [filtredProducts, setfiltredProducts] = useState([]);
-  const [disableBlur, setDisableBlur] = useState(false);
-  const [enableblur, setEnableblur] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [hidemenu, setHideMenu] = useState(true);
+
+  // Local state values
+  const [filtredProducts, setfiltredProducts] = useState([]); 
+  const [disableBlur, setDisableBlur] = useState(false);      
+  const [enableblur, setEnableblur] = useState(true);         
+  const [searchTerm, setSearchTerm] = useState("");           
+  const [hidemenu, setHideMenu] = useState(true);           
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // Handle blur/hover logic for search dropdown
   useEffect(() => {
     function handleScroll() {
       if (disableBlur) {
@@ -51,14 +59,17 @@ const Nav = () => {
         console.log("true");
       }
     }
+
     handleScroll();
   }, [disableBlur]);
 
+  // Add sticky effect on navbar when scrolling
   useEffect(() => {
     function handleScroll() {
       const nav = document.querySelector(".nav");
       if (!nav) return;
 
+      // Add active class when page scrolls down
       if (window.scrollY < 50) {
         nav.classList.remove("active");
       } else {
@@ -69,45 +80,46 @@ const Nav = () => {
     window.addEventListener("scroll", handleScroll);
   }, []);
 
+  // Filter products based on search input
   useEffect(() => {
+    // If input empty → clear results
     if (searchTerm.trim() === "") {
       setfiltredProducts([]);
       return;
     }
+
+    // Filter by title or category
     const results = products.filter(
       (item) =>
         item.Title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         item.Cat.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
     setfiltredProducts(results);
   }, [searchTerm]);
 
-  /*
-  useKey("Escape", function () {
-    if (document.activeElement === inputEl.current) {
-      resetSearch();
-      console.log(1);
-    } else {
-      return;
-    }
-  });*/
-
+  // Input reference
   const inputEl = useRef(null);
 
   return (
     <>
       <div className="nav">
+        {/* Mobile side menu button */}
         <div
           className="menu-button"
           onClick={() => dispatch(SetsideMenu(true))}
         >
           <FiMenu />
         </div>
+
+        {/* Logo */}
         <div className="logo">
           <NavLink to="/">
-            <img src="./img/Logo-ElectroPNG.png" alt="Logo"></img>
+            <img src="./img/Logo-ElectroPNG.png" alt="Logo" />
           </NavLink>
         </div>
+
+        {/* Main navigation links */}
         <ul>
           <li>
             <NavLink
@@ -127,6 +139,7 @@ const Nav = () => {
                 Shop
               </NavLink>
             </li>
+
             <li>
               <NavLink
                 to="/about"
@@ -135,6 +148,7 @@ const Nav = () => {
                 About
               </NavLink>
             </li>
+
             <li>
               <NavLink
                 to="/contact"
@@ -145,6 +159,8 @@ const Nav = () => {
             </li>
           </>
         </ul>
+
+        {/* Search bar */}
         <div className={`search_bar ${hidemenu ? "" : "expanded"}`}>
           <input
             type="text"
@@ -154,21 +170,25 @@ const Nav = () => {
             onClick={() => setHideMenu(false)}
             className="search_input"
             onBlur={() => {
+              // Hide menu when input loses focus
               if (enableblur) {
                 setHideMenu(true);
                 setSearchTerm("");
               }
             }}
             ref={inputEl}
-          ></input>
+          />
 
+          {/* Search icon */}
           <div className="search">
             <IoSearch />
           </div>
+
+          {/* Search dropdown list */}
           {searchTerm && (
             <div
               className="search-result-box"
-              onMouseEnter={() => setDisableBlur(true)} // fires before blur
+              onMouseEnter={() => setDisableBlur(true)}
               onMouseLeave={() => setDisableBlur(false)}
             >
               {filtredProducts.length > 0 ? (
@@ -177,6 +197,7 @@ const Nav = () => {
                     className="search-result-item"
                     key={item.id}
                     onClick={() => {
+                      // Navigate to product page when clicked
                       navigate(
                         `shop/product/${item?.id}/${item?.Title.split(" ")
                           .slice()
@@ -187,7 +208,9 @@ const Nav = () => {
                     }}
                   >
                     <img src={item.Img[0]} alt={item.Title} width="40" />
-                    <span>{item.Title.split(" ").slice(0, 5).join(" ")}</span>
+                    <span>
+                      {item.Title.split(" ").slice(0, 5).join(" ")}
+                    </span>
                     <p>{item.Price} $</p>
                   </div>
                 ))
@@ -197,41 +220,40 @@ const Nav = () => {
             </div>
           )}
         </div>
+
+        {/* Sidebar shortcut buttons */}
         <div className="sidebar-wishlist">
           <div className="cart" onClick={() => dispatch(setSidebar("cart"))}>
             <FaShoppingCart />
             <p>Cart</p>
           </div>
+
           <div
             className="wishlist"
             onClick={() => dispatch(setSidebar("wishlist"))}
           >
             <FaHeart />
-
             <p>Wishlist</p>
           </div>
         </div>
+
+        {/* Display user info when logged in */}
         {isAuthenticated && (
-          <>
-            <div className="user-detail">
-              <div className="icon">
-                <FaRegUser />
-              </div>
-              <div className="detail">
-                <h2>{userDetail.Name}</h2>
-              </div>
+          <div className="user-detail">
+            <div className="icon">
+              <FaRegUser />
             </div>
-          </>
+            <div className="detail">
+              <h2>{userDetail.Name}</h2>
+            </div>
+          </div>
         )}
 
+        {/* Login / Logout buttons */}
         <div className="login-signup">
           {isAuthenticated ? (
             <p>
-              <NavLink
-                className="link"
-                to="/"
-                onClick={() => dispatch(logout())}
-              >
+              <NavLink className="link" to="/" onClick={() => dispatch(logout())}>
                 Logout
               </NavLink>
             </p>
@@ -262,4 +284,6 @@ const Nav = () => {
   );
 };
 
+// Export component
 export default Nav;
+

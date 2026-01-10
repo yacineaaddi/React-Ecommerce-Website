@@ -397,8 +397,8 @@
   }
 
   .shop .container .right-box .products .box .img-box img {
-    width: 100%; /**/
-    height: 120px; /**/
+    width: 100%;
+    height: 120px; 
     margin: 10px 0px;
   }
 

@@ -22,6 +22,7 @@ export default function StarRating({
   className = "",
   defaultRating = 0,
 }) {
+  
   // Decide whether each star should be full, half or empty
   const getStarType = (index) => {
     if (defaultRating >= index + 1) return "full";

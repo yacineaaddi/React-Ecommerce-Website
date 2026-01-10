@@ -6,6 +6,10 @@ https://react-ecommerce-website-three-psi.vercel.app/
 
 ## ✨ Features
 
+## ✨ Use Case Diagram
+
+![Use Case Diagram](image/UseCase Diagram.png)
+
 ## ⚙️ Installation
 
 1. Clone the repository:

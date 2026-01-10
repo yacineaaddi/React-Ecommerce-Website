@@ -114,4 +114,5 @@ const Login = () => {
   );
 };
 
+// Export component
 export default Login;
